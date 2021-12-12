@@ -1,3 +1,4 @@
+import { ConstructionMessage } from "components";
 import type { NextPage } from "next";
 import Head from "next/head";
 
@@ -11,7 +12,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
-        <h1 className="text-black font-bold text-6xl">Website Under Construction</h1>
+        <ConstructionMessage />
       </main>
 
       {/* <footer></footer> */}
