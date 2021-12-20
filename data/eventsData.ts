@@ -1,5 +1,3 @@
-import moment from "moment";
-
 /**
  * Date info pair where `startDate` and `endDate` are in unix time in AEST timezone
  *
