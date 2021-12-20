@@ -117,7 +117,7 @@ const eventData: eventDetails[] = [
     facebookEventLink: "https://www.facebook.com/events/297907875407518",
     description:
       "Hey 🤖MTRNSOC🤖!\n  The primary agenda item for this EGM will be to ✨FILL IN THE ROLE OF SECRETARY✨ of our society!\n  If you're keen to ❗BECOME A PART OF MECHATRONICS SOCIETY❗ nominate yourself by filling in the following form first:\n  https://forms.gle/kAr7ThppNyxd2pXK7\n  Then join our EGM and enjoy the night!\n  Otherwise, we would love it if you could attend to place your valued vote and to hear from you all regarding any queries or recommendations you may have for our society.\n  Information regarding the responsibilities of this role are outlined in the following document:\n  https://docs.google.com/.../1aKXERJY4rcD1YkakQUqY.../edit...\n  Otherwise we will be voting on minor constitutional amendments which simply explicitly reinforce MTRNSoc being a non-profit organisation in which all and any earnings will be reinvested in the objectives of the society.\n  Due to the current lockdown, we will be hosting this event online on our discord.",
-    imagePath: "/images/events/2021/2021_egm_-_a_new_secretary.jpg",
+    imagePath: "/images/events/2021/2021_egm_a_new_secretary.jpg",
     location: "MTRNSoc Discord",
     startDate: [{ startDate: 1625646600, endDate: 1625650200 }],
   },
