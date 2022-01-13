@@ -28,7 +28,8 @@ const handler = (req: NextApiRequest, res: NextApiResponse<Data>) => {
     const oldestDate = Math.max(
       ...x.date.map((y) => (y.endDate !== null ? y.endDate : y.startDate)),
     );
-    return oldestDate >= Date.now();
+    // as Date.now() is in milliseconds
+    return oldestDate * 1000 >= Date.now();
   });
 
   return res.status(200).json({ success: true, data: currentEvents });
