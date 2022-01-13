@@ -15,6 +15,11 @@ type eventDetails = {
   description: string | null;
   imagePath: string | null;
   location: string | null;
+  /**
+   * Use https://www.epochconverter.com/ to convert dates into unix timestamps.
+   *
+   * Unix timestamps should all be in GMT (i.e., not relative to local timezone)
+   */
   date: eventDate[]; // Supports multiple start dates
 };
 
@@ -271,6 +276,19 @@ const unsortedEventData: eventDetails[] = [
     imagePath: "/images/events/2021/2021_o-week_t1.jpg",
     location: "https://www.facebook.com/events/714486859435171",
     date: [{ startDate: 1612821600, endDate: 1613019600 }],
+  },
+  {
+    title: "2022 Camp Leader Applications",
+    facebookEventLink: "https://www.facebook.com/events/1108825586551964",
+    description: `Calling all students who are members of UNSW ELSOC, BESS and MTRNSoc.
+    We have teamed up for an amazing first year camp this year and are on the hunt for Camp Leaders!
+    Enjoyed your first year camp and want to relive it again, while leading a team of engineering campers? 😍 Looking for new experiences and adventures?
+    Keen to meet new people and make new friends? 💘 Apply as a camp leader! 💫
+    As a leader, you will have the opportunity to develop valuable leadership skills by supervising a group of first years through fun and challenging camp activities. You will also be able to form valuable friendships with other fellow camp leaders! 😊💜 If you are passionate about helping first years have a great time and make friends, we want you on board! 👏
+    Applications are open to electrical, telecommunications, quantum, mechanical, mechatronics, biomedical and computer engineering students. Camp will be taking place 11-13th of March 2022.`,
+    imagePath: "/images/events/2022/2022_camp_leader_applications.jpg",
+    location: "",
+    date: [{ startDate: 1641214799, endDate: 1642424399 }],
   },
 ];
 
