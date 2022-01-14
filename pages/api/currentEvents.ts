@@ -18,6 +18,56 @@ export type Data = {
  * @param res
  * @returns
  */
+
+/**
+ * @swagger
+ * /api/currentEvents:
+ *  get:
+ *    summary: Get all current events
+ *    responses:
+ *      '200':
+ *        description: OK
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                success:
+ *                  type: boolean
+ *                  example: true
+ *                data:
+ *                  type: array
+ *                  items:
+ *                    type: object
+ *                    properties:
+ *                      title:
+ *                        type: string
+ *                        example: "Example event title"
+ *                      facebookEventLink:
+ *                        type: string
+ *                        example: "https://www.facebook.com/"
+ *                      description:
+ *                        type:
+ *                          - string
+ *                          - null
+ *                        example: "Example event description"
+ *                      location:
+ *                        type:
+ *                          - string
+ *                          - null
+ *                        example: null
+ *                      date:
+ *                        type: array
+ *                        items:
+ *                          type: object
+ *                          properties:
+ *                            startDate:
+ *                              type: integer
+ *                              example: 1637902800
+ *                            endDate:
+ *                              type: integer
+ *                              example: 1637913600
+ */
 const handler = (req: NextApiRequest, res: NextApiResponse<Data>) => {
   const { method } = req;
 
