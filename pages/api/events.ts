@@ -9,18 +9,74 @@ export type Data = {
 };
 
 /**
- * Handler for /api/events
- *
- * Optional parameters:
- * - limit: integer as string specifying the max number of events to return
- *
- * Status Codes:
- * - 400: failure, with 'message'
- * - 200: success, with 'data'
- *
- * @param req
- * @param res
- * @returns
+ * @swagger
+ * /api/events:
+ *  get:
+ *    summary: Get event details
+ *    parameters:
+ *      - name: limit
+ *        in: query
+ *        required: false
+ *        description: Max limit of events returned. Must be > 1
+ *        schema:
+ *          type: integer
+ *          example: 3
+ *    responses:
+ *      '200':
+ *        description: OK
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                success:
+ *                  type: boolean
+ *                  example: true
+ *                data:
+ *                  type: array
+ *                  items:
+ *                    type: object
+ *                    properties:
+ *                      title:
+ *                        type: string
+ *                        example: "Example event title"
+ *                      facebookEventLink:
+ *                        type: string
+ *                        example: "https://www.facebook.com/"
+ *                      description:
+ *                        type:
+ *                          - string
+ *                          - null
+ *                        example: "Example event description"
+ *                      location:
+ *                        type:
+ *                          - string
+ *                          - null
+ *                        example: null
+ *                      date:
+ *                        type: array
+ *                        items:
+ *                          type: object
+ *                          properties:
+ *                            startDate:
+ *                              type: integer
+ *                              example: 1637902800
+ *                            endDate:
+ *                              type: integer
+ *                              example: 1637913600
+ *      '400':
+ *        description: Bad request
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                success:
+ *                  type: boolean
+ *                  example: false
+ *                message:
+ *                  type: string
+ *                  example: "Error message"
  */
 const handler = (req: NextApiRequest, res: NextApiResponse<Data>) => {
   const { method } = req;
