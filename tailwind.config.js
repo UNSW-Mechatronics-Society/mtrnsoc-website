@@ -1,7 +1,11 @@
 module.exports = {
   mode: "jit",
   purge: false,
-  content: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/swagger-ui-react/**/**/*.{css,scss}",
+  ],
   theme: {
     extend: {
       colors: {
