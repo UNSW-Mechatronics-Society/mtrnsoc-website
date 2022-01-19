@@ -13,10 +13,12 @@ module.exports = {
       colors: {
         primary: "#29ABE3",
         secondary: "#231F20",
+        "yale-blue": "#274C77",
+        "off-white": "#F5F5F5",
       },
     },
     fontFamily: {
-      sans: ["Lato", ...defaultTheme.fontFamily.sans],
+      sans: ["Montserrat", ...defaultTheme.fontFamily.sans],
     },
   },
   plugins: [],
