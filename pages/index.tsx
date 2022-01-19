@@ -8,7 +8,7 @@ const Home: NextPage = () => {
       <MetaTags title="UNSW Mechatronics Society" description="UNSW Mechatronics Society" />
 
       <ContentContainer>
-        <div className="bg-white flex justify-center h-full py-4">Main Content</div>
+        <div className="flex justify-center h-full py-4">Main Content</div>
       </ContentContainer>
 
       {/* <footer></footer> */}
