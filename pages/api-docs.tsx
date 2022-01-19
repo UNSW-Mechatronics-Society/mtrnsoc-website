@@ -13,7 +13,7 @@ ApiDoc.displayName = "NoLayout";
 export const getStaticProps: GetStaticProps = async (ctx) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const spec: Record<string, any> = createSwaggerSpec({
-    title: "NextJS Swagger",
+    title: "UNSW MTRNSoc Backend Documentation",
     version: "0.0.0",
   });
   return {
