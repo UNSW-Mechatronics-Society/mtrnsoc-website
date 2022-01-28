@@ -23,7 +23,7 @@ const TopHalf = () => {
         className={styles.socialLogo}
       />
       <img
-        src="/logos/instagramLogo.png"
+        src="/logos/instagramLogo.svg"
         alt="instagram logo"
         aria-label="instagram"
         className={styles.socialLogo}
