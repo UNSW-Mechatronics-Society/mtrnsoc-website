@@ -23,7 +23,7 @@ const TopHalf = () => {
         className={styles.socialLogo}
       />
       <img
-        src="/logos/instagramLogo.svg"
+        src="/logos/instagramLogo.png"
         alt="instagram logo"
         aria-label="instagram"
         className={styles.socialLogo}
@@ -52,13 +52,13 @@ const lineWidth = 90;
 
 const Footer = (): JSX.Element => {
   return (
-    <div className="w-full h-full grid place-items-center bg-onyx">
+    <div className="w-full h-full grid place-items-center bg-yale-blue">
       <ContentContainer>
         <div className="h-full w-full">
           <div className="pt-4 h-full w-full flex flex-col content-center">
             <TopHalf />
             <div className={`w-[${lineWidth}%] pl-[${100 - lineWidth}%] mt-4`}>
-              <hr className="border-solid border-yale-blue border-t-2" />
+              <hr className="border-solid border-off-white border-t-2" />
             </div>
             <BottomText />
           </div>
