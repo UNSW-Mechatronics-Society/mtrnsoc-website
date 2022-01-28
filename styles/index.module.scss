@@ -9,3 +9,11 @@
 .title {
   @apply text-4xl font-light mb-3;
 }
+
+.meetTeamContainer {
+  @apply flex flex-row w-full justify-center;
+}
+
+.execPhoto {
+  @apply h-40;
+}

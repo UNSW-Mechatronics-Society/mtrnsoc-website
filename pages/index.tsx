@@ -2,6 +2,7 @@ import { Banner, ContentContainer, MetaTags } from "components";
 import styles from "styles/index.module.scss";
 import type { NextPage } from "next";
 import OurEvents from "components/Events/OurEvents";
+import { exec } from "child_process";
 
 type TitleHeaderProps = {
   text: string;
@@ -44,6 +45,30 @@ const Home: NextPage = () => {
         <ContentContainer>
           <div className={styles.contentContainer}>
             <TitleHeader text="Meet the Team!" />
+            <div className={styles.meetTeamContainer}>
+              {/* Left hand side */}
+              <div className="">
+                <img
+                  src="/images/other/kyratemp.png"
+                  alt="president"
+                  className={styles.execPhoto}
+                />
+                <div className="flex flex-col bg-onyx text-off-white">
+                  <span className="text-base">Kyra Alday</span>
+                  <span className="text-sm">President</span>
+                </div>
+              </div>
+              {/* Right hand side */}
+              <div className="w-[60%] grid place-items-center px-5">
+                <p>
+                  “The mechatronics community is one truly driven by curiosity and passion. We
+                  strive to continuously create and improve with what we learn. Integrating skills
+                  and knowledge across many disciplines is our drive and exactly what we aspire to
+                  be our specialty. We all find our own ways to do this, but as we know, we are
+                  always better working together and would be honoured to work with you too.”
+                </p>
+              </div>
+            </div>
           </div>
         </ContentContainer>
       </div>
