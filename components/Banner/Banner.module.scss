@@ -1,0 +1,17 @@
+.container {
+  @apply h-[30rem] mx-[5%] flex justify-center relative;
+}
+
+.image {
+  @apply object-cover
+  /* opacity-90 */;
+}
+
+.textContainer {
+  /* Code referenced from: https://www.w3schools.com/howto/howto_css_image_text.asp */
+  @apply absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 text-center;
+}
+
+.titleText {
+  @apply text-off-white text-7xl;
+}
