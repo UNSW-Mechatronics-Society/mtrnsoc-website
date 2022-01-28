@@ -22,7 +22,7 @@ const navLinks: navLink[] = [
   },
   {
     name: "Resources",
-    route: "/Resources",
+    route: "/resources",
   },
   {
     name: "Contact Us",
