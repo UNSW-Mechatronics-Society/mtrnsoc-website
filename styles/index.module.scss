@@ -1,0 +1,11 @@
+.mainContainer {
+  @apply flex flex-col h-full;
+}
+
+.contentContainer {
+  @apply grid place-items-center my-12 text-center text-xl;
+}
+
+.title {
+  @apply text-4xl font-light mb-3;
+}

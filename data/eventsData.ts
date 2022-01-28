@@ -13,7 +13,7 @@ type eventDetails = {
   title: string;
   facebookEventLink: string;
   description: string | null;
-  imagePath: string | null;
+  imagePath: string;
   location: string | null;
   /**
    * Use https://www.epochconverter.com/ to convert dates into unix timestamps.

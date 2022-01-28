@@ -16,6 +16,7 @@ module.exports = {
         "yale-blue": "#274C77",
         "off-white": "#F5F5F5",
         onyx: "#3A3E41",
+        "uranian-blue": "#B8D9F4",
       },
     },
     fontFamily: {
