@@ -94,13 +94,17 @@ export const getStaticProps: GetStaticProps = async () => {
     // https://stackoverflow.com/questions/63669578/next-js-how-to-get-absolute-url-in-production
     const baseURL =
       process.env.NODE_ENV === "development" ? "http://localhost:3000" : process.env.DEPLOY_URL;
+
+    console.log(process.env);
+    console.log(process.env.DEPLOY_URL);
+    console.log(`${baseURL}/api/currentEvents`);
     const res = await fetch(`${baseURL}/api/currentEvents`);
     if (!res.ok) throw new Error(res.statusText);
     const data = await res.json();
     if (!data.success) throw new Error(data.message);
     return {
       props: { currentEvents: data.data },
-      revalidate: 2160,
+      revalidate: 60,
     };
   } catch (error) {
     console.log(error);
