@@ -4,7 +4,7 @@ import Link from "next/link";
 // TODO: Arrow functionality & movement
 
 const getEventsToDisplay = () => {
-  return [...eventData].slice(0, 3);
+  return [...eventData].slice(1, 4);
 };
 
 export default function OurEvents(): JSX.Element {
@@ -18,7 +18,7 @@ export default function OurEvents(): JSX.Element {
             src={event.imagePath}
             key={event.title}
             alt={`${event.title} event banner`}
-            className="h-52"
+            className="h-60"
           />
         ))}
       </div>

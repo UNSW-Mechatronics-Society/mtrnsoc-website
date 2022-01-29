@@ -12,7 +12,7 @@ export default function Banner({ imgURL, text = undefined }: BannerProps): JSX.E
       {/* if text exists, create div */}
       {text && (
         <div className={styles.textContainer}>
-          <h1 className={styles.titleText}>{text}</h1>
+          <h1 className={styles.titleText}>{text.toUpperCase()}</h1>
         </div>
       )}
     </div>

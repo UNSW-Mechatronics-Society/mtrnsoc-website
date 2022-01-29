@@ -2,7 +2,6 @@ import { Banner, ContentContainer, MetaTags } from "components";
 import styles from "styles/index.module.scss";
 import type { NextPage } from "next";
 import OurEvents from "components/Events/OurEvents";
-import { exec } from "child_process";
 
 type TitleHeaderProps = {
   text: string;
@@ -17,7 +16,7 @@ const Home: NextPage = () => {
     <section className="h-full">
       <MetaTags title="UNSW Mechatronics Society" description="UNSW Mechatronics Society" />
       <div className={styles.mainContainer}>
-        <Banner imgURL="/images/other/originalHero.JPG" text="UNSW Mechatronics Society" />
+        <Banner imgURL="/images/other/originalEdited.png" text="UNSW Mechatronics Society" />
         <ContentContainer>
           <div className={styles.contentContainer}>
             <TitleHeader text="Who we are" />
