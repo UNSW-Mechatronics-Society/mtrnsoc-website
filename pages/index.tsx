@@ -81,7 +81,7 @@ const Home: NextPage<HomePageProps> = ({ currentEvents }) => {
     <section className="h-full">
       <MetaTags title="UNSW Mechatronics Society" description="UNSW Mechatronics Society" />
       <div className={styles.mainContainer}>
-        <Banner imgURL="/images/other/frontPageBanner.png" text="UNSW Mechatronics Society" />
+        <Banner imgURL="/images/other/frontPageBannerEdited.png" text="UNSW Mechatronics Society" />
         <SectionWhoWeAre />
         <SectionOurEvents currentEvents={currentEvents} />
         <SectionMeetTheTeam />
