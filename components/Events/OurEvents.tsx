@@ -4,7 +4,7 @@ import Link from "next/link";
 // TODO: Arrow functionality & movement
 
 const getEventsToDisplay = () => {
-  return [...eventData].slice(1, 4);
+  return [...eventData].slice(0, 3);
 };
 
 export default function OurEvents(): JSX.Element {
