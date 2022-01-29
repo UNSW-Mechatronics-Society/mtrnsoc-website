@@ -1,7 +1,9 @@
+import React from "react";
 import Link from "next/link";
 import ContentContainer from "../ContentContainer/ContentContainer";
 import type { navLink as ButtonProps } from "data/navLinksData";
 import navLinks from "data/navLinksData";
+import styles from "./NavBar.module.scss";
 
 const Button = ({ name, route }: ButtonProps): JSX.Element => {
   return (
@@ -26,8 +28,16 @@ const NavLinksSection = (): JSX.Element => {
 };
 
 const NavBar = (): JSX.Element => {
+  const [isTop, setIsTop] = React.useState(false);
+
+  if (typeof window !== "undefined") {
+    window.addEventListener("scroll", () => {
+      setIsTop(window.scrollY <= 0);
+    });
+  }
+  console.log(isTop);
   return (
-    <div className="h-full w-full bg-yale-blue grid place-items-center">
+    <div className={`${styles.mainContainer} ${isTop ? "" : "shadow-md"}`}>
       <ContentContainer>
         <div className="h-full w-full flex justify-between content-center pt-[2px]">
           <Link href="/">

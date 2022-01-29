@@ -1,0 +1,24 @@
+@use "/styles/variables";
+
+/* .navbar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 100;
+  background-color: $navyBG;
+  height: $headerHeight;
+  position: relative;
+} */
+
+.mainContainer {
+  /* @apply w-full bg-yale-blue grid place-items-center h-[100%]; */
+
+  width: 100%;
+  background-color: variables.$yaleBlue;
+  display: grid;
+  place-items: center;
+  position: fixed;
+  z-index: 50;
+  height: variables.$headerHeight;
+}
