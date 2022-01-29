@@ -1,7 +1,8 @@
 import { Banner, ContentContainer, MetaTags } from "components";
 import styles from "styles/index.module.scss";
-import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
-import OurEvents, { OurEventsProps } from "components/Events/OurEvents";
+import type { GetStaticProps, NextPage } from "next";
+import OurEvents, { OurEventsProps as HomePageProps } from "components/Events/OurEvents";
+import eventData from "data/eventsData";
 
 type TitleHeaderProps = {
   text: string;
@@ -34,7 +35,7 @@ const SectionWhoWeAre = (): JSX.Element => {
   );
 };
 
-const SectionOurEvents = ({ currentEvents }: OurEventsProps): JSX.Element => {
+const SectionOurEvents = ({ currentEvents }: HomePageProps): JSX.Element => {
   return (
     <ContentContainer customBackgroundColour="bg-uranian-blue">
       <div className={styles.sectionContainer}>
@@ -75,7 +76,7 @@ const SectionMeetTheTeam = (): JSX.Element => {
   );
 };
 
-const Home: NextPage = ({ currentEvents }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Home: NextPage<HomePageProps> = ({ currentEvents }) => {
   return (
     <section className="h-full">
       <MetaTags title="UNSW Mechatronics Society" description="UNSW Mechatronics Society" />
@@ -89,27 +90,15 @@ const Home: NextPage = ({ currentEvents }: InferGetStaticPropsType<typeof getSta
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-  try {
-    // https://stackoverflow.com/questions/63669578/next-js-how-to-get-absolute-url-in-production
-    const baseURL =
-      process.env.NODE_ENV === "development" ? "http://localhost:3000" : process.env.DEPLOY_URL;
-
-    console.log(process.env);
-    console.log(process.env.DEPLOY_URL);
-    console.log(`${baseURL}/api/currentEvents`);
-    const res = await fetch(`${baseURL}/api/currentEvents`);
-    if (!res.ok) throw new Error(res.statusText);
-    const data = await res.json();
-    if (!data.success) throw new Error(data.message);
-    return {
-      props: { currentEvents: data.data },
-      revalidate: 60,
-    };
-  } catch (error) {
-    console.log(error);
-    return { props: { currentEvents: null }, revalidate: 5 };
-  }
+export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
+  const currentEvents = eventData.filter((x) => {
+    const oldestDate = Math.max(
+      ...x.date.map((y) => (y.endDate !== null ? y.endDate : y.startDate)),
+    );
+    // as Date.now() is in milliseconds
+    return oldestDate * 1000 >= Date.now();
+  });
+  return { props: { currentEvents } };
 };
 
 export default Home;
