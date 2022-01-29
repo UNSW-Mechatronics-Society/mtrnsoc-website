@@ -95,6 +95,8 @@ export const getStaticProps: GetStaticProps = async () => {
     const baseURL =
       process.env.NODE_ENV === "development" ? "http://localhost:3000" : process.env.DEPLOY_URL;
     console.log(process.env);
+    console.log(process.env.DEPLOY_URL);
+    console.log(`${baseURL}/api/currentEvents`);
     const res = await fetch(`${baseURL}/api/currentEvents`);
     if (!res.ok) throw new Error(res.statusText);
     const data = await res.json();
