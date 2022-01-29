@@ -1,7 +1,7 @@
 import { Banner, ContentContainer, MetaTags } from "components";
 import styles from "styles/index.module.scss";
-import type { NextPage } from "next";
-import OurEvents from "components/Events/OurEvents";
+import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
+import OurEvents, { OurEventsProps } from "components/Events/OurEvents";
 
 type TitleHeaderProps = {
   text: string;
@@ -34,12 +34,12 @@ const SectionWhoWeAre = (): JSX.Element => {
   );
 };
 
-const SectionOurEvents = (): JSX.Element => {
+const SectionOurEvents = ({ currentEvents }: OurEventsProps): JSX.Element => {
   return (
     <ContentContainer customBackgroundColour="bg-uranian-blue">
       <div className={styles.sectionContainer}>
         <TitleHeader text="Our Events" />
-        <OurEvents />
+        <OurEvents currentEvents={currentEvents} />
       </div>
     </ContentContainer>
   );
@@ -74,18 +74,39 @@ const SectionMeetTheTeam = (): JSX.Element => {
     </ContentContainer>
   );
 };
-const Home: NextPage = () => {
+
+const Home: NextPage = ({ currentEvents }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <section className="h-full">
       <MetaTags title="UNSW Mechatronics Society" description="UNSW Mechatronics Society" />
       <div className={styles.mainContainer}>
         <Banner imgURL="/images/other/frontPageBanner.png" text="UNSW Mechatronics Society" />
         <SectionWhoWeAre />
-        <SectionOurEvents />
+        <SectionOurEvents currentEvents={currentEvents} />
         <SectionMeetTheTeam />
       </div>
     </section>
   );
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  try {
+    // https://stackoverflow.com/questions/63669578/next-js-how-to-get-absolute-url-in-production
+    const baseURL =
+      process.env.NODE_ENV === "development" ? "http://localhost:3000" : process.env.VERCEL_URL;
+
+    const res = await fetch(`${baseURL}/api/currentEvents`);
+    if (!res.ok) throw new Error(res.statusText);
+    const data = await res.json();
+    if (!data.success) throw new Error(data.message);
+    return {
+      props: { currentEvents: data.data },
+      revalidate: 21600000, // 6 hours in milliseconds
+    };
+  } catch (error) {
+    console.log(error);
+    return { props: { currentEvents: null }, revalidate: 5000 };
+  }
 };
 
 export default Home;

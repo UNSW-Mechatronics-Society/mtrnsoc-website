@@ -1,29 +1,34 @@
-import eventData from "data/eventsData";
+import React from "react";
+import type { eventDetails } from "data/eventsData";
 import Link from "next/link";
 
 // TODO: Arrow functionality & movement
 // TODO: Build out mobile functionality
-// TODO: Request from backend
 
-const getEventsToDisplay = () => {
-  return [...eventData].slice(0, 3);
+export type OurEventsProps = {
+  currentEvents: eventDetails[] | null;
 };
 
-export default function OurEvents(): JSX.Element {
-  const eventsToDisplay = getEventsToDisplay();
-
+export default function OurEvents({ currentEvents }: OurEventsProps): JSX.Element {
+  const FailErrorMessage = () => {
+    return <p className="w-full grid place-items-center text-xl">Failed to load events</p>;
+  };
   return (
     <div className="flex flex-col w-full">
       <div className="flex flex-row w-full justify-between pb-10">
-        {eventsToDisplay.map((event) => (
-          <a key={event.title} href={event.facebookEventLink} target="_blank" rel="noreferrer">
-            <img
-              src={event.imagePath}
-              alt={`${event.title} event banner`}
-              className="h-60 hover:scale-[1.05] duration-100 hover:shadow-2xl"
-            />
-          </a>
-        ))}
+        {currentEvents ? (
+          currentEvents.map((event) => (
+            <a key={event.title} href={event.facebookEventLink} target="_blank" rel="noreferrer">
+              <img
+                src={event.imagePath}
+                alt={`${event.title} event banner`}
+                className="h-60 hover:scale-[1.05] duration-100 hover:shadow-2xl"
+              />
+            </a>
+          ))
+        ) : (
+          <FailErrorMessage />
+        )}
       </div>
       <div>
         <Link href="/events">
