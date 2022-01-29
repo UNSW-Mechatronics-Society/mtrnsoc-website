@@ -1,9 +1,9 @@
 import ContentContainer from "../ContentContainer/ContentContainer";
 import styles from "./Footer.module.scss";
 
-const TopHalf = () => {
+const TopHalfLogos = () => {
   return (
-    <div className="flex flex-row justify-center">
+    <div className="flex flex-row justify-center my-2">
       <img
         src="/logos/discordLogo.svg"
         alt="discord logo"
@@ -41,25 +41,30 @@ const TopHalf = () => {
 const BottomText = () => {
   return (
     <div className="text-off-white grid place-items-center h-full">
-      Copyright © 2021 UNSW Mechatronics Society - All Rights Reserved.
+      Copyright &copy; 2021 UNSW Mechatronics Society - All Rights Reserved.
     </div>
   );
 };
 
-// as percentages
-// For some reason, only 90 or 80 works
-const lineWidth = 90;
+const DividerLine = () => {
+  // as percentages
+  // For some reason, only 90 or 80 works
+  const lineWidth = 90;
+  return (
+    <div className={`w-[${lineWidth}%] pl-[${100 - lineWidth}%] my-4`}>
+      <hr className="border-solid border-off-white border-t-2" />
+    </div>
+  );
+};
 
 const Footer = (): JSX.Element => {
   return (
     <div className="w-full h-full grid place-items-center bg-yale-blue">
       <ContentContainer>
-        <div className="h-full w-full">
-          <div className="pt-4 h-full w-full flex flex-col content-center">
-            <TopHalf />
-            <div className={`w-[${lineWidth}%] pl-[${100 - lineWidth}%] mt-4`}>
-              <hr className="border-solid border-off-white border-t-2" />
-            </div>
+        <div className="h-full w-full grid place-items-center">
+          <div className="w-full flex flex-col content-center">
+            <TopHalfLogos />
+            <DividerLine />
             <BottomText />
           </div>
         </div>
