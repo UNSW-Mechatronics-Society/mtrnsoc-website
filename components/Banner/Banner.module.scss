@@ -1,9 +1,21 @@
+@use "styles/variables";
+
 .container {
-  @apply h-[30rem] mx-[5%] flex justify-center relative;
+  /* Used normal SCSS due to complexity */
+
+  height: calc(100vh - variables.$headerHeight);
+  /* https://stackoverflow.com/questions/10197565/100-height-minus-header */
+  /* https://stackoverflow.com/questions/16290873/css3-calc100-88px-not-working-in-chrome/16291105#16291105 */
+  height: -o-calc(100vh - variables.$headerHeight); /* opera */
+  height: -webkit-calc(100vh - variables.$headerHeight); /* google, safari */
+  height: -moz-calc(100vh - variables.$headerHeight); /* firefox */
+  display: flex;
+  justify-content: center;
+  position: relative;
 }
 
 .image {
-  @apply object-cover
+  @apply object-cover w-full
   /* opacity-90 */;
 }
 

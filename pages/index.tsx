@@ -16,7 +16,7 @@ const Home: NextPage = () => {
     <section className="h-full">
       <MetaTags title="UNSW Mechatronics Society" description="UNSW Mechatronics Society" />
       <div className={styles.mainContainer}>
-        <Banner imgURL="/images/other/originalEdited.png" text="UNSW Mechatronics Society" />
+        <Banner imgURL="/images/other/frontPageBanner.png" text="UNSW Mechatronics Society" />
         <ContentContainer>
           <div className={styles.contentContainer}>
             <TitleHeader text="Who we are" />
