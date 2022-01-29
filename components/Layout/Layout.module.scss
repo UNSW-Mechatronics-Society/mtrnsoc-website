@@ -1,6 +1,4 @@
-$headerHeight: 3.75rem;
-$footerHeight: 9.375rem;
-$footerHeightMobile: 7.5rem;
+@use "styles/variables";
 
 .mainContent {
   height: 100vh;
@@ -19,7 +17,7 @@ $footerHeightMobile: 7.5rem;
   footer {
     grid-area: footer;
   }
-  grid-template-rows: $headerHeight auto $footerHeight;
+  grid-template-rows: variables.$headerHeight auto variables.$footerHeight;
 }
 
 .header {
