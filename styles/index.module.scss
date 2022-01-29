@@ -2,12 +2,12 @@
   @apply flex flex-col h-full;
 }
 
-.contentContainer {
-  @apply grid place-items-center my-12 text-center text-xl;
+.sectionContainer {
+  @apply grid place-items-center my-20 text-center text-xl;
 }
 
 .title {
-  @apply text-4xl font-medium mb-5;
+  @apply text-4xl font-medium mb-10;
 }
 
 .meetTeamContainer {

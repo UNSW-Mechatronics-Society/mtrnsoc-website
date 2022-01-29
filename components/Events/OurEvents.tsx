@@ -12,7 +12,7 @@ export default function OurEvents(): JSX.Element {
 
   return (
     <div className="flex flex-col w-full">
-      <div className="flex flex-row w-full justify-between py-6">
+      <div className="flex flex-row w-full justify-between pb-6">
         {eventsToDisplay.map((event) => (
           <img
             src={event.imagePath}
