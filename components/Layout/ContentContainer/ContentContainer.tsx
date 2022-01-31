@@ -1,3 +1,5 @@
+import styles from "./ContentContainer.module.scss";
+
 type ContentContainerProps = {
   /**
    * Has to be valid TailWindCSS class colour name
@@ -12,12 +14,10 @@ const ContentContainer = ({
 }: ContentContainerProps): JSX.Element => {
   return (
     <section
-      className={`w-full h-full grid place-items-center ${
-        customBackgroundColour ? customBackgroundColour : ""
-      }`}
+      className={`${styles.mainContainer} ${customBackgroundColour ? customBackgroundColour : ""}`}
     >
-      <div className="w-full h-full max-w-screen-2xl">
-        <div className="h-full px-6">{children}</div>
+      <div className={styles.limitingContainer}>
+        <div className={styles.paddingContainer}>{children}</div>
       </div>
     </section>
   );
