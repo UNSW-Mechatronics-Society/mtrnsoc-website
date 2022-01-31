@@ -50,7 +50,7 @@ const NavBar = (): JSX.Element => {
       setIsTop(window.scrollY <= 0);
     });
   }
-  console.log(isTop);
+
   return (
     <div className={`${styles.mainContainer} ${isTop ? "" : "shadow-md"}`}>
       <ContentContainer>
