@@ -27,8 +27,6 @@
   /* transform: translate(-50%, calc(-50% - variables.$headerHeight)); */
   /* text-align: center; */
   position: absolute;
-  bottom: 8rem;
-  left: 8rem;
   text-aign: left;
 
   /* https://stackoverflow.com/questions/4212909/can-css-force-a-line-break-after-each-word-in-an-element */
@@ -39,8 +37,27 @@
   display: table-caption;
   display: -ms-grid;
   -ms-grid-columns: min-content;
+
+  /* Breakpoints based off tailwindcss */
+  bottom: 7rem;
+  left: 7rem;
+
+  @media (max-width: variables.$xl) {
+    bottom: 6rem;
+    left: 6rem;
+  }
+
+  @media (max-width: variables.$lg) {
+    bottom: 5.5rem;
+    left: 5.5rem;
+  }
+
+  @media (max-width: variables.$md) {
+    bottom: 4.5rem;
+    left: 4.5rem;
+  }
 }
 
 .titleText {
-  @apply text-off-white text-8xl font-bold;
+  @apply text-off-white font-bold lg:text-8xl md:text-6xl sm:text-5xl text-4xl;
 }
