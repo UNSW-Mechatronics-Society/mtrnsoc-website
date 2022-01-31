@@ -9,17 +9,13 @@ import { useRouter } from "next/router";
 type ButtonProps = NavLinksSectionProps & navLink;
 
 const Button = ({ name, route, currentRoute }: ButtonProps): JSX.Element => {
+  const boldIfRouteIsCurrent = route === currentRoute ? "font-semibold" : "";
+
   return (
-    <div className="grid place-items-center">
+    <div className={styles.buttonContainer}>
       <Link href={route}>
         <a>
-          <div
-            className={`py-2 px-4 text-base text-off-white font-400 ${
-              route === currentRoute ? "font-semibold" : ""
-            }`}
-          >
-            {name.toUpperCase()}
-          </div>
+          <div className={`${styles.buttonText} ${boldIfRouteIsCurrent}`}>{name.toUpperCase()}</div>
         </a>
       </Link>
     </div>
@@ -32,7 +28,7 @@ type NavLinksSectionProps = {
 
 const NavLinksSection = ({ currentRoute }: NavLinksSectionProps): JSX.Element => {
   return (
-    <div className="flex flex-row content-center justify-between">
+    <div className={styles.navLinksContainer}>
       {navLinks.map((item) => (
         <Button key={item.name} {...item} currentRoute={currentRoute} />
       ))}
@@ -54,14 +50,14 @@ const NavBar = (): JSX.Element => {
   return (
     <div className={`${styles.mainContainer} ${isTop ? "" : "shadow-md"}`}>
       <ContentContainer>
-        <div className="h-full w-full flex justify-between content-center pt-[2px]">
+        <div className={styles.content}>
           <Link href="/">
             <a>
               <img
                 src="/logos/CulturedOnWhite.svg"
                 alt="MTRNSoc Logo"
                 aria-label="logo"
-                className="h-14"
+                className={styles.logo}
               />
             </a>
           </Link>
