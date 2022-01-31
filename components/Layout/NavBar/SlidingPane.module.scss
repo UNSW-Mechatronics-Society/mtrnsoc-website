@@ -3,10 +3,10 @@
 .slide-pane {
   display: flex;
   flex-direction: column;
-  background: variables.$culturedWhite;
-  min-width: 6.25rem;
+  background: variables.$yaleBlue;
+  min-width: 12.5rem;
   height: 100%;
-  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.5);
+  /* box-shadow: 0 8px 8px rgba(0, 0, 0, 0.5); */
   transition: transform 0.5s;
   will-change: transform;
 }
@@ -66,7 +66,8 @@
 }
 
 .slide-pane__overlay.overlay-after-open {
-  background-color: rgba(0, 0, 0, 0.3);
+  /* Opacity page effect */
+  /* background-color: rgba(0, 0, 0, 0.3); */
   transition: background-color 0.5s;
 }
 

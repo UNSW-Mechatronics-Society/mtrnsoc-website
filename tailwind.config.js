@@ -11,12 +11,31 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#29ABE3",
-        secondary: "#231F20",
         "yale-blue": "#274C77",
         "off-white": "#F5F5F5",
+        culturedWhite: "#F5F5F5",
         onyx: "#3A3E41",
         "uranian-blue": "#B8D9F4",
+        carolinaBlue: "#5FA8D3",
+        littleBoyBlue: "#85A8D6",
+        aeroBlue: "#7AB8E1",
+        yaleBlue: "#274C77",
+      },
+      screens: {
+        "max-2xl": { max: "1535px" },
+        // => @media (max-width: 1535px) { ... }
+
+        "max-xl": { max: "1279px" },
+        // => @media (max-width: 1279px) { ... }
+
+        "max-lg": { max: "1023px" },
+        // => @media (max-width: 1023px) { ... }
+
+        "max-md": { max: "767px" },
+        // => @media (max-width: 767px) { ... }
+
+        "max-sm": { max: "639px" },
+        // => @media (max-width: 639px) { ... }
       },
     },
     fontFamily: {

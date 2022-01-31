@@ -23,8 +23,8 @@
   height: variables.$headerHeight;
 }
 
-.content {
-  @apply h-full w-full flex justify-between content-center pt-[0.125rem];
+.DesktopNavBarContainer {
+  @apply h-full w-full flex justify-between content-center pt-[0.125rem] max-md:hidden;
 }
 
 .logo {
@@ -40,7 +40,7 @@
 }
 
 .buttonText {
-  @apply py-2 px-4 text-lg text-off-white;
+  @apply py-2 px-3 text-base text-off-white uppercase;
 }
 
 .navigationBurger {
@@ -49,4 +49,17 @@
     /* Change svg to #F5F5F5 */
     filter: invert(99%) sepia(7%) saturate(96%) hue-rotate(183deg) brightness(114%) contrast(92%);
   }
+}
+
+.mobileNavBarContainer {
+  width: 100%;
+  height: variables.$headerHeight;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* @apply w-full h-[60px] hidden; */
+}
+
+.mobileNavButton {
+  @apply text-2xl py-3 uppercase text-culturedWhite;
 }

@@ -6,8 +6,7 @@ import navLinks from "data/navLinksData";
 import styles from "./NavBar.module.scss";
 import { useRouter } from "next/router";
 import ReactSlidingPane from "./SlidingPane";
-
-type ButtonProps = NavLinksSectionProps & navLink;
+import useWindowDimensions from "util/useWindowDimensions";
 
 const Logo = () => {
   return (
@@ -24,14 +23,16 @@ const Logo = () => {
   );
 };
 
-const Button = ({ name, route, currentRoute }: ButtonProps): JSX.Element => {
+type DesktopButtonProps = NavLinksSectionProps & navLink;
+
+const DesktopButton = ({ name, route, currentRoute }: DesktopButtonProps): JSX.Element => {
   const boldIfRouteIsCurrent = route === currentRoute ? "font-semibold" : "";
 
   return (
     <div className={styles.buttonContainer}>
       <Link href={route}>
         <a>
-          <div className={`${styles.buttonText} ${boldIfRouteIsCurrent}`}>{name.toUpperCase()}</div>
+          <div className={`${styles.buttonText} ${boldIfRouteIsCurrent}`}>{name}</div>
         </a>
       </Link>
     </div>
@@ -46,7 +47,7 @@ const NavLinksSection = ({ currentRoute }: NavLinksSectionProps): JSX.Element =>
   return (
     <div className={styles.navLinksContainer}>
       {navLinks.map((item) => (
-        <Button key={item.name} {...item} currentRoute={currentRoute} />
+        <DesktopButton key={item.name} {...item} currentRoute={currentRoute} />
       ))}
     </div>
   );
@@ -54,7 +55,7 @@ const NavLinksSection = ({ currentRoute }: NavLinksSectionProps): JSX.Element =>
 
 const DesktopNavBar = ({ currentRoute }: NavLinksSectionProps): JSX.Element => {
   return (
-    <div className={styles.content}>
+    <div className={styles.DesktopNavBarContainer}>
       <Logo />
       <NavLinksSection currentRoute={currentRoute} />
     </div>
@@ -66,9 +67,9 @@ interface MobileNavBarProps extends NavLinksSectionProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const MobileNavBar = ({ currentRoute, isOpen, setIsOpen }: MobileNavBarProps): JSX.Element => {
+const MobileNavBar = ({ setIsOpen }: MobileNavBarProps): JSX.Element => {
   return (
-    <div className="w-full h-[60px] flex">
+    <div className={styles.mobileNavBarContainer}>
       <button aria-label="menu">
         <img
           src="/menu.svg"
@@ -77,6 +78,14 @@ const MobileNavBar = ({ currentRoute, isOpen, setIsOpen }: MobileNavBarProps): J
           onClick={() => setIsOpen(true)}
         />
       </button>
+      <Logo />
+      {/* As a placeholder for flex */}
+      <img
+        src="/menu.svg"
+        alt=""
+        className={`${styles.navigationBurger} invisible`}
+        onClick={() => setIsOpen(true)}
+      />
     </div>
   );
 };
@@ -84,6 +93,8 @@ const MobileNavBar = ({ currentRoute, isOpen, setIsOpen }: MobileNavBarProps): J
 const NavBar = (): JSX.Element => {
   const [isTop, setIsTop] = React.useState(false);
   const [isOpen, setIsOpen] = React.useState(false);
+  const { width } = useWindowDimensions();
+  console.log(width);
   const router = useRouter();
   const { route } = router;
 
@@ -96,17 +107,36 @@ const NavBar = (): JSX.Element => {
   return (
     <div className={`${styles.mainContainer} ${isTop ? "" : "shadow-md"}`}>
       <ContentContainer>
-        {/* <DesktopNavBar currentRoute={route} /> */}
-        <MobileNavBar currentRoute={route} isOpen={isOpen} setIsOpen={setIsOpen} />
+        {width > 766 ? (
+          <DesktopNavBar currentRoute={route} />
+        ) : (
+          <MobileNavBar currentRoute={route} isOpen={isOpen} setIsOpen={setIsOpen} />
+        )}
       </ContentContainer>
-      <ReactSlidingPane
-        isOpen={isOpen}
-        from="left"
-        width="500px"
-        onRequestClose={() => setIsOpen(false)}
-      >
-        <div>And I am pane content on left.</div>
-      </ReactSlidingPane>
+      {width <= 766 && (
+        <ReactSlidingPane
+          isOpen={isOpen}
+          from="left"
+          width="15rem"
+          onRequestClose={() => setIsOpen(false)}
+        >
+          <ul>
+            {navLinks.map((item) => (
+              <li
+                key={item.name}
+                className={`${styles.mobileNavButton} ${
+                  item.route === route ? "font-semibold" : ""
+                }`}
+                onClick={() => setIsOpen(false)}
+              >
+                <Link href={item.route}>
+                  <a>{item.name}</a>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </ReactSlidingPane>
+      )}
     </div>
   );
 };
