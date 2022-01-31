@@ -94,7 +94,7 @@ const NavBar = (): JSX.Element => {
   const [isTop, setIsTop] = React.useState(false);
   const [isOpen, setIsOpen] = React.useState(false);
   const { width } = useWindowDimensions();
-  console.log(width);
+
   const router = useRouter();
   const { route } = router;
 
