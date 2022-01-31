@@ -19,7 +19,7 @@
   display: grid;
   place-items: center;
   position: fixed;
-  z-index: 50;
+  z-index: 10;
   height: variables.$headerHeight;
 }
 
@@ -41,4 +41,12 @@
 
 .buttonText {
   @apply py-2 px-4 text-lg text-off-white;
+}
+
+.navigationBurger {
+  width: 3rem;
+  &:hover {
+    /* Change svg to #F5F5F5 */
+    filter: invert(99%) sepia(7%) saturate(96%) hue-rotate(183deg) brightness(114%) contrast(92%);
+  }
 }
