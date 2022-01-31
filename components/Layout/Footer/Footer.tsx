@@ -1,39 +1,61 @@
+import { contactEmail, discord, facebookPage, instagram, linkedin } from "data/socialsData";
+import Link from "next/link";
 import ContentContainer from "../ContentContainer/ContentContainer";
 import styles from "./Footer.module.scss";
 
 const TopHalfLogos = () => {
   return (
     <div className="flex flex-row justify-center my-2">
-      <img
-        src="/logos/discordLogo.svg"
-        alt="discord logo"
-        aria-label="discord"
-        className={styles.socialLogo}
-      />
-      <img
-        src="/logos/emailLogo.svg"
-        alt="email logo"
-        aria-label="email"
-        className={styles.socialLogo}
-      />
-      <img
-        src="/logos/facebookLogo.svg"
-        alt="facebook logo"
-        aria-label="facebook"
-        className={styles.socialLogo}
-      />
-      <img
-        src="/logos/instagramLogo.svg"
-        alt="instagram logo"
-        aria-label="instagram"
-        className={styles.socialLogo}
-      />
-      <img
-        src="/logos/linkedinLogo.svg"
-        alt="linkedin logo"
-        aria-label="linkedin"
-        className={styles.socialLogo}
-      />
+      <Link href={discord}>
+        <a target="_blank">
+          <img
+            src="/logos/discordLogo.svg"
+            alt="discord logo"
+            aria-label="discord"
+            className={styles.socialLogo}
+          />
+        </a>
+      </Link>
+      <Link href={`mailto:${contactEmail}`}>
+        <a target="_blank">
+          <img
+            src="/logos/emailLogo.svg"
+            alt="email logo"
+            aria-label="email"
+            className={styles.socialLogo}
+          />
+        </a>
+      </Link>
+      <Link href={facebookPage}>
+        <a target="_blank">
+          <img
+            src="/logos/facebookLogo.svg"
+            alt="facebook logo"
+            aria-label="facebook"
+            className={styles.socialLogo}
+          />
+        </a>
+      </Link>
+      <Link href={instagram}>
+        <a target="_blank">
+          <img
+            src="/logos/instagramLogo.svg"
+            alt="instagram logo"
+            aria-label="instagram"
+            className={styles.socialLogo}
+          />
+        </a>
+      </Link>
+      <Link href={linkedin}>
+        <a target="_blank">
+          <img
+            src="/logos/linkedinLogo.svg"
+            alt="linkedin logo"
+            aria-label="linkedin"
+            className={styles.socialLogo}
+          />
+        </a>
+      </Link>
     </div>
   );
 };
