@@ -39,7 +39,7 @@ const SectionOurEvents = ({ currentEvents }: HomePageProps): JSX.Element => {
   return (
     <ContentContainer customBackgroundColour="bg-uranian-blue">
       <div className={styles.sectionContainer}>
-        <TitleHeader text="Our Events" />
+        <TitleHeader text="Our Current Events" />
         <OurEvents currentEvents={currentEvents} />
       </div>
     </ContentContainer>
