@@ -40,7 +40,7 @@ const TopHalfLogos = () => {
 
 const BottomText = () => {
   return (
-    <div className="text-off-white grid place-items-center h-full">
+    <div className="text-off-white h-full grid place-items-center text-center">
       Copyright &copy; 2021 UNSW Mechatronics Society - All Rights Reserved.
     </div>
   );
