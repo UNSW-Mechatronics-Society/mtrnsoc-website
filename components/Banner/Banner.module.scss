@@ -21,14 +21,26 @@
 
 .textContainer {
   /* Code referenced from: https://www.w3schools.com/howto/howto_css_image_text.asp */
-  /* @apply absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 text-center; */
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, calc(-50% - variables.$headerHeight));
-  text-align: center;
+  /* top: 50%; */
+  /* left: 50%; */
+  /* transform: translate(-50%, calc(-50% - variables.$headerHeight)); */
+  /* text-align: center; */
+  position: absolute;
+  bottom: 8rem;
+  left: 8rem;
+  text-aign: left;
+
+  /* https://stackoverflow.com/questions/4212909/can-css-force-a-line-break-after-each-word-in-an-element */
+  width: min-intrinsic;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  display: table-caption;
+  display: -ms-grid;
+  -ms-grid-columns: min-content;
 }
 
 .titleText {
-  @apply text-off-white text-7xl;
+  @apply text-off-white text-8xl font-bold;
 }
