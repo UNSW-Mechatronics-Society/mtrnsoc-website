@@ -56,8 +56,14 @@
     bottom: 4.5rem;
     left: 4.5rem;
   }
+
+  /* TODO Decision on what to do */
+  @media (max-width: variables.$sm) {
+    bottom: 2.5rem;
+    left: 2.5rem;
+  }
 }
 
 .titleText {
-  @apply text-off-white font-bold lg:text-8xl md:text-6xl sm:text-5xl text-4xl;
+  @apply text-off-white font-bold lg:text-8xl md:text-7xl sm:text-6xl text-4xl;
 }
