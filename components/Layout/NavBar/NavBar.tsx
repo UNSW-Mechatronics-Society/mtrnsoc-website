@@ -57,7 +57,12 @@ const NavBar = (): JSX.Element => {
         <div className="h-full w-full flex justify-between content-center pt-[2px]">
           <Link href="/">
             <a>
-              <img src="/BlueOnWhite.svg" alt="MTRNSoc Logo" aria-label="logo" className="h-14" />
+              <img
+                src="/logos/CulturedOnWhite.svg"
+                alt="MTRNSoc Logo"
+                aria-label="logo"
+                className="h-14"
+              />
             </a>
           </Link>
           <NavLinksSection currentRoute={route} />
