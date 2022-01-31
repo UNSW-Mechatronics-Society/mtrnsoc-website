@@ -27,12 +27,12 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install dependencies
-        run: npm install
+        run: yarn
       - name: Lint
-        run: npm run lint
+        run: yarn lint
       - name: Prettier
-        run: npm run prettier:check
+        run: yarn prettier:check
       - name: Run tests
-        run: npm run test
+        run: yarn test
       - name: Build
-        run: npm run build
+        run: yarn build

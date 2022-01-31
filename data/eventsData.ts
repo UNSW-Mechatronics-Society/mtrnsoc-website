@@ -13,7 +13,7 @@ type eventDetails = {
   title: string;
   facebookEventLink: string;
   description: string | null;
-  imagePath: string | null;
+  imagePath: string;
   location: string | null;
   /**
    * Use https://www.epochconverter.com/ to convert dates into unix timestamps.
@@ -289,6 +289,30 @@ const unsortedEventData: eventDetails[] = [
     imagePath: "/images/events/2022/2022_camp_leader_applications.jpg",
     location: "",
     date: [{ startDate: 1641214799, endDate: 1642424399 }],
+  },
+  {
+    title: "Testing 1",
+    facebookEventLink: "https://www.facebook.com/events/1108825586551964",
+    description: "Testing event 1",
+    imagePath: "/images/events/2021/2021_mtrn2500_study_session.jpg",
+    location: "",
+    date: [{ startDate: 1643466171, endDate: 1648563771 }],
+  },
+  {
+    title: "Testing 2",
+    facebookEventLink: "https://www.facebook.com/events/1108825586551964",
+    description: "Testing event 2",
+    imagePath: "/images/events/2021/2021_study_night.jpg",
+    location: "",
+    date: [{ startDate: 1643466171, endDate: 1648563771 }],
+  },
+  {
+    title: "Testing 3",
+    facebookEventLink: "https://www.facebook.com/events/1108825586551964",
+    description: "Testing event 3",
+    imagePath: "/images/events/2021/2021_mtrnsoc_egm.jpg",
+    location: "",
+    date: [{ startDate: 1643466171, endDate: 1648563771 }],
   },
 ];
 

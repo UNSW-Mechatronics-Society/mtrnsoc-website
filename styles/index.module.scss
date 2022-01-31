@@ -1,0 +1,19 @@
+.mainContainer {
+  @apply flex flex-col h-full;
+}
+
+.sectionContainer {
+  @apply grid place-items-center my-20 text-center text-xl;
+}
+
+.title {
+  @apply text-4xl font-medium mb-10;
+}
+
+.meetTeamContainer {
+  @apply flex flex-row w-full justify-center;
+}
+
+.execPhoto {
+  @apply h-40;
+}

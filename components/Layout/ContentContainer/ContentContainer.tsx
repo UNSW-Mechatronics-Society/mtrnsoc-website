@@ -1,14 +1,25 @@
 import styles from "./ContentContainer.module.scss";
 
 type ContentContainerProps = {
+  /**
+   * Has to be valid TailWindCSS class colour name
+   */
+  customBackgroundColour?: string;
   children: React.ReactNode;
 };
 
-const ContentContainer = ({ children }: ContentContainerProps): JSX.Element => {
+const ContentContainer = ({
+  children,
+  customBackgroundColour = undefined,
+}: ContentContainerProps): JSX.Element => {
   return (
-    <div className="w-full h-full max-w-screen-2xl">
-      <div className="h-full px-6 bg-orange-500">{children}</div>
-    </div>
+    <section
+      className={`${styles.mainContainer} ${customBackgroundColour ? customBackgroundColour : ""}`}
+    >
+      <div className={styles.limitingContainer}>
+        <div className={styles.paddingContainer}>{children}</div>
+      </div>
+    </section>
   );
 };
 

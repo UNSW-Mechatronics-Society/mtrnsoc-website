@@ -15,6 +15,6 @@ export const facebookPage = "https://www.facebook.com/UNSWMTRNSOC";
 export const facebookGroup = "https://www.facebook.com/groups/unsw.mechatronics/";
 
 export const linkedin = "https://www.linkedin.com/company/unsw-mechatronics-society/";
-export const instagram = "https://www.instagram.com/unsw_mechatronics/";
+export const instagram = "https://www.instagram.com/unswmtrnsoc/";
 export const contactEmail = "mechatronics.unsw@gmail.com";
-export const discord = "https://discord.gg/2esUSwZzuK)";
+export const discord = "https://discord.gg/HC9UkGy";

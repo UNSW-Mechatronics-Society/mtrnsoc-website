@@ -1,0 +1,69 @@
+@use "styles/variables";
+
+.container {
+  /* Used normal SCSS due to complexity */
+
+  height: calc(100vh - variables.$headerHeight);
+  /* https://stackoverflow.com/questions/10197565/100-height-minus-header */
+  /* https://stackoverflow.com/questions/16290873/css3-calc100-88px-not-working-in-chrome/16291105#16291105 */
+  height: -o-calc(100vh - variables.$headerHeight); /* opera */
+  height: -webkit-calc(100vh - variables.$headerHeight); /* google, safari */
+  height: -moz-calc(100vh - variables.$headerHeight); /* firefox */
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.image {
+  @apply object-cover w-full
+  /* opacity-90 */;
+}
+
+.textContainer {
+  /* Code referenced from: https://www.w3schools.com/howto/howto_css_image_text.asp */
+  position: absolute;
+  /* top: 50%; */
+  /* left: 50%; */
+  /* transform: translate(-50%, calc(-50% - variables.$headerHeight)); */
+  /* text-align: center; */
+  position: absolute;
+  text-aign: left;
+
+  /* https://stackoverflow.com/questions/4212909/can-css-force-a-line-break-after-each-word-in-an-element */
+  width: min-intrinsic;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  display: table-caption;
+  display: -ms-grid;
+  -ms-grid-columns: min-content;
+
+  /* Breakpoints based off tailwindcss */
+  bottom: 7rem;
+  left: 7rem;
+
+  @media (max-width: variables.$xl) {
+    bottom: 6rem;
+    left: 6rem;
+  }
+
+  @media (max-width: variables.$lg) {
+    bottom: 5.5rem;
+    left: 5.5rem;
+  }
+
+  @media (max-width: variables.$md) {
+    bottom: 4.5rem;
+    left: 4.5rem;
+  }
+
+  /* TODO Decision on what to do */
+  @media (max-width: variables.$sm) {
+    bottom: 2.5rem;
+    left: 2.5rem;
+  }
+}
+
+.titleText {
+  @apply text-off-white font-bold lg:text-8xl md:text-7xl sm:text-6xl text-4xl;
+}
