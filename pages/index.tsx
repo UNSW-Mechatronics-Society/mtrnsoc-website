@@ -84,7 +84,7 @@ const Home: NextPage<HomePageProps> = ({ currentEvents }) => {
         <Banner imgURL="/images/other/frontPageBannerEdited.png" text="UNSW Mechatronics Society" />
         <SectionWhoWeAre />
         <SectionOurEvents currentEvents={currentEvents} />
-        <SectionMeetTheTeam />
+        {/* <SectionMeetTheTeam /> */}
       </div>
     </section>
   );

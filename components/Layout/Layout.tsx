@@ -12,9 +12,7 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
         <NavBar />
       </div>
       <main>{children}</main>
-      <div className={styles.footer}>
-        <Footer />
-      </div>
+      <div className={styles.footer}>{/* <Footer /> */}</div>
     </div>
   );
 };
