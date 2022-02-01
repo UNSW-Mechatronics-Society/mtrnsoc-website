@@ -15,6 +15,9 @@ export default function Banner({ imgURL, text = undefined }: BannerProps): JSX.E
           <h1 className={styles.titleText}>{text.toUpperCase()}</h1>
         </div>
       )}
+      <div className={styles.arrowDown}>
+        <img src="/arrowDown.svg" alt="" className={styles.arrowDown} draggable={false} />
+      </div>
     </div>
   );
 }
