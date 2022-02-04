@@ -61,3 +61,15 @@
 .meetUsButton {
   @apply absolute bottom-[-1.5rem] right-[10rem] bg-onyx text-culturedWhite py-3 px-6 rounded-3xl text-lg font-normal hover:scale-[1.05] duration-100 hover:shadow;
 }
+
+.sponsorsContainer {
+  @apply flex flex-row justify-around w-full max-w-[80%] pb-20;
+}
+
+.sponsorLogos {
+  @apply h-28;
+}
+
+.joinButton {
+  @apply bg-onyx text-culturedWhite py-3 px-6 rounded-3xl text-lg font-normal hover:scale-[1.05] duration-100 hover:shadow;
+}

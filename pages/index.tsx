@@ -18,19 +18,21 @@ const SectionWhoWeAre = (): JSX.Element => {
     <ContentContainer>
       <div className={styles.sectionContainer}>
         <TitleHeader text="Who we are" />
-        <p>
-          UNSW Mechatronics Society (MTRNSoc) is a student-led society that aims to promote
-          Mechatronic Engineering opportunities and pathways inside the University of New South
-          Wales. As the largest mechatronics-related society within the university, MTRNSoc has a
-          rapidly growing membership base, already with over 1000 members.
-        </p>
-        <br />
-        <p>
-          We run workshops, projects, competitions, industry nights, and social events to engage
-          students with real-world projects. These projects allow students to develop them
-          professionally and technically, as well as introducing them to a community of like-minded
-          individuals.
-        </p>
+        <div className="px-[7.5%]">
+          <p>
+            UNSW Mechatronics Society (MTRNSoc) is a student-led society that aims to promote
+            Mechatronic Engineering opportunities and pathways inside the University of New South
+            Wales. As the largest mechatronics-related society within the university, MTRNSoc has a
+            rapidly growing membership base, already with over 1000 members.
+          </p>
+          <br />
+          <p>
+            We run workshops, projects, competitions, industry nights, and social events to engage
+            students with real-world projects. These projects allow students to develop them
+            professionally and technically, as well as introducing them to a community of
+            like-minded individuals.
+          </p>
+        </div>
       </div>
     </ContentContainer>
   );
@@ -97,6 +99,50 @@ const SectionMeetTheTeam = (): JSX.Element => {
   );
 };
 
+const SponsorSection = (): JSX.Element => {
+  // TODO Mobile
+  // TODO Add links for each sponsor
+  return (
+    <ContentContainer customBackgroundColour="bg-uranian-blue">
+      <div className={styles.sectionContainer}>
+        <TitleHeader text="Proudly Supported By" />
+        <div className={styles.sponsorsContainer}>
+          <img
+            src="/logos/arc_green_logo.png"
+            alt="UNSW ARC logo"
+            className={styles.sponsorLogos}
+          />
+          <img
+            src="/logos/unswengineering.png"
+            alt="UNSW Engineering logo"
+            className={styles.sponsorLogos}
+          />
+          <img
+            src="/logos/unswfounders.png"
+            alt="UNSW Founders logo"
+            className={styles.sponsorLogos}
+          />
+          <img
+            src="/logos/TDevlogo.png"
+            alt="TelstraDev logo"
+            className={`${styles.sponsorLogos} py-4`}
+          />
+          <img
+            src="/logos/Ac1_Color_Top_Big cropped.png"
+            alt="Autumn Compass Logo"
+            className={styles.sponsorLogos}
+          />
+        </div>
+        <TitleHeader text="Join The Society" />
+        <div>
+          <p className="pb-10">Want to be involved? Join Us!</p>
+          <button className={styles.joinButton}>Join us on SpArc</button>
+        </div>
+      </div>
+    </ContentContainer>
+  );
+};
+
 const Home: NextPage<HomePageProps> = ({ currentEvents }) => {
   return (
     <section className="h-full">
@@ -110,6 +156,7 @@ const Home: NextPage<HomePageProps> = ({ currentEvents }) => {
         <SectionWhoWeAre />
         <SectionOurEvents currentEvents={currentEvents} />
         <SectionMeetTheTeam />
+        <SponsorSection />
       </div>
     </section>
   );
