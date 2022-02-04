@@ -67,3 +67,22 @@
 .titleText {
   @apply text-off-white font-bold lg:text-8xl md:text-7xl sm:text-6xl text-4xl;
 }
+
+.arrowDown {
+  position: absolute;
+  top: 95%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4rem;
+  @media (max-width: variables.$lg) {
+    width: 3.25rem;
+  }
+
+  @media (max-width: variables.$md) {
+    width: 3rem;
+  }
+
+  @media (max-width: variables.$sm) {
+    width: 2.5rem;
+  }
+}
