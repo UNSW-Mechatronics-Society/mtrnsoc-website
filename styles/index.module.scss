@@ -11,7 +11,7 @@
 }
 
 .meetTeamContainer {
-  @apply flex max-w-[64rem] bg-[#E8EFF5]/[.35] py-14 px-14;
+  @apply relative flex max-w-[64rem] bg-[#E8EFF5]/[.35] py-14 px-14;
 }
 
 .execPhoto {
@@ -56,4 +56,8 @@
   bottom: -4.7rem;
   right: -3.4rem;
   transform: rotate(180deg);
+}
+
+.meetUsButton {
+  @apply absolute bottom-[-1.5rem] right-[10rem] bg-onyx text-culturedWhite py-3 px-6 rounded-3xl text-lg font-normal hover:scale-[1.05] duration-100 hover:shadow;
 }

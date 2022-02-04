@@ -47,6 +47,7 @@ const SectionOurEvents = ({ currentEvents }: HomePageProps): JSX.Element => {
 };
 
 const SectionMeetTheTeam = (): JSX.Element => {
+  // TODO mobile
   return (
     <ContentContainer>
       <div className={styles.sectionContainer}>
@@ -69,11 +70,22 @@ const SectionMeetTheTeam = (): JSX.Element => {
                 knowledge across many disciplines is our drive and exactly what we aspire to be our
                 specialty. We all find our own ways to do this, but as we know, we are always better
                 working together and would be honoured to work with you too.
-                <img src="/misc/quotes.svg" alt="pog" className={styles.quotesTopLeft} />
-                <img src="/misc/quotes.svg" alt="pog" className={styles.quotesBottomRight} />
+                <img
+                  src="/misc/quotes.svg"
+                  alt="pog"
+                  className={styles.quotesTopLeft}
+                  draggable={false}
+                />
+                <img
+                  src="/misc/quotes.svg"
+                  alt="pog"
+                  className={styles.quotesBottomRight}
+                  draggable={false}
+                />
               </p>
             </div>
           </div>
+          <button className={styles.meetUsButton}>Meet Us</button>
         </div>
       </div>
     </ContentContainer>
