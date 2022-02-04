@@ -53,22 +53,26 @@ const SectionMeetTheTeam = (): JSX.Element => {
         <TitleHeader text="Meet the Team!" />
         <div className={styles.meetTeamContainer}>
           {/* Left hand side */}
-          <div className="">
+          <div className={styles.featuredPersonCard}>
             <img src="/images/other/kyratemp.png" alt="president" className={styles.execPhoto} />
-            <div className="flex flex-col bg-onyx text-off-white">
-              <span className="text-base">Kyra Alday</span>
-              <span className="text-sm">President</span>
+            <div className={styles.featuredPersonCardText}>
+              <h1 className="text-xl font-semibold">Kyra Alday</h1>
+              <span className="text-base uppercase font-medium pt-1 text-gray-500">President</span>
             </div>
           </div>
           {/* Right hand side */}
-          <div className="w-[60%] grid place-items-center px-5">
-            <p>
-              “The mechatronics community is one truly driven by curiosity and passion. We strive to
-              continuously create and improve with what we learn. Integrating skills and knowledge
-              across many disciplines is our drive and exactly what we aspire to be our specialty.
-              We all find our own ways to do this, but as we know, we are always better working
-              together and would be honoured to work with you too.”
-            </p>
+          <div className={styles.featuredTextContainer}>
+            <div className={styles.featuredTextBox}>
+              <p className="relative">
+                The mechatronics community is one truly driven by curiosity and passion. We strive
+                to continuously create and improve with what we learn. Integrating skills and
+                knowledge across many disciplines is our drive and exactly what we aspire to be our
+                specialty. We all find our own ways to do this, but as we know, we are always better
+                working together and would be honoured to work with you too.
+                <img src="/misc/quotes.svg" alt="pog" className={styles.quotesTopLeft} />
+                <img src="/misc/quotes.svg" alt="pog" className={styles.quotesBottomRight} />
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -88,7 +92,7 @@ const Home: NextPage<HomePageProps> = ({ currentEvents }) => {
         />
         <SectionWhoWeAre />
         <SectionOurEvents currentEvents={currentEvents} />
-        {/* <SectionMeetTheTeam /> */}
+        <SectionMeetTheTeam />
       </div>
     </section>
   );
