@@ -175,6 +175,7 @@ export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
     // as Date.now() is in milliseconds
     return oldestDate * 1000 >= Date.now();
   });
+  currentEvents.reverse();
   return { props: { currentEvents } };
 };
 
