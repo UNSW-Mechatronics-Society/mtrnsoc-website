@@ -18,7 +18,7 @@ const SectionWhoWeAre = (): JSX.Element => {
     <ContentContainer>
       <div className={styles.sectionContainer}>
         <TitleHeader text="Who we are" />
-        <div className="px-[7.5%]">
+        <div className={styles.WhoWeAreTextContainer}>
           <p>
             UNSW Mechatronics Society (MTRNSoc) is a student-led society that aims to promote
             Mechatronic Engineering opportunities and pathways inside the University of New South
