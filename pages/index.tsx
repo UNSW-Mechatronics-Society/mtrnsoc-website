@@ -3,6 +3,7 @@ import styles from "styles/index.module.scss";
 import type { GetStaticProps, NextPage } from "next";
 import OurEvents, { OurEventsProps as HomePageProps } from "components/Events/OurEvents";
 import eventData from "data/eventsData";
+import Link from "next/link";
 
 type TitleHeaderProps = {
   text: string;
@@ -85,7 +86,11 @@ const SectionMeetTheTeam = (): JSX.Element => {
               </p>
             </div>
           </div>
-          <button className={styles.meetUsButton}>Meet Us</button>
+          <Link href="/team">
+            <a>
+              <button className={styles.meetUsButton}>Meet Us</button>
+            </a>
+          </Link>
         </div>
       </div>
     </ContentContainer>
