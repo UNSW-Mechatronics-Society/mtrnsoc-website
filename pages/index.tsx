@@ -136,7 +136,12 @@ const SponsorSection = (): JSX.Element => {
         <TitleHeader text="Join The Society" />
         <div>
           <p className="pb-10">Want to be involved? Join Us!</p>
-          <button className={styles.joinButton}>Join us on SpArc</button>
+          {/* TODO: Link */}
+          <Link href="https://member.arc.unsw.edu.au/s/clubdetail?clubid=0016F0000371VybQAE">
+            <a target="_blank">
+              <button className={styles.joinButton}>Join us on SpArc</button>
+            </a>
+          </Link>
         </div>
       </div>
     </ContentContainer>
