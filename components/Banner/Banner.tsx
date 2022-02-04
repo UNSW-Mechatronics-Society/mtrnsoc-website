@@ -3,9 +3,14 @@ import styles from "./Banner.module.scss";
 type BannerProps = {
   imgURL: string;
   text?: string;
+  arrow: boolean;
 };
 
-export default function Banner({ imgURL, text = undefined }: BannerProps): JSX.Element {
+export default function Banner({
+  imgURL,
+  text = undefined,
+  arrow = false,
+}: BannerProps): JSX.Element {
   return (
     <div className={styles.container}>
       <img src={imgURL} alt="hero banner" className={styles.image} draggable="false" />
@@ -15,9 +20,11 @@ export default function Banner({ imgURL, text = undefined }: BannerProps): JSX.E
           <h1 className={styles.titleText}>{text.toUpperCase()}</h1>
         </div>
       )}
-      <div className={styles.arrowDown}>
-        <img src="/arrowDown.svg" alt="" className={styles.arrowDown} draggable={false} />
-      </div>
+      {arrow && (
+        <div className={styles.arrowDown}>
+          <img src="/arrowDown.svg" alt="" className={styles.arrowDown} draggable={false} />
+        </div>
+      )}
     </div>
   );
 }
