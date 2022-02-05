@@ -52,21 +52,20 @@ export default function OurEvents({ currentEvents }: OurEventsProps): JSX.Elemen
   const prevSlide = () =>
     setCurrentPos(currentPos === 0 ? currentEvents.length - 1 : currentPos - 1);
 
-  const currentEventToDisplay = currentEvents[currentPos];
-  const { title, imagePath } = currentEventToDisplay;
-
   return (
     <Template>
       <div className={styles.imageSliderContainer}>
-        <div className={styles.navigationContainer}>
-          <img
-            src="/misc/chevron--left.svg"
-            alt="left navigation"
-            aira-label="forward navigation"
-            className={styles.navigationButtons}
-            onClick={prevSlide}
-          />
-        </div>
+        {currentEvents.length >= 2 && (
+          <div className={styles.navigationContainer}>
+            <img
+              src="/misc/chevron--left.svg"
+              alt="left navigation"
+              aira-label="forward navigation"
+              className={styles.navigationButtons}
+              onClick={prevSlide}
+            />
+          </div>
+        )}
         <div className="mx-3">
           {currentEvents.map((event, index) => (
             <div
@@ -88,15 +87,17 @@ export default function OurEvents({ currentEvents }: OurEventsProps): JSX.Elemen
             </div>
           ))}
         </div>
-        <div className={styles.navigationContainer}>
-          <img
-            src="/misc/chevron--right.svg"
-            alt="right navigation"
-            aira-label="backward navigation"
-            className={styles.navigationButtons}
-            onClick={nextSlide}
-          />
-        </div>
+        {currentEvents.length >= 2 && (
+          <div className={styles.navigationContainer}>
+            <img
+              src="/misc/chevron--right.svg"
+              alt="right navigation"
+              aira-label="backward navigation"
+              className={styles.navigationButtons}
+              onClick={nextSlide}
+            />
+          </div>
+        )}
       </div>
     </Template>
   );
