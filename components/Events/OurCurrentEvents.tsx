@@ -1,11 +1,7 @@
 import React from "react";
 import type { eventDetails } from "data/eventsData";
 import Link from "next/link";
-import styles from "./OurEvents.module.scss";
-
-export type OurEventsProps = {
-  currentEvents: eventDetails[] | null;
-};
+import styles from "./OurCurrentEvents.module.scss";
 
 type TemplateProps = {
   children: React.ReactNode;
@@ -26,7 +22,11 @@ const Template = ({ children }: TemplateProps) => {
   );
 };
 
-export default function OurEvents({ currentEvents }: OurEventsProps): JSX.Element {
+export type OurCurrentEventsProps = {
+  currentEvents: eventDetails[] | null;
+};
+
+export default function OurCurrentEvents({ currentEvents }: OurCurrentEventsProps): JSX.Element {
   const [currentPos, setCurrentPos] = React.useState(0); // position in array, indexed at 0
 
   if (!currentEvents) {

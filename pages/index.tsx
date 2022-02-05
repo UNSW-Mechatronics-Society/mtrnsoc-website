@@ -1,7 +1,7 @@
-import { Banner, ContentContainer, MetaTags } from "components";
+import { Banner, ContentContainer, MetaTags, OurCurrentEvents } from "components";
 import styles from "styles/index.module.scss";
 import type { GetStaticProps, NextPage } from "next";
-import OurEvents, { OurEventsProps as HomePageProps } from "components/Events/OurEvents";
+import { OurCurrentEventsProps as HomePageProps } from "components/Events/OurCurrentEvents";
 import eventData from "data/eventsData";
 import Link from "next/link";
 
@@ -43,7 +43,7 @@ const SectionOurEvents = ({ currentEvents }: HomePageProps): JSX.Element => {
     <ContentContainer customBackgroundColour="bg-uranian-blue">
       <div className={styles.sectionContainer}>
         <TitleHeader text="Our Current Events" />
-        <OurEvents currentEvents={currentEvents} />
+        <OurCurrentEvents currentEvents={currentEvents} />
       </div>
     </ContentContainer>
   );
