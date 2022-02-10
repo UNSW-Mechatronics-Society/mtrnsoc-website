@@ -314,6 +314,18 @@ const unsortedEventData: eventDetails[] = [
     location: "",
     date: [{ startDate: 1643466171, endDate: 1648563771 }],
   },
+  {
+    title: "MTRNSoc at O-Week",
+    facebookEventLink: "https://www.facebook.com/events/308515227999436",
+    description: `MTRNSoc's at O-Week! 🎉🎉🎉
+    Unsure what MTRNSoc does? 🤖 Want to know how to get involved? 💪 Want freebies? What if you...come along to the MTRNSoc stall? Haha jk...unless? 👉👈
+    We're selling merch, giving out freebies, bringing good vibes and subpar conversation. Depending on the director and exec there. Who knows.
+    Come find out and test our socialising skills after COVID.
+    But also keychains. 🔑🔑🔑`,
+    imagePath: "/images/events/2022/2022_o_week_t1.jpg",
+    location: "UNSW",
+    date: [{ startDate: 1644188400, endDate: 1644467400 }],
+  },
 ];
 
 /**
