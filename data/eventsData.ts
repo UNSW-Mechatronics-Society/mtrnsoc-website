@@ -326,6 +326,30 @@ const unsortedEventData: eventDetails[] = [
     location: "UNSW",
     date: [{ startDate: 1644188400, endDate: 1644467400 }],
   },
+  {
+    title: "MTRNSoc Subcommittee Recruitment",
+    facebookEventLink: "https://www.facebook.com/events/1071216126791703",
+    description: null,
+    imagePath: "/images/events/2022/2022_subcommittee_applications.jpg",
+    location: null,
+    date: [{ startDate: 1644757200, endDate: 1645794000 }],
+  },
+  {
+    title: "Total Drama Island First Year camp",
+    facebookEventLink: "https://www.facebook.com/events/899059230765857/",
+    description: null,
+    imagePath: "/images/events/2022/2022_camp.jpg",
+    location: null,
+    date: [{ startDate: 1646974800, endDate: 1647151200 }],
+  },
+  {
+    title: "LED Acrylic Workshop",
+    facebookEventLink: "https://www.facebook.com/events/969125620476236/",
+    description: null,
+    imagePath: "/images/events/2022/2022_led_acrylic_workshop.jpg",
+    location: null,
+    date: [{ startDate: 1647478800, endDate: 1647486000 }],
+  },
 ];
 
 /**
