@@ -334,6 +334,14 @@ const unsortedEventData: eventDetails[] = [
     location: null,
     date: [{ startDate: 1644757200, endDate: 1645794000 }],
   },
+  {
+    title: "Total Drama Island First Year camp",
+    facebookEventLink: "https://www.facebook.com/events/899059230765857/",
+    description: null,
+    imagePath: "/images/events/2022/2022_camp.jpg",
+    location: null,
+    date: [{ startDate: 1646974800, endDate: 1647151200 }],
+  },
 ];
 
 /**
