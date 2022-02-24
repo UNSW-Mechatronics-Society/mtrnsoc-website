@@ -342,6 +342,14 @@ const unsortedEventData: eventDetails[] = [
     location: null,
     date: [{ startDate: 1646974800, endDate: 1647151200 }],
   },
+  {
+    title: "LED Acrylic Workshop",
+    facebookEventLink: "https://www.facebook.com/events/969125620476236/",
+    description: null,
+    imagePath: "/images/events/2022/2022_led_acrylic_workshop.jpg",
+    location: null,
+    date: [{ startDate: 1647478800, endDate: 1647486000 }],
+  },
 ];
 
 /**
