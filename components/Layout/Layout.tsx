@@ -8,13 +8,13 @@ type LayoutProps = {
 const Layout = ({ children }: LayoutProps): JSX.Element => {
   return (
     <div className={`${styles.mainContent} bg-off-white`}>
-      <div className={styles.navBar}>
+      <header className={styles.navBar}>
         <NavBar />
-      </div>
+      </header>
       <main>{children}</main>
-      <div className={styles.footer}>
+      <footer className={styles.footer}>
         <Footer />
-      </div>
+      </footer>
     </div>
   );
 };

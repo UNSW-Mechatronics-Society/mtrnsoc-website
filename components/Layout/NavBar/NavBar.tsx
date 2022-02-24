@@ -120,21 +120,23 @@ const NavBar = (): JSX.Element => {
           width="15rem"
           onRequestClose={() => setIsOpen(false)}
         >
-          <ul>
-            {navLinks.map((item) => (
-              <li
-                key={item.name}
-                className={`${styles.mobileNavButton} ${
-                  item.route === route ? "font-semibold" : ""
-                }`}
-                onClick={() => setIsOpen(false)}
-              >
-                <Link href={item.route}>
-                  <a>{item.name}</a>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <nav>
+            <ul>
+              {navLinks.map((item) => (
+                <li
+                  key={item.name}
+                  className={`${styles.mobileNavButton} ${
+                    item.route === route ? "font-semibold" : ""
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  <Link href={item.route}>
+                    <a>{item.name}</a>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </ReactSlidingPane>
       )}
     </div>
