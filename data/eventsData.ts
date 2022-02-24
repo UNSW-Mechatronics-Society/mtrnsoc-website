@@ -326,6 +326,14 @@ const unsortedEventData: eventDetails[] = [
     location: "UNSW",
     date: [{ startDate: 1644188400, endDate: 1644467400 }],
   },
+  {
+    title: "MTRNSoc Subcommittee Recruitment",
+    facebookEventLink: "https://www.facebook.com/events/1071216126791703",
+    description: null,
+    imagePath: "/images/events/2022/2022_subcommittee_applications.jpg",
+    location: null,
+    date: [{ startDate: 1644757200, endDate: 1645794000 }],
+  },
 ];
 
 /**
