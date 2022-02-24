@@ -157,6 +157,7 @@ const Home: NextPage<HomePageProps> = ({ currentEvents }) => {
           imgURL="/images/other/frontPageBannerEdited.png"
           text="UNSW Mechatronics Society"
           arrow={true}
+          position="bottom-left"
         />
         <SectionWhoWeAre />
         <SectionOurEvents currentEvents={currentEvents} />

@@ -52,7 +52,7 @@ export default function OurCurrentEvents({ currentEvents }: OurCurrentEventsProp
   const prevSlide = () =>
     setCurrentPos(currentPos === 0 ? currentEvents.length - 1 : currentPos - 1);
 
-  return (
+  return ( 
     <Template>
       <div className={styles.imageSliderContainer}>
         {currentEvents.length >= 2 && (
