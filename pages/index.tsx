@@ -99,6 +99,40 @@ const SectionMeetTheTeam = (): JSX.Element => {
   );
 };
 
+type imageType = {
+  src: string;
+  alt: string;
+  className: string;
+}
+
+const images: imageType[]  = [
+  {
+    src: "/logos/arc_green_logo.png",
+    alt: "UNSW ARC logo",
+    className: styles.sponsorLogos
+  },
+  {
+    src: "/logos/unswengineering.png",
+    alt: "UNSW Engineering logo",
+    className: styles.sponsorLogos
+  },
+  {
+    src: "/logos/unswfounders.png",
+    alt: "UNSW Founders logo",
+    className: styles.sponsorLogos
+  },
+  {
+    src: "/logos/TDevlogo.png",
+    alt: "TelstraDev logo",
+    className: `${styles.sponsorLogos} py-4`
+  },
+  {
+    src: "/logos/Ac1_Color_Top_Big cropped.png",
+    alt: "Autumn Compass Logo",
+    className: styles.sponsorLogos
+  }
+];
+
 const SponsorSection = (): JSX.Element => {
   // TODO Mobile
   // TODO Add links for each sponsor
@@ -107,31 +141,16 @@ const SponsorSection = (): JSX.Element => {
       <div className={styles.sectionContainer}>
         <TitleHeader text="Proudly Supported By" />
         <div className={styles.sponsorsContainer}>
-          <img
-            src="/logos/arc_green_logo.png"
-            alt="UNSW ARC logo"
-            className={styles.sponsorLogos}
-          />
-          <img
-            src="/logos/unswengineering.png"
-            alt="UNSW Engineering logo"
-            className={styles.sponsorLogos}
-          />
-          <img
-            src="/logos/unswfounders.png"
-            alt="UNSW Founders logo"
-            className={styles.sponsorLogos}
-          />
-          <img
-            src="/logos/TDevlogo.png"
-            alt="TelstraDev logo"
-            className={`${styles.sponsorLogos} py-4`}
-          />
-          <img
-            src="/logos/Ac1_Color_Top_Big cropped.png"
-            alt="Autumn Compass Logo"
-            className={styles.sponsorLogos}
-          />
+          {images.map((image, indx) => {
+            return (
+              <img  
+                key={`img-${indx}`} 
+                src={image.src} 
+                alt={image.alt} 
+                className={image.className} 
+              />
+            );
+          })}
         </div>
         <TitleHeader text="Join The Society" />
         <div>
