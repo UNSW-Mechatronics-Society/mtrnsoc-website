@@ -103,34 +103,34 @@ type imageType = {
   src: string;
   alt: string;
   className: string;
-}
+};
 
-const images: imageType[]  = [
+const images: imageType[] = [
   {
     src: "/logos/arc_green_logo.png",
     alt: "UNSW ARC logo",
-    className: styles.sponsorLogos
+    className: styles.sponsorLogos,
   },
   {
     src: "/logos/unswengineering.png",
     alt: "UNSW Engineering logo",
-    className: styles.sponsorLogos
+    className: styles.sponsorLogos,
   },
   {
     src: "/logos/unswfounders.png",
     alt: "UNSW Founders logo",
-    className: styles.sponsorLogos
+    className: styles.sponsorLogos,
   },
   {
     src: "/logos/TDevlogo.png",
     alt: "TelstraDev logo",
-    className: `${styles.sponsorLogos} py-4`
+    className: `${styles.sponsorLogos} py-4`,
   },
   {
     src: "/logos/Ac1_Color_Top_Big cropped.png",
     alt: "Autumn Compass Logo",
-    className: styles.sponsorLogos
-  }
+    className: styles.sponsorLogos,
+  },
 ];
 
 const SponsorSection = (): JSX.Element => {
@@ -143,11 +143,11 @@ const SponsorSection = (): JSX.Element => {
         <div className={styles.sponsorsContainer}>
           {images.map((image, indx) => {
             return (
-              <img  
-                key={`img-${indx}`} 
-                src={image.src} 
-                alt={image.alt} 
-                className={image.className} 
+              <img
+                key={`img-${indx}`}
+                src={image.src}
+                alt={image.alt}
+                className={image.className}
               />
             );
           })}
