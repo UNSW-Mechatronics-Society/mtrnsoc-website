@@ -22,7 +22,6 @@ const SectionExecutives = () => {
   );
 };
 
-
 const SectionDirectors = () => {
   return (
     <ContentContainer>
@@ -37,7 +36,7 @@ const Home: NextPage = () => {
   return (
     <div className="h-full">
       <MetaTags title="Team - MTRNSoc" description="Meet the MTRNSoc team" />
-      <div >
+      <div>
         <Banner
           imgURL="/images/other/frontPageBannerEdited.png"
           text="Our Team"
@@ -50,7 +49,6 @@ const Home: NextPage = () => {
     </div>
   );
 };
-
 
 export default Home;
 
