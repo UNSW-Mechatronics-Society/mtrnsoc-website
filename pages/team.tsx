@@ -1,7 +1,8 @@
-import { Banner, ContentContainer, MetaTags } from "components";
+import { ContentContainer, MetaTags } from "components";
 import type { NextPage } from "next";
 import styles from "styles/index.module.scss";
 //import { OurCurrentEventsProps as HomePageProps } from "components/Team/OurTeam";
+
 
 type TitleHeaderProps = {
   text: string;
@@ -13,7 +14,7 @@ const TitleHeader = ({ text }: TitleHeaderProps): JSX.Element => {
 
 const SectionExecutives = () => {
   return (
-    <ContentContainer>
+    <ContentContainer customBackgroundColour="neutral-100">
       <div className={styles.sectionContainer}>
         <TitleHeader text="Executives" />
       </div>
