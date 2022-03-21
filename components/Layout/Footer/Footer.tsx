@@ -17,7 +17,7 @@ const TopHalfLogos = () => {
         </a>
       </Link>
       <Link href={`mailto:${contactEmail}`}>
-        <a target="_blank">
+        <a>
           <img
             src="/logos/emailLogo.svg"
             alt="email logo"
