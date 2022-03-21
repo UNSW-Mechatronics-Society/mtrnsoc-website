@@ -20,10 +20,10 @@ const navLinks: navLink[] = [
     name: "Sponsors",
     route: "/sponsors",
   },
-  {
-    name: "Resources",
-    route: "/resources",
-  },
+  // {
+  //   name: "Resources",
+  //   route: "/resources",
+  // },
   {
     name: "Contact Us",
     route: "/contact",
