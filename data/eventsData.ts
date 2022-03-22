@@ -4,7 +4,7 @@
  * If `endDate` is null, either signifies a whole day event
  * or an event without a set end time
  */
-type eventDate = {
+export type eventDate = {
   startDate: number;
   endDate: number | null;
 };
@@ -274,7 +274,7 @@ const unsortedEventData: eventDetails[] = [
     description:
       "🚨🚨🚨 MTRNSOC AT O-WEEK 🚨🚨🚨\n    MTRNSoc is super keen to welcome all the new faces Mechatronics 🤖🤖🤖🤖, as well as catching up with the old ones!\n    This is your chance to meet people from your degree, what MTRNSoc is about and how you can get involved! 👏👏\n    We will be at UNSW Alumni Lawn West 🌳 -right in front of Gate 2- Tuesday to Thursday!\n    If you can't make it in-person don't worry, we will also be at the o-week discord 💻 Monday-Thursday.",
     imagePath: "/images/events/2021/2021_o-week_t1.jpg",
-    location: "https://www.facebook.com/events/714486859435171",
+    location: null,
     date: [{ startDate: 1612821600, endDate: 1613019600 }],
   },
   {
