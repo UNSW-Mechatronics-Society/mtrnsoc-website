@@ -6,6 +6,7 @@ import Footer from "./Layout/Footer/Footer";
 import MetaTags from "./Layout/MetaTags";
 import Banner from "./Banner/Banner";
 import OurCurrentEvents from "./Events/OurCurrentEvents";
+import EventCardHorizontal from "./Events/EventCardHorizontal";
 
 export {
   ContentContainer,
@@ -16,4 +17,5 @@ export {
   MetaTags,
   Banner,
   OurCurrentEvents,
+  EventCardHorizontal,
 };
