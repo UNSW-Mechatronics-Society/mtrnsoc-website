@@ -1,6 +1,6 @@
 import { contactEmail, linkedin } from "data/socialsData";
 import Link from "next/link";
-import ContentContainer from "./Layout/ContentContainer/ContentContainer";
+import ContentContainer from "../Layout/ContentContainer/ContentContainer";
 import styles from "./Profile.module.scss";
 
 type ProfileCardProps = {
