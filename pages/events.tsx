@@ -3,12 +3,20 @@ import eventData, { eventDetails, yearDates } from "data/eventsData";
 import moment from "moment";
 import type { GetStaticProps, NextPage } from "next";
 
-type EventsPageProps = {
-  currentEvents: eventDetails[];
-  pastEvents: eventDetails[];
+// Used in getStaticProps
+type yearlyEventsByTerm = {
+  year: number;
+  t1: eventDetails[];
+  t2: eventDetails[];
+  t3: eventDetails[];
 };
 
-const Home: NextPage<EventsPageProps> = ({ currentEvents, pastEvents }) => {
+type EventsPageProps = {
+  currentEvents: eventDetails[];
+  eventsByYearByTerm: yearlyEventsByTerm[];
+};
+
+const Home: NextPage<EventsPageProps> = ({ currentEvents, eventsByYearByTerm }) => {
   const CurrentEventsSection = () => {
     if (currentEvents.length >= 1) {
       // There exists a current event
@@ -87,13 +95,6 @@ export const getStaticProps: GetStaticProps<EventsPageProps> = async () => {
     eventsByYear.push({ year, events: eventsForYear });
   });
 
-  type yearlyEventsByTerm = {
-    year: number;
-    t1: eventDetails[];
-    t2: eventDetails[];
-    t3: eventDetails[];
-  };
-
   /**
    * `pastEvents` sorted by years then by UNSW terms
    */
@@ -140,9 +141,8 @@ export const getStaticProps: GetStaticProps<EventsPageProps> = async () => {
     eventsByYearByTerm.push({ year, t1: t1Events, t2: t2Events, t3: t3Events });
   });
 
-  console.log(eventsByYearByTerm);
   return {
-    props: { currentEvents, pastEvents },
+    props: { currentEvents, eventsByYearByTerm },
     // Rebuild page every 5 minutes
     revalidate: 5 * 60,
   };
