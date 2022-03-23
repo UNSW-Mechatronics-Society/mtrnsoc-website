@@ -1,8 +1,9 @@
 import { ContentContainer, MetaTags } from "components";
 import type { NextPage } from "next";
-import styles from "styles/index.module.scss";
+import styles from "styles/team.module.scss";
 //import { OurCurrentEventsProps as HomePageProps } from "components/Team/OurTeam";
-
+import { Banner } from "components";
+import ProfileCard from "components/Profile/Profile";
 
 type TitleHeaderProps = {
   text: string;
@@ -17,6 +18,10 @@ const SectionExecutives = () => {
     <ContentContainer customBackgroundColour="neutral-100">
       <div className={styles.sectionContainer}>
         <TitleHeader text="Executives" />
+        <ProfileCard />
+        <div /*className={styles.executivesContainer}*/>
+          {/*<img src="/images/other/kyratemp.png" alt="president" className={styles.execPhoto} /> */}
+        </div>
       </div>
     </ContentContainer>
   );
