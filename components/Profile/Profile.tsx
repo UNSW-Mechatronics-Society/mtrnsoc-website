@@ -180,6 +180,4 @@ const dirProfileCard = () => {
   );
 };
 
-
-export execProfileCard;
-export dirProfileCard;
+export default execProfileCard;
