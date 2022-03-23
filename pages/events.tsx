@@ -1,5 +1,6 @@
 import { Banner, ContentContainer, EventCardHorizontal, MetaTags } from "components";
-import eventData, { eventDetails } from "data/eventsData";
+import eventData, { eventDetails, yearDates } from "data/eventsData";
+import moment from "moment";
 import type { GetStaticProps, NextPage } from "next";
 
 type EventsPageProps = {
@@ -59,6 +60,61 @@ export const getStaticProps: GetStaticProps<EventsPageProps> = async () => {
   currentEvents.reverse();
 
   const pastEvents = eventData.filter((x) => !currentEvents.includes(x));
+  const uniqueYears: Set<number> = new Set();
+  pastEvents.forEach((event) => {
+    const earliestDate = Math.min(...event.date.map((y) => y.startDate));
+    uniqueYears.add(moment.unix(earliestDate).year());
+  });
+  console.log(uniqueYears);
+  // Split past events into years
+
+  type yearlyEvents = {
+    year: number;
+    events: eventDetails[];
+  };
+
+  /**
+   * `pastEvents` sorted into groups with the same year
+   */
+  const eventsByYear: yearlyEvents[] = [];
+
+  uniqueYears.forEach((year) => {
+    const eventsForYear = pastEvents.filter((x) => {
+      const earliestDate = Math.min(...x.date.map((y) => y.startDate));
+      return moment.unix(earliestDate).year() === year;
+    });
+
+    eventsByYear.push({ year, events: eventsForYear });
+  });
+
+  type yearlyEventsByTerm = {
+    year: number;
+    t1: eventDetails[];
+    t2: eventDetails[];
+    t3: eventDetails[];
+  };
+
+  /**
+   * `pastEvents` sorted by years then by UNSW terms
+   */
+  const eventsByYearByTerm: yearlyEventsByTerm[] = [];
+
+  eventsByYear.forEach(({ year, events }) => {
+    // Find the term dates
+    const termDates = yearDates.find((x) => x.year === year);
+    if (!termDates) throw new Error(`No term dates found for year ${year} in yearDates`);
+    const { termStartDates } = termDates;
+
+    // Time zones used are relative to what the server uses, may be an issue
+    const t1Unix = moment(termStartDates.t1, "DD/MM/YYYY").unix();
+    console.log(year);
+    console.log(`t1Unix: ${t1Unix}`);
+
+    // T1 events: Start of year <= date < T2 Start
+
+    // T2 events: T2 start <= date < T3 Start
+    // T3 events: T3 start <= date < End of year
+  });
 
   return {
     props: { currentEvents, pastEvents },
