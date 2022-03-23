@@ -105,17 +105,42 @@ export const getStaticProps: GetStaticProps<EventsPageProps> = async () => {
     if (!termDates) throw new Error(`No term dates found for year ${year} in yearDates`);
     const { termStartDates } = termDates;
 
-    // Time zones used are relative to what the server uses, may be an issue
-    const t1Unix = moment(termStartDates.t1, "DD/MM/YYYY").unix();
+    // NOTE: Time zones used are relative to what the server uses, may be an issue
+    const FORMAT = "DD/MM/YYYY";
+    const t1Unix = moment(termStartDates.t1, FORMAT).unix();
+    // TODO remove
     console.log(year);
-    console.log(`t1Unix: ${t1Unix}`);
+    console.log(`t1Unix: ${t1Unix}, ${termStartDates.t1}`);
+
+    const t2Unix = moment(termStartDates.t2, FORMAT).unix();
+    const t3Unix = moment(termStartDates.t3, FORMAT).unix();
 
     // T1 events: Start of year <= date < T2 Start
 
+    const t1Events = events.filter((x) => {
+      const earliestDate = Math.min(...x.date.map((y) => y.startDate));
+      return moment().year(year).startOf("year").unix() <= earliestDate && earliestDate < t2Unix;
+    });
+
     // T2 events: T2 start <= date < T3 Start
-    // T3 events: T3 start <= date < End of year
+    const t2Events = events.filter((x) => {
+      const earliestDate = Math.min(...x.date.map((y) => y.startDate));
+      return t2Unix <= earliestDate && earliestDate < t3Unix;
+    });
+
+    // T3 events: T3 start <= date <= End of year
+    const t3Events = events.filter((x) => {
+      const earliestDate = Math.min(...x.date.map((y) => y.startDate));
+      return t3Unix <= earliestDate && earliestDate <= moment().year(year).endOf("year").unix();
+    });
+
+    if (t1Events.length + t2Events.length + t3Events.length !== events.length)
+      throw new Error("Issue with sorting events into terms");
+
+    eventsByYearByTerm.push({ year, t1: t1Events, t2: t2Events, t3: t3Events });
   });
 
+  console.log(eventsByYearByTerm);
   return {
     props: { currentEvents, pastEvents },
     // Rebuild page every 5 minutes

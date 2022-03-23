@@ -376,9 +376,20 @@ const unsortedEventData: eventDetails[] = [
   },
 ];
 
+type termDate = string;
+
 type termDateInformation = {
+  /**
+   * String date in the format of DD/MM/YYYY
+   */
   t1: string;
+  /**
+   * String date in the format of DD/MM/YYYY
+   */
   t2: string;
+  /**
+   * String date in the format of DD/MM/YYYY
+   */
   t3: string;
 };
 
