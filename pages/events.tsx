@@ -37,6 +37,8 @@ const Home: NextPage<EventsPageProps> = ({ currentEvents, eventsByYearByTerm }) 
     }
   };
 
+  eventsByYearByTerm.sort((a, b) => b.year - a.year); // Sort by decreasing year
+
   return (
     <div className="h-full">
       <MetaTags title="Events - MTRNSoc" description="Society events" />
