@@ -1,6 +1,6 @@
 import { eventDate, eventDetails } from "data/eventsData";
 import moment from "moment";
-import Link from "next/link";
+import styles from "./EventCardHorizontal.module.scss";
 
 type EventCardHorizontalProps = {
   eventData: eventDetails;
@@ -53,15 +53,15 @@ const convertUnixToString = ({ startDate, endDate }: eventDate) => {
 
 export default function EventCardHorizontal({ eventData }: EventCardHorizontalProps): JSX.Element {
   return (
-    <div className="flex flex-row bg-[#E8EFF5] w-[60%] rounded-2xl h-full">
+    <div className={styles.mainContainer}>
       <img
-        className="w-[32rem] rounded-l-2xl"
+        className={styles.image}
         src={eventData.imagePath}
         alt={`${eventData.title} image banner`}
       />
-      <div className="px-6 pt-8 w-full flex flex-col h-full">
+      <div className={styles.rightInformationContainer}>
         <h1 className="text-2xl font-semibold uppercase w-full text-left">{eventData.title}</h1>
-        <div className="mt-5 w-full">
+        <div className={styles.rightInformationTextContainer}>
           <div className="flex flex-row">
             <img className="mr-3" src="/misc/calendar--heat-map.svg" alt="" draggable="false" />
             <div className="flex flex-col">
@@ -85,7 +85,7 @@ export default function EventCardHorizontal({ eventData }: EventCardHorizontalPr
             </div>
           )}
         </div>
-        <div className="w-full h-full place-items-end grid mb-5">
+        <div className={styles.buttonContainer}>
           <a href={eventData.facebookEventLink} target="_blank" rel="noreferrer">
             <button className="text-[#5FA8D3] border-[#5FA8D3] border-[1px] px-3 py-1 rounded-md hover:bg-[#61b4d5] hover:text-culturedWhite">
               <p className="text-base">Find More Info</p>
