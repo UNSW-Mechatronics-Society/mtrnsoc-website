@@ -87,7 +87,7 @@ export default function EventCardHorizontal({ eventData }: EventCardHorizontalPr
         </div>
         <div className={styles.buttonContainer}>
           <a href={eventData.facebookEventLink} target="_blank" rel="noreferrer">
-            <button className="text-[#5FA8D3] border-[#5FA8D3] border-[1px] px-3 py-1 rounded-md hover:bg-[#61b4d5] hover:text-culturedWhite">
+            <button className={styles.button}>
               <p className="text-base">Find More Info</p>
             </button>
           </a>

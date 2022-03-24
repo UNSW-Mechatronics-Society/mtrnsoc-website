@@ -17,3 +17,7 @@
 .buttonContainer {
   @apply w-full h-full place-items-end grid mb-5;
 }
+
+.button {
+  @apply text-[#5FA8D3] border-[#5FA8D3] border-[1px] px-3 py-1 rounded-md hover:bg-[#61b4d5] hover:text-culturedWhite;
+}
