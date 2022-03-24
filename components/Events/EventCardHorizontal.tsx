@@ -59,13 +59,13 @@ export default function EventCardHorizontal({
   const backgroundClass = cardNumber % 2 === 0 ? styles.backgroundBlue : styles.backgroundGrey;
 
   return (
-    <div className={styles.mainContainer}>
+    <div className={`${styles.mainContainer} ${backgroundClass}`}>
       <img
         className={styles.image}
         src={eventData.imagePath}
         alt={`${eventData.title} image banner`}
       />
-      <div className={`${styles.rightInformationContainer} ${backgroundClass}`}>
+      <div className={styles.rightInformationContainer}>
         <h1 className="text-2xl font-semibold uppercase w-full text-left">{eventData.title}</h1>
         <div className={styles.rightInformationTextContainer}>
           <div className="flex flex-row">
