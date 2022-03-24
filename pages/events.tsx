@@ -22,10 +22,10 @@ const Home: NextPage<EventsPageProps> = ({ currentEvents, eventsByYearByTerm }) 
       // There exists a current event
       return (
         <>
-          {currentEvents.map((e) => {
+          {currentEvents.map((e, index) => {
             return (
               <div key={e.title} className="w-full grid place-items-center my-5">
-                <EventCardHorizontal eventData={e} />
+                <EventCardHorizontal eventData={e} cardNumber={index} />
               </div>
             );
           })}

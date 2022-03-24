@@ -1,5 +1,5 @@
 .mainContainer {
-  @apply flex flex-row bg-[#E8EFF5] w-[60%] rounded-2xl h-full;
+  @apply flex flex-row w-[60%] rounded-2xl h-full;
 }
 
 .image {
@@ -20,4 +20,12 @@
 
 .button {
   @apply text-[#5FA8D3] border-[#5FA8D3] border-[1px] px-3 py-1 rounded-md hover:bg-[#61b4d5] hover:text-culturedWhite;
+}
+
+.backgroundBlue {
+  @apply bg-[#E8EFF5];
+}
+
+.backgroundGrey {
+  @apply bg-[#E5E7EB];
 }

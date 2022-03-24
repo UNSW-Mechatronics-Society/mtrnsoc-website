@@ -2,10 +2,6 @@ import { eventDate, eventDetails } from "data/eventsData";
 import moment from "moment";
 import styles from "./EventCardHorizontal.module.scss";
 
-type EventCardHorizontalProps = {
-  eventData: eventDetails;
-};
-
 /**
  * If `x` does not have a 00 minutes time, display minutes
  * @param x
@@ -51,7 +47,17 @@ const convertUnixToString = ({ startDate, endDate }: eventDate) => {
   )}, ${convertToTimeString(endMoment)}`;
 };
 
-export default function EventCardHorizontal({ eventData }: EventCardHorizontalProps): JSX.Element {
+type EventCardHorizontalProps = {
+  eventData: eventDetails;
+  cardNumber: number;
+};
+
+export default function EventCardHorizontal({
+  eventData,
+  cardNumber,
+}: EventCardHorizontalProps): JSX.Element {
+  const backgroundClass = cardNumber % 2 === 0 ? styles.backgroundBlue : styles.backgroundGrey;
+
   return (
     <div className={styles.mainContainer}>
       <img
@@ -59,7 +65,7 @@ export default function EventCardHorizontal({ eventData }: EventCardHorizontalPr
         src={eventData.imagePath}
         alt={`${eventData.title} image banner`}
       />
-      <div className={styles.rightInformationContainer}>
+      <div className={`${styles.rightInformationContainer} ${backgroundClass}`}>
         <h1 className="text-2xl font-semibold uppercase w-full text-left">{eventData.title}</h1>
         <div className={styles.rightInformationTextContainer}>
           <div className="flex flex-row">
