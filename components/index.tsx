@@ -7,6 +7,7 @@ import MetaTags from "./Layout/MetaTags";
 import Banner from "./Banner/Banner";
 import OurCurrentEvents from "./Events/OurCurrentEvents";
 import EventCardHorizontal from "./Events/EventCardHorizontal";
+import DropdownYear from "./Events/DropdownYear";
 
 export {
   ContentContainer,
@@ -18,4 +19,5 @@ export {
   Banner,
   OurCurrentEvents,
   EventCardHorizontal,
+  DropdownYear,
 };

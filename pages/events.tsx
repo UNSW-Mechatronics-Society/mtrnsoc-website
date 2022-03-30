@@ -1,4 +1,4 @@
-import { Banner, ContentContainer, EventCardHorizontal, MetaTags } from "components";
+import { Banner, ContentContainer, DropdownYear, EventCardHorizontal, MetaTags } from "components";
 import eventData, { eventDetails, yearDates } from "data/eventsData";
 import moment from "moment";
 import type { GetStaticProps, NextPage } from "next";
@@ -43,7 +43,7 @@ const Home: NextPage<EventsPageProps> = ({ currentEvents, eventsByYearByTerm }) 
     <div className="h-full">
       <MetaTags title="Events - MTRNSoc" description="Society events" />
       {/* TODO: Use center text function from banner */}
-      <Banner imgURL="/images/other/frontPageBannerEdited.png" text="Events" arrow={true} />
+      {/* <Banner imgURL="/images/other/frontPageBannerEdited.png" text="Events" arrow={true} /> */}
       <ContentContainer>
         <div className="flex h-full my-12 flex-col items-center">
           <h1 className="text-4xl font-semibold mb-6">Current Events</h1>
@@ -53,6 +53,16 @@ const Home: NextPage<EventsPageProps> = ({ currentEvents, eventsByYearByTerm }) 
       <ContentContainer customBackgroundColour="bg-uranian-blue">
         <div className="flex h-full my-12 flex-col items-center">
           <h1 className="text-4xl font-semibold mb-6">Past Events</h1>
+          <DropdownYear years={yearDates.map((x) => x.year)} />
+          Stuff below this
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
         </div>
       </ContentContainer>
     </div>
