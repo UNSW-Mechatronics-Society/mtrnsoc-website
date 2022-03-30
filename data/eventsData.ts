@@ -352,11 +352,11 @@ const unsortedEventData: eventDetails[] = [
   },
   {
     title: "Testing 1",
-    facebookEventLink: "https://www.facebook.com/events/1108825586551964",
+    facebookEventLink: "https://www.facebook.com/events/434485775100737",
     description: "Testing event 1",
-    imagePath: "/images/events/2021/2021_mtrn2500_study_session.jpg",
+    imagePath: "/images/events/2022/2022_whackathon.jpg",
     location: "",
-    date: [{ startDate: 1643466171, endDate: 1648563771 }],
+    date: [{ startDate: 1643466171, endDate: 1651299872 }],
   },
   {
     title: "Testing 2",
@@ -364,7 +364,7 @@ const unsortedEventData: eventDetails[] = [
     description: "Testing event 2",
     imagePath: "/images/events/2021/2021_study_night.jpg",
     location: "",
-    date: [{ startDate: 1643466171, endDate: 1648563771 }],
+    date: [{ startDate: 1643466171, endDate: 1651299872 }],
   },
   {
     title: "Testing 3",
@@ -372,7 +372,7 @@ const unsortedEventData: eventDetails[] = [
     description: "Testing event 3",
     imagePath: "/images/events/2021/2021_mtrnsoc_egm.jpg",
     location: "",
-    date: [{ startDate: 1643466171, endDate: 1648563771 }],
+    date: [{ startDate: 1643466171, endDate: 1651299872 }],
   },
 ];
 
