@@ -39,7 +39,7 @@ const execimages: ProfileCardProps[] = [
   {
     src: "/images/profiles/brandon.jpg",
     id: "Brandon Winsley",
-    position: "Arc Delegate and Grievance Officerig",
+    position: "Arc Delegate and Grievance Officer",
     linkedIn: "https://www.linkedin.com/in/bwinsley/",
   },
 ];
@@ -90,43 +90,47 @@ const dirimages: ProfileCardProps[] = [
   },
 ];
 
-const execProfileCard = () => {
+export const execProfileCard = () => {
   return (
-    <div>
+    <div className={styles.mainContainer}>
       {execimages.map((profile, indx) => {
         return (
           <>
-            <div className={styles.mainContainer}>
+            <div className={styles.execprofileContainer}>
               <img
                 key={`img-${indx}`}
                 src={profile.src}
                 alt={profile.id}
                 className={styles.picture}
               />
-              <h1 key={`h1-${indx}`} className={styles.name}>
-                {" "}
-                {profile.id}{" "}
-              </h1>{" "}
-              <span key={`h1-${indx}`} className={styles.position}>
-                {" "}
-                {profile.position}{" "}
-              </span>
-              <a href={profile.linkedIn}>
-                <img
-                  key={`img-${indx}`}
-                  src={"/logos/linkedinLogo.svg"}
-                  alt={"LinkedInLogo"}
-                  className={styles.links}
-                />
-              </a>
-              <a href={contactEmail}>
-                <img
-                  key={`img-${indx}`}
-                  src={"/logos/emailLogo.svg"}
-                  alt={"LinkedInLogo"}
-                  className={styles.links}
-                />
-              </a>
+              <div className={styles.textContainer}>
+                <h1 key={`h1-${indx}`} className={styles.name}>
+                  {" "}
+                  {profile.id}{" "}
+                </h1>{" "}
+                <div key={`h1-${indx}`} className={styles.position}>
+                  {" "}
+                  {profile.position}{" "}
+                </div>
+              </div>
+              <div className={styles.links}>
+                <a rel="noreferrer" target="_blank" href={profile.linkedIn}>
+                  <img
+                    key={`img-${indx}`}
+                    src={"/logos/linkedinLogo.svg"}
+                    alt={"LinkedInLogo"}
+                    className={styles.logo}
+                  />
+                </a>
+                <a href={"mailto:mechatronics.unsw@gmail.com"}>
+                  <img
+                    key={`img-${indx}`}
+                    src={"/logos/emailLogo.svg"}
+                    alt={"LinkedInLogo"}
+                    className={styles.logo}
+                  />
+                </a>
+              </div>
             </div>
           </>
         );
@@ -135,43 +139,47 @@ const execProfileCard = () => {
   );
 };
 
-const dirProfileCard = () => {
+export const dirProfileCard = () => {
   return (
-    <div>
+    <div className={styles.mainContainer}>
       {dirimages.map((profile, indx) => {
         return (
           <>
-            <div className={styles.mainContainer}>
+            <div className={styles.dirprofileContainer}>
               <img
                 key={`img-${indx}`}
                 src={profile.src}
                 alt={profile.id}
                 className={styles.picture}
               />
-              <h1 key={`h1-${indx}`} className={styles.name}>
-                {" "}
-                {profile.id}{" "}
-              </h1>{" "}
-              <span key={`h1-${indx}`} className={styles.position}>
-                {" "}
-                {profile.position}{" "}
-              </span>
-              <a href={profile.linkedIn}>
-                <img
-                  key={`img-${indx}`}
-                  src={"/logos/linkedinLogo.svg"}
-                  alt={"LinkedInLogo"}
-                  className={styles.links}
-                />
-              </a>
-              <a href={contactEmail}>
-                <img
-                  key={`img-${indx}`}
-                  src={"/logos/emailLogo.svg"}
-                  alt={"LinkedInLogo"}
-                  className={styles.links}
-                />
-              </a>
+              <div className={styles.textContainer}>
+                <h1 key={`h1-${indx}`} className={styles.name}>
+                  {" "}
+                  {profile.id}{" "}
+                </h1>{" "}
+                <div key={`h1-${indx}`} className={styles.position}>
+                  {" "}
+                  {profile.position}{" "}
+                </div>
+              </div>
+              <div className={styles.links}>
+                <a href={profile.linkedIn}>
+                  <img
+                    key={`img-${indx}`}
+                    src={"/logos/linkedinLogo.svg"}
+                    alt={"LinkedInLogo"}
+                    className={styles.logo}
+                  />
+                </a>
+                <a href={contactEmail}>
+                  <img
+                    key={`img-${indx}`}
+                    src={"/logos/emailLogo.svg"}
+                    alt={"LinkedInLogo"}
+                    className={styles.logo}
+                  />
+                </a>
+              </div>
             </div>
           </>
         );
@@ -179,5 +187,3 @@ const dirProfileCard = () => {
     </div>
   );
 };
-
-export default execProfileCard;

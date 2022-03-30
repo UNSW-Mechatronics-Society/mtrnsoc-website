@@ -1,37 +1,60 @@
 .mainContainer {
-  @apply relative flex flex-col justify-center max-w-[60rem] bg-[#E8EFF5]/[.35] py-14 px-14;
+  @apply flex flex-wrap justify-center;
 }
 
-.picture {
-  flex: justify center;
-  height: 200px;
-  width: 200px;
-  border-radius: 150px;
-  object-fit: cover;
+.execprofileContainer {
+  @apply flex flex-col justify-between bg-[#E8EFF5] m-2 p-6 w-64 h-96;
 }
+
+.dirprofileContainer {
+  @apply flex flex-col justify-between bg-[#E9EBED] m-2 p-6 w-64 h-96;
+}
+/*
+mx-48 px-28
+.mainContainer {
+  @apply grid place-items-center flex-wrap bg-[#E8EFF5]/[.35] m-2 p-6;
+}
+//flex justify-center items-center flex-row
+.profileContainer {
+  @apply w-72;
+}
+
+content-evenly 
+*/
+.picture {
+  @apply flex content-start h-52 w-52 rounded-full object-cover;
+}
+
+.descriptionContainer {
+  @apply flex flex-col h-full;
+}
+
+.textContainer {
+  @apply pt-4 px-2;
+}
+
 .name {
-  @apply text-xl font-semibold pt-2.5;
+  @apply text-center text-xl font-semibold;
 }
 
 .position {
-  @apply text-base capitalize font-medium pt-1 text-gray-500;
+  @apply text-center leading-normal text-gray-500 font-normal text-sm uppercase;
 }
 
 .links {
-  @apply relative flex flex-row max-h-5;
+  @apply flex flex-row justify-center pt-4;
 }
 
-.executivesContainer {
-  @apply flex flex-row justify-center w-full max-w-[80%] pb-20;
-}
-
-.profileContainer {
-  @apply flex flex-row justify-around w-full max-w-[80%] pb-20;
+.logo {
+  @apply max-h-6;
 }
 
 /*
 .mainContainer {
   @apply flex flex-col w-full;
+}
+.links {
+  @apply flex flex-row justify-center pt-10;
 }
 
 .eventsContainer {

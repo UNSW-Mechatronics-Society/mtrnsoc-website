@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 import styles from "styles/team.module.scss";
 //import { OurCurrentEventsProps as HomePageProps } from "components/Team/OurTeam";
 import { Banner } from "components";
-import ProfileCard from "components/Profile/Profile";
+import * as role from "components/Profile/Profile";
 
 type TitleHeaderProps = {
   text: string;
@@ -18,20 +18,32 @@ const SectionExecutives = () => {
     <ContentContainer customBackgroundColour="neutral-100">
       <div className={styles.sectionContainer}>
         <TitleHeader text="Executives" />
-        <ProfileCard />
-        <div /*className={styles.executivesContainer}*/>
-          {/*<img src="/images/other/kyratemp.png" alt="president" className={styles.execPhoto} /> */}
-        </div>
+        <role.execProfileCard />
       </div>
     </ContentContainer>
   );
 };
+/*
+const SectionExecutives = () => {
+  return (
+    <ContentContainer customBackgroundColour="neutral-100">
+      <div className={styles.sectionContainer}>
+        <TitleHeader text="Executives" />
+        <ProfileCard />
+        //<div /*className={styles.executivesContainer}>
+          {/*<img src="/images/other/kyratemp.png" alt="president" className={styles.execPhoto} /> }
+        //</div>
+      //</div>
+    //</ContentContainer>
+  //);
+//};*/
 
 const SectionDirectors = () => {
   return (
     <ContentContainer>
       <div className={styles.sectionContainer}>
         <TitleHeader text="Directors" />
+        <role.dirProfileCard />
       </div>
     </ContentContainer>
   );
