@@ -2,6 +2,8 @@ import { Banner, ContentContainer, DropdownYear, EventCardHorizontal, MetaTags }
 import eventData, { eventDetails, yearDates } from "data/eventsData";
 import moment from "moment";
 import type { GetStaticProps, NextPage } from "next";
+import Link from "next/link";
+import { eventNames } from "process";
 import React from "react";
 
 // Used in getStaticProps
@@ -15,6 +17,62 @@ type yearlyEventsByTerm = {
 type EventsPageProps = {
   currentEvents: eventDetails[];
   eventsByYearByTerm: yearlyEventsByTerm[];
+};
+
+type PastEventsSectionProps = {
+  eventsByYearByTerm: yearlyEventsByTerm[];
+  yearSelected: number;
+};
+
+type TermSectionProps = {
+  yearSelected: number;
+  term: string;
+  termData: eventDetails[];
+};
+
+const TermSection = ({ yearSelected, term, termData }: TermSectionProps): JSX.Element => {
+  // REVIEW Look at rewriting this
+  return (
+    <div className="w-full flex flex-col pb-5">
+      <h2 className="uppercase mx-3 font-semibold text-xl">{`${yearSelected} ${term}`}</h2>
+      <div className="w-full flex flex-row flex-wrap">
+        {termData.map((event) => (
+          <Link key={event.title} href={event.facebookEventLink}>
+            <a target="_blank">
+              <img
+                src={event.imagePath}
+                className="w-[300px] rounded-lg mx-3 my-3 hover:scale-[1.05] hover:shadow-xl duration-100"
+                alt={`${event.title} banner`}
+              />
+            </a>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const PastEventsSection = ({
+  eventsByYearByTerm,
+  yearSelected,
+}: PastEventsSectionProps): JSX.Element => {
+  // REVIEW Look at rewriting this
+  const selectedYearData = eventsByYearByTerm.filter((x) => x.year === yearSelected)[0];
+  console.log(selectedYearData);
+
+  return (
+    <>
+      {selectedYearData.t1.length > 0 && (
+        <TermSection yearSelected={yearSelected} term="Term 1" termData={selectedYearData.t1} />
+      )}
+      {selectedYearData.t2.length > 0 && (
+        <TermSection yearSelected={yearSelected} term="Term 2" termData={selectedYearData.t2} />
+      )}
+      {selectedYearData.t3.length > 0 && (
+        <TermSection yearSelected={yearSelected} term="Term 3" termData={selectedYearData.t3} />
+      )}
+    </>
+  );
 };
 
 const Home: NextPage<EventsPageProps> = ({ currentEvents, eventsByYearByTerm }) => {
@@ -46,17 +104,17 @@ const Home: NextPage<EventsPageProps> = ({ currentEvents, eventsByYearByTerm }) 
     <div className="h-full">
       <MetaTags title="Events - MTRNSoc" description="Society events" />
       {/* TODO: Use center text function from banner */}
-      {/* <Banner imgURL="/images/other/frontPageBannerEdited.png" text="Events" arrow={true} /> */}
-      <ContentContainer>
+      <Banner imgURL="/images/other/frontPageBannerEdited.png" text="Events" arrow={true} />
+      <ContentContainer customBackgroundColour="bg-uranian-blue">
         <div className="flex h-full my-12 flex-col items-center">
           <h1 className="text-4xl font-semibold mb-6">Current Events</h1>
           <CurrentEventsSection />
         </div>
       </ContentContainer>
-      <ContentContainer customBackgroundColour="bg-uranian-blue">
+      <ContentContainer>
         <div className="flex h-full my-12 flex-col items-center">
           <h1 className="text-4xl font-semibold mb-6">Past Events</h1>
-          <div className="flex justify-center w-full px-[5%]">
+          <div className="flex justify-center w-full px-[5%] flex-col">
             <div className="flex justify-end w-full">
               <DropdownYear
                 years={years}
@@ -64,7 +122,10 @@ const Home: NextPage<EventsPageProps> = ({ currentEvents, eventsByYearByTerm }) 
                 setYearSelected={setYearSelected}
               />
             </div>
-            <div></div>
+            <PastEventsSection
+              eventsByYearByTerm={eventsByYearByTerm}
+              yearSelected={yearSelected}
+            />
           </div>
         </div>
       </ContentContainer>
