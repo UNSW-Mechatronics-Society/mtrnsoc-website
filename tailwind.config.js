@@ -37,6 +37,7 @@ module.exports = {
         "max-sm": { max: "639px" },
         // => @media (max-width: 639px) { ... }
         "max-eventCard": { max: "1295px" },
+        "max-pastEventsTitle": { max: "768px" },
       },
     },
     fontFamily: {

@@ -34,8 +34,8 @@ const TermSection = ({ yearSelected, term, termData }: TermSectionProps): JSX.El
   // REVIEW Look at rewriting this
   return (
     <div className={styles.pastEventsTermContainer}>
-      <h2 className="uppercase mx-3 font-semibold text-xl">{`${yearSelected} ${term}`}</h2>
-      <div className="w-full flex flex-row flex-wrap">
+      <h2 className="uppercase mx-3 font-semibold text-xl max-pastEventsTitle:mx-0 max-pastEventsTitle:flex max-pastEventsTitle:justify-center">{`${yearSelected} ${term}`}</h2>
+      <div className="w-full flex flex-row flex-wrap justify-around">
         {termData.map((event) => (
           <Link key={event.title} href={event.facebookEventLink}>
             <a target="_blank">
@@ -119,7 +119,7 @@ const Home: NextPage<EventsPageProps> = ({ currentEvents, eventsByYearByTerm }) 
         <div className={styles.mainContainer}>
           <h1 className="text-4xl font-semibold mb-6">Past Events</h1>
           <div className={styles.pastEventsContainer}>
-            <div className="flex justify-end w-full">
+            <div className="flex justify-end w-full max-pastEventsTitle:justify-center max-pastEventsTitle:pb-3">
               <DropdownYear
                 years={years}
                 yearSelected={yearSelected}
