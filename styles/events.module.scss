@@ -7,7 +7,8 @@
 }
 
 .pastEventsImage {
-  @apply w-[300px] rounded-lg mx-3 my-3 hover:scale-[1.05] hover:shadow-xl duration-100;
+  // NOTE Temp fix for non 16:9 images
+  @apply w-[18.75rem] h-[10.546875rem] rounded-lg mx-3 my-3 hover:scale-[1.05] hover:shadow-xl duration-100;
 }
 
 .pastEventsTermContainer {
