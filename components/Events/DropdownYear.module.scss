@@ -4,7 +4,7 @@
 
 .mainContainer {
   /* TODO bottom border only */
-  @apply flex flex-row border-b-2 border-onyx justify-between hover:cursor-pointer;
+  @apply flex flex-row border-[1.5px] border-onyx justify-between hover:cursor-pointer;
 }
 
 .customBackground {

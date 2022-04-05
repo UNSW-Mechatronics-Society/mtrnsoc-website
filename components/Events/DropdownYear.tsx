@@ -1,13 +1,13 @@
 import React from "react";
 import styles from "./DropdownYear.module.scss";
 
-type DropdownRow = {
-  yearToDisplay: number;
-};
+// type DropdownRow = {
+//   yearToDisplay: number;
+// };
 
-const DropdownRow = ({ yearToDisplay }: DropdownRow): JSX.Element => {
-  return <></>;
-};
+// const DropdownRow = ({ yearToDisplay }: DropdownRow): JSX.Element => {
+//   return <></>;
+// };
 
 type DropdownYearProps = {
   /**
@@ -48,7 +48,7 @@ export default function DropdownYear({ years }: DropdownYearProps): JSX.Element 
               {sortedYears.map((x) => {
                 return (
                   <div
-                    className={`${styles.containerSize} ${styles.customBackground} ${styles.testStuff}`}
+                    className={`${styles.containerSize} ${styles.customBackground} border-b-[1px] border-onyx`}
                     key={`dropdown-${x}`}
                   >
                     <p className="text-xl font-medium select-none">{x}</p>
