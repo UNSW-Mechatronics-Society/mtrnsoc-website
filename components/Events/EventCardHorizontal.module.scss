@@ -1,9 +1,9 @@
 .mainContainer {
-  @apply flex flex-row w-[60%] rounded-2xl h-full;
+  @apply flex flex-row w-[60%] rounded-2xl h-full max-eventCard:flex-col;
 }
 
 .image {
-  @apply w-[32rem] rounded-l-2xl;
+  @apply w-[32rem] rounded-l-2xl max-eventCard:rounded-l-none max-eventCard:w-full max-eventCard:rounded-t-2xl;
 }
 
 .rightInformationContainer {

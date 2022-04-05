@@ -56,10 +56,10 @@ export default function EventCardHorizontal({
   eventData,
   cardNumber,
 }: EventCardHorizontalProps): JSX.Element {
-  const backgroundClass = cardNumber % 2 === 0 ? styles.backgroundBlue : styles.backgroundGrey;
+  // const backgroundClass = cardNumber % 2 === 0 ? styles.backgroundBlue : styles.backgroundGrey;
 
   return (
-    <div className={`${styles.mainContainer} ${backgroundClass}`}>
+    <div className={`${styles.mainContainer} ${styles.backgroundBlue}`}>
       <img
         className={styles.image}
         src={eventData.imagePath}
