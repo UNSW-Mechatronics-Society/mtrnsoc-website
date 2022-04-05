@@ -104,7 +104,12 @@ const Home: NextPage<EventsPageProps> = ({ currentEvents, eventsByYearByTerm }) 
     <div className="h-full">
       <MetaTags title="Events - MTRNSoc" description="Society events" />
       {/* TODO: Use center text function from banner */}
-      <Banner imgURL="/images/other/frontPageBannerEdited.png" text="Events" arrow={true} />
+      <Banner
+        imgURL="/images/other/frontPageBannerEdited.png"
+        text="Events"
+        arrow={true}
+        position="center"
+      />
       <ContentContainer customBackgroundColour="bg-uranian-blue">
         <div className={styles.mainContainer}>
           <h1 className="text-4xl font-semibold mb-6">Current Events</h1>
