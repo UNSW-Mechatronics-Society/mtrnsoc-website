@@ -356,7 +356,7 @@ const unsortedEventData: eventDetails[] = [
     description: "Testing event 1",
     imagePath: "/images/events/2021/2021_mtrn2500_study_session.jpg",
     location: "",
-    date: [{ startDate: 1643466171, endDate: 1648563771 }],
+    date: [{ startDate: 1643466171, endDate: 1651299872 }],
   },
   {
     title: "Testing 2",
@@ -364,7 +364,7 @@ const unsortedEventData: eventDetails[] = [
     description: "Testing event 2",
     imagePath: "/images/events/2021/2021_study_night.jpg",
     location: "",
-    date: [{ startDate: 1643466171, endDate: 1648563771 }],
+    date: [{ startDate: 1643466171, endDate: 1651299872 }],
   },
   {
     title: "Testing 3",
@@ -372,7 +372,7 @@ const unsortedEventData: eventDetails[] = [
     description: "Testing event 3",
     imagePath: "/images/events/2021/2021_mtrnsoc_egm.jpg",
     location: "",
-    date: [{ startDate: 1643466171, endDate: 1648563771 }],
+    date: [{ startDate: 1643466171, endDate: 1651299872 }],
   },
 ];
 
