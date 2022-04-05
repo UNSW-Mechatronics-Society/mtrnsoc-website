@@ -1,0 +1,8 @@
+.logoSize {
+  @apply h-16 mx-3;
+}
+
+.logoColour {
+  // https://codepen.io/sosuke/pen/Pjoqqp
+  filter: invert(22%) sepia(8%) saturate(436%) hue-rotate(163deg) brightness(90%) contrast(87%);
+}

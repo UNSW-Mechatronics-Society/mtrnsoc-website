@@ -12,17 +12,17 @@ const TopHalfLogos = () => {
             src="/logos/discordLogo.svg"
             alt="discord logo"
             aria-label="discord"
-            className={styles.socialLogo}
+            className={`${styles.socialLogo} ${styles.culturedWhiteColourLogo}`}
           />
         </a>
       </Link>
       <Link href={`mailto:${contactEmail}`}>
-        <a target="_blank">
+        <a>
           <img
             src="/logos/emailLogo.svg"
             alt="email logo"
             aria-label="email"
-            className={styles.socialLogo}
+            className={`${styles.socialLogo} ${styles.culturedWhiteColourLogo}`}
           />
         </a>
       </Link>
@@ -32,7 +32,7 @@ const TopHalfLogos = () => {
             src="/logos/facebookLogo.svg"
             alt="facebook logo"
             aria-label="facebook"
-            className={styles.socialLogo}
+            className={`${styles.socialLogo} ${styles.culturedWhiteColourLogo}`}
           />
         </a>
       </Link>
@@ -42,7 +42,7 @@ const TopHalfLogos = () => {
             src="/logos/instagramLogo.svg"
             alt="instagram logo"
             aria-label="instagram"
-            className={styles.socialLogo}
+            className={`${styles.socialLogo} ${styles.culturedWhiteColourLogo}`}
           />
         </a>
       </Link>
@@ -52,7 +52,7 @@ const TopHalfLogos = () => {
             src="/logos/linkedinLogo.svg"
             alt="linkedin logo"
             aria-label="linkedin"
-            className={styles.socialLogo}
+            className={`${styles.socialLogo} ${styles.culturedWhiteColourLogo}`}
           />
         </a>
       </Link>
