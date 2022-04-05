@@ -22,6 +22,7 @@ function Text({ text, position }: TextProps) {
       </div>
     );
   } else {
+    // Center
     return (
       <div className={styles.textContainerCenter}>
         <h1 className={styles.titleText}>{text.toUpperCase()}</h1>

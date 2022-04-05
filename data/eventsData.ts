@@ -4,7 +4,7 @@
  * If `endDate` is null, either signifies a whole day event
  * or an event without a set end time
  */
-type eventDate = {
+export type eventDate = {
   startDate: number;
   endDate: number | null;
 };
@@ -27,7 +27,7 @@ type eventDetails = {
 // {
 //   title: "",
 //   facebookEventLink: "",
-//   description: ``,
+//   description: null,
 //   imagePath: null,
 //   location: "",
 //   date: [{ startDate: , endDate:  }],
@@ -274,7 +274,7 @@ const unsortedEventData: eventDetails[] = [
     description:
       "🚨🚨🚨 MTRNSOC AT O-WEEK 🚨🚨🚨\n    MTRNSoc is super keen to welcome all the new faces Mechatronics 🤖🤖🤖🤖, as well as catching up with the old ones!\n    This is your chance to meet people from your degree, what MTRNSoc is about and how you can get involved! 👏👏\n    We will be at UNSW Alumni Lawn West 🌳 -right in front of Gate 2- Tuesday to Thursday!\n    If you can't make it in-person don't worry, we will also be at the o-week discord 💻 Monday-Thursday.",
     imagePath: "/images/events/2021/2021_o-week_t1.jpg",
-    location: "https://www.facebook.com/events/714486859435171",
+    location: null,
     date: [{ startDate: 1612821600, endDate: 1613019600 }],
   },
   {
@@ -351,6 +351,30 @@ const unsortedEventData: eventDetails[] = [
     date: [{ startDate: 1647835200, endDate: 1648191600 }],
   },
   {
+    title: "MTRNSoc Goes Roundhouse!",
+    facebookEventLink: "https://www.facebook.com/events/3115580938690319",
+    description: null,
+    imagePath: "/images/events/2022/2022_roundhouse.jpg",
+    location: "UNSW Roundhouse",
+    date: [{ startDate: 1648792800, endDate: 1648803600 }],
+  },
+  {
+    title: "How To Guide: Industrial Training",
+    facebookEventLink: "https://www.facebook.com/events/1194347071366653",
+    description: null,
+    imagePath: "/images/events/2022/2022_it_training.jpg",
+    location: "TBA",
+    date: [{ startDate: 1650528000, endDate: 1650537000 }],
+  },
+  {
+    title: "Arduino Pulse Oximeter Workshop",
+    facebookEventLink: "https://www.facebook.com/events/1023105511977138",
+    description: null,
+    imagePath: "/images/events/2022/2022_arduino_pulse_oximeter_workshop.jpg",
+    location: "UNSW Quad 1046",
+    date: [{ startDate: 1649214000, endDate: 1649221200 }],
+  },
+  {
     title: "Testing 1",
     facebookEventLink: "https://www.facebook.com/events/434485775100737",
     description: "Testing event 1",
@@ -374,6 +398,33 @@ const unsortedEventData: eventDetails[] = [
     location: "",
     date: [{ startDate: 1643466171, endDate: 1651299872 }],
   },
+];
+
+type termDate = string;
+
+type termDateInformation = {
+  /**
+   * String date in the format of DD/MM/YYYY
+   */
+  t1: string;
+  /**
+   * String date in the format of DD/MM/YYYY
+   */
+  t2: string;
+  /**
+   * String date in the format of DD/MM/YYYY
+   */
+  t3: string;
+};
+
+type yearDateInformation = {
+  year: number;
+  termStartDates: termDateInformation;
+};
+
+export const yearDates: yearDateInformation[] = [
+  { year: 2022, termStartDates: { t1: "14/02/2022", t2: "30/05/2022", t3: "12/09/2022" } },
+  { year: 2021, termStartDates: { t1: "15/02/2021", t2: "31/05/2021", t3: "13/09/2021" } },
 ];
 
 /**

@@ -196,7 +196,11 @@ export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
     return oldestDate * 1000 >= Date.now();
   });
   currentEvents.reverse();
-  return { props: { currentEvents } };
+  return {
+    props: { currentEvents },
+    // Rebuild page every 5 minutes
+    revalidate: 5 * 60,
+  };
 };
 
 export default Home;

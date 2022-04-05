@@ -66,9 +66,11 @@
 
 .textContainerCenter {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: flex;
+  width: 100%;
+  height: calc(100% - variables.$headerHeight);
+  justify-content: center;
+  align-items: center;
 }
 
 .titleText {

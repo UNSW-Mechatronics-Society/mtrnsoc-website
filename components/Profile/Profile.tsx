@@ -171,11 +171,11 @@ export const dirProfileCard = () => {
                     className={styles.logo}
                   />
                 </a>
-                <a href={contactEmail}>
+                <a href={`mailto:${contactEmail}`}>
                   <img
                     key={`img-${indx}`}
                     src={"/logos/emailLogo.svg"}
-                    alt={"LinkedInLogo"}
+                    alt={"emailLogo"}
                     className={styles.logo}
                   />
                 </a>
