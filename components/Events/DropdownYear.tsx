@@ -16,26 +16,34 @@ type DropdownYearProps = {
    * Assumes that there are at least 2 years
    */
   years: number[];
+  yearSelected: number;
+  setYearSelected: React.Dispatch<React.SetStateAction<number>>;
 };
 
-export default function DropdownYear({ years }: DropdownYearProps): JSX.Element {
-  years = [2022, 2021, 2020, 2019, 2018];
+export default function DropdownYear({
+  years,
+  yearSelected,
+  setYearSelected,
+}: DropdownYearProps): JSX.Element {
   if (years.length < 2) throw new Error("There are less than 2 years in `years` array");
 
-  const sortedYears = [...years].sort().reverse();
-  const oldestYear = sortedYears.shift();
+  // Remove the selected year, and sort it in decreasing order
+  const sortedYears = [...years]
+    .filter((x) => x != yearSelected)
+    .sort()
+    .reverse();
 
   const [active, setActive] = React.useState(false);
 
-  const handleOnClick = () => setActive(!active);
+  const handleOnClickDropdown = () => setActive(!active);
 
   return (
     <>
       <div
         className={`${styles.containerSize} ${styles.mainContainer} ${styles.customBackground} ${styles.customBottomPadding} ${styles.paddingBottom}`}
-        onClick={handleOnClick}
+        onClick={handleOnClickDropdown}
       >
-        <p className="text-xl font-semibold select-none">{oldestYear}</p>
+        <p className="text-xl font-semibold select-none">{yearSelected}</p>
         <img
           className={`${styles.arrow} ${active ? styles.upsideDown : ""}`}
           src="/misc/chevron--down.svg"
@@ -50,6 +58,7 @@ export default function DropdownYear({ years }: DropdownYearProps): JSX.Element 
                   <div
                     className={`${styles.containerSize} ${styles.customBackground} border-b-[1px] border-onyx`}
                     key={`dropdown-${x}`}
+                    onClick={() => setYearSelected(x)}
                   >
                     <p className="text-xl font-medium select-none">{x}</p>
                   </div>

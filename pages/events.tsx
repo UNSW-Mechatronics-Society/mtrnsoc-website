@@ -2,6 +2,7 @@ import { Banner, ContentContainer, DropdownYear, EventCardHorizontal, MetaTags }
 import eventData, { eventDetails, yearDates } from "data/eventsData";
 import moment from "moment";
 import type { GetStaticProps, NextPage } from "next";
+import React from "react";
 
 // Used in getStaticProps
 type yearlyEventsByTerm = {
@@ -17,6 +18,10 @@ type EventsPageProps = {
 };
 
 const Home: NextPage<EventsPageProps> = ({ currentEvents, eventsByYearByTerm }) => {
+  const years = yearDates.map((x) => x.year);
+
+  const [yearSelected, setYearSelected] = React.useState(years[0]);
+
   const CurrentEventsSection = () => {
     if (currentEvents.length >= 1) {
       // There exists a current event
@@ -37,8 +42,6 @@ const Home: NextPage<EventsPageProps> = ({ currentEvents, eventsByYearByTerm }) 
     }
   };
 
-  eventsByYearByTerm.sort((a, b) => b.year - a.year); // Sort by decreasing year
-
   return (
     <div className="h-full">
       <MetaTags title="Events - MTRNSoc" description="Society events" />
@@ -53,16 +56,16 @@ const Home: NextPage<EventsPageProps> = ({ currentEvents, eventsByYearByTerm }) 
       <ContentContainer customBackgroundColour="bg-uranian-blue">
         <div className="flex h-full my-12 flex-col items-center">
           <h1 className="text-4xl font-semibold mb-6">Past Events</h1>
-          <DropdownYear years={yearDates.map((x) => x.year)} />
-          Stuff below this
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
+          <div className="flex justify-center w-full px-[5%]">
+            <div className="flex justify-end w-full">
+              <DropdownYear
+                years={years}
+                yearSelected={yearSelected}
+                setYearSelected={setYearSelected}
+              />
+            </div>
+            <div></div>
+          </div>
         </div>
       </ContentContainer>
     </div>
@@ -152,6 +155,8 @@ export const getStaticProps: GetStaticProps<EventsPageProps> = async () => {
 
     eventsByYearByTerm.push({ year, t1: t1Events, t2: t2Events, t3: t3Events });
   });
+
+  eventsByYearByTerm.sort((a, b) => b.year - a.year); // Sort by decreasing year
 
   return {
     props: { currentEvents, eventsByYearByTerm },
