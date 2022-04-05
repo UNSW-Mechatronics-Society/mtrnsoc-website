@@ -30,3 +30,7 @@
   background-size: 80% 1px;
   background-position: center bottom;
 }
+
+.dropdownPopUp {
+  @apply z-50 right-[1.1rem] top-[2.5rem] relative;
+}

@@ -52,11 +52,11 @@ export default function DropdownYear({
         />
         {active && (
           <div className="absolute">
-            <div className="z-50 right-[1rem] top-[2.5rem] relative">
+            <div className={styles.dropdownPopUp}>
               {sortedYears.map((x) => {
                 return (
                   <div
-                    className={`${styles.containerSize} ${styles.customBackground} border-b-[1px] border-onyx`}
+                    className={`${styles.containerSize} ${styles.customBackground} border-b-2 border-onyx`}
                     key={`dropdown-${x}`}
                     onClick={() => setYearSelected(x)}
                   >
