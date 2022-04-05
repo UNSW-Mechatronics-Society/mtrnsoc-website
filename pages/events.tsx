@@ -58,7 +58,6 @@ const PastEventsSection = ({
 }: PastEventsSectionProps): JSX.Element => {
   // REVIEW Look at rewriting this
   const selectedYearData = eventsByYearByTerm.filter((x) => x.year === yearSelected)[0];
-  console.log(selectedYearData);
 
   return (
     <>
@@ -154,7 +153,6 @@ export const getStaticProps: GetStaticProps<EventsPageProps> = async () => {
     const earliestDate = Math.min(...event.date.map((y) => y.startDate));
     uniqueYears.add(moment.unix(earliestDate).year());
   });
-  console.log(uniqueYears);
   // Split past events into years
 
   type yearlyEvents = {
@@ -189,11 +187,8 @@ export const getStaticProps: GetStaticProps<EventsPageProps> = async () => {
 
     // NOTE: Time zones used are relative to what the server uses, may be an issue
     const FORMAT = "DD/MM/YYYY";
-    const t1Unix = moment(termStartDates.t1, FORMAT).unix();
-    // TODO remove
-    console.log(year);
-    console.log(`t1Unix: ${t1Unix}, ${termStartDates.t1}`);
 
+    const t1Unix = moment(termStartDates.t1, FORMAT).unix();
     const t2Unix = moment(termStartDates.t2, FORMAT).unix();
     const t3Unix = moment(termStartDates.t3, FORMAT).unix();
 
