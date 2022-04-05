@@ -1,5 +1,5 @@
 .mainContainer {
-  @apply flex flex-row w-[60%] rounded-2xl h-full max-eventCard:flex-col;
+  @apply flex flex-row w-[60%] rounded-2xl h-full max-eventCard:flex-col max-md:w-[90%];
 }
 
 .image {
