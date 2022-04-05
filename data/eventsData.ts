@@ -352,9 +352,9 @@ const unsortedEventData: eventDetails[] = [
   },
   {
     title: "Testing 1",
-    facebookEventLink: "https://www.facebook.com/events/1108825586551964",
+    facebookEventLink: "https://www.facebook.com/events/434485775100737",
     description: "Testing event 1",
-    imagePath: "/images/events/2021/2021_mtrn2500_study_session.jpg",
+    imagePath: "/images/events/2022/2022_whackathon.jpg",
     location: "",
     date: [{ startDate: 1643466171, endDate: 1651299872 }],
   },
