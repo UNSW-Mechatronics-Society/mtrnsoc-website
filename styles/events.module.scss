@@ -1,0 +1,15 @@
+.mainContainer {
+  @apply flex h-full my-12 flex-col items-center;
+}
+
+.pastEventsContainer {
+  @apply flex justify-center w-full px-[5%] flex-col;
+}
+
+.pastEventsImage {
+  @apply w-[300px] rounded-lg mx-3 my-3 hover:scale-[1.05] hover:shadow-xl duration-100;
+}
+
+.pastEventsTermContainer {
+  @apply w-full flex flex-col pb-5;
+}

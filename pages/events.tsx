@@ -3,7 +3,7 @@ import eventData, { eventDetails, yearDates } from "data/eventsData";
 import moment from "moment";
 import type { GetStaticProps, NextPage } from "next";
 import Link from "next/link";
-import { eventNames } from "process";
+import styles from "styles/events.module.scss";
 import React from "react";
 
 // Used in getStaticProps
@@ -33,7 +33,7 @@ type TermSectionProps = {
 const TermSection = ({ yearSelected, term, termData }: TermSectionProps): JSX.Element => {
   // REVIEW Look at rewriting this
   return (
-    <div className="w-full flex flex-col pb-5">
+    <div className={styles.pastEventsTermContainer}>
       <h2 className="uppercase mx-3 font-semibold text-xl">{`${yearSelected} ${term}`}</h2>
       <div className="w-full flex flex-row flex-wrap">
         {termData.map((event) => (
@@ -41,7 +41,7 @@ const TermSection = ({ yearSelected, term, termData }: TermSectionProps): JSX.El
             <a target="_blank">
               <img
                 src={event.imagePath}
-                className="w-[300px] rounded-lg mx-3 my-3 hover:scale-[1.05] hover:shadow-xl duration-100"
+                className={styles.pastEventsImage}
                 alt={`${event.title} banner`}
               />
             </a>
@@ -106,15 +106,15 @@ const Home: NextPage<EventsPageProps> = ({ currentEvents, eventsByYearByTerm }) 
       {/* TODO: Use center text function from banner */}
       <Banner imgURL="/images/other/frontPageBannerEdited.png" text="Events" arrow={true} />
       <ContentContainer customBackgroundColour="bg-uranian-blue">
-        <div className="flex h-full my-12 flex-col items-center">
+        <div className={styles.mainContainer}>
           <h1 className="text-4xl font-semibold mb-6">Current Events</h1>
           <CurrentEventsSection />
         </div>
       </ContentContainer>
       <ContentContainer>
-        <div className="flex h-full my-12 flex-col items-center">
+        <div className={styles.mainContainer}>
           <h1 className="text-4xl font-semibold mb-6">Past Events</h1>
-          <div className="flex justify-center w-full px-[5%] flex-col">
+          <div className={styles.pastEventsContainer}>
             <div className="flex justify-end w-full">
               <DropdownYear
                 years={years}
