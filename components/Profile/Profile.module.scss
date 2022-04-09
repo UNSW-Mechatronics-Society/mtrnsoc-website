@@ -1,5 +1,5 @@
 .mainContainer {
-  @apply flex flex-wrap justify-center;
+  @apply flex flex-wrap justify-center max-w-4xl mx-auto;
 }
 
 .execprofileContainer {
@@ -9,18 +9,7 @@
 .dirprofileContainer {
   @apply flex flex-col justify-between bg-[#E9EBED] m-2 p-6 w-64 h-96;
 }
-/*
-mx-48 px-28
-.mainContainer {
-  @apply grid place-items-center flex-wrap bg-[#E8EFF5]/[.35] m-2 p-6;
-}
-//flex justify-center items-center flex-row
-.profileContainer {
-  @apply w-72;
-}
 
-content-evenly 
-*/
 .picture {
   @apply flex content-start h-52 w-52 rounded-full object-cover;
 }
@@ -49,7 +38,33 @@ content-evenly
   @apply h-6 px-1;
 }
 
+.subcomMainContainer {
+  @apply flex flex-wrap justify-center max-w-6xl mx-auto;
+}
+
+.subcomContainer {
+  @apply flex flex-col m-2 p-6 w-72;
+}
+
+.subcomPosition {
+  @apply text-center text-2xl font-semibold pb-2;
+}
+.subcomName {
+  @apply text-center leading-normal text-gray-500 text-lg font-medium;
+}
+
 /*
+mx-48 px-28
+.mainContainer {
+  @apply grid place-items-center flex-wrap bg-[#E8EFF5]/[.35] m-2 p-6;
+}
+//flex justify-center items-center flex-row
+.profileContainer {
+  @apply w-72;
+}
+
+content-evenly 
+
 .mainContainer {
   @apply flex flex-col w-full;
 }

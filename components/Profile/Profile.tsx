@@ -10,6 +10,15 @@ type ProfileCardProps = {
   linkedIn: string;
 };
 
+type SubcomProps = {
+  portfolio: string;
+  member1: string;
+  member2: string;
+  member3: string;
+  member4: string;
+  member5: string;
+};
+
 // alt and name is id, email is mtrnsoc email, classnames are the same,
 const execimages: ProfileCardProps[] = [
   {
@@ -77,7 +86,7 @@ const dirimages: ProfileCardProps[] = [
   },
 
   {
-    src: "/images/profiles/leonard.jpg",
+    src: "/images/profiles/leonard.png",
     id: "Leonard Chiang",
     position: "Projects Director",
     linkedIn: "https://www.linkedin.com/in/leonard-chiang/",
@@ -90,7 +99,50 @@ const dirimages: ProfileCardProps[] = [
   },
 ];
 
-export const execProfileCard = () => {
+const subcomlist: SubcomProps[] = [
+  {
+    portfolio: "Marketing Team",
+    member1: "Aakash Kumar",
+    member2: "Angela Lei",
+    member3: "Carrie Wu",
+    member4: "Rayyan Hossain",
+    member5: "Sam Banerjee",
+  },
+  {
+    portfolio: "Socials Team",
+    member1: "Byron Petselis",
+    member2: "Thomas Shalaby",
+    member3: "",
+    member4: "",
+    member5: "",
+  },
+  {
+    portfolio: "Workshops Team",
+    member1: "Angus Wang",
+    member2: "Kalindu Dahanayake",
+    member3: "Shiwani Balaji",
+    member4: "",
+    member5: "",
+  },
+  {
+    portfolio: "Projects Team",
+    member1: "Eric Do",
+    member2: "Jay Choo",
+    member3: "Nicole Leow",
+    member4: "",
+    member5: "",
+  },
+  {
+    portfolio: "Industry Team",
+    member1: "Alice Shang",
+    member2: "Rohit Ghosh",
+    member3: "Sarvesh Sanjay Wanzare",
+    member4: "",
+    member5: "",
+  },
+];
+
+export const ExecProfileCard = () => {
   return (
     <div className={styles.mainContainer}>
       {execimages.map((profile, indx) => {
@@ -139,7 +191,7 @@ export const execProfileCard = () => {
   );
 };
 
-export const dirProfileCard = () => {
+export const DirProfileCard = () => {
   return (
     <div className={styles.mainContainer}>
       {dirimages.map((profile, indx) => {
@@ -171,14 +223,37 @@ export const dirProfileCard = () => {
                     className={styles.logo}
                   />
                 </a>
-                <a href={`mailto:${contactEmail}`}>
+                <a href={contactEmail}>
                   <img
                     key={`img-${indx}`}
                     src={"/logos/emailLogo.svg"}
-                    alt={"emailLogo"}
+                    alt={"LinkedInLogo"}
                     className={styles.logo}
                   />
                 </a>
+              </div>
+            </div>
+          </>
+        );
+      })}
+    </div>
+  );
+};
+
+export const Subcom = () => {
+  return (
+    <div className={styles.subcomMainContainer}>
+      {subcomlist.map((team, indx) => {
+        return (
+          <>
+            <div className={styles.subcomContainer}>
+              <h1 key={`h1-${indx}`} className={styles.subcomPosition}>
+                {" "}
+                {team.portfolio}{" "}
+              </h1>{" "}
+              <div key={`h1-${indx}`} className={styles.subcomName}>
+                {team.member1} <br /> {team.member2} <br /> {team.member3} <br /> {team.member4}
+                <br /> {team.member5}
               </div>
             </div>
           </>

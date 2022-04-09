@@ -18,32 +18,29 @@ const SectionExecutives = () => {
     <ContentContainer customBackgroundColour="neutral-100">
       <div className={styles.sectionContainer}>
         <TitleHeader text="Executives" />
-        <role.execProfileCard />
+        <role.ExecProfileCard />
       </div>
     </ContentContainer>
   );
 };
-/*
-const SectionExecutives = () => {
-  return (
-    <ContentContainer customBackgroundColour="neutral-100">
-      <div className={styles.sectionContainer}>
-        <TitleHeader text="Executives" />
-        <ProfileCard />
-        //<div /*className={styles.executivesContainer}>
-          {/*<img src="/images/other/kyratemp.png" alt="president" className={styles.execPhoto} /> }
-        //</div>
-      //</div>
-    //</ContentContainer>
-  //);
-//};*/
 
 const SectionDirectors = () => {
   return (
     <ContentContainer>
       <div className={styles.sectionContainer}>
         <TitleHeader text="Directors" />
-        <role.dirProfileCard />
+        <role.DirProfileCard />
+      </div>
+    </ContentContainer>
+  );
+};
+
+const Subcom = () => {
+  return (
+    <ContentContainer customBackgroundColour="neutral-100">
+      <div className={styles.sectionContainer}>
+        <TitleHeader text="Subcommittee" />
+        <role.Subcom />
       </div>
     </ContentContainer>
   );
@@ -62,6 +59,7 @@ const Home: NextPage = () => {
         />
         <SectionExecutives />
         <SectionDirectors />
+        <Subcom />
       </div>
     </div>
   );
