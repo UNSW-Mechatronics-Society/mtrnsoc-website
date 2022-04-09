@@ -54,7 +54,7 @@ const Home: NextPage = () => {
         <Banner
           imgURL="/images/other/frontPageBannerEdited.png"
           text="Our Team"
-          arrow={false}
+          arrow={true}
           position="center"
         />
         <SectionExecutives />
