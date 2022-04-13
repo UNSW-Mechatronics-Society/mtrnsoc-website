@@ -23,7 +23,7 @@ type SectionExecutivesProps = {
 
 const SectionExecutives = ({ execProfileData, email }: SectionExecutivesProps): JSX.Element => {
   return (
-    <ContentContainer customBackgroundColour="neutral-100">
+    <ContentContainer>
       <div className={styles.sectionContainer}>
         <TitleHeader text="Executives" />
         <ProfileCards profileData={execProfileData} background="executive" contactEmail={email} />
@@ -58,7 +58,7 @@ type SectionSubcommitteeProps = {
 
 const SectionSubcommittee = ({ subcomProfileData }: SectionSubcommitteeProps): JSX.Element => {
   return (
-    <ContentContainer customBackgroundColour="neutral-100">
+    <ContentContainer>
       <div className={styles.sectionContainer}>
         <TitleHeader text="Subcommittee" />
         <SubcomProfileCards subcomData={subcomProfileData} />
