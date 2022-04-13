@@ -1,8 +1,6 @@
 import { contactEmail, linkedin } from "data/socialsData";
 import { subcomProfileData } from "data/TeamData";
-import Link from "next/link";
-import ContentContainer from "../Layout/ContentContainer/ContentContainer";
-import styles from "./Profile.module.scss";
+import styles from "./SubcomProfileCards.module.scss";
 
 type SubcomProfileCardsType = {
   subcomData: subcomProfileData[];

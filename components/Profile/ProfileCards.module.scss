@@ -42,21 +42,6 @@
   @apply h-6 px-1;
 }
 
-.subcomMainContainer {
-  @apply flex flex-wrap justify-center max-w-6xl mx-auto;
-}
-
-.subcomContainer {
-  @apply flex flex-col m-2 p-6 w-72;
-}
-
-.subcomPosition {
-  @apply text-center text-2xl font-semibold pb-2;
-}
-.subcomName {
-  @apply text-center leading-normal text-gray-500 text-lg font-medium;
-}
-
 /*
 mx-48 px-28
 .mainContainer {

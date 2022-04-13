@@ -1,6 +1,6 @@
 import { contactEmail, linkedin } from "data/socialsData";
 import { profileData } from "data/TeamData";
-import styles from "./Profile.module.scss";
+import styles from "./ProfileCards.module.scss";
 
 type background = "director" | "executive";
 
