@@ -6,6 +6,7 @@ import { Banner } from "components";
 import { directorData, execData, subcomData } from "data/TeamData";
 import ProfileCards from "components/Profile/ProfileCards";
 import SubcomProfileCards from "components/Profile/SubcomProfileCards";
+import { contactEmail } from "data/socialsData";
 
 type TitleHeaderProps = {
   text: string;
@@ -20,7 +21,7 @@ const SectionExecutives = () => {
     <ContentContainer customBackgroundColour="neutral-100">
       <div className={styles.sectionContainer}>
         <TitleHeader text="Executives" />
-        <ProfileCards profileData={execData} background="executive" />
+        <ProfileCards profileData={execData} background="executive" contactEmail={contactEmail} />
       </div>
     </ContentContainer>
   );
@@ -31,7 +32,11 @@ const SectionDirectors = () => {
     <ContentContainer>
       <div className={styles.sectionContainer}>
         <TitleHeader text="Directors" />
-        <ProfileCards profileData={directorData} background="director" />
+        <ProfileCards
+          profileData={directorData}
+          background="director"
+          contactEmail={contactEmail}
+        />
       </div>
     </ContentContainer>
   );

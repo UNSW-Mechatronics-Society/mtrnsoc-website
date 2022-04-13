@@ -1,5 +1,4 @@
-import { contactEmail, linkedin } from "data/socialsData";
-import { profileData } from "data/TeamData";
+import type { profileData } from "data/TeamData";
 import styles from "./ProfileCards.module.scss";
 
 type background = "director" | "executive";
@@ -7,9 +6,10 @@ type background = "director" | "executive";
 type ProfileCardsProp = {
   profileData: profileData[];
   background: background;
+  contactEmail: string;
 };
 
-const ProfileCards = ({ profileData, background }: ProfileCardsProp): JSX.Element => {
+const ProfileCards = ({ profileData, background, contactEmail }: ProfileCardsProp): JSX.Element => {
   const backgroundClass = background === "director" ? styles.directorBGColour : styles.execBGColour;
   return (
     <div className={styles.mainContainer}>
@@ -40,7 +40,7 @@ const ProfileCards = ({ profileData, background }: ProfileCardsProp): JSX.Elemen
                     className={styles.logo}
                   />
                 </a>
-                <a href={"mailto:mechatronics.unsw@gmail.com"}>
+                <a href={`mailto:${contactEmail}`}>
                   <img
                     key={`img-${indx}`}
                     src={"/logos/emailLogo.svg"}
