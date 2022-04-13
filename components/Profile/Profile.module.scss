@@ -2,12 +2,16 @@
   @apply flex flex-wrap justify-center max-w-4xl mx-auto;
 }
 
-.execProfileContainer {
-  @apply flex flex-col justify-between bg-[#E8EFF5] m-2 p-6 w-64 h-96;
+.profileContainer {
+  @apply flex flex-col justify-between m-2 p-6 w-64 h-96;
 }
 
-.directorProfileContainer {
-  @apply flex flex-col justify-between bg-[#E9EBED] m-2 p-6 w-64 h-96;
+.execBGColour {
+  @apply bg-[#E8EFF5];
+}
+
+.directorBGColour {
+  @apply bg-[#E9EBED];
 }
 
 .picture {

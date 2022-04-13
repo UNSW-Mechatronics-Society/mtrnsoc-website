@@ -3,10 +3,9 @@ import type { NextPage } from "next";
 import styles from "styles/team.module.scss";
 //import { OurCurrentEventsProps as HomePageProps } from "components/Team/OurTeam";
 import { Banner } from "components";
-import ExecProfileCard from "components/Profile/ExecProfileCard";
-import { DirectorProfileCard } from "components/Profile/DirectorProfileCard";
 import { SubcomProfileCard } from "components/Profile/SubcomProfileCard";
 import { directorData, execData, subcomData } from "data/TeamData";
+import ProfileCards from "components/Profile/ProfileCards";
 
 type TitleHeaderProps = {
   text: string;
@@ -21,7 +20,7 @@ const SectionExecutives = () => {
     <ContentContainer customBackgroundColour="neutral-100">
       <div className={styles.sectionContainer}>
         <TitleHeader text="Executives" />
-        <ExecProfileCard execData={execData} />
+        <ProfileCards profileData={execData} background="executive" />
       </div>
     </ContentContainer>
   );
@@ -32,7 +31,7 @@ const SectionDirectors = () => {
     <ContentContainer>
       <div className={styles.sectionContainer}>
         <TitleHeader text="Directors" />
-        <DirectorProfileCard directorData={directorData} />
+        <ProfileCards profileData={directorData} background="director" />
       </div>
     </ContentContainer>
   );

@@ -1,20 +1,22 @@
 import { contactEmail, linkedin } from "data/socialsData";
 import { profileData } from "data/TeamData";
-import Link from "next/link";
-import ContentContainer from "../Layout/ContentContainer/ContentContainer";
 import styles from "./Profile.module.scss";
 
-type DirectorProfileCardProps = {
-  directorData: profileData[];
+type background = "director" | "executive";
+
+type ProfileCardsProp = {
+  profileData: profileData[];
+  background: background;
 };
 
-export const DirectorProfileCard = ({ directorData }: DirectorProfileCardProps) => {
+const ProfileCards = ({ profileData, background }: ProfileCardsProp): JSX.Element => {
+  const backgroundClass = background === "director" ? styles.directorBGColour : styles.execBGColour;
   return (
     <div className={styles.mainContainer}>
-      {directorData.map((profile, indx) => {
+      {profileData.map((profile, indx) => {
         return (
           <>
-            <div className={styles.directorProfileContainer}>
+            <div className={`${styles.profileContainer} ${backgroundClass}`}>
               <img
                 key={`img-${indx}`}
                 src={profile.src}
@@ -30,15 +32,15 @@ export const DirectorProfileCard = ({ directorData }: DirectorProfileCardProps) 
                 </div>
               </div>
               <div className={styles.links}>
-                <a href={profile.linkedIn}>
+                <a rel="noreferrer" target="_blank" href={profile.linkedIn}>
                   <img
                     key={`img-${indx}`}
-                    src={"/logos/linkedinLogo.svg"}
-                    alt={"LinkedInLogo"}
+                    src="/logos/linkedinLogo.svg"
+                    alt="LinkedInLogo"
                     className={styles.logo}
                   />
                 </a>
-                <a href={contactEmail}>
+                <a href={"mailto:mechatronics.unsw@gmail.com"}>
                   <img
                     key={`img-${indx}`}
                     src={"/logos/emailLogo.svg"}
@@ -54,3 +56,5 @@ export const DirectorProfileCard = ({ directorData }: DirectorProfileCardProps) 
     </div>
   );
 };
+
+export default ProfileCards;
