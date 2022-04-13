@@ -1,9 +1,12 @@
 import { ContentContainer, MetaTags } from "components";
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import styles from "styles/team.module.scss";
 //import { OurCurrentEventsProps as HomePageProps } from "components/Team/OurTeam";
 import { Banner } from "components";
-import * as role from "components/Profile/Profile";
+import { directorData, execData, profileData, subcomData, subcomProfileData } from "data/teamData";
+import ProfileCards from "components/Profile/ProfileCards";
+import SubcomProfileCards from "components/Profile/SubcomProfileCards";
+import { contactEmail } from "data/socialsData";
 
 type TitleHeaderProps = {
   text: string;
@@ -13,40 +16,70 @@ const TitleHeader = ({ text }: TitleHeaderProps): JSX.Element => {
   return <h1 className={styles.title}>{text.toUpperCase()}</h1>;
 };
 
-const SectionExecutives = () => {
+type SectionExecutivesProps = {
+  execProfileData: profileData[];
+  email: string;
+};
+
+const SectionExecutives = ({ execProfileData, email }: SectionExecutivesProps): JSX.Element => {
   return (
-    <ContentContainer customBackgroundColour="neutral-100">
+    <ContentContainer>
       <div className={styles.sectionContainer}>
         <TitleHeader text="Executives" />
-        <role.ExecProfileCard />
+        <ProfileCards profileData={execProfileData} background="executive" contactEmail={email} />
       </div>
     </ContentContainer>
   );
 };
 
-const SectionDirectors = () => {
+type SectionDirectorsProps = {
+  directorProfileData: profileData[];
+  email: string;
+};
+
+const SectionDirectors = ({ directorProfileData, email }: SectionDirectorsProps): JSX.Element => {
   return (
     <ContentContainer>
       <div className={styles.sectionContainer}>
         <TitleHeader text="Directors" />
-        <role.DirProfileCard />
+        <ProfileCards
+          profileData={directorProfileData}
+          background="director"
+          contactEmail={email}
+        />
       </div>
     </ContentContainer>
   );
 };
 
-const Subcom = () => {
+type SectionSubcommitteeProps = {
+  subcomProfileData: subcomProfileData[];
+};
+
+const SectionSubcommittee = ({ subcomProfileData }: SectionSubcommitteeProps): JSX.Element => {
   return (
-    <ContentContainer customBackgroundColour="neutral-100">
+    <ContentContainer>
       <div className={styles.sectionContainer}>
         <TitleHeader text="Subcommittee" />
-        <role.Subcom />
+        <SubcomProfileCards subcomData={subcomProfileData} />
       </div>
     </ContentContainer>
   );
 };
 
-const Home: NextPage = () => {
+type TeamPageProps = {
+  directorProfileData: profileData[];
+  execProfileData: profileData[];
+  subcomProfileData: subcomProfileData[];
+  email: string;
+};
+
+const Team: NextPage<TeamPageProps> = ({
+  directorProfileData,
+  execProfileData,
+  subcomProfileData,
+  email,
+}) => {
   return (
     <div className="h-full">
       <MetaTags title="Team - MTRNSoc" description="Meet the MTRNSoc team" />
@@ -57,27 +90,23 @@ const Home: NextPage = () => {
           arrow={true}
           position="center"
         />
-        <SectionExecutives />
-        <SectionDirectors />
-        <Subcom />
+        <SectionExecutives execProfileData={execProfileData} email={email} />
+        <SectionDirectors directorProfileData={directorProfileData} email={email} />
+        <SectionSubcommittee subcomProfileData={subcomProfileData} />
       </div>
     </div>
   );
 };
 
-export default Home;
+export const getStaticProps: GetStaticProps<TeamPageProps> = async () => {
+  return {
+    props: {
+      directorProfileData: directorData,
+      execProfileData: execData,
+      subcomProfileData: subcomData,
+      email: contactEmail,
+    },
+  };
+};
 
-/*
-
-const Executives = (): JSX.Element => {
-  return (
-    <ContentContainer>
-      <div className={styles.sectionContainer}>
-        <TitleHeader text="Who we are" />
-        <div className={styles.WhoWeAreTextContainer}>
-
-        </div>
-      </div>
-    </ContentContainer>
-  );
-};*/
+export default Team;

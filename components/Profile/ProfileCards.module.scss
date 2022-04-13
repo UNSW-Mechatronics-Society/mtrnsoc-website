@@ -2,12 +2,16 @@
   @apply flex flex-wrap justify-center max-w-4xl mx-auto;
 }
 
-.execprofileContainer {
-  @apply flex flex-col justify-between bg-[#E8EFF5] m-2 p-6 w-64 h-96;
+.profileContainer {
+  @apply flex flex-col justify-between m-2 p-6 w-64 h-96;
 }
 
-.dirprofileContainer {
-  @apply flex flex-col justify-between bg-[#E9EBED] m-2 p-6 w-64 h-96;
+.execBGColour {
+  @apply bg-[#E8EFF5];
+}
+
+.directorBGColour {
+  @apply bg-[#E9EBED];
 }
 
 .picture {
@@ -36,21 +40,6 @@
 
 .logo {
   @apply h-6 px-1;
-}
-
-.subcomMainContainer {
-  @apply flex flex-wrap justify-center max-w-6xl mx-auto;
-}
-
-.subcomContainer {
-  @apply flex flex-col m-2 p-6 w-72;
-}
-
-.subcomPosition {
-  @apply text-center text-2xl font-semibold pb-2;
-}
-.subcomName {
-  @apply text-center leading-normal text-gray-500 text-lg font-medium;
 }
 
 /*
