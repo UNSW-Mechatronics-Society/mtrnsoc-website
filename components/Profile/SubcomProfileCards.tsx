@@ -4,11 +4,11 @@ import Link from "next/link";
 import ContentContainer from "../Layout/ContentContainer/ContentContainer";
 import styles from "./Profile.module.scss";
 
-type SubcomProfileCardType = {
+type SubcomProfileCardsType = {
   subcomData: subcomProfileData[];
 };
 
-export const SubcomProfileCard = ({ subcomData }: SubcomProfileCardType): JSX.Element => {
+const SubcomProfileCards = ({ subcomData }: SubcomProfileCardsType): JSX.Element => {
   return (
     <div className={styles.subcomMainContainer}>
       {subcomData.map((team, indx) => {
@@ -30,3 +30,5 @@ export const SubcomProfileCard = ({ subcomData }: SubcomProfileCardType): JSX.El
     </div>
   );
 };
+
+export default SubcomProfileCards;

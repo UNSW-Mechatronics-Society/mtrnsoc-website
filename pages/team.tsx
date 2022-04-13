@@ -3,9 +3,9 @@ import type { NextPage } from "next";
 import styles from "styles/team.module.scss";
 //import { OurCurrentEventsProps as HomePageProps } from "components/Team/OurTeam";
 import { Banner } from "components";
-import { SubcomProfileCard } from "components/Profile/SubcomProfileCard";
 import { directorData, execData, subcomData } from "data/TeamData";
 import ProfileCards from "components/Profile/ProfileCards";
+import SubcomProfileCards from "components/Profile/SubcomProfileCards";
 
 type TitleHeaderProps = {
   text: string;
@@ -42,7 +42,7 @@ const Subcom = () => {
     <ContentContainer customBackgroundColour="neutral-100">
       <div className={styles.sectionContainer}>
         <TitleHeader text="Subcommittee" />
-        <SubcomProfileCard subcomData={subcomData} />
+        <SubcomProfileCards subcomData={subcomData} />
       </div>
     </ContentContainer>
   );
