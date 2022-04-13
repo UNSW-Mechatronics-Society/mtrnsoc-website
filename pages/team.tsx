@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 import styles from "styles/team.module.scss";
 //import { OurCurrentEventsProps as HomePageProps } from "components/Team/OurTeam";
 import { Banner } from "components";
-import { directorData, execData, subcomData } from "data/TeamData";
+import { directorData, execData, subcomData } from "data/teamData";
 import ProfileCards from "components/Profile/ProfileCards";
 import SubcomProfileCards from "components/Profile/SubcomProfileCards";
 import { contactEmail } from "data/socialsData";

@@ -1,4 +1,4 @@
-import type { profileData } from "data/TeamData";
+import type { profileData } from "data/teamData";
 import styles from "./ProfileCards.module.scss";
 
 type background = "director" | "executive";

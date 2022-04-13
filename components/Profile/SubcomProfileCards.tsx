@@ -1,5 +1,5 @@
 import { contactEmail, linkedin } from "data/socialsData";
-import { subcomProfileData } from "data/TeamData";
+import { subcomProfileData } from "data/teamData";
 import styles from "./SubcomProfileCards.module.scss";
 
 type SubcomProfileCardsType = {
