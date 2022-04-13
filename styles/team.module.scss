@@ -2,10 +2,12 @@
   @apply flex flex-col h-full;
 }
 
+//.sectionContainer {
+//  @apply flex flex-col justify-center my-20 text-center text-xl mx-48;
+//}
 .sectionContainer {
-  @apply flex flex-col justify-center my-20 text-center text-xl mx-48;
+  @apply flex flex-col justify-center my-20 text-center text-xl;
 }
-
 //media query later
 .title {
   @apply text-4xl font-medium mb-10;
