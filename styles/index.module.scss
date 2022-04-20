@@ -13,11 +13,11 @@
 }
 
 .meetTeamContainer {
-  @apply flex flex-col max-w-[64rem] px-14;
+  @apply flex flex-col max-w-[64rem] px-14 max-md:px-0;
 }
 
 .execPhoto {
-  @apply h-40 rounded-[50%];
+  @apply h-40 rounded-[50%] max-md:h-28;
 }
 
 .featuredText {
@@ -25,7 +25,7 @@
 }
 
 .featuredPersonCard {
-  @apply bg-[#E8EFF5] p-5;
+  @apply bg-[#E8EFF5] p-5 max-md:flex max-md:flex-row max-md:justify-center;
 }
 
 .featuredPersonCardText {
@@ -46,7 +46,7 @@
 }
 
 .featuredTextContainer {
-  @apply grid place-items-center w-[85%];
+  @apply grid place-items-center w-[85%] max-md:w-full max-md:mt-10;
 }
 
 .quotesTopLeft {
@@ -80,11 +80,11 @@
 }
 
 .sponsorsContainer {
-  @apply flex flex-row justify-around w-full max-w-[75%];
+  @apply flex flex-row justify-around w-full max-w-[75%] flex-wrap max-sm:flex-col max-sm:items-center;
 }
 
 .sponsorLogos {
-  @apply h-28;
+  @apply h-28 my-2 px-5;
 }
 
 /* .joinButton {

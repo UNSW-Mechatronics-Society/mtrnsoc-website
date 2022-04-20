@@ -60,14 +60,18 @@ const SectionMeetTheTeam = (): JSX.Element => {
         <TitleHeader text="Meet the Team!" />
         <div className={styles.meetTeamContainer}>
           {/* Left hand side */}
-          <div className="flex flex-row w-full">
+          <div className="flex flex-row w-full max-md:flex-col">
             <div className={styles.featuredPersonCard}>
               <img src="/images/other/kyratemp.png" alt="president" className={styles.execPhoto} />
               <div className={styles.featuredPersonCardText}>
-                <h1 className="text-xl font-semibold">Kyra Alday</h1>
-                <span className="text-base uppercase font-medium pt-1 text-gray-500">
-                  President
-                </span>
+                <div className="max-md:h-full max-md:grid max-md:place-items-center max-md:px-5">
+                  <div>
+                    <h1 className="text-xl font-semibold">Kyra Alday</h1>
+                    <span className="text-base uppercase font-medium pt-1 text-gray-500">
+                      President
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
             {/* Right hand side */}
