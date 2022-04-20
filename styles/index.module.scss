@@ -25,7 +25,7 @@
 }
 
 .featuredPersonCard {
-  @apply bg-[#E8EFF5] p-5 max-md:flex max-md:flex-row max-md:justify-center;
+  @apply bg-[#E8EFF5] p-4 mr-4 max-md:flex max-md:flex-row max-md:justify-center;
 }
 
 .featuredPersonCardText {
@@ -51,14 +51,14 @@
 
 .quotesTopLeft {
   position: absolute;
-  top: -4.5rem;
+  top: -4.75rem;
   left: -4rem;
   background: white;
 }
 
 .quotesBottomRight {
   position: absolute;
-  bottom: -4.5rem;
+  bottom: -4.75rem;
   right: -4rem;
   transform: rotate(180deg);
   background: white;

@@ -78,11 +78,13 @@ const SectionMeetTheTeam = (): JSX.Element => {
             <div className={styles.featuredTextContainer}>
               <div className={styles.featuredTextBox}>
                 <p className="relative">
-                  The mechatronics community is one truly driven by curiosity and passion. We strive
-                  to continuously create and improve with what we learn. Integrating skills and
-                  knowledge across many disciplines is our drive and exactly what we aspire to be
-                  our specialty. We all find our own ways to do this, but as we know, we are always
-                  better working together and would be honoured to work with you too.
+                  <span className="z-50">
+                    The mechatronics community is one truly driven by curiosity and passion. We
+                    strive to continuously create and improve with what we learn. Integrating skills
+                    and knowledge across many disciplines is our drive and exactly what we aspire to
+                    be our specialty. We all find our own ways to do this, but as we know, we are
+                    always better working together and would be honoured to work with you too.
+                  </span>
                   <img
                     src="/misc/quotes.svg"
                     alt="pog"
