@@ -2,6 +2,7 @@ import React from "react";
 import type { eventDetails } from "data/eventsData";
 import Link from "next/link";
 import styles from "./OurCurrentEvents.module.scss";
+import EventCardHorizontal from "./EventCardHorizontal";
 
 type TemplateProps = {
   children: React.ReactNode;
@@ -72,7 +73,10 @@ export default function OurCurrentEvents({ currentEvents }: OurCurrentEventsProp
               key={index}
               className={`${index === currentPos ? styles.slideActive : styles.slide}`}
             >
-              <Link href={event.facebookEventLink}>
+              <div className={`w-full ${index === currentPos ? "block" : "hidden"}`}>
+                <EventCardHorizontal eventData={event} cardNumber={1} />
+              </div>
+              {/* <Link href={event.facebookEventLink}>
                 <a target="_blank">
                   <img
                     src={event.imagePath}
@@ -83,7 +87,7 @@ export default function OurCurrentEvents({ currentEvents }: OurCurrentEventsProp
                     title={event.title}
                   />
                 </a>
-              </Link>
+              </Link> */}
             </div>
           ))}
         </div>
