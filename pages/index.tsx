@@ -43,7 +43,7 @@ const SectionOurEvents = ({ currentEvents }: HomePageProps): JSX.Element => {
     <ContentContainer customBackgroundColour="bg-uranian-blue">
       <div className={styles.sectionContainer}>
         <TitleHeader text="Our Current Events" />
-        <OurCurrentEvents currentEvents={currentEvents} />
+        <OurCurrentEvents currentEvents={currentEvents} buttonStyle={styles.buttonStyle} />
       </div>
     </ContentContainer>
   );
@@ -57,42 +57,48 @@ const SectionMeetTheTeam = (): JSX.Element => {
         <TitleHeader text="Meet the Team!" />
         <div className={styles.meetTeamContainer}>
           {/* Left hand side */}
-          <div className={styles.featuredPersonCard}>
-            <img src="/images/other/kyratemp.png" alt="president" className={styles.execPhoto} />
-            <div className={styles.featuredPersonCardText}>
-              <h1 className="text-xl font-semibold">Kyra Alday</h1>
-              <span className="text-base uppercase font-medium pt-1 text-gray-500">President</span>
+          <div className="flex flex-row w-full">
+            <div className={styles.featuredPersonCard}>
+              <img src="/images/other/kyratemp.png" alt="president" className={styles.execPhoto} />
+              <div className={styles.featuredPersonCardText}>
+                <h1 className="text-xl font-semibold">Kyra Alday</h1>
+                <span className="text-base uppercase font-medium pt-1 text-gray-500">
+                  President
+                </span>
+              </div>
+            </div>
+            {/* Right hand side */}
+            <div className={styles.featuredTextContainer}>
+              <div className={styles.featuredTextBox}>
+                <p className="relative">
+                  The mechatronics community is one truly driven by curiosity and passion. We strive
+                  to continuously create and improve with what we learn. Integrating skills and
+                  knowledge across many disciplines is our drive and exactly what we aspire to be
+                  our specialty. We all find our own ways to do this, but as we know, we are always
+                  better working together and would be honoured to work with you too.
+                  <img
+                    src="/misc/quotes.svg"
+                    alt="pog"
+                    className={styles.quotesTopLeft}
+                    draggable={false}
+                  />
+                  <img
+                    src="/misc/quotes.svg"
+                    alt="pog"
+                    className={styles.quotesBottomRight}
+                    draggable={false}
+                  />
+                </p>
+              </div>
             </div>
           </div>
-          {/* Right hand side */}
-          <div className={styles.featuredTextContainer}>
-            <div className={styles.featuredTextBox}>
-              <p className="relative">
-                The mechatronics community is one truly driven by curiosity and passion. We strive
-                to continuously create and improve with what we learn. Integrating skills and
-                knowledge across many disciplines is our drive and exactly what we aspire to be our
-                specialty. We all find our own ways to do this, but as we know, we are always better
-                working together and would be honoured to work with you too.
-                <img
-                  src="/misc/quotes.svg"
-                  alt="pog"
-                  className={styles.quotesTopLeft}
-                  draggable={false}
-                />
-                <img
-                  src="/misc/quotes.svg"
-                  alt="pog"
-                  className={styles.quotesBottomRight}
-                  draggable={false}
-                />
-              </p>
-            </div>
+          <div className="pt-7">
+            <Link href="/team">
+              <a>
+                <button className={styles.buttonStyle}>Meet Us</button>
+              </a>
+            </Link>
           </div>
-          <Link href="/team">
-            <a>
-              <button className={styles.meetUsButton}>Meet Us</button>
-            </a>
-          </Link>
         </div>
       </div>
     </ContentContainer>
@@ -167,7 +173,7 @@ const JoinUsSection = (): JSX.Element => {
           {/* TODO: Link */}
           <Link href="https://member.arc.unsw.edu.au/s/clubdetail?clubid=0016F0000371VybQAE">
             <a target="_blank">
-              <button className={styles.joinButton}>Join us on SpArc</button>
+              <button className={styles.buttonStyle}>Join us on SpArc</button>
             </a>
           </Link>
         </div>

@@ -13,7 +13,7 @@
 }
 
 .meetTeamContainer {
-  @apply relative flex max-w-[64rem] py-14 px-14;
+  @apply flex flex-col max-w-[64rem] px-14;
 }
 
 .execPhoto {
@@ -64,8 +64,19 @@
   background: white;
 }
 
-.meetUsButton {
-  @apply absolute bottom-[-1.5rem] right-[10rem] bg-onyx text-culturedWhite py-3 px-6 rounded-3xl text-lg font-normal hover:scale-[1.05] duration-100 hover:shadow;
+.buttonStyle {
+  @apply text-onyx
+  border-onyx
+  text-lg
+  font-normal
+  rounded-lg
+  py-3
+  px-6
+  duration-100
+  hover:scale-[1.05]
+  hover:shadow border-[1.5px]
+  hover:bg-onyx
+  hover:text-culturedWhite;
 }
 
 .sponsorsContainer {
@@ -76,9 +87,9 @@
   @apply h-28;
 }
 
-.joinButton {
+/* .joinButton {
   @apply bg-onyx text-culturedWhite py-3 px-6 rounded-3xl text-lg font-normal hover:scale-[1.05] duration-100 hover:shadow;
-}
+} */
 
 .WhoWeAreTextContainer {
   @apply px-[7.5%];
