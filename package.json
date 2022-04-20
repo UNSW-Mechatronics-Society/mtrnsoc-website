@@ -13,7 +13,6 @@
     "prettier:write": "prettier --write './**/*.{ts,tsx,js,jsx,scss,css}'"
   },
   "dependencies": {
-    "@types/swagger-ui-react": "^4.1.1",
     "moment": "^2.29.2",
     "next": "12.1.0",
     "react": "17.0.2",
