@@ -1,12 +1,15 @@
 import { Banner, ContentContainer, MetaTags, OurCurrentEvents } from "components";
 import styles from "styles/index.module.scss";
 import type { GetStaticProps, NextPage } from "next";
-import { OurCurrentEventsProps as HomePageProps } from "components/Events/OurCurrentEvents";
-import eventData from "data/eventsData";
+import eventData, { eventDetails } from "data/eventsData";
 import Link from "next/link";
 
 type TitleHeaderProps = {
   text: string;
+};
+
+type HomePageProps = {
+  currentEvents: eventDetails[] | null;
 };
 
 const TitleHeader = ({ text }: TitleHeaderProps): JSX.Element => {
