@@ -1,3 +1,5 @@
+@use "styles/variables";
+
 .mainContainer {
   @apply flex flex-col h-full;
 }
@@ -11,7 +13,7 @@
 }
 
 .meetTeamContainer {
-  @apply relative flex max-w-[64rem] bg-[#E8EFF5]/[.35] py-14 px-14;
+  @apply relative flex max-w-[64rem] py-14 px-14;
 }
 
 .execPhoto {
@@ -31,14 +33,15 @@
 
 .featuredTextBox {
   display: relative;
-  background: rgba(232, 239, 245, 0.65);
-  border: 1px solid #b8d9f4;
+  /* background: rgba(232, 239, 245, 0.65); */
+  border: 1px solid variables.$yaleBlue;
   box-sizing: border-box;
   width: 88%;
   padding-top: 2rem;
   padding-bottom: 2rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+  border-radius: 1.5rem;
 }
 
 .featuredTextContainer {
@@ -47,15 +50,17 @@
 
 .quotesTopLeft {
   position: absolute;
-  top: -4.7rem;
-  left: -3.4rem;
+  top: -4.5rem;
+  left: -4rem;
+  background: white;
 }
 
 .quotesBottomRight {
   position: absolute;
-  bottom: -4.7rem;
-  right: -3.4rem;
+  bottom: -4.5rem;
+  right: -4rem;
   transform: rotate(180deg);
+  background: white;
 }
 
 .meetUsButton {
