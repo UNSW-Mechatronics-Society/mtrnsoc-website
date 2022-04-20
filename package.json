@@ -33,7 +33,7 @@
     "@typescript-eslint/parser": "^5.12.1",
     "autoprefixer": "^10.4.0",
     "babel-jest": "^27.5.1",
-    "eslint": "8.9.0",
+    "eslint": "8.13.0",
     "eslint-config-next": "12.1.0",
     "eslint-plugin-react": "^7.27.1",
     "jest": "^27.5.1",
