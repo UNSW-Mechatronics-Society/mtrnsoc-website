@@ -17,7 +17,7 @@
 }
 
 .execPhoto {
-  @apply h-40 rounded-[50%] max-md:h-28;
+  @apply h-40  min-w-[10rem] rounded-[50%] max-md:h-28 max-md:min-w-[7rem];
 }
 
 .featuredText {
