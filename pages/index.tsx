@@ -99,27 +99,38 @@ const SectionMeetTheTeam = (): JSX.Element => {
   );
 };
 
+// TODO move this to data file
 type imageType = {
   src: string;
   alt: string;
   className: string;
+  link: string;
 };
 
 const images: imageType[] = [
   {
-    src: "/logos/sponsors/arc_green_logo.png",
+    src: "/logos/sponsors/unswArcLogo.png",
     alt: "UNSW ARC logo",
     className: styles.sponsorLogos,
+    link: "https://www.arc.unsw.edu.au/",
   },
   {
-    src: "/logos/sponsors/unswengineering.png",
+    src: "/logos/sponsors/unswEngineeringLogo.png",
     alt: "UNSW Engineering logo",
     className: styles.sponsorLogos,
+    link: "https://www.unsw.edu.au/engineering",
   },
   {
-    src: "/logos/sponsors/unswfounders.png",
+    src: "/logos/sponsors/unswFoundersLogo.png",
     alt: "UNSW Founders logo",
     className: styles.sponsorLogos,
+    link: "https://unswfounders.com/",
+  },
+  {
+    src: "/logos/sponsors/knaLogo.png",
+    alt: "K & A Electronics logo",
+    className: styles.sponsorLogos,
+    link: "https://kandaelectronics.com.au/",
   },
 ];
 
@@ -131,14 +142,13 @@ const SponsorSection = (): JSX.Element => {
       <div className={styles.sectionContainer}>
         <TitleHeader text="Proudly Supported By" />
         <div className={styles.sponsorsContainer}>
-          {images.map((image, indx) => {
+          {images.map((image) => {
             return (
-              <img
-                key={`img-${indx}`}
-                src={image.src}
-                alt={image.alt}
-                className={image.className}
-              />
+              <Link href={image.link} key={image.alt}>
+                <a target="_blank">
+                  <img src={image.src} alt={image.alt} className={image.className} />
+                </a>
+              </Link>
             );
           })}
         </div>
