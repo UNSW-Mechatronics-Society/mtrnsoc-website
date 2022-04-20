@@ -359,11 +359,11 @@ const unsortedEventData: eventDetails[] = [
     date: [{ startDate: 1648792800, endDate: 1648803600 }],
   },
   {
-    title: "How To Guide: Industrial Training",
+    title: "Industrial Training",
     facebookEventLink: "https://www.facebook.com/events/1194347071366653",
     description: null,
     imagePath: "/images/events/2022/2022_it_training.jpg",
-    location: "TBA",
+    location: "UNSW Leighton Hall, G19",
     date: [{ startDate: 1650528000, endDate: 1650537000 }],
   },
   {
@@ -375,12 +375,21 @@ const unsortedEventData: eventDetails[] = [
     date: [{ startDate: 1649214000, endDate: 1649221200 }],
   },
   {
+    title: "Sumobots Competition 2022",
+    facebookEventLink: "https://www.facebook.com/events/712053516816592",
+    description: null,
+    imagePath: "/images/events/2022/2022_sumobots.jpg",
+    location: "UNSW",
+    date: [{ startDate: 1654056000, endDate: 1658397600 }],
+  },
+
+  {
     title: "Testing 1",
     facebookEventLink: "https://www.facebook.com/events/434485775100737",
     description: "Testing event 1",
     imagePath: "/images/events/2022/2022_whackathon.jpg",
     location: "",
-    date: [{ startDate: 1643466171, endDate: 1651299872 }],
+    date: [{ startDate: 1672408800, endDate: 1672491540 }],
   },
   {
     title: "Testing 2",
@@ -388,7 +397,7 @@ const unsortedEventData: eventDetails[] = [
     description: "Testing event 2",
     imagePath: "/images/events/2021/2021_study_night.jpg",
     location: "",
-    date: [{ startDate: 1643466171, endDate: 1651299872 }],
+    date: [{ startDate: 1672408800, endDate: 1672491540 }],
   },
   {
     title: "Testing 3",
@@ -396,11 +405,9 @@ const unsortedEventData: eventDetails[] = [
     description: "Testing event 3",
     imagePath: "/images/events/2021/2021_mtrnsoc_egm.jpg",
     location: "",
-    date: [{ startDate: 1643466171, endDate: 1651299872 }],
+    date: [{ startDate: 1672408800, endDate: 1672491540 }],
   },
 ];
-
-type termDate = string;
 
 type termDateInformation = {
   /**
