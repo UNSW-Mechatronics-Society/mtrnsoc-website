@@ -107,28 +107,18 @@ type imageType = {
 
 const images: imageType[] = [
   {
-    src: "/logos/arc_green_logo.png",
+    src: "/logos/sponsors/arc_green_logo.png",
     alt: "UNSW ARC logo",
     className: styles.sponsorLogos,
   },
   {
-    src: "/logos/unswengineering.png",
+    src: "/logos/sponsors/unswengineering.png",
     alt: "UNSW Engineering logo",
     className: styles.sponsorLogos,
   },
   {
-    src: "/logos/unswfounders.png",
+    src: "/logos/sponsors/unswfounders.png",
     alt: "UNSW Founders logo",
-    className: styles.sponsorLogos,
-  },
-  {
-    src: "/logos/TDevlogo.png",
-    alt: "TelstraDev logo",
-    className: `${styles.sponsorLogos} py-4`,
-  },
-  {
-    src: "/logos/Ac1_Color_Top_Big cropped.png",
-    alt: "Autumn Compass Logo",
     className: styles.sponsorLogos,
   },
 ];
@@ -152,6 +142,15 @@ const SponsorSection = (): JSX.Element => {
             );
           })}
         </div>
+      </div>
+    </ContentContainer>
+  );
+};
+
+const JoinUsSection = (): JSX.Element => {
+  return (
+    <ContentContainer>
+      <div className={styles.sectionContainer}>
         <TitleHeader text="Join The Society" />
         <div>
           <p className="pb-10">Want to be involved? Join Us!</p>
@@ -182,6 +181,7 @@ const Home: NextPage<HomePageProps> = ({ currentEvents }) => {
         <SectionOurEvents currentEvents={currentEvents} />
         <SectionMeetTheTeam />
         <SponsorSection />
+        <JoinUsSection />
       </div>
     </section>
   );
