@@ -78,7 +78,11 @@ export default function OurCurrentEvents({
               key={index}
               className={`${index === currentPos ? styles.slideActive : styles.slide}`}
             >
-              <div className={`w-full ${index === currentPos ? "block" : "hidden"}`}>
+              <div
+                className={`w-full grid place-items-center ${
+                  index === currentPos ? "block" : "hidden"
+                }`}
+              >
                 <EventCardHorizontal eventData={event} cardNumber={1} />
               </div>
               {/* <Link href={event.facebookEventLink}>

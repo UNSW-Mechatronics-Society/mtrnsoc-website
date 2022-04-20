@@ -19,7 +19,7 @@
 }
 
 .navigationButtons {
-  @apply h-14 hover:cursor-pointer min-w-[1.5rem] px-8;
+  @apply h-14 hover:cursor-pointer min-w-[2rem] px-6 max-eventCard:px-0 max-xl:px-3;
 }
 
 .imageSliderContainer {
