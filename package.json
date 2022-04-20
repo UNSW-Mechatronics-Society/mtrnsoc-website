@@ -16,12 +16,10 @@
     "@types/swagger-ui-react": "^4.1.1",
     "moment": "^2.29.2",
     "next": "12.1.0",
-    "next-swagger-doc": "^0.1.11",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-modal": "^3.14.4",
-    "sass": "^1.49.8",
-    "swagger-ui-react": "^4.5.0"
+    "sass": "^1.49.8"
   },
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.16.8",
