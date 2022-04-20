@@ -359,11 +359,11 @@ const unsortedEventData: eventDetails[] = [
     date: [{ startDate: 1648792800, endDate: 1648803600 }],
   },
   {
-    title: "How To Guide: Industrial Training",
+    title: "Industrial Training",
     facebookEventLink: "https://www.facebook.com/events/1194347071366653",
     description: null,
     imagePath: "/images/events/2022/2022_it_training.jpg",
-    location: "TBA",
+    location: "UNSW Leighton Hall, G19",
     date: [{ startDate: 1650528000, endDate: 1650537000 }],
   },
   {
