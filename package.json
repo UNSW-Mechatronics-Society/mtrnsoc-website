@@ -35,7 +35,7 @@
     "autoprefixer": "^10.4.0",
     "babel-jest": "^27.5.1",
     "eslint": "8.13.0",
-    "eslint-config-next": "12.1.0",
+    "eslint-config-next": "12.1.5",
     "eslint-plugin-react": "^7.27.1",
     "jest": "^27.5.1",
     "next-test-api-route-handler": "^3.1.1",
