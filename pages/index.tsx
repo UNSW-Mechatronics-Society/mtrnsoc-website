@@ -1,6 +1,6 @@
 import { Banner, ContentContainer, MetaTags, OurCurrentEvents } from "components";
 import styles from "styles/index.module.scss";
-import type { GetStaticProps, NextPage } from "next";
+import type { GetServerSideProps, NextPage } from "next";
 import eventData, { eventDetails } from "data/eventsData";
 import Link from "next/link";
 import sponsorsData, { sponsorData } from "data/sponsorsData";
@@ -185,7 +185,7 @@ const Home: NextPage<HomePageProps> = ({ currentEvents, sponsors }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
+export const getServerSideProps: GetServerSideProps<HomePageProps> = async () => {
   const currentEvents = eventData.filter((x) => {
     const oldestDate = Math.max(
       ...x.date.map((y) => (y.endDate !== null ? y.endDate : y.startDate)),
@@ -196,8 +196,6 @@ export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
   currentEvents.reverse();
   return {
     props: { currentEvents, sponsors: sponsorsData },
-    // Rebuild page every 5 minutes
-    revalidate: 5 * 60,
   };
 };
 
