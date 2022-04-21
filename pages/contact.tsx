@@ -1,7 +1,7 @@
-import { Banner, ContentContainer, MetaTags } from "components";
 import type { NextPage } from "next";
-import { contactEmail, discord, facebookPage, instagram, linkedin } from "data/socialsData";
 import Link from "next/link";
+import { Banner, ContentContainer, MetaTags } from "components";
+import { contactEmail, discord, facebookPage, instagram, linkedin } from "data/socialsData";
 import styles from "styles/contact.module.scss";
 
 const Home: NextPage = () => {

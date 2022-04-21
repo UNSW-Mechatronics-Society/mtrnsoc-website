@@ -1,5 +1,5 @@
-import { eventDate, eventDetails } from "data/eventsData";
 import moment from "moment";
+import { eventDate, eventDetails } from "data/eventsData";
 import styles from "./EventCardHorizontal.module.scss";
 
 /**

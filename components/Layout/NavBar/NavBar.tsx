@@ -1,12 +1,12 @@
 import React from "react";
 import Link from "next/link";
-import ContentContainer from "../ContentContainer/ContentContainer";
+import { useRouter } from "next/router";
+import useWindowDimensions from "util/useWindowDimensions";
 import type { navLink } from "data/navLinksData";
 import navLinks from "data/navLinksData";
+import ContentContainer from "../ContentContainer/ContentContainer";
 import styles from "./NavBar.module.scss";
-import { useRouter } from "next/router";
 import ReactSlidingPane from "./SlidingPane";
-import useWindowDimensions from "util/useWindowDimensions";
 
 const Logo = () => {
   return (

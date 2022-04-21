@@ -1,5 +1,5 @@
-import eventData, { eventDetails } from "data/eventsData";
 import type { NextApiRequest, NextApiResponse } from "next";
+import eventData, { eventDetails } from "data/eventsData";
 
 export type Data = {
   success: boolean;

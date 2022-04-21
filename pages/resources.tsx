@@ -1,5 +1,5 @@
-import { ContentContainer, MetaTags } from "components";
 import type { NextPage } from "next";
+import { ContentContainer, MetaTags } from "components";
 
 const Home: NextPage = () => {
   return (

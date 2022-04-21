@@ -1,7 +1,8 @@
 /* eslint-disable react/require-default-props */
-/* eslint-disable no-use-before-define */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 
+/* eslint-disable no-use-before-define */
+
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 // From https://github.com/DimitryDushkin/sliding-pane
 import React, { useEffect, useRef, useState } from "react";
 import Modal from "react-modal";

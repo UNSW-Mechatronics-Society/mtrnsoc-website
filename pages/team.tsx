@@ -1,12 +1,12 @@
-import { ContentContainer, MetaTags } from "components";
 import type { GetStaticProps, NextPage } from "next";
-import styles from "styles/team.module.scss";
+import { ContentContainer, MetaTags } from "components";
 //import { OurCurrentEventsProps as HomePageProps } from "components/Team/OurTeam";
 import { Banner } from "components";
-import { directorData, execData, profileData, subcomData, subcomProfileData } from "data/teamData";
 import ProfileCards from "components/Profile/ProfileCards";
 import SubcomProfileCards from "components/Profile/SubcomProfileCards";
 import { contactEmail } from "data/socialsData";
+import { directorData, execData, profileData, subcomData, subcomProfileData } from "data/teamData";
+import styles from "styles/team.module.scss";
 
 type TitleHeaderProps = {
   text: string;

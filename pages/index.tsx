@@ -2,10 +2,10 @@ import type { GetServerSideProps, NextPage } from "next";
 import Link from "next/link";
 import { Banner, ContentContainer, MetaTags, OurCurrentEvents } from "components";
 import eventData, { eventDetails } from "data/eventsData";
+import { spArc } from "data/socialsData";
 import sponsorsData, { sponsorData } from "data/sponsorsData";
 import { execData, profileData } from "data/teamData";
 import styles from "styles/index.module.scss";
-import { spArc } from "data/socialsData";
 
 type TitleHeaderProps = {
   text: string;
