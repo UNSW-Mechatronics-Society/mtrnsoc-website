@@ -3,7 +3,7 @@ import styles from "styles/index.module.scss";
 import type { GetStaticProps, NextPage } from "next";
 import eventData, { eventDetails } from "data/eventsData";
 import Link from "next/link";
-import sponsorsData from "data/sponsorsData";
+import sponsorsData, { sponsorData } from "data/sponsorsData";
 
 type TitleHeaderProps = {
   text: string;
@@ -11,6 +11,7 @@ type TitleHeaderProps = {
 
 type HomePageProps = {
   currentEvents: eventDetails[] | null;
+  sponsors: sponsorData[];
 };
 
 const TitleHeader = ({ text }: TitleHeaderProps): JSX.Element => {
@@ -42,7 +43,11 @@ const SectionWhoWeAre = (): JSX.Element => {
   );
 };
 
-const SectionOurEvents = ({ currentEvents }: HomePageProps): JSX.Element => {
+type SectionOurEventsProps = {
+  currentEvents: eventDetails[] | null;
+};
+
+const SectionOurEvents = ({ currentEvents }: SectionOurEventsProps): JSX.Element => {
   return (
     <ContentContainer customBackgroundColour="bg-uranian-blue">
       <div className={styles.sectionContainer}>
@@ -115,13 +120,17 @@ const SectionMeetTheTeam = (): JSX.Element => {
   );
 };
 
-const SponsorSection = (): JSX.Element => {
+type SponsorsSectionProps = {
+  sponsors: sponsorData[];
+};
+
+const SponsorSection = ({ sponsors }: SponsorsSectionProps): JSX.Element => {
   return (
     <ContentContainer customBackgroundColour="bg-uranian-blue">
       <div className={styles.sectionContainer}>
         <TitleHeader text="Proudly Supported By" />
         <div className={styles.sponsorsContainer}>
-          {sponsorsData.map((sponsor) => {
+          {sponsors.map((sponsor) => {
             return (
               <Link href={sponsor.link} key={sponsor.alt}>
                 <a target="_blank">
@@ -155,7 +164,7 @@ const JoinUsSection = (): JSX.Element => {
   );
 };
 
-const Home: NextPage<HomePageProps> = ({ currentEvents }) => {
+const Home: NextPage<HomePageProps> = ({ currentEvents, sponsors }) => {
   return (
     <section className="h-full">
       <MetaTags title="UNSW Mechatronics Society" description="UNSW Mechatronics Society" />
@@ -169,7 +178,7 @@ const Home: NextPage<HomePageProps> = ({ currentEvents }) => {
         <SectionWhoWeAre />
         <SectionOurEvents currentEvents={currentEvents} />
         <SectionMeetTheTeam />
-        <SponsorSection />
+        <SponsorSection sponsors={sponsors} />
         <JoinUsSection />
       </div>
     </section>
@@ -186,7 +195,7 @@ export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
   });
   currentEvents.reverse();
   return {
-    props: { currentEvents },
+    props: { currentEvents, sponsors: sponsorsData },
     // Rebuild page every 5 minutes
     revalidate: 5 * 60,
   };
