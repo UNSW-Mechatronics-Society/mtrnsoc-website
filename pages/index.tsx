@@ -1,15 +1,14 @@
-import { Banner, ContentContainer, MetaTags, OurCurrentEvents } from "components";
-import styles from "styles/index.module.scss";
-import type { GetStaticProps, NextPage } from "next";
-import eventData, { eventDetails } from "data/eventsData";
+import type { GetServerSideProps, NextPage } from "next";
 import Link from "next/link";
+import { Banner, ContentContainer, MetaTags, OurCurrentEvents } from "components";
+import eventData, { eventDetails } from "data/eventsData";
+import sponsorsData, { sponsorData } from "data/sponsorsData";
+import { execData, profileData } from "data/teamData";
+import styles from "styles/index.module.scss";
+import { spArc } from "data/socialsData";
 
 type TitleHeaderProps = {
   text: string;
-};
-
-type HomePageProps = {
-  currentEvents: eventDetails[] | null;
 };
 
 const TitleHeader = ({ text }: TitleHeaderProps): JSX.Element => {
@@ -41,7 +40,11 @@ const SectionWhoWeAre = (): JSX.Element => {
   );
 };
 
-const SectionOurEvents = ({ currentEvents }: HomePageProps): JSX.Element => {
+type SectionOurEventsProps = {
+  currentEvents: eventDetails[] | null;
+};
+
+const SectionOurEvents = ({ currentEvents }: SectionOurEventsProps): JSX.Element => {
   return (
     <ContentContainer customBackgroundColour="bg-uranian-blue">
       <div className={styles.sectionContainer}>
@@ -52,8 +55,11 @@ const SectionOurEvents = ({ currentEvents }: HomePageProps): JSX.Element => {
   );
 };
 
-const SectionMeetTheTeam = (): JSX.Element => {
-  // TODO mobile
+type SectionMeetTheTeamProps = {
+  featuredPersonData: profileData;
+};
+
+const SectionMeetTheTeam = ({ featuredPersonData }: SectionMeetTheTeamProps): JSX.Element => {
   return (
     <ContentContainer>
       <div className={styles.sectionContainer}>
@@ -62,13 +68,17 @@ const SectionMeetTheTeam = (): JSX.Element => {
           {/* Left hand side */}
           <div className="flex flex-row w-full max-md:flex-col">
             <div className={styles.featuredPersonCard}>
-              <img src="/images/other/kyratemp.png" alt="president" className={styles.execPhoto} />
+              <img
+                src={featuredPersonData.src}
+                alt={`${featuredPersonData.position} photo`}
+                className={styles.execPhoto}
+              />
               <div className={styles.featuredPersonCardText}>
                 <div className="max-md:h-full max-md:grid max-md:place-items-center max-md:px-5">
                   <div>
-                    <h1 className="text-xl font-semibold">Kyra Alday</h1>
+                    <h1 className="text-xl font-semibold">{featuredPersonData.id}</h1>
                     <span className="text-base uppercase font-medium pt-1 text-gray-500">
-                      President
+                      {featuredPersonData.position}
                     </span>
                   </div>
                 </div>
@@ -114,54 +124,21 @@ const SectionMeetTheTeam = (): JSX.Element => {
   );
 };
 
-// TODO move this to data file
-type imageType = {
-  src: string;
-  alt: string;
-  className: string;
-  link: string;
+type SponsorsSectionProps = {
+  sponsors: sponsorData[];
 };
 
-const images: imageType[] = [
-  {
-    src: "/logos/sponsors/unswArcLogo.png",
-    alt: "UNSW ARC logo",
-    className: styles.sponsorLogos,
-    link: "https://www.arc.unsw.edu.au/",
-  },
-  {
-    src: "/logos/sponsors/unswEngineeringLogo.png",
-    alt: "UNSW Engineering logo",
-    className: styles.sponsorLogos,
-    link: "https://www.unsw.edu.au/engineering",
-  },
-  {
-    src: "/logos/sponsors/unswFoundersLogo.png",
-    alt: "UNSW Founders logo",
-    className: styles.sponsorLogos,
-    link: "https://unswfounders.com/",
-  },
-  {
-    src: "/logos/sponsors/knaLogo.png",
-    alt: "K & A Electronics logo",
-    className: styles.sponsorLogos,
-    link: "https://kandaelectronics.com.au/",
-  },
-];
-
-const SponsorSection = (): JSX.Element => {
-  // TODO Mobile
-  // TODO Add links for each sponsor
+const SponsorSection = ({ sponsors }: SponsorsSectionProps): JSX.Element => {
   return (
     <ContentContainer customBackgroundColour="bg-uranian-blue">
       <div className={styles.sectionContainer}>
         <TitleHeader text="Proudly Supported By" />
         <div className={styles.sponsorsContainer}>
-          {images.map((image) => {
+          {sponsors.map((sponsor) => {
             return (
-              <Link href={image.link} key={image.alt}>
+              <Link href={sponsor.link} key={sponsor.alt}>
                 <a target="_blank">
-                  <img src={image.src} alt={image.alt} className={image.className} />
+                  <img src={sponsor.src} alt={sponsor.alt} className={styles.sponsorLogos} />
                 </a>
               </Link>
             );
@@ -172,15 +149,18 @@ const SponsorSection = (): JSX.Element => {
   );
 };
 
-const JoinUsSection = (): JSX.Element => {
+type JoinUsSectionPops = {
+  spArcLink: string;
+};
+
+const JoinUsSection = ({ spArcLink }: JoinUsSectionPops): JSX.Element => {
   return (
     <ContentContainer>
       <div className={styles.sectionContainer}>
         <TitleHeader text="Join The Society" />
         <div>
           <p className="pb-10">Want to be involved? Join Us!</p>
-          {/* TODO: Link */}
-          <Link href="https://member.arc.unsw.edu.au/s/clubdetail?clubid=0016F0000371VybQAE">
+          <Link href={spArcLink}>
             <a target="_blank">
               <button className={styles.buttonStyle}>Join us on SpArc</button>
             </a>
@@ -191,7 +171,19 @@ const JoinUsSection = (): JSX.Element => {
   );
 };
 
-const Home: NextPage<HomePageProps> = ({ currentEvents }) => {
+type HomePageProps = {
+  currentEvents: eventDetails[] | null;
+  sponsors: sponsorData[];
+  featuredPersonData: profileData;
+  spArcLink: string;
+};
+
+const Home: NextPage<HomePageProps> = ({
+  currentEvents,
+  sponsors,
+  featuredPersonData,
+  spArcLink,
+}) => {
   return (
     <section className="h-full">
       <MetaTags title="UNSW Mechatronics Society" description="UNSW Mechatronics Society" />
@@ -204,15 +196,15 @@ const Home: NextPage<HomePageProps> = ({ currentEvents }) => {
         />
         <SectionWhoWeAre />
         <SectionOurEvents currentEvents={currentEvents} />
-        <SectionMeetTheTeam />
-        <SponsorSection />
-        <JoinUsSection />
+        <SectionMeetTheTeam featuredPersonData={featuredPersonData} />
+        <SponsorSection sponsors={sponsors} />
+        <JoinUsSection spArcLink={spArcLink} />
       </div>
     </section>
   );
 };
 
-export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
+export const getServerSideProps: GetServerSideProps<HomePageProps> = async () => {
   const currentEvents = eventData.filter((x) => {
     const oldestDate = Math.max(
       ...x.date.map((y) => (y.endDate !== null ? y.endDate : y.startDate)),
@@ -221,10 +213,20 @@ export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
     return oldestDate * 1000 >= Date.now();
   });
   currentEvents.reverse();
+
+  const featuredPersonData = execData.find((x) => x.position === "President");
+
+  if (featuredPersonData === undefined) {
+    throw "Could not find person to feature from teamData.ts";
+  }
+
   return {
-    props: { currentEvents },
-    // Rebuild page every 5 minutes
-    revalidate: 5 * 60,
+    props: {
+      currentEvents: currentEvents,
+      sponsors: sponsorsData,
+      featuredPersonData: featuredPersonData,
+      spArcLink: spArc,
+    },
   };
 };
 

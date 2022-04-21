@@ -1,10 +1,10 @@
+import React from "react";
+import type { GetServerSideProps, NextPage } from "next";
+import Link from "next/link";
+import moment from "moment";
 import { Banner, ContentContainer, DropdownYear, EventCardHorizontal, MetaTags } from "components";
 import eventData, { eventDetails, yearDates } from "data/eventsData";
-import moment from "moment";
-import type { GetStaticProps, NextPage } from "next";
-import Link from "next/link";
 import styles from "styles/events.module.scss";
-import React from "react";
 
 // Used in getStaticProps
 type yearlyEventsByTerm = {
@@ -137,7 +137,7 @@ const Home: NextPage<EventsPageProps> = ({ currentEvents, eventsByYearByTerm }) 
   );
 };
 
-export const getStaticProps: GetStaticProps<EventsPageProps> = async () => {
+export const getServerSideProps: GetServerSideProps<EventsPageProps> = async () => {
   const currentEvents = eventData.filter((x) => {
     const oldestDate = Math.max(
       ...x.date.map((y) => (y.endDate !== null ? y.endDate : y.startDate)),
@@ -220,9 +220,10 @@ export const getStaticProps: GetStaticProps<EventsPageProps> = async () => {
   eventsByYearByTerm.sort((a, b) => b.year - a.year); // Sort by decreasing year
 
   return {
-    props: { currentEvents, eventsByYearByTerm },
-    // Rebuild page every 5 minutes
-    revalidate: 5 * 60,
+    props: {
+      currentEvents: currentEvents,
+      eventsByYearByTerm: eventsByYearByTerm,
+    },
   };
 };
 

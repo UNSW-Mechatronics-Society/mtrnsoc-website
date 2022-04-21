@@ -18,3 +18,5 @@ export const linkedin = "https://www.linkedin.com/company/unsw-mechatronics-soci
 export const instagram = "https://www.instagram.com/unswmtrnsoc/";
 export const contactEmail = "mechatronics.unsw@gmail.com";
 export const discord = "https://discord.gg/HC9UkGy";
+
+export const spArc = "https://member.arc.unsw.edu.au/s/clubdetail?clubid=0016F0000371VybQAE";
