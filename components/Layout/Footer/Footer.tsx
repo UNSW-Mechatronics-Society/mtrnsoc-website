@@ -1,5 +1,5 @@
-import { contactEmail, discord, facebookPage, instagram, linkedin } from "data/socialsData";
 import Link from "next/link";
+import { contactEmail, discord, facebookPage, instagram, linkedin } from "data/socialsData";
 import ContentContainer from "../ContentContainer/ContentContainer";
 import styles from "./Footer.module.scss";
 

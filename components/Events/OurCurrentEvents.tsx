@@ -1,8 +1,8 @@
 import React from "react";
-import type { eventDetails } from "data/eventsData";
 import Link from "next/link";
-import styles from "./OurCurrentEvents.module.scss";
+import type { eventDetails } from "data/eventsData";
 import EventCardHorizontal from "./EventCardHorizontal";
+import styles from "./OurCurrentEvents.module.scss";
 
 type TemplateProps = {
   children: React.ReactNode;

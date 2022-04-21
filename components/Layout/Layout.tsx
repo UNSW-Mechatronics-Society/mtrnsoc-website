@@ -1,4 +1,4 @@
-import { NavBar, Footer } from "components";
+import { Footer, NavBar } from "components";
 import styles from "./Layout.module.scss";
 
 type LayoutProps = {
