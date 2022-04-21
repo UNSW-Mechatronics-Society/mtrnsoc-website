@@ -15,6 +15,7 @@
   "importOrderSeparation": false,
   "importOrderSortSpecifiers": true,
   "importOrder": [
+    "styles/globals.scss",
     "^react",
     "^next(/)?(.*)$",
     "<THIRD_PARTY_MODULES>",

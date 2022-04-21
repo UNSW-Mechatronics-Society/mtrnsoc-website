@@ -102,7 +102,6 @@ const Home: NextPage<EventsPageProps> = ({ currentEvents, eventsByYearByTerm }) 
   return (
     <div className="h-full">
       <MetaTags title="Events - MTRNSoc" description="Society events" />
-      {/* TODO: Use center text function from banner */}
       <Banner
         imgURL="/images/other/eventsBanner.png"
         text="Events"
