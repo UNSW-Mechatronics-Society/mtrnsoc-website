@@ -19,15 +19,15 @@
 }
 
 .navigationButtons {
-  @apply h-14 hover:cursor-pointer min-w-[1.5rem];
+  @apply h-14 hover:cursor-pointer min-w-[2rem] px-6 max-eventCard:px-0 max-xl:px-3;
 }
 
 .imageSliderContainer {
-  @apply flex flex-row content-center justify-around w-full;
+  @apply flex flex-row content-center justify-center w-full;
 }
 
 .eventsBannerImage {
-  @apply max-h-[35rem] rounded-3xl hover:scale-[1.01] duration-100 hover:shadow-xl border-onyx border-2;
+  @apply max-h-[35rem] rounded-3xl hover:scale-[1.01] duration-100 hover:shadow-xl;
 }
 
 .slide {
@@ -40,5 +40,4 @@
   opacity: 1;
   transition-duration: 1s;
   transform: scale(1.03);
-  max-height: 35rem;
 }

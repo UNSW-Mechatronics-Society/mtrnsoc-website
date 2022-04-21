@@ -1,12 +1,15 @@
 import { Banner, ContentContainer, MetaTags, OurCurrentEvents } from "components";
 import styles from "styles/index.module.scss";
 import type { GetStaticProps, NextPage } from "next";
-import { OurCurrentEventsProps as HomePageProps } from "components/Events/OurCurrentEvents";
-import eventData from "data/eventsData";
+import eventData, { eventDetails } from "data/eventsData";
 import Link from "next/link";
 
 type TitleHeaderProps = {
   text: string;
+};
+
+type HomePageProps = {
+  currentEvents: eventDetails[] | null;
 };
 
 const TitleHeader = ({ text }: TitleHeaderProps): JSX.Element => {
@@ -43,7 +46,7 @@ const SectionOurEvents = ({ currentEvents }: HomePageProps): JSX.Element => {
     <ContentContainer customBackgroundColour="bg-uranian-blue">
       <div className={styles.sectionContainer}>
         <TitleHeader text="Our Current Events" />
-        <OurCurrentEvents currentEvents={currentEvents} />
+        <OurCurrentEvents currentEvents={currentEvents} buttonStyle={styles.buttonStyle} />
       </div>
     </ContentContainer>
   );
@@ -57,79 +60,92 @@ const SectionMeetTheTeam = (): JSX.Element => {
         <TitleHeader text="Meet the Team!" />
         <div className={styles.meetTeamContainer}>
           {/* Left hand side */}
-          <div className={styles.featuredPersonCard}>
-            <img src="/images/other/kyratemp.png" alt="president" className={styles.execPhoto} />
-            <div className={styles.featuredPersonCardText}>
-              <h1 className="text-xl font-semibold">Kyra Alday</h1>
-              <span className="text-base uppercase font-medium pt-1 text-gray-500">President</span>
+          <div className="flex flex-row w-full max-md:flex-col">
+            <div className={styles.featuredPersonCard}>
+              <img src="/images/other/kyratemp.png" alt="president" className={styles.execPhoto} />
+              <div className={styles.featuredPersonCardText}>
+                <div className="max-md:h-full max-md:grid max-md:place-items-center max-md:px-5">
+                  <div>
+                    <h1 className="text-xl font-semibold">Kyra Alday</h1>
+                    <span className="text-base uppercase font-medium pt-1 text-gray-500">
+                      President
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Right hand side */}
+            <div className={styles.featuredTextContainer}>
+              <div className={styles.featuredTextBox}>
+                <p className="relative">
+                  <span className="z-50">
+                    The mechatronics community is one truly driven by curiosity and passion. We
+                    strive to continuously create and improve with what we learn. Integrating skills
+                    and knowledge across many disciplines is our drive and exactly what we aspire to
+                    be our specialty. We all find our own ways to do this, but as we know, we are
+                    always better working together and would be honoured to work with you too.
+                  </span>
+                  <img
+                    src="/misc/quotes.svg"
+                    alt="pog"
+                    className={styles.quotesTopLeft}
+                    draggable={false}
+                  />
+                  <img
+                    src="/misc/quotes.svg"
+                    alt="pog"
+                    className={styles.quotesBottomRight}
+                    draggable={false}
+                  />
+                </p>
+              </div>
             </div>
           </div>
-          {/* Right hand side */}
-          <div className={styles.featuredTextContainer}>
-            <div className={styles.featuredTextBox}>
-              <p className="relative">
-                The mechatronics community is one truly driven by curiosity and passion. We strive
-                to continuously create and improve with what we learn. Integrating skills and
-                knowledge across many disciplines is our drive and exactly what we aspire to be our
-                specialty. We all find our own ways to do this, but as we know, we are always better
-                working together and would be honoured to work with you too.
-                <img
-                  src="/misc/quotes.svg"
-                  alt="pog"
-                  className={styles.quotesTopLeft}
-                  draggable={false}
-                />
-                <img
-                  src="/misc/quotes.svg"
-                  alt="pog"
-                  className={styles.quotesBottomRight}
-                  draggable={false}
-                />
-              </p>
-            </div>
+          <div className="pt-7">
+            <Link href="/team">
+              <a>
+                <button className={styles.buttonStyle}>Meet Us</button>
+              </a>
+            </Link>
           </div>
-          <Link href="/team">
-            <a>
-              <button className={styles.meetUsButton}>Meet Us</button>
-            </a>
-          </Link>
         </div>
       </div>
     </ContentContainer>
   );
 };
 
+// TODO move this to data file
 type imageType = {
   src: string;
   alt: string;
   className: string;
+  link: string;
 };
 
 const images: imageType[] = [
   {
-    src: "/logos/arc_green_logo.png",
+    src: "/logos/sponsors/unswArcLogo.png",
     alt: "UNSW ARC logo",
     className: styles.sponsorLogos,
+    link: "https://www.arc.unsw.edu.au/",
   },
   {
-    src: "/logos/unswengineering.png",
+    src: "/logos/sponsors/unswEngineeringLogo.png",
     alt: "UNSW Engineering logo",
     className: styles.sponsorLogos,
+    link: "https://www.unsw.edu.au/engineering",
   },
   {
-    src: "/logos/unswfounders.png",
+    src: "/logos/sponsors/unswFoundersLogo.png",
     alt: "UNSW Founders logo",
     className: styles.sponsorLogos,
+    link: "https://unswfounders.com/",
   },
   {
-    src: "/logos/TDevlogo.png",
-    alt: "TelstraDev logo",
-    className: `${styles.sponsorLogos} py-4`,
-  },
-  {
-    src: "/logos/Ac1_Color_Top_Big cropped.png",
-    alt: "Autumn Compass Logo",
+    src: "/logos/sponsors/knaLogo.png",
+    alt: "K & A Electronics logo",
     className: styles.sponsorLogos,
+    link: "https://kandaelectronics.com.au/",
   },
 ];
 
@@ -141,24 +157,32 @@ const SponsorSection = (): JSX.Element => {
       <div className={styles.sectionContainer}>
         <TitleHeader text="Proudly Supported By" />
         <div className={styles.sponsorsContainer}>
-          {images.map((image, indx) => {
+          {images.map((image) => {
             return (
-              <img
-                key={`img-${indx}`}
-                src={image.src}
-                alt={image.alt}
-                className={image.className}
-              />
+              <Link href={image.link} key={image.alt}>
+                <a target="_blank">
+                  <img src={image.src} alt={image.alt} className={image.className} />
+                </a>
+              </Link>
             );
           })}
         </div>
+      </div>
+    </ContentContainer>
+  );
+};
+
+const JoinUsSection = (): JSX.Element => {
+  return (
+    <ContentContainer>
+      <div className={styles.sectionContainer}>
         <TitleHeader text="Join The Society" />
         <div>
           <p className="pb-10">Want to be involved? Join Us!</p>
           {/* TODO: Link */}
           <Link href="https://member.arc.unsw.edu.au/s/clubdetail?clubid=0016F0000371VybQAE">
             <a target="_blank">
-              <button className={styles.joinButton}>Join us on SpArc</button>
+              <button className={styles.buttonStyle}>Join us on SpArc</button>
             </a>
           </Link>
         </div>
@@ -182,6 +206,7 @@ const Home: NextPage<HomePageProps> = ({ currentEvents }) => {
         <SectionOurEvents currentEvents={currentEvents} />
         <SectionMeetTheTeam />
         <SponsorSection />
+        <JoinUsSection />
       </div>
     </section>
   );

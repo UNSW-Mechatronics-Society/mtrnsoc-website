@@ -1,3 +1,5 @@
+@use "styles/variables";
+
 .mainContainer {
   @apply flex flex-col h-full;
 }
@@ -11,11 +13,11 @@
 }
 
 .meetTeamContainer {
-  @apply relative flex max-w-[64rem] bg-[#E8EFF5]/[.35] py-14 px-14;
+  @apply flex flex-col max-w-[64rem] px-14 max-md:px-0;
 }
 
 .execPhoto {
-  @apply h-40 rounded-[50%];
+  @apply h-40  min-w-[10rem] rounded-[50%] max-md:h-28 max-md:min-w-[7rem];
 }
 
 .featuredText {
@@ -23,6 +25,7 @@
 }
 
 .featuredPersonCard {
+  @apply bg-[#E8EFF5] p-4 mr-4 max-md:flex max-md:flex-row max-md:justify-center max-md:mb-1;
 }
 
 .featuredPersonCardText {
@@ -31,48 +34,62 @@
 
 .featuredTextBox {
   display: relative;
-  background: rgba(232, 239, 245, 0.65);
-  border: 1px solid #b8d9f4;
+  /* background: rgba(232, 239, 245, 0.65); */
+  border: 1px solid variables.$yaleBlue;
   box-sizing: border-box;
   width: 88%;
   padding-top: 2rem;
   padding-bottom: 2rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+  border-radius: 1.5rem;
 }
 
 .featuredTextContainer {
-  @apply grid place-items-center w-[85%];
+  @apply grid place-items-center w-[85%] max-md:w-full max-md:mt-10;
 }
 
 .quotesTopLeft {
   position: absolute;
-  top: -4.7rem;
-  left: -3.4rem;
+  top: -4.75rem;
+  left: -4rem;
+  background: white;
 }
 
 .quotesBottomRight {
   position: absolute;
-  bottom: -4.7rem;
-  right: -3.4rem;
+  bottom: -4.75rem;
+  right: -4rem;
   transform: rotate(180deg);
+  background: white;
 }
 
-.meetUsButton {
-  @apply absolute bottom-[-1.5rem] right-[10rem] bg-onyx text-culturedWhite py-3 px-6 rounded-3xl text-lg font-normal hover:scale-[1.05] duration-100 hover:shadow;
+.buttonStyle {
+  @apply text-onyx
+  border-onyx
+  text-lg
+  font-normal
+  rounded-lg
+  py-3
+  px-6
+  duration-100
+  hover:scale-[1.05]
+  hover:shadow border-[1.5px]
+  hover:bg-onyx
+  hover:text-culturedWhite;
 }
 
 .sponsorsContainer {
-  @apply flex flex-row justify-around w-full max-w-[80%] pb-20;
+  @apply flex flex-row justify-around w-full max-w-[75%] flex-wrap max-sm:flex-col max-sm:items-center;
 }
 
 .sponsorLogos {
-  @apply h-28;
+  @apply h-28 my-2 px-5;
 }
 
-.joinButton {
+/* .joinButton {
   @apply bg-onyx text-culturedWhite py-3 px-6 rounded-3xl text-lg font-normal hover:scale-[1.05] duration-100 hover:shadow;
-}
+} */
 
 .WhoWeAreTextContainer {
   @apply px-[7.5%];
