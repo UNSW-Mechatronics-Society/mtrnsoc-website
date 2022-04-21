@@ -1,10 +1,9 @@
 import type { GetStaticProps, NextPage } from "next";
 import { ContentContainer, MetaTags } from "components";
-//import { OurCurrentEventsProps as HomePageProps } from "components/Team/OurTeam";
 import { Banner } from "components";
 import ProfileCards from "components/Profile/ProfileCards";
 import SubcomProfileCards from "components/Profile/SubcomProfileCards";
-import { contactEmail } from "data/socialsData";
+import { emailData } from "data/socialsData";
 import { directorData, execData, profileData, subcomData, subcomProfileData } from "data/teamData";
 import styles from "styles/team.module.scss";
 
@@ -104,7 +103,8 @@ export const getStaticProps: GetStaticProps<TeamPageProps> = async () => {
       directorProfileData: directorData,
       execProfileData: execData,
       subcomProfileData: subcomData,
-      email: contactEmail,
+      // NOTE: Based on how children components were designed, 'mailto:' is added to email string
+      email: emailData.display,
     },
   };
 };
