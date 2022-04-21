@@ -1,61 +1,23 @@
 import Link from "next/link";
-import { contactEmail, discord, facebookPage, instagram, linkedin } from "data/socialsData";
+import defaultSocialsData from "data/socialsData";
 import ContentContainer from "../ContentContainer/ContentContainer";
 import styles from "./Footer.module.scss";
 
 const TopHalfLogos = () => {
   return (
     <div className="flex flex-row justify-center my-2">
-      <Link href={discord}>
-        <a target="_blank">
-          <img
-            src="/logos/discordLogo.svg"
-            alt="discord logo"
-            aria-label="discord"
-            className={`${styles.socialLogo} ${styles.culturedWhiteColourLogo}`}
-          />
-        </a>
-      </Link>
-      <Link href={`mailto:${contactEmail}`}>
-        <a>
-          <img
-            src="/logos/emailLogo.svg"
-            alt="email logo"
-            aria-label="email"
-            className={`${styles.socialLogo} ${styles.culturedWhiteColourLogo}`}
-          />
-        </a>
-      </Link>
-      <Link href={facebookPage}>
-        <a target="_blank">
-          <img
-            src="/logos/facebookLogo.svg"
-            alt="facebook logo"
-            aria-label="facebook"
-            className={`${styles.socialLogo} ${styles.culturedWhiteColourLogo}`}
-          />
-        </a>
-      </Link>
-      <Link href={instagram}>
-        <a target="_blank">
-          <img
-            src="/logos/instagramLogo.svg"
-            alt="instagram logo"
-            aria-label="instagram"
-            className={`${styles.socialLogo} ${styles.culturedWhiteColourLogo}`}
-          />
-        </a>
-      </Link>
-      <Link href={linkedin}>
-        <a target="_blank">
-          <img
-            src="/logos/linkedinLogo.svg"
-            alt="linkedin logo"
-            aria-label="linkedin"
-            className={`${styles.socialLogo} ${styles.culturedWhiteColourLogo}`}
-          />
-        </a>
-      </Link>
+      {defaultSocialsData.map((social) => (
+        <Link href={social.url} key={social.name}>
+          <a target="_blank">
+            <img
+              src={social.logoUrl}
+              alt={social.altText}
+              aria-label={social.name}
+              className={`${styles.socialLogo} ${styles.culturedWhiteColourLogo}`}
+            />
+          </a>
+        </Link>
+      ))}
     </div>
   );
 };

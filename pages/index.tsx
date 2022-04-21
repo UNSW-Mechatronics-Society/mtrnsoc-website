@@ -2,7 +2,7 @@ import type { GetServerSideProps, NextPage } from "next";
 import Link from "next/link";
 import { Banner, ContentContainer, MetaTags, OurCurrentEvents } from "components";
 import eventData, { eventDetails } from "data/eventsData";
-import { spArc } from "data/socialsData";
+import { spArcLink } from "data/socialsData";
 import sponsorsData, { sponsorData } from "data/sponsorsData";
 import { execData, profileData } from "data/teamData";
 import styles from "styles/index.module.scss";
@@ -225,7 +225,7 @@ export const getServerSideProps: GetServerSideProps<HomePageProps> = async () =>
       currentEvents: currentEvents,
       sponsors: sponsorsData,
       featuredPersonData: featuredPersonData,
-      spArcLink: spArc,
+      spArcLink: spArcLink,
     },
   };
 };
