@@ -3,6 +3,7 @@ import styles from "styles/index.module.scss";
 import type { GetStaticProps, NextPage } from "next";
 import eventData, { eventDetails } from "data/eventsData";
 import Link from "next/link";
+import sponsorsData from "data/sponsorsData";
 
 type TitleHeaderProps = {
   text: string;
@@ -114,54 +115,17 @@ const SectionMeetTheTeam = (): JSX.Element => {
   );
 };
 
-// TODO move this to data file
-type imageType = {
-  src: string;
-  alt: string;
-  className: string;
-  link: string;
-};
-
-const images: imageType[] = [
-  {
-    src: "/logos/sponsors/unswArcLogo.png",
-    alt: "UNSW ARC logo",
-    className: styles.sponsorLogos,
-    link: "https://www.arc.unsw.edu.au/",
-  },
-  {
-    src: "/logos/sponsors/unswEngineeringLogo.png",
-    alt: "UNSW Engineering logo",
-    className: styles.sponsorLogos,
-    link: "https://www.unsw.edu.au/engineering",
-  },
-  {
-    src: "/logos/sponsors/unswFoundersLogo.png",
-    alt: "UNSW Founders logo",
-    className: styles.sponsorLogos,
-    link: "https://unswfounders.com/",
-  },
-  {
-    src: "/logos/sponsors/knaLogo.png",
-    alt: "K & A Electronics logo",
-    className: styles.sponsorLogos,
-    link: "https://kandaelectronics.com.au/",
-  },
-];
-
 const SponsorSection = (): JSX.Element => {
-  // TODO Mobile
-  // TODO Add links for each sponsor
   return (
     <ContentContainer customBackgroundColour="bg-uranian-blue">
       <div className={styles.sectionContainer}>
         <TitleHeader text="Proudly Supported By" />
         <div className={styles.sponsorsContainer}>
-          {images.map((image) => {
+          {sponsorsData.map((sponsor) => {
             return (
-              <Link href={image.link} key={image.alt}>
+              <Link href={sponsor.link} key={sponsor.alt}>
                 <a target="_blank">
-                  <img src={image.src} alt={image.alt} className={image.className} />
+                  <img src={sponsor.src} alt={sponsor.alt} className={styles.sponsorLogos} />
                 </a>
               </Link>
             );
