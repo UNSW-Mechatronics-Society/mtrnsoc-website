@@ -1,23 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createClient } from "contentful";
 import moment from "moment";
+import { EventDetails } from "./eventsHelpers";
 
 const client = createClient({
   space: process.env.REACT_APP_CONTENTFUL_SPACE_ID as string,
   accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN as string,
 });
-
-export type StartDate = number;
-export type EndDate = number | null;
-
-export type EventDetails = {
-  title: string;
-  facebookEventLink: string;
-  imagePath: string;
-  location: string | null;
-  startDate: StartDate;
-  endDate: EndDate;
-};
 
 type ImageAsset = {
   title: string;

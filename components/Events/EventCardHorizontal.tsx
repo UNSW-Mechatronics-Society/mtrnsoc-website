@@ -1,5 +1,5 @@
 import moment from "moment";
-import { EndDate, EventDetails, StartDate } from "util/api";
+import { EndDate, EventDetails, StartDate } from "util/eventsHelpers";
 import styles from "./EventCardHorizontal.module.scss";
 
 /**

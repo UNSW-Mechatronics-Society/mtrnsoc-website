@@ -1,6 +1,7 @@
 import type { GetServerSideProps, NextPage } from "next";
 import Link from "next/link";
-import getEvents, { EventDetails } from "util/api";
+import getEvents from "util/api";
+import { EventDetails } from "util/eventsHelpers";
 import { Banner, ContentContainer, MetaTags, OurCurrentEvents } from "components";
 import { spArcLink } from "data/socialsData";
 import sponsorsData, { sponsorData } from "data/sponsorsData";
