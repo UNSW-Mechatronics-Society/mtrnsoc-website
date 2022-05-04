@@ -7,13 +7,16 @@ const client = createClient({
   accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN as string,
 });
 
+export type StartDate = number;
+export type EndDate = number | null;
+
 export type EventDetails = {
   title: string;
   facebookEventLink: string;
   imagePath: string;
   location: string | null;
-  startDate: number;
-  endDate: number | null;
+  startDate: StartDate;
+  endDate: EndDate;
 };
 
 type ImageAsset = {
@@ -72,7 +75,7 @@ const getEvents = async (): Promise<[EventDetails[] | null, null | Error | unkno
       events.push({
         title: fields.title as string,
         facebookEventLink: fields.facebookEventUrl as string,
-        location: fields.location as string | null,
+        location: fields.location === undefined ? null : fields.location,
         startDate: moment(fields.startDate as string).unix(),
         endDate: fields.endDate === undefined ? null : moment(fields.endDate as string).unix(),
         imagePath: imageUrl.url,
