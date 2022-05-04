@@ -37,7 +37,7 @@
     "eslint": "8.14.0",
     "eslint-config-next": "12.1.5",
     "eslint-plugin-react": "^7.27.1",
-    "jest": "^28.0.2",
+    "jest": "^28.0.3",
     "next-test-api-route-handler": "^3.1.1",
     "postcss": "^8.4.13",
     "prettier": "2.6.2",
