@@ -18,15 +18,25 @@ type ImageAsset = {
 export const CONTENTFUL_BAD_IMAGE = "CONTENTFUL_BAD_IMAGE";
 
 const getEvents = async (): Promise<[EventDetails[] | null, null | Error | unknown]> => {
+  // Refer to content model for specific names
+  const fieldsToGet = [
+    "title",
+    "facebookEventUrl",
+    "location",
+    "bannerImage",
+    "startDate",
+    "endDate",
+    "displayInPastEvents",
+  ]
+    .map((x) => `fields.${x}`)
+    .join(",");
+
   const events: EventDetails[] = [];
   try {
-    const res = await client.getEntries({ content_type: "events" });
+    // https://www.contentful.com/developers/docs/tutorials/general/modifying-api-responses/
+    const res = await client.getEntries({ content_type: "events", select: fieldsToGet });
     const items = res.items;
     const includes = res.includes;
-
-    // if (res.errors !== undefined) {
-    //   console.log("error exists");
-    // }
 
     let assets: ImageAsset[] = [];
 
