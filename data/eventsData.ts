@@ -448,5 +448,3 @@ const eventData = unsortedEventData.sort((a, b) => {
 });
 
 export default eventData;
-
-export type { eventDetails };

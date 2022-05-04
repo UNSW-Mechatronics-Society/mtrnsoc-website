@@ -1,7 +1,7 @@
 import type { GetServerSideProps, NextPage } from "next";
 import Link from "next/link";
+import getEvents, { EventDetails } from "util/api";
 import { Banner, ContentContainer, MetaTags, OurCurrentEvents } from "components";
-import eventData, { eventDetails } from "data/eventsData";
 import { spArcLink } from "data/socialsData";
 import sponsorsData, { sponsorData } from "data/sponsorsData";
 import { execData, profileData } from "data/teamData";
@@ -41,7 +41,7 @@ const SectionWhoWeAre = (): JSX.Element => {
 };
 
 type SectionOurEventsProps = {
-  currentEvents: eventDetails[] | null;
+  currentEvents: EventDetails[] | null;
 };
 
 const SectionOurEvents = ({ currentEvents }: SectionOurEventsProps): JSX.Element => {
@@ -172,7 +172,7 @@ const JoinUsSection = ({ spArcLink }: JoinUsSectionPops): JSX.Element => {
 };
 
 type HomePageProps = {
-  currentEvents: eventDetails[] | null;
+  currentEvents: EventDetails[] | null;
   sponsors: sponsorData[];
   featuredPersonData: profileData;
   spArcLink: string;
@@ -205,12 +205,19 @@ const Home: NextPage<HomePageProps> = ({
 };
 
 export const getServerSideProps: GetServerSideProps<HomePageProps> = async () => {
+  const [data, err] = await getEvents();
+
+  if (err !== null || err === undefined) throw err;
+  if (data === null) throw new Error("Uncaught error with API call");
+
+  const eventData = data;
+
   const currentEvents = eventData.filter((x) => {
-    const oldestDate = Math.max(
-      ...x.date.map((y) => (y.endDate !== null ? y.endDate : y.startDate)),
-    );
-    // as Date.now() is in milliseconds
-    return oldestDate * 1000 >= Date.now();
+    if (x.endDate !== null) {
+      return x.endDate * 1000 >= Date.now();
+    } else {
+      return x.startDate * 1000 >= Date.now();
+    }
   });
   currentEvents.reverse();
 

@@ -2,20 +2,21 @@ import React from "react";
 import type { GetServerSideProps, NextPage } from "next";
 import Link from "next/link";
 import moment from "moment";
+import getEvents, { EventDetails } from "util/api";
 import { Banner, ContentContainer, DropdownYear, EventCardHorizontal, MetaTags } from "components";
-import eventData, { eventDetails, yearDates } from "data/eventsData";
+import { yearDates } from "data/eventsData";
 import styles from "styles/events.module.scss";
 
 // Used in getStaticProps
 type yearlyEventsByTerm = {
   year: number;
-  t1: eventDetails[];
-  t2: eventDetails[];
-  t3: eventDetails[];
+  t1: EventDetails[];
+  t2: EventDetails[];
+  t3: EventDetails[];
 };
 
 type EventsPageProps = {
-  currentEvents: eventDetails[];
+  currentEvents: EventDetails[];
   eventsByYearByTerm: yearlyEventsByTerm[];
 };
 
@@ -27,7 +28,7 @@ type PastEventsSectionProps = {
 type TermSectionProps = {
   yearSelected: number;
   term: string;
-  termData: eventDetails[];
+  termData: EventDetails[];
 };
 
 const TermSection = ({ yearSelected, term, termData }: TermSectionProps): JSX.Element => {
@@ -137,26 +138,33 @@ const Home: NextPage<EventsPageProps> = ({ currentEvents, eventsByYearByTerm }) 
 };
 
 export const getServerSideProps: GetServerSideProps<EventsPageProps> = async () => {
+  const [data, err] = await getEvents();
+
+  if (err !== null || err === undefined) throw err;
+  if (data === null) throw new Error("Uncaught error with API call");
+
+  const eventData = data;
+
   const currentEvents = eventData.filter((x) => {
-    const oldestDate = Math.max(
-      ...x.date.map((y) => (y.endDate !== null ? y.endDate : y.startDate)),
-    );
-    // as Date.now() is in milliseconds
-    return oldestDate * 1000 >= Date.now();
+    if (x.endDate !== null) {
+      return x.endDate * 1000 >= Date.now();
+    } else {
+      return x.startDate * 1000 >= Date.now();
+    }
   });
   currentEvents.reverse();
 
   const pastEvents = eventData.filter((x) => !currentEvents.includes(x));
   const uniqueYears: Set<number> = new Set();
   pastEvents.forEach((event) => {
-    const earliestDate = Math.min(...event.date.map((y) => y.startDate));
+    const earliestDate = event.startDate;
     uniqueYears.add(moment.unix(earliestDate).year());
   });
   // Split past events into years
 
   type yearlyEvents = {
     year: number;
-    events: eventDetails[];
+    events: EventDetails[];
   };
 
   /**
@@ -166,7 +174,7 @@ export const getServerSideProps: GetServerSideProps<EventsPageProps> = async () 
 
   uniqueYears.forEach((year) => {
     const eventsForYear = pastEvents.filter((x) => {
-      const earliestDate = Math.min(...x.date.map((y) => y.startDate));
+      const earliestDate = x.startDate;
       return moment.unix(earliestDate).year() === year;
     });
 
@@ -194,19 +202,19 @@ export const getServerSideProps: GetServerSideProps<EventsPageProps> = async () 
     // T1 events: Start of year <= date < T2 Start
 
     const t1Events = events.filter((x) => {
-      const earliestDate = Math.min(...x.date.map((y) => y.startDate));
+      const earliestDate = x.startDate;
       return moment().year(year).startOf("year").unix() <= earliestDate && earliestDate < t2Unix;
     });
 
     // T2 events: T2 start <= date < T3 Start
     const t2Events = events.filter((x) => {
-      const earliestDate = Math.min(...x.date.map((y) => y.startDate));
+      const earliestDate = x.startDate;
       return t2Unix <= earliestDate && earliestDate < t3Unix;
     });
 
     // T3 events: T3 start <= date <= End of year
     const t3Events = events.filter((x) => {
-      const earliestDate = Math.min(...x.date.map((y) => y.startDate));
+      const earliestDate = x.startDate;
       return t3Unix <= earliestDate && earliestDate <= moment().year(year).endOf("year").unix();
     });
 
