@@ -52,7 +52,7 @@ const getEvents = async (): Promise<[EventDetails[] | null, null | Error | unkno
 
     items.forEach((entry: any) => {
       const { fields } = entry;
-      const imageUrl = assets.find((x) => x.id === "2");
+      const imageUrl = assets.find((x) => x.id === fields.bannerImage.sys.id);
 
       // REVIEW: Rework this error handling
       if (imageUrl === undefined) {
