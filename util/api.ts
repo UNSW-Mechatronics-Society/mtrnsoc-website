@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createClient } from "contentful";
+import moment from "moment";
 
 const client = createClient({
   space: process.env.REACT_APP_CONTENTFUL_SPACE_ID as string,
@@ -11,8 +12,8 @@ export type EventDetails = {
   facebookEventLink: string;
   imagePath: string;
   location: string | null;
-  startDate: string;
-  endDate: string | null;
+  startDate: number;
+  endDate: number | null;
 };
 
 type ImageAsset = {
@@ -72,8 +73,8 @@ const getEvents = async (): Promise<[EventDetails[] | null, null | Error | unkno
         title: fields.title as string,
         facebookEventLink: fields.facebookEventUrl as string,
         location: fields.location as string | null,
-        startDate: fields.startDate as string,
-        endDate: fields.endDate as string | null,
+        startDate: moment(fields.startDate as string).unix(),
+        endDate: fields.endDate === undefined ? null : moment(fields.endDate as string).unix(),
         imagePath: imageUrl.url,
       });
     });
