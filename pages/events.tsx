@@ -5,7 +5,7 @@ import moment from "moment";
 import { getCurrentEvents, getPastEvents } from "util/api";
 import { Event, EventDetail } from "util/eventsHelpers";
 import { Banner, ContentContainer, DropdownYear, EventCardHorizontal, MetaTags } from "components";
-import { yearDates } from "data/eventsData";
+import { yearDateInformation, yearDates } from "data/termDatesData";
 import styles from "styles/events.module.scss";
 
 // Used in getStaticProps
@@ -26,6 +26,7 @@ type yearlyEventsByTerm = {
 type EventsPageProps = {
   currentEventsRaw: EventDetail[];
   eventsByYearByTermRaw: yearlyEventsByTermRaw[];
+  yearData: yearDateInformation[];
 };
 
 type PastEventsSectionProps = {
@@ -87,8 +88,8 @@ const PastEventsSection = ({
   );
 };
 
-const Home: NextPage<EventsPageProps> = ({ currentEventsRaw, eventsByYearByTermRaw }) => {
-  const years = yearDates.map((x) => x.year);
+const Home: NextPage<EventsPageProps> = ({ currentEventsRaw, eventsByYearByTermRaw, yearData }) => {
+  const years = yearData.map((x) => x.year);
   const [yearSelected, setYearSelected] = React.useState(years[0]);
 
   const currentEvents = currentEventsRaw.map((x) => Event.eventFromEventDetails(x));
@@ -255,6 +256,7 @@ export const getServerSideProps: GetServerSideProps<EventsPageProps> = async () 
     props: {
       currentEventsRaw: sortedCurrentEvents.map((x) => x.toJSON()),
       eventsByYearByTermRaw: eventsByYearByTerm,
+      yearData: yearDates,
     },
   };
 };

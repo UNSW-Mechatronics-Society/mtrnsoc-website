@@ -13,12 +13,12 @@ type termDateInformation = {
   t3: string;
 };
 
-type yearDateInformation = {
+export type yearDateInformation = {
   year: number;
   termStartDates: termDateInformation;
 };
 
-// TODO, move to contentful
+// NOTE: This does have to be updated each year
 export const yearDates: yearDateInformation[] = [
   { year: 2022, termStartDates: { t1: "14/02/2022", t2: "30/05/2022", t3: "12/09/2022" } },
   { year: 2021, termStartDates: { t1: "15/02/2021", t2: "31/05/2021", t3: "13/09/2021" } },
