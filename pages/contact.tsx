@@ -1,11 +1,11 @@
 import type { GetStaticProps, NextPage } from "next";
 import Link from "next/link";
 import { ContentContainer, MetaTags } from "components";
-import defaultSocialsData, { socialData } from "data/socialsData";
+import defaultSocialsData, { SocialData } from "data/socialsData";
 import styles from "styles/contact.module.scss";
 
 type ContactPageProps = {
-  socialsData: socialData[];
+  socialsData: SocialData[];
 };
 
 const Contact: NextPage<ContactPageProps> = ({ socialsData }) => {
@@ -13,10 +13,10 @@ const Contact: NextPage<ContactPageProps> = ({ socialsData }) => {
   if (emailData === undefined) throw "Cannot find emailData from socialData.ts";
 
   return (
-    <div className="w-full h-full grid place-items-center">
+    <div className={styles.pageContainer}>
       <MetaTags title="Contact - MTRNSoc" description="Contact society" />
       <ContentContainer>
-        <div className="flex flex-col items-center">
+        <div className={styles.mainContainer}>
           <h1 className="text-3xl font-semibold mb-4">Wanna get in touch?</h1>
           <p className="text-2xl font-medium mb-1">General Contact</p>
           <p className="text-lg underline">
@@ -25,7 +25,7 @@ const Contact: NextPage<ContactPageProps> = ({ socialsData }) => {
             </Link>
           </p>
           <h1 className="text-3xl font-semibold mt-6 mb-4">Stay Connected</h1>
-          <div className="flex">
+          <div className={styles.socialIconContainer}>
             {socialsData.map((social) => (
               <Link href={social.url} key={social.name}>
                 <a target="_blank">

@@ -1,3 +1,5 @@
+import moment from "moment";
+
 export type StartDate = number;
 export type EndDate = number | null;
 
@@ -49,6 +51,11 @@ export class Event {
     this.endDate = endDate;
   }
 
+  /**
+   * Convert an `EventDetail` object into an Event instance
+   * @param e object to be converted
+   * @returns
+   */
   public static eventFromEventDetails(e: EventDetail): Event {
     return new Event(e.title, e.facebookEventLink, e.location, e.imagePath, e.startDate, e.endDate);
   }
@@ -87,5 +94,49 @@ export class Event {
       startDate: this.startDate,
       endDate: this.endDate,
     };
+  };
+
+  /**
+   * If `x` does not have a 00 minutes time, display minutes
+   * @param x
+   * @returns
+   */
+  private convertToTimeString = (x: moment.Moment): string => {
+    if (x.format("mm") === "00") {
+      return x.format("h a");
+    } else {
+      return x.format("h:mm a");
+    }
+  };
+
+  /**
+   * Convert event UNIX time into human readable string
+   * @returns
+   */
+  public dateToString = (): string => {
+    // Convert start date
+    const startMoment = moment.unix(this.startDate);
+
+    if (!this.endDate) {
+      // Event with only a starting time
+      return `${startMoment.format("D MMM")}, ${this.convertToTimeString(startMoment)}`;
+    }
+
+    const endMoment = moment.unix(this.endDate);
+
+    if (
+      startMoment.isSame(endMoment, "day") &&
+      startMoment.isSame(endMoment, "month") &&
+      startMoment.isSameOrBefore(endMoment, "year")
+    ) {
+      // Event Lies on the same day
+      return `${startMoment.format("D MMM")}, ${this.convertToTimeString(
+        startMoment,
+      )} - ${this.convertToTimeString(endMoment)}`;
+    }
+    // Multi day event
+    return `${startMoment.format("D MMM")}, ${this.convertToTimeString(
+      startMoment,
+    )} - ${endMoment.format("D MMM")}, ${this.convertToTimeString(endMoment)}`;
   };
 }

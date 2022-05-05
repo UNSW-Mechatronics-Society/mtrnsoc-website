@@ -4,7 +4,7 @@ import { Banner } from "components";
 import ProfileCards from "components/Profile/ProfileCards";
 import SubcomProfileCards from "components/Profile/SubcomProfileCards";
 import { emailData } from "data/socialsData";
-import { directorData, execData, profileData, subcomData, subcomProfileData } from "data/teamData";
+import { ProfileData, SubcomProfileData, directorData, execData, subcomData } from "data/teamData";
 import styles from "styles/team.module.scss";
 
 type TitleHeaderProps = {
@@ -16,7 +16,7 @@ const TitleHeader = ({ text }: TitleHeaderProps): JSX.Element => {
 };
 
 type SectionExecutivesProps = {
-  execProfileData: profileData[];
+  execProfileData: ProfileData[];
   email: string;
 };
 
@@ -32,7 +32,7 @@ const SectionExecutives = ({ execProfileData, email }: SectionExecutivesProps): 
 };
 
 type SectionDirectorsProps = {
-  directorProfileData: profileData[];
+  directorProfileData: ProfileData[];
   email: string;
 };
 
@@ -52,7 +52,7 @@ const SectionDirectors = ({ directorProfileData, email }: SectionDirectorsProps)
 };
 
 type SectionSubcommitteeProps = {
-  subcomProfileData: subcomProfileData[];
+  subcomProfileData: SubcomProfileData[];
 };
 
 const SectionSubcommittee = ({ subcomProfileData }: SectionSubcommitteeProps): JSX.Element => {
@@ -67,9 +67,9 @@ const SectionSubcommittee = ({ subcomProfileData }: SectionSubcommitteeProps): J
 };
 
 type TeamPageProps = {
-  directorProfileData: profileData[];
-  execProfileData: profileData[];
-  subcomProfileData: subcomProfileData[];
+  directorProfileData: ProfileData[];
+  execProfileData: ProfileData[];
+  subcomProfileData: SubcomProfileData[];
   email: string;
 };
 

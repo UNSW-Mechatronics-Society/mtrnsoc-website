@@ -1,17 +1,17 @@
-export type profileData = {
+export type ProfileData = {
   src: string;
   id: string;
   position: string;
   linkedIn: string;
 };
 
-export type subcomProfileData = {
+export type SubcomProfileData = {
   portfolioName: string;
   members: string[];
 };
 
 // alt and name is id, email is mtrnsoc email, classnames are the same,
-export const execData: profileData[] = [
+export const execData: ProfileData[] = [
   {
     src: "/images/profiles/kyra.jpg",
     id: "Kyra Alday",
@@ -44,7 +44,7 @@ export const execData: profileData[] = [
   },
 ];
 
-export const directorData: profileData[] = [
+export const directorData: ProfileData[] = [
   {
     src: "/images/profiles/celine.jpg",
     id: "Celine Choo",
@@ -89,7 +89,7 @@ export const directorData: profileData[] = [
   },
 ];
 
-export const subcomData: subcomProfileData[] = [
+export const subcomData: SubcomProfileData[] = [
   {
     portfolioName: "Marketing Team",
     members: ["Aakash Kumar", "Angela Lei", "Carrie Wu", "Rayyan Hossain", "Sam Banerjee"],

@@ -5,18 +5,22 @@ import moment from "moment";
 import { getCurrentEvents, getPastEvents } from "util/api";
 import { Event, EventDetail } from "util/eventsHelpers";
 import { Banner, ContentContainer, DropdownYear, EventCardHorizontal, MetaTags } from "components";
-import { yearDateInformation, yearDates } from "data/termDatesData";
+import { YearDateInformation, yearDates } from "data/termDatesData";
 import styles from "styles/events.module.scss";
 
-// Used in getStaticProps
-type yearlyEventsByTermRaw = {
+type YearlyEvents = {
+  year: number;
+  events: Event[];
+};
+
+type YearlyEventsByTermRaw = {
   year: number;
   t1: EventDetail[];
   t2: EventDetail[];
   t3: EventDetail[];
 };
 
-type yearlyEventsByTerm = {
+type YearlyEventsByTerm = {
   year: number;
   t1: Event[];
   t2: Event[];
@@ -25,12 +29,12 @@ type yearlyEventsByTerm = {
 
 type EventsPageProps = {
   currentEventsRaw: EventDetail[];
-  eventsByYearByTermRaw: yearlyEventsByTermRaw[];
-  yearData: yearDateInformation[];
+  eventsByYearByTermRaw: YearlyEventsByTermRaw[];
+  yearData: YearDateInformation[];
 };
 
 type PastEventsSectionProps = {
-  eventsByYearByTerm: yearlyEventsByTerm[];
+  eventsByYearByTerm: YearlyEventsByTerm[];
   yearSelected: number;
 };
 
@@ -70,6 +74,7 @@ const PastEventsSection = ({
   const selectedYearData = eventsByYearByTerm.find((x) => x.year === yearSelected);
 
   if (selectedYearData === undefined) {
+    // TODO
     return <p className="w-full grid place-items-center">No Past Events</p>;
   }
 
@@ -93,7 +98,7 @@ const Home: NextPage<EventsPageProps> = ({ currentEventsRaw, eventsByYearByTermR
   const [yearSelected, setYearSelected] = React.useState(years[0]);
 
   const currentEvents = currentEventsRaw.map((x) => Event.eventFromEventDetails(x));
-  const eventsByYearByTerm: yearlyEventsByTerm[] = eventsByYearByTermRaw.map((x) => {
+  const eventsByYearByTerm: YearlyEventsByTerm[] = eventsByYearByTermRaw.map((x) => {
     return {
       year: x.year,
       t1: x.t1.map((y) => Event.eventFromEventDetails(y)),
@@ -183,15 +188,11 @@ export const getServerSideProps: GetServerSideProps<EventsPageProps> = async () 
   });
 
   // Split past events into years
-  type yearlyEvents = {
-    year: number;
-    events: Event[];
-  };
 
   /**
    * `pastEvents` sorted into groups with the same year
    */
-  const eventsByYear: yearlyEvents[] = [];
+  const eventsByYear: YearlyEvents[] = [];
 
   uniqueYears.forEach((year) => {
     const eventsForYear = pastEvents.filter((x) => {
@@ -204,7 +205,7 @@ export const getServerSideProps: GetServerSideProps<EventsPageProps> = async () 
   /**
    * `pastEvents` sorted by years then by UNSW terms
    */
-  const eventsByYearByTerm: yearlyEventsByTermRaw[] = [];
+  const eventsByYearByTerm: YearlyEventsByTermRaw[] = [];
 
   eventsByYear.forEach(({ year, events }) => {
     // Find the term dates
@@ -220,7 +221,6 @@ export const getServerSideProps: GetServerSideProps<EventsPageProps> = async () 
     const t3Unix = moment(termStartDates.t3, FORMAT).unix();
 
     // T1 events: Start of year <= date < T2 Start
-
     const t1Events = events.filter((x) => {
       const earliestDate = x.startDate;
       return moment().year(year).startOf("year").unix() <= earliestDate && earliestDate < t2Unix;

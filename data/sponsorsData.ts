@@ -1,11 +1,11 @@
-export type sponsorData = {
+export type SponsorData = {
   src: string;
   alt: string;
   link: string;
   type: "affiliate" | "sponsor";
 };
 
-const sponsorsData: sponsorData[] = [
+const sponsorsData: SponsorData[] = [
   {
     src: "/logos/sponsors/unswArcLogo.png",
     alt: "UNSW ARC logo",

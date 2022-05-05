@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import useWindowDimensions from "util/useWindowDimensions";
-import type { navLink } from "data/navLinksData";
+import type { NavLink } from "data/navLinksData";
 import navLinks from "data/navLinksData";
 import ContentContainer from "../ContentContainer/ContentContainer";
 import styles from "./NavBar.module.scss";
@@ -23,7 +23,7 @@ const Logo = () => {
   );
 };
 
-type DesktopButtonProps = NavLinksSectionProps & navLink;
+type DesktopButtonProps = NavLinksSectionProps & NavLink;
 
 const DesktopButton = ({ name, route, currentRoute }: DesktopButtonProps): JSX.Element => {
   const boldIfRouteIsCurrent = route === currentRoute ? "font-semibold" : "";

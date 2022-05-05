@@ -1,11 +1,11 @@
-import type { profileData } from "data/teamData";
+import type { ProfileData } from "data/teamData";
 import styles from "./ProfileCards.module.scss";
 
-type background = "director" | "executive";
+type Background = "director" | "executive";
 
 type ProfileCardsProp = {
-  profileData: profileData[];
-  background: background;
+  profileData: ProfileData[];
+  background: Background;
   contactEmail: string;
 };
 

@@ -1,9 +1,9 @@
-export type navLink = {
+export type NavLink = {
   name: string;
   route: string;
 };
 
-const navLinks: navLink[] = [
+const navLinks: NavLink[] = [
   {
     name: "Home",
     route: "/",
