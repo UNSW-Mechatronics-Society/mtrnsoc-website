@@ -25,7 +25,9 @@ export default function EventCardHorizontal({
           <div className="flex flex-row">
             <img className="mr-3" src="/misc/calendar--heat-map.svg" alt="" draggable="false" />
             <div className="flex flex-col">
-              <p className="text-lg grid place-items-center">{eventData.dateToString()}</p>
+              <p className="text-lg grid place-items-center max-eventCard:text-left">
+                {eventData.dateToString()}
+              </p>
             </div>
           </div>
           {/* If location exists, display it */}
