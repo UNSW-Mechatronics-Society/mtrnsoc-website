@@ -1,5 +1,5 @@
 import moment from "moment";
-import { EndDate, EventDetails, StartDate } from "util/eventsHelpers";
+import { EndDate, Event, StartDate } from "util/eventsHelpers";
 import styles from "./EventCardHorizontal.module.scss";
 
 /**
@@ -48,7 +48,7 @@ const convertUnixToString = (startDate: StartDate, endDate: EndDate) => {
 };
 
 type EventCardHorizontalProps = {
-  eventData: EventDetails;
+  eventData: Event;
   cardNumber: number;
 };
 

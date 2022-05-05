@@ -3,22 +3,29 @@ import type { GetServerSideProps, NextPage } from "next";
 import Link from "next/link";
 import moment from "moment";
 import getEvents from "util/api";
-import { EventDetails } from "util/eventsHelpers";
+import { Event, EventDetail } from "util/eventsHelpers";
 import { Banner, ContentContainer, DropdownYear, EventCardHorizontal, MetaTags } from "components";
 import { yearDates } from "data/eventsData";
 import styles from "styles/events.module.scss";
 
 // Used in getStaticProps
+type yearlyEventsByTermRaw = {
+  year: number;
+  t1: EventDetail[];
+  t2: EventDetail[];
+  t3: EventDetail[];
+};
+
 type yearlyEventsByTerm = {
   year: number;
-  t1: EventDetails[];
-  t2: EventDetails[];
-  t3: EventDetails[];
+  t1: Event[];
+  t2: Event[];
+  t3: Event[];
 };
 
 type EventsPageProps = {
-  currentEvents: EventDetails[];
-  eventsByYearByTerm: yearlyEventsByTerm[];
+  currentEventsRaw: EventDetail[];
+  eventsByYearByTermRaw: yearlyEventsByTermRaw[];
 };
 
 type PastEventsSectionProps = {
@@ -29,7 +36,7 @@ type PastEventsSectionProps = {
 type TermSectionProps = {
   yearSelected: number;
   term: string;
-  termData: EventDetails[];
+  termData: EventDetail[];
 };
 
 const TermSection = ({ yearSelected, term, termData }: TermSectionProps): JSX.Element => {
@@ -80,10 +87,19 @@ const PastEventsSection = ({
   );
 };
 
-const Home: NextPage<EventsPageProps> = ({ currentEvents, eventsByYearByTerm }) => {
+const Home: NextPage<EventsPageProps> = ({ currentEventsRaw, eventsByYearByTermRaw }) => {
   const years = yearDates.map((x) => x.year);
-
   const [yearSelected, setYearSelected] = React.useState(years[0]);
+
+  const currentEvents = currentEventsRaw.map((x) => Event.eventFromEventDetails(x));
+  const eventsByYearByTerm: yearlyEventsByTerm[] = eventsByYearByTermRaw.map((x) => {
+    return {
+      year: x.year,
+      t1: x.t1.map((y) => Event.eventFromEventDetails(y)),
+      t2: x.t2.map((y) => Event.eventFromEventDetails(y)),
+      t3: x.t3.map((y) => Event.eventFromEventDetails(y)),
+    };
+  });
 
   const CurrentEventsSection = () => {
     if (currentEvents.length >= 1) {
@@ -143,12 +159,10 @@ const Home: NextPage<EventsPageProps> = ({ currentEvents, eventsByYearByTerm }) 
 };
 
 export const getServerSideProps: GetServerSideProps<EventsPageProps> = async () => {
-  const [data, err] = await getEvents();
+  const [eventData, err] = await getEvents();
 
   if (err !== null || err === undefined) throw err;
-  if (data === null) throw new Error("Uncaught error with API call");
-
-  const eventData = data;
+  if (eventData === null) throw new Error("Uncaught error with API call");
 
   const currentEvents = eventData.filter((x) => {
     if (x.endDate !== null) {
@@ -165,11 +179,11 @@ export const getServerSideProps: GetServerSideProps<EventsPageProps> = async () 
     const earliestDate = event.startDate;
     uniqueYears.add(moment.unix(earliestDate).year());
   });
-  // Split past events into years
 
+  // Split past events into years
   type yearlyEvents = {
     year: number;
-    events: EventDetails[];
+    events: Event[];
   };
 
   /**
@@ -182,14 +196,13 @@ export const getServerSideProps: GetServerSideProps<EventsPageProps> = async () 
       const earliestDate = x.startDate;
       return moment.unix(earliestDate).year() === year;
     });
-
     eventsByYear.push({ year, events: eventsForYear });
   });
 
   /**
    * `pastEvents` sorted by years then by UNSW terms
    */
-  const eventsByYearByTerm: yearlyEventsByTerm[] = [];
+  const eventsByYearByTerm: yearlyEventsByTermRaw[] = [];
 
   eventsByYear.forEach(({ year, events }) => {
     // Find the term dates
@@ -226,15 +239,20 @@ export const getServerSideProps: GetServerSideProps<EventsPageProps> = async () 
     if (t1Events.length + t2Events.length + t3Events.length !== events.length)
       throw new Error("Issue with sorting events into terms");
 
-    eventsByYearByTerm.push({ year, t1: t1Events, t2: t2Events, t3: t3Events });
+    eventsByYearByTerm.push({
+      year,
+      t1: t1Events.map((x) => x.toJSON()),
+      t2: t2Events.map((x) => x.toJSON()),
+      t3: t3Events.map((x) => x.toJSON()),
+    });
   });
 
   eventsByYearByTerm.sort((a, b) => b.year - a.year); // Sort by decreasing year
 
   return {
     props: {
-      currentEvents: currentEvents,
-      eventsByYearByTerm: eventsByYearByTerm,
+      currentEventsRaw: currentEvents.map((x) => x.toJSON()),
+      eventsByYearByTermRaw: eventsByYearByTerm,
     },
   };
 };

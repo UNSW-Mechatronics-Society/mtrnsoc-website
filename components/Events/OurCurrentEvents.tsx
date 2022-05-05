@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { EventDetails } from "util/api";
+import { Event } from "util/eventsHelpers";
 import EventCardHorizontal from "./EventCardHorizontal";
 import styles from "./OurCurrentEvents.module.scss";
 
@@ -25,7 +25,7 @@ const Template = ({ children, buttonStyle }: TemplateProps) => {
 };
 
 export type OurCurrentEventsProps = {
-  currentEvents: EventDetails[] | null;
+  currentEvents: Event[];
   buttonStyle: string;
 };
 

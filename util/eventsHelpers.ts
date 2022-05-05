@@ -1,7 +1,7 @@
 export type StartDate = number;
 export type EndDate = number | null;
 
-export type EventDetails = {
+export type EventDetail = {
   title: string;
   facebookEventLink: string;
   imagePath: string;
@@ -10,7 +10,7 @@ export type EventDetails = {
   endDate: EndDate;
 };
 
-export class EventDetail {
+export class Event {
   public readonly title: string;
   public readonly facebookEventLink: string;
   public readonly imagePath: string;
@@ -25,7 +25,7 @@ export class EventDetail {
   public readonly endDate: EndDate;
 
   /**
-   * Create a new instance of `EventDetail`
+   * Create a new instance of `Event` from fields
    * @param title title of event
    * @param facebookEventLink facebook link towards event
    * @param imagePath url of event image banner
@@ -33,11 +33,11 @@ export class EventDetail {
    * @param startDate start date of event in UNIX seconds
    * @param endDate optional end date of event in UNIX seconds
    */
-  constructor(
+  public constructor(
     title: string,
     facebookEventLink: string,
-    imagePath: string,
     location: string | null,
+    imagePath: string,
     startDate: number,
     endDate: number | null,
   ) {
@@ -47,6 +47,10 @@ export class EventDetail {
     this.location = location;
     this.startDate = startDate;
     this.endDate = endDate;
+  }
+
+  public static eventFromEventDetails(e: EventDetail): Event {
+    return new Event(e.title, e.facebookEventLink, e.location, e.imagePath, e.startDate, e.endDate);
   }
 
   /**
@@ -69,5 +73,19 @@ export class EventDetail {
     } else {
       return this.startDate;
     }
+  };
+
+  /**
+   * Convert class member properties into an object
+   */
+  public toJSON = (): EventDetail => {
+    return {
+      title: this.title,
+      facebookEventLink: this.facebookEventLink,
+      imagePath: this.imagePath,
+      location: this.location,
+      startDate: this.startDate,
+      endDate: this.endDate,
+    };
   };
 }

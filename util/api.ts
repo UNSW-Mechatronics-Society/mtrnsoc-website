@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createClient } from "contentful";
 import moment from "moment";
-import { EventDetail } from "./eventsHelpers";
+import { Event, EventDetail } from "./eventsHelpers";
 
 export const CONTENTFUL_BAD_IMAGE = "CONTENTFUL_BAD_IMAGE";
 
@@ -27,7 +27,7 @@ const createContentfulSelect = (fieldsToGet: string[]): string => {
   return [...fieldsToGet].map((x) => `fields.${x}`).join(",");
 };
 
-const getEvents = async (): Promise<[EventDetail[] | null, null | Error | unknown]> => {
+const getEvents = async (): Promise<[Event[] | null, null | Error | unknown]> => {
   // Refer to content model for specific names
   const selectFields = createContentfulSelect([
     "title",
@@ -39,7 +39,7 @@ const getEvents = async (): Promise<[EventDetail[] | null, null | Error | unknow
     "displayInPastEvents",
   ]);
 
-  const events: EventDetail[] = [];
+  const events: Event[] = [];
 
   try {
     // https://www.contentful.com/developers/docs/tutorials/general/modifying-api-responses/
@@ -62,7 +62,7 @@ const getEvents = async (): Promise<[EventDetail[] | null, null | Error | unknow
       });
     }
 
-    // Parse each item of content_type "events" into `EventDetail` class
+    // Parse each item of content_type "events" into `Event` class
     items.forEach((entry: any) => {
       const { fields } = entry;
       const imageUrl = assets.find((x) => x.id === fields.bannerImage.sys.id); // Get image url from assets
@@ -83,7 +83,7 @@ const getEvents = async (): Promise<[EventDetail[] | null, null | Error | unknow
         }
       }
 
-      const newEvent = new EventDetail(
+      const newEvent = new Event(
         fields.title as string,
         fields.facebookEventUrl as string,
         fields.location === undefined ? null : fields.location,

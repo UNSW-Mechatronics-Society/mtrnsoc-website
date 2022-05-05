@@ -1,7 +1,8 @@
+import React from "react";
 import type { GetServerSideProps, NextPage } from "next";
 import Link from "next/link";
 import getEvents from "util/api";
-import { EventDetails } from "util/eventsHelpers";
+import { Event, EventDetail } from "util/eventsHelpers";
 import { Banner, ContentContainer, MetaTags, OurCurrentEvents } from "components";
 import { spArcLink } from "data/socialsData";
 import sponsorsData, { sponsorData } from "data/sponsorsData";
@@ -42,7 +43,7 @@ const SectionWhoWeAre = (): JSX.Element => {
 };
 
 type SectionOurEventsProps = {
-  currentEvents: EventDetails[] | null;
+  currentEvents: Event[];
 };
 
 const SectionOurEvents = ({ currentEvents }: SectionOurEventsProps): JSX.Element => {
@@ -173,18 +174,20 @@ const JoinUsSection = ({ spArcLink }: JoinUsSectionPops): JSX.Element => {
 };
 
 type HomePageProps = {
-  currentEvents: EventDetails[] | null;
+  currentEventsRaw: EventDetail[];
   sponsors: sponsorData[];
   featuredPersonData: profileData;
   spArcLink: string;
 };
 
 const Home: NextPage<HomePageProps> = ({
-  currentEvents,
+  currentEventsRaw,
   sponsors,
   featuredPersonData,
   spArcLink,
 }) => {
+  const currentEvents = currentEventsRaw.map((x) => Event.eventFromEventDetails(x));
+
   return (
     <section className="h-full">
       <MetaTags title="UNSW Mechatronics Society" description="UNSW Mechatronics Society" />
@@ -206,12 +209,10 @@ const Home: NextPage<HomePageProps> = ({
 };
 
 export const getServerSideProps: GetServerSideProps<HomePageProps> = async () => {
-  const [data, err] = await getEvents();
+  const [eventData, err] = await getEvents();
 
   if (err !== null || err === undefined) throw err;
-  if (data === null) throw new Error("Uncaught error with API call");
-
-  const eventData = data;
+  if (eventData === null) throw new Error("Uncaught error with API call");
 
   const currentEvents = eventData.filter((x) => {
     if (x.endDate !== null) {
@@ -230,7 +231,7 @@ export const getServerSideProps: GetServerSideProps<HomePageProps> = async () =>
 
   return {
     props: {
-      currentEvents: currentEvents,
+      currentEventsRaw: currentEvents.map((x) => x.toJSON()),
       sponsors: sponsorsData,
       featuredPersonData: featuredPersonData,
       spArcLink: spArcLink,
