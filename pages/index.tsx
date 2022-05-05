@@ -5,8 +5,8 @@ import { getCurrentEvents } from "util/api";
 import { Event, EventDetail } from "util/eventsHelpers";
 import { Banner, ContentContainer, MetaTags, OurCurrentEvents } from "components";
 import { spArcLink } from "data/socialsData";
-import sponsorsData, { sponsorData } from "data/sponsorsData";
-import { execData, profileData } from "data/teamData";
+import sponsorsData, { SponsorData } from "data/sponsorsData";
+import { ProfileData, execData } from "data/teamData";
 import styles from "styles/index.module.scss";
 
 type TitleHeaderProps = {
@@ -58,7 +58,7 @@ const SectionOurEvents = ({ currentEvents }: SectionOurEventsProps): JSX.Element
 };
 
 type SectionMeetTheTeamProps = {
-  featuredPersonData: profileData;
+  featuredPersonData: ProfileData;
 };
 
 const SectionMeetTheTeam = ({ featuredPersonData }: SectionMeetTheTeamProps): JSX.Element => {
@@ -127,7 +127,7 @@ const SectionMeetTheTeam = ({ featuredPersonData }: SectionMeetTheTeamProps): JS
 };
 
 type SponsorsSectionProps = {
-  sponsors: sponsorData[];
+  sponsors: SponsorData[];
 };
 
 const SponsorSection = ({ sponsors }: SponsorsSectionProps): JSX.Element => {
@@ -175,8 +175,8 @@ const JoinUsSection = ({ spArcLink }: JoinUsSectionPops): JSX.Element => {
 
 type HomePageProps = {
   currentEventsRaw: EventDetail[];
-  sponsors: sponsorData[];
-  featuredPersonData: profileData;
+  sponsors: SponsorData[];
+  featuredPersonData: ProfileData;
   spArcLink: string;
 };
 

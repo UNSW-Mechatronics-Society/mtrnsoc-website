@@ -1,14 +1,14 @@
 import type { GetStaticProps, NextPage } from "next";
 import Link from "next/link";
 import { Banner, ContentContainer, MetaTags } from "components";
-import { emailData, socialData } from "data/socialsData";
-import sponsorsData, { sponsorData } from "data/sponsorsData";
+import { SocialData, emailData } from "data/socialsData";
+import sponsorsData, { SponsorData } from "data/sponsorsData";
 import styles from "styles/sponsors.module.scss";
 
 type SponsorsPageProps = {
-  affiliates: sponsorData[];
-  sponsors: sponsorData[];
-  emailData: socialData;
+  affiliates: SponsorData[];
+  sponsors: SponsorData[];
+  emailData: SocialData;
 };
 
 const Sponsors: NextPage<SponsorsPageProps> = ({ affiliates, sponsors, emailData }) => {

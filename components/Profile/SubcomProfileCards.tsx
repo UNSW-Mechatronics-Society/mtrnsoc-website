@@ -1,8 +1,8 @@
-import { subcomProfileData } from "data/teamData";
+import { SubcomProfileData } from "data/teamData";
 import styles from "./SubcomProfileCards.module.scss";
 
 type SubcomProfileCardsType = {
-  subcomData: subcomProfileData[];
+  subcomData: SubcomProfileData[];
 };
 
 const SubcomProfileCards = ({ subcomData }: SubcomProfileCardsType): JSX.Element => {

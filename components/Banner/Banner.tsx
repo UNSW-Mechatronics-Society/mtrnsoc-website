@@ -14,7 +14,7 @@ type TextProps = {
   position: PositionType;
 };
 
-function Text({ text, position }: TextProps) {
+const Text = ({ text, position }: TextProps): JSX.Element => {
   if (position === "bottom-left") {
     return (
       <div className={styles.textContainerBottomLeft}>
@@ -29,7 +29,7 @@ function Text({ text, position }: TextProps) {
       </div>
     );
   }
-}
+};
 
 export default function Banner({
   imgURL,
