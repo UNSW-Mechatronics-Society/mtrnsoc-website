@@ -59,7 +59,11 @@ const PastEventsSection = ({
   yearSelected,
 }: PastEventsSectionProps): JSX.Element => {
   // REVIEW Look at rewriting this
-  const selectedYearData = eventsByYearByTerm.filter((x) => x.year === yearSelected)[0];
+  const selectedYearData = eventsByYearByTerm.find((x) => x.year === yearSelected);
+
+  if (selectedYearData === undefined) {
+    return <p className="w-full grid place-items-center">No Past Events</p>;
+  }
 
   return (
     <>
