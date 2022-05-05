@@ -49,6 +49,11 @@ export class Event {
     this.endDate = endDate;
   }
 
+  /**
+   * Convert an `EventDetail` object into an Event instance
+   * @param e object to be converted
+   * @returns
+   */
   public static eventFromEventDetails(e: EventDetail): Event {
     return new Event(e.title, e.facebookEventLink, e.location, e.imagePath, e.startDate, e.endDate);
   }

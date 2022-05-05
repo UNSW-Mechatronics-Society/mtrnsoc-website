@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { EntryCollection, createClient } from "contentful";
 import moment from "moment";
-import { Event, EventDetail } from "./eventsHelpers";
+import { Event } from "./eventsHelpers";
 
 export const CONTENTFUL_BAD_IMAGE = "CONTENTFUL_BAD_IMAGE";
 
@@ -27,6 +27,11 @@ const createContentfulSelect = (fieldsToGet: string[]): string => {
   return [...fieldsToGet].map((x) => `fields.${x}`).join(",");
 };
 
+/**
+ * Parse Contentful query response into an array of Events
+ * @param res Contentful CMS query response
+ * @returns
+ */
 const processResponseIntoEvents = (res: EntryCollection<unknown>) => {
   const events: Event[] = [];
   const items = res.items;
@@ -82,6 +87,10 @@ const processResponseIntoEvents = (res: EntryCollection<unknown>) => {
   return events;
 };
 
+/**
+ * Get events that are on-going or in the future
+ * @returns [data, err]
+ */
 export const getCurrentEvents = async (): Promise<[Event[] | null, null | Error | unknown]> => {
   /**
    * NOTE: Contentful does not allow for a OR query, so 2 queries must be concatenated.
@@ -132,6 +141,10 @@ export const getCurrentEvents = async (): Promise<[Event[] | null, null | Error 
   }
 };
 
+/**
+ * Get all past events to be displayed on the website
+ * @returns [data, err]
+ */
 export const getPastEvents = async (): Promise<[Event[] | null, null | Error | unknown]> => {
   /**
    * NOTE: Contentful does not allow for a OR query, so 2 queries must be concatenated.
@@ -162,6 +175,7 @@ export const getPastEvents = async (): Promise<[Event[] | null, null | Error | u
       limit: 200,
       "fields.startDate[lt]": currentDate,
       "fields.endDate[exists]": false,
+      "fields.displayInPastEvents": true,
     });
     const events1 = processResponseIntoEvents(res1);
 
