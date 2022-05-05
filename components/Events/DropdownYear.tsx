@@ -51,7 +51,7 @@ export default function DropdownYear({
           draggable={false}
         />
         {active && (
-          <div className="absolute">
+          <div className="absolute z-0">
             <div className={styles.dropdownPopUp}>
               {sortedYears.map((x) => {
                 return (
