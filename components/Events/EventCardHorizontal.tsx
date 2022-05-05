@@ -1,5 +1,5 @@
 import moment from "moment";
-import { eventDate, eventDetails } from "data/eventsData";
+import { EndDate, Event, StartDate } from "util/eventsHelpers";
 import styles from "./EventCardHorizontal.module.scss";
 
 /**
@@ -20,7 +20,7 @@ const convertToTimeString = (x: moment.Moment): string => {
  * @param param0
  * @returns
  */
-const convertUnixToString = ({ startDate, endDate }: eventDate) => {
+const convertUnixToString = (startDate: StartDate, endDate: EndDate) => {
   // Convert start date
   const startMoment = moment.unix(startDate);
 
@@ -48,7 +48,7 @@ const convertUnixToString = ({ startDate, endDate }: eventDate) => {
 };
 
 type EventCardHorizontalProps = {
-  eventData: eventDetails;
+  eventData: Event;
   cardNumber: number;
 };
 
@@ -71,16 +71,9 @@ export default function EventCardHorizontal({
           <div className="flex flex-row">
             <img className="mr-3" src="/misc/calendar--heat-map.svg" alt="" draggable="false" />
             <div className="flex flex-col">
-              {eventData.date.map((data, index) => {
-                return (
-                  <p
-                    className="text-lg grid place-items-center"
-                    key={`${eventData.title}-${index}`}
-                  >
-                    {convertUnixToString(data)}
-                  </p>
-                );
-              })}
+              <p className="text-lg grid place-items-center">
+                {convertUnixToString(eventData.startDate, eventData.endDate)}
+              </p>
             </div>
           </div>
           {/* If location exists, display it */}

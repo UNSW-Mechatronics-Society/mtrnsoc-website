@@ -1,7 +1,9 @@
+import React from "react";
 import type { GetServerSideProps, NextPage } from "next";
 import Link from "next/link";
+import { getCurrentEvents } from "util/api";
+import { Event, EventDetail } from "util/eventsHelpers";
 import { Banner, ContentContainer, MetaTags, OurCurrentEvents } from "components";
-import eventData, { eventDetails } from "data/eventsData";
 import { spArcLink } from "data/socialsData";
 import sponsorsData, { sponsorData } from "data/sponsorsData";
 import { execData, profileData } from "data/teamData";
@@ -41,7 +43,7 @@ const SectionWhoWeAre = (): JSX.Element => {
 };
 
 type SectionOurEventsProps = {
-  currentEvents: eventDetails[] | null;
+  currentEvents: Event[];
 };
 
 const SectionOurEvents = ({ currentEvents }: SectionOurEventsProps): JSX.Element => {
@@ -172,18 +174,20 @@ const JoinUsSection = ({ spArcLink }: JoinUsSectionPops): JSX.Element => {
 };
 
 type HomePageProps = {
-  currentEvents: eventDetails[] | null;
+  currentEventsRaw: EventDetail[];
   sponsors: sponsorData[];
   featuredPersonData: profileData;
   spArcLink: string;
 };
 
 const Home: NextPage<HomePageProps> = ({
-  currentEvents,
+  currentEventsRaw,
   sponsors,
   featuredPersonData,
   spArcLink,
 }) => {
+  const currentEvents = currentEventsRaw.map((x) => Event.eventFromEventDetails(x));
+
   return (
     <section className="h-full">
       <MetaTags title="UNSW Mechatronics Society" description="UNSW Mechatronics Society" />
@@ -205,14 +209,16 @@ const Home: NextPage<HomePageProps> = ({
 };
 
 export const getServerSideProps: GetServerSideProps<HomePageProps> = async () => {
-  const currentEvents = eventData.filter((x) => {
-    const oldestDate = Math.max(
-      ...x.date.map((y) => (y.endDate !== null ? y.endDate : y.startDate)),
-    );
-    // as Date.now() is in milliseconds
-    return oldestDate * 1000 >= Date.now();
+  // Fetch currentEvents from CMS
+  const [currentEvents, err] = await getCurrentEvents();
+
+  if (err !== null || err === undefined) throw err;
+  if (currentEvents === null) throw new Error("Uncaught error with currentEvents API call");
+
+  // Sort currentEvents by startDate increasing
+  const sortedCurrentEvents = currentEvents.sort((x, y) => {
+    return x.startDate - y.startDate;
   });
-  currentEvents.reverse();
 
   const featuredPersonData = execData.find((x) => x.position === "President");
 
@@ -222,7 +228,7 @@ export const getServerSideProps: GetServerSideProps<HomePageProps> = async () =>
 
   return {
     props: {
-      currentEvents: currentEvents,
+      currentEventsRaw: sortedCurrentEvents.map((x) => x.toJSON()),
       sponsors: sponsorsData,
       featuredPersonData: featuredPersonData,
       spArcLink: spArcLink,
