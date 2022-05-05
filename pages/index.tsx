@@ -1,7 +1,7 @@
 import React from "react";
 import type { GetServerSideProps, NextPage } from "next";
 import Link from "next/link";
-import getEvents from "util/api";
+import getEvents, { getCurrentEvents } from "util/api";
 import { Event, EventDetail } from "util/eventsHelpers";
 import { Banner, ContentContainer, MetaTags, OurCurrentEvents } from "components";
 import { spArcLink } from "data/socialsData";
@@ -209,19 +209,16 @@ const Home: NextPage<HomePageProps> = ({
 };
 
 export const getServerSideProps: GetServerSideProps<HomePageProps> = async () => {
-  const [eventData, err] = await getEvents();
+  // Fetch currentEvents from CMS
+  const [currentEvents, err] = await getCurrentEvents();
 
   if (err !== null || err === undefined) throw err;
-  if (eventData === null) throw new Error("Uncaught error with API call");
+  if (currentEvents === null) throw new Error("Uncaught error with API call");
 
-  const currentEvents = eventData.filter((x) => {
-    if (x.endDate !== null) {
-      return x.endDate * 1000 >= Date.now();
-    } else {
-      return x.startDate * 1000 >= Date.now();
-    }
+  // Sort currentEvents by startDate increasing
+  const sortedCurrentEvents = currentEvents.sort((x, y) => {
+    return x.startDate - y.startDate;
   });
-  currentEvents.reverse();
 
   const featuredPersonData = execData.find((x) => x.position === "President");
 
@@ -231,7 +228,7 @@ export const getServerSideProps: GetServerSideProps<HomePageProps> = async () =>
 
   return {
     props: {
-      currentEventsRaw: currentEvents.map((x) => x.toJSON()),
+      currentEventsRaw: sortedCurrentEvents.map((x) => x.toJSON()),
       sponsors: sponsorsData,
       featuredPersonData: featuredPersonData,
       spArcLink: spArcLink,
