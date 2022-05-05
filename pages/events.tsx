@@ -2,7 +2,7 @@ import React from "react";
 import type { GetServerSideProps, NextPage } from "next";
 import Link from "next/link";
 import moment from "moment";
-import getEvents from "util/api";
+import { getCurrentEvents, getPastEvents } from "util/api";
 import { Event, EventDetail } from "util/eventsHelpers";
 import { Banner, ContentContainer, DropdownYear, EventCardHorizontal, MetaTags } from "components";
 import { yearDates } from "data/eventsData";
@@ -159,21 +159,22 @@ const Home: NextPage<EventsPageProps> = ({ currentEventsRaw, eventsByYearByTermR
 };
 
 export const getServerSideProps: GetServerSideProps<EventsPageProps> = async () => {
-  const [eventData, err] = await getEvents();
+  const [currentEvents, err1] = await getCurrentEvents();
 
-  if (err !== null || err === undefined) throw err;
-  if (eventData === null) throw new Error("Uncaught error with API call");
+  if (err1 !== null || err1 === undefined) throw err1;
+  if (currentEvents === null) throw new Error("Uncaught error with currentEvents API call");
 
-  const currentEvents = eventData.filter((x) => {
-    if (x.endDate !== null) {
-      return x.endDate * 1000 >= Date.now();
-    } else {
-      return x.startDate * 1000 >= Date.now();
-    }
-  });
-  currentEvents.reverse();
+  // Sort currentEvents by startDate increasing
+  const sortedCurrentEvents = currentEvents.sort(
+    (x, y) => x.getEarliestDate() - y.getEarliestDate(),
+  );
 
-  const pastEvents = eventData.filter((x) => !currentEvents.includes(x));
+  const [pastEvents, err2] = await getPastEvents();
+
+  if (err2 !== null || err2 === undefined) throw err2;
+  if (pastEvents === null) throw new Error("Uncaught error with pastEvents API call");
+
+  // Get unique years from pastEvents
   const uniqueYears: Set<number> = new Set();
   pastEvents.forEach((event) => {
     const earliestDate = event.startDate;
@@ -239,11 +240,12 @@ export const getServerSideProps: GetServerSideProps<EventsPageProps> = async () 
     if (t1Events.length + t2Events.length + t3Events.length !== events.length)
       throw new Error("Issue with sorting events into terms");
 
+    // NOTE: Reverse sort past events, as oldest 'latest finishing' event should appear first
     eventsByYearByTerm.push({
       year,
-      t1: t1Events.map((x) => x.toJSON()),
-      t2: t2Events.map((x) => x.toJSON()),
-      t3: t3Events.map((x) => x.toJSON()),
+      t1: t1Events.sort((x, y) => y.getOldestDate() - x.getOldestDate()).map((x) => x.toJSON()),
+      t2: t2Events.sort((x, y) => y.getOldestDate() - x.getOldestDate()).map((x) => x.toJSON()),
+      t3: t3Events.sort((x, y) => y.getOldestDate() - x.getOldestDate()).map((x) => x.toJSON()),
     });
   });
 
@@ -251,7 +253,7 @@ export const getServerSideProps: GetServerSideProps<EventsPageProps> = async () 
 
   return {
     props: {
-      currentEventsRaw: currentEvents.map((x) => x.toJSON()),
+      currentEventsRaw: sortedCurrentEvents.map((x) => x.toJSON()),
       eventsByYearByTermRaw: eventsByYearByTerm,
     },
   };

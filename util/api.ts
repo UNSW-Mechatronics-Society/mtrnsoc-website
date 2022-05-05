@@ -27,28 +27,6 @@ const createContentfulSelect = (fieldsToGet: string[]): string => {
   return [...fieldsToGet].map((x) => `fields.${x}`).join(",");
 };
 
-const getEvents = async (): Promise<[Event[] | null, null | Error | unknown]> => {
-  // Refer to content model for specific names
-  const selectFields = createContentfulSelect([
-    "title",
-    "facebookEventUrl",
-    "location",
-    "bannerImage",
-    "startDate",
-    "endDate",
-  ]);
-
-  try {
-    // https://www.contentful.com/developers/docs/tutorials/general/modifying-api-responses/
-    const res = await client.getEntries({ content_type: "events", select: selectFields });
-    const events: Event[] = processResponseIntoEvents(res);
-
-    return [events, null];
-  } catch (err) {
-    return [null, err];
-  }
-};
-
 const processResponseIntoEvents = (res: EntryCollection<unknown>) => {
   const events: Event[] = [];
   const items = res.items;
@@ -154,4 +132,54 @@ export const getCurrentEvents = async (): Promise<[Event[] | null, null | Error 
   }
 };
 
-export default getEvents;
+export const getPastEvents = async (): Promise<[Event[] | null, null | Error | unknown]> => {
+  /**
+   * NOTE: Contentful does not allow for a OR query, so 2 queries must be concatenated.
+   * So, in order to get the currentEvents, we need to find events such that:
+   * (startDate < currentDate && endDate === null && displayInPastEvents === true) || (endDate < currentDate && && displayInPastEvents === true)
+   */
+  try {
+    const selectFields = createContentfulSelect([
+      "title",
+      "facebookEventUrl",
+      "location",
+      "bannerImage",
+      "startDate",
+      "endDate",
+    ]);
+
+    const currentDate = new Date().toISOString();
+
+    /**
+     * Get all events that:
+     * - startDate < currentDate
+     * - endDate === null (does not exist)
+     * - displayInPastEvents === true
+     */
+    const res1 = await client.getEntries({
+      content_type: "events",
+      select: selectFields,
+      limit: 200,
+      "fields.startDate[lt]": currentDate,
+      "fields.endDate[exists]": false,
+    });
+    const events1 = processResponseIntoEvents(res1);
+
+    /**
+     * Get all events that:
+     * - endDate < currentDate
+     * - displayInPastEvents === true
+     */
+    const res2 = await client.getEntries({
+      content_type: "events",
+      select: selectFields,
+      limit: 200,
+      "fields.endDate[lt]": currentDate,
+      "fields.displayInPastEvents": true,
+    });
+    const events2 = processResponseIntoEvents(res2);
+    return [events1.concat(events2), null];
+  } catch (err) {
+    return [null, err];
+  }
+};

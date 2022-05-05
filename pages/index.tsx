@@ -1,7 +1,7 @@
 import React from "react";
 import type { GetServerSideProps, NextPage } from "next";
 import Link from "next/link";
-import getEvents, { getCurrentEvents } from "util/api";
+import { getCurrentEvents } from "util/api";
 import { Event, EventDetail } from "util/eventsHelpers";
 import { Banner, ContentContainer, MetaTags, OurCurrentEvents } from "components";
 import { spArcLink } from "data/socialsData";
@@ -213,7 +213,7 @@ export const getServerSideProps: GetServerSideProps<HomePageProps> = async () =>
   const [currentEvents, err] = await getCurrentEvents();
 
   if (err !== null || err === undefined) throw err;
-  if (currentEvents === null) throw new Error("Uncaught error with API call");
+  if (currentEvents === null) throw new Error("Uncaught error with currentEvents API call");
 
   // Sort currentEvents by startDate increasing
   const sortedCurrentEvents = currentEvents.sort((x, y) => {
