@@ -1,6 +1,6 @@
 // This file contains all the social media contacts
 
-export type socialData = {
+export type SocialData = {
   name: "Facebook Group" | "Facebook Page" | "LinkedIn" | "Instagram" | "Email" | "Discord";
   /**
    * Display string
@@ -19,7 +19,7 @@ export type socialData = {
  *
  * I.e., accessible without a facebook account
  */
-export const facebookPageData: socialData = {
+export const facebookPageData: SocialData = {
   name: "Facebook Page",
   display: "https://www.facebook.com/UNSWMTRNSOC",
   url: "https://www.facebook.com/UNSWMTRNSOC",
@@ -32,7 +32,7 @@ export const facebookPageData: socialData = {
  *
  * I.e., members need to be verified before seeing the page
  */
-export const facebookGroupData: socialData = {
+export const facebookGroupData: SocialData = {
   name: "Facebook Group",
   display: "https://www.facebook.com/groups/unsw.mechatronics/",
   url: "https://www.facebook.com/groups/unsw.mechatronics/",
@@ -40,7 +40,7 @@ export const facebookGroupData: socialData = {
   altText: "Facebook logo",
 };
 
-export const linkedInData: socialData = {
+export const linkedInData: SocialData = {
   name: "LinkedIn",
   display: "https://www.linkedin.com/company/unsw-mechatronics-society/",
   url: "https://www.linkedin.com/company/unsw-mechatronics-society/",
@@ -48,7 +48,7 @@ export const linkedInData: socialData = {
   altText: "LinkedIn logo",
 };
 
-export const instagramData: socialData = {
+export const instagramData: SocialData = {
   name: "Instagram",
   display: "https://www.instagram.com/unswmtrnsoc/",
   url: "https://www.instagram.com/unswmtrnsoc/",
@@ -56,7 +56,7 @@ export const instagramData: socialData = {
   altText: "Instagram logo",
 };
 
-export const emailData: socialData = {
+export const emailData: SocialData = {
   name: "Email",
   display: "mechatronics.unsw@gmail.com",
   url: "mailto:mechatronics.unsw@gmail.com",
@@ -64,7 +64,7 @@ export const emailData: socialData = {
   altText: "email logo",
 };
 
-export const discordData: socialData = {
+export const discordData: SocialData = {
   name: "Discord",
   display: "https://discord.gg/4dWMWAjWm9",
   url: "https://discord.gg/4dWMWAjWm9",
@@ -75,9 +75,9 @@ export const discordData: socialData = {
 export const spArcLink = "https://member.arc.unsw.edu.au/s/clubdetail?clubid=0016F0000371VybQAE";
 
 /**
- * Array of socialData of Facebook, Instagram, Discord, LinkedIn and Email
+ * Array of SocialData of Facebook, Instagram, Discord, LinkedIn and Email
  */
-const defaultSocialsData: socialData[] = [
+const defaultSocialsData: SocialData[] = [
   facebookPageData,
   linkedInData,
   instagramData,
