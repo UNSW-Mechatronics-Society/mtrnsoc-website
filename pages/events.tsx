@@ -138,13 +138,13 @@ const Home: NextPage<EventsPageProps> = ({ currentEventsRaw, eventsByYearByTermR
       />
       <ContentContainer customBackgroundColour="bg-uranian-blue">
         <div className={styles.mainContainer}>
-          <h1 className="text-4xl font-semibold mb-6">Current Events</h1>
+          <h1 className="text-4xl font-medium mb-6 uppercase">Current Events</h1>
           <CurrentEventsSection />
         </div>
       </ContentContainer>
       <ContentContainer>
         <div className={styles.mainContainer}>
-          <h1 className="text-4xl font-semibold mb-6">Past Events</h1>
+          <h1 className="text-4xl font-medium mb-6 uppercase">Past Events</h1>
           <div className={styles.pastEventsContainer}>
             <div className="flex justify-end w-full max-pastEventsTitle:justify-center max-pastEventsTitle:pb-3">
               <DropdownYear
