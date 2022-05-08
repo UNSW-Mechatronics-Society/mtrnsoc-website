@@ -149,7 +149,7 @@ export const getPastEvents = async (): Promise<[Event[] | null, null | Error | u
   /**
    * NOTE: Contentful does not allow for a OR query, so 2 queries must be concatenated.
    * So, in order to get the currentEvents, we need to find events such that:
-   * (startDate < currentDate && endDate === null && displayInPastEvents === true) || (endDate < currentDate && && displayInPastEvents === true)
+   * (startDate < currentDate && endDate === null && displayInPastEvents === true) || (endDate < currentDate && displayInPastEvents === true)
    */
   try {
     const selectFields = createContentfulSelect([
