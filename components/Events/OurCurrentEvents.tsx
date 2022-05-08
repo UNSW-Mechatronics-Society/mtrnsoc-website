@@ -61,17 +61,19 @@ export default function OurCurrentEvents({
   return (
     <Template buttonStyle={buttonStyle}>
       <div className={styles.imageSliderContainer}>
-        {currentEvents.length >= 2 && (
-          <div className={styles.navigationContainer}>
-            <img
-              src="/misc/chevron--left.svg"
-              alt="left navigation"
-              aira-label="forward navigation"
-              className={styles.navigationButtons}
-              onClick={prevSlide}
-            />
-          </div>
-        )}
+        <div
+          className={`${styles.navigationContainer} ${
+            currentEvents.length >= 2 ? "" : "invisible"
+          }`}
+        >
+          <img
+            src="/misc/chevron--left.svg"
+            alt="left navigation"
+            aira-label="forward navigation"
+            className={styles.navigationButtons}
+            onClick={prevSlide}
+          />
+        </div>
         <div className="mx-3">
           {currentEvents.map((event, index) => (
             <div
@@ -100,17 +102,19 @@ export default function OurCurrentEvents({
             </div>
           ))}
         </div>
-        {currentEvents.length >= 2 && (
-          <div className={styles.navigationContainer}>
-            <img
-              src="/misc/chevron--right.svg"
-              alt="right navigation"
-              aira-label="backward navigation"
-              className={styles.navigationButtons}
-              onClick={nextSlide}
-            />
-          </div>
-        )}
+        <div
+          className={`${styles.navigationContainer} ${
+            currentEvents.length >= 2 ? "" : "invisible"
+          }`}
+        >
+          <img
+            src="/misc/chevron--right.svg"
+            alt="right navigation"
+            aira-label="backward navigation"
+            className={styles.navigationButtons}
+            onClick={nextSlide}
+          />
+        </div>
       </div>
     </Template>
   );
