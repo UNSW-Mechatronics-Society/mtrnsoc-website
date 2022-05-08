@@ -39,7 +39,7 @@ const Sponsors: NextPage<SponsorsPageProps> = ({ affiliates, sponsors, emailData
               ))}
             </div>
           </div>
-          <div className={`${styles.sectionContainer} pt-10 pb-12`}>
+          <div className={styles.sectionContainer}>
             <h1 className={styles.sectionTitle}>Affiliations</h1>
             <div className={styles.sectionImagesContainer}>
               {affiliates.map((x) => (
