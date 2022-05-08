@@ -100,7 +100,7 @@ export const subcomData: SubcomProfileData[] = [
   },
   {
     portfolioName: "Workshops Team",
-    members: ["Angus Wang", "Kalindu Dahanayake", "Shiwani Balaji"],
+    members: ["Angus Wang", "Kalindu Dahanayake"],
   },
   {
     portfolioName: "Projects Team",
