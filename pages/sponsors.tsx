@@ -35,7 +35,11 @@ const Sponsors: NextPage<SponsorsPageProps> = ({ affiliates, sponsors, emailData
             <h1 className={styles.sectionTitle}>Proudly Supported By</h1>
             <div className={styles.sectionImagesContainer}>
               {sponsors.map((x) => (
-                <img key={x.alt} src={x.src} alt={x.alt} className={styles.sectionImage} />
+                <Link href={x.link} key={x.alt}>
+                  <a target="_blank">
+                    <img key={x.alt} src={x.src} alt={x.alt} className={styles.sectionImage} />
+                  </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -43,7 +47,11 @@ const Sponsors: NextPage<SponsorsPageProps> = ({ affiliates, sponsors, emailData
             <h1 className={styles.sectionTitle}>Affiliations</h1>
             <div className={styles.sectionImagesContainer}>
               {affiliates.map((x) => (
-                <img key={x.alt} src={x.src} alt={x.alt} className={styles.sectionImage} />
+                <Link href={x.link} key={x.alt}>
+                  <a target="_blank">
+                    <img src={x.src} alt={x.alt} className={styles.sectionImage} />
+                  </a>
+                </Link>
               ))}
             </div>
           </div>
