@@ -12,6 +12,8 @@ type SponsorsPageProps = {
 };
 
 const Sponsors: NextPage<SponsorsPageProps> = ({ affiliates, sponsors, emailData }) => {
+  const scrollID = "sponsorsPageScrollDiv";
+
   return (
     <div className="h-full">
       <MetaTags title="Sponsors - MTRNSoc" description="Society sponsors" />
@@ -20,7 +22,9 @@ const Sponsors: NextPage<SponsorsPageProps> = ({ affiliates, sponsors, emailData
         text="Sponsors"
         arrow={true}
         position="center"
+        scrollToID={scrollID}
       />
+      <div id={scrollID}></div>
       <ContentContainer>
         <div className={styles.mainContainer}>
           <p className={styles.textContainer}>

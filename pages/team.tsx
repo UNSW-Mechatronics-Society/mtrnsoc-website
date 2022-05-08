@@ -79,6 +79,7 @@ const Team: NextPage<TeamPageProps> = ({
   subcomProfileData,
   email,
 }) => {
+  const scrollID = "teamPageScrollDiv";
   return (
     <div className="h-full">
       <MetaTags title="Team - MTRNSoc" description="Meet the MTRNSoc team" />
@@ -88,7 +89,9 @@ const Team: NextPage<TeamPageProps> = ({
           text="Our Team"
           arrow={true}
           position="center"
+          scrollToID={scrollID}
         />
+        <div id={scrollID}></div>
         <SectionExecutives execProfileData={execProfileData} email={email} />
         <SectionDirectors directorProfileData={directorProfileData} email={email} />
         <SectionSubcommittee subcomProfileData={subcomProfileData} />

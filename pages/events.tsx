@@ -94,6 +94,8 @@ const PastEventsSection = ({
 };
 
 const Home: NextPage<EventsPageProps> = ({ currentEventsRaw, eventsByYearByTermRaw, yearData }) => {
+  const scrollID = "eventsPageScrollDiv";
+
   const years = yearData.map((x) => x.year);
   const [yearSelected, setYearSelected] = React.useState(years[0]);
 
@@ -135,7 +137,9 @@ const Home: NextPage<EventsPageProps> = ({ currentEventsRaw, eventsByYearByTermR
         text="Events"
         arrow={true}
         position="center"
+        scrollToID={scrollID}
       />
+      <div id={scrollID}></div>
       <ContentContainer customBackgroundColour="bg-uranian-blue">
         <div className={styles.mainContainer}>
           <h1 className="text-4xl font-medium mb-6 uppercase">Current Events</h1>

@@ -187,6 +187,7 @@ const Home: NextPage<HomePageProps> = ({
   spArcLink,
 }) => {
   const currentEvents = currentEventsRaw.map((x) => Event.eventFromEventDetails(x));
+  const scrollID = "homePageScrollDiv";
 
   return (
     <section className="h-full">
@@ -197,7 +198,9 @@ const Home: NextPage<HomePageProps> = ({
           text="UNSW Mechatronics Society"
           arrow={true}
           position="bottom-left"
+          scrollToID={scrollID}
         />
+        <div id={scrollID}></div>
         <SectionWhoWeAre />
         <SectionOurEvents currentEvents={currentEvents} />
         <SectionMeetTheTeam featuredPersonData={featuredPersonData} />
