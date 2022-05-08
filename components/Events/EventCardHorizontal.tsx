@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Event } from "util/eventsHelpers";
 import styles from "./EventCardHorizontal.module.scss";
 
@@ -14,11 +15,15 @@ export default function EventCardHorizontal({
 
   return (
     <div className={`${styles.mainContainer} ${styles.backgroundBlue}`}>
-      <img
-        className={styles.image}
-        src={eventData.imagePath}
-        alt={`${eventData.title} image banner`}
-      />
+      <Link href={eventData.facebookEventLink}>
+        <a target="_blank" className="h-full w-full">
+          <img
+            className={styles.image}
+            src={eventData.imagePath}
+            alt={`${eventData.title} image banner`}
+          />
+        </a>
+      </Link>
       <div className={styles.rightInformationContainer}>
         <h1 className="text-2xl font-semibold uppercase w-full text-left">{eventData.title}</h1>
         <div className={styles.rightInformationTextContainer}>
