@@ -1,3 +1,4 @@
+import { Link as ScrollLink } from "react-scroll";
 import styles from "./Banner.module.scss";
 
 type BannerProps = {
@@ -5,6 +6,7 @@ type BannerProps = {
   text?: string;
   arrow: boolean;
   position: PositionType;
+  scrollToID: string;
 };
 
 type PositionType = "center" | "bottom-left";
@@ -36,6 +38,7 @@ export default function Banner({
   text = undefined,
   arrow = false,
   position = "bottom-left",
+  scrollToID,
 }: BannerProps): JSX.Element {
   return (
     <div className={styles.container}>
@@ -44,7 +47,16 @@ export default function Banner({
       {text && <Text position={position} text={text} />}
       {arrow && (
         <div className={styles.arrowDown}>
-          <img src="/arrowDown.svg" alt="" className={styles.arrowDown} draggable={false} />
+          <ScrollLink
+            to={scrollToID}
+            // activeClass="active"
+            // spy={true}
+            smooth={true}
+            offset={-60} // 60px is the standard size of the navbar
+            duration={750}
+          >
+            <img src="/arrowDown.svg" alt="" className={styles.arrowDown} draggable={false} />
+          </ScrollLink>
         </div>
       )}
     </div>

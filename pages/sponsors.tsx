@@ -12,6 +12,8 @@ type SponsorsPageProps = {
 };
 
 const Sponsors: NextPage<SponsorsPageProps> = ({ affiliates, sponsors, emailData }) => {
+  const scrollID = "sponsorsPageScrollDiv";
+
   return (
     <div className="h-full">
       <MetaTags title="Sponsors - MTRNSoc" description="Society sponsors" />
@@ -20,7 +22,9 @@ const Sponsors: NextPage<SponsorsPageProps> = ({ affiliates, sponsors, emailData
         text="Sponsors"
         arrow={true}
         position="center"
+        scrollToID={scrollID}
       />
+      <div id={scrollID}></div>
       <ContentContainer>
         <div className={styles.mainContainer}>
           <p className={styles.textContainer}>
@@ -35,15 +39,23 @@ const Sponsors: NextPage<SponsorsPageProps> = ({ affiliates, sponsors, emailData
             <h1 className={styles.sectionTitle}>Proudly Supported By</h1>
             <div className={styles.sectionImagesContainer}>
               {sponsors.map((x) => (
-                <img key={x.alt} src={x.src} alt={x.alt} className={styles.sectionImage} />
+                <Link href={x.link} key={x.alt}>
+                  <a target="_blank">
+                    <img key={x.alt} src={x.src} alt={x.alt} className={styles.sectionImage} />
+                  </a>
+                </Link>
               ))}
             </div>
           </div>
-          <div className={`${styles.sectionContainer} pt-10 pb-12`}>
+          <div className={styles.sectionContainer}>
             <h1 className={styles.sectionTitle}>Affiliations</h1>
             <div className={styles.sectionImagesContainer}>
               {affiliates.map((x) => (
-                <img key={x.alt} src={x.src} alt={x.alt} className={styles.sectionImage} />
+                <Link href={x.link} key={x.alt}>
+                  <a target="_blank">
+                    <img src={x.src} alt={x.alt} className={styles.sectionImage} />
+                  </a>
+                </Link>
               ))}
             </div>
           </div>

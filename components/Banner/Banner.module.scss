@@ -94,4 +94,8 @@
   @media (max-width: variables.$sm) {
     width: 2.5rem;
   }
+
+  &:hover {
+    cursor: pointer;
+  }
 }
