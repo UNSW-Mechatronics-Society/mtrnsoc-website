@@ -53,7 +53,7 @@ export default function Banner({
             // spy={true}
             smooth={true}
             offset={-60} // 60px is the standard size of the navbar
-            duration={500}
+            duration={750}
           >
             <img src="/arrowDown.svg" alt="" className={styles.arrowDown} draggable={false} />
           </ScrollLink>
