@@ -1,5 +1,16 @@
 .mainContainer {
-  @apply flex flex-row w-[56.25rem] rounded-2xl h-full max-eventCard:flex-col max-eventCard:w-[100%] min-eventCard:hover:scale-[1.01] hover:shadow-xl duration-100;
+  @apply flex
+  flex-row
+  w-[56.25rem]
+  rounded-2xl
+  h-full
+  max-eventCard:flex-col
+  max-eventCard:w-[100%]
+  min-eventCard:hover:scale-[1.01]
+  hover:shadow-xl
+  duration-100
+  min-eventCard:max-w-2xl
+  max-md:max-w-lg;
 }
 
 .image {
