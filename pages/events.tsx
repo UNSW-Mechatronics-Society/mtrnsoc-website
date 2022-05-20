@@ -131,7 +131,10 @@ const Home: NextPage<EventsPageProps> = ({ currentEventsRaw, eventsByYearByTermR
 
   return (
     <div className="h-full">
-      <MetaTags title="Events - MTRNSoc" description="Society events" />
+      <MetaTags
+        title="Events - MTRNSoc"
+        description="The UNSW MTRNSoc team organises a variety of social events, industry nights, and workshops. Click here to see what events are on now!"
+      />
       <Banner
         imgURL="/images/other/eventsBanner.png"
         text="Events"

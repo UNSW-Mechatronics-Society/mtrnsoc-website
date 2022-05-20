@@ -82,7 +82,7 @@ const Team: NextPage<TeamPageProps> = ({
   const scrollID = "teamPageScrollDiv";
   return (
     <div className="h-full">
-      <MetaTags title="Team - MTRNSoc" description="Meet the MTRNSoc team" />
+      <MetaTags title="Team - MTRNSoc" description="Meet the current team behind MTRNSoc" />
       <div>
         <Banner
           imgURL="/images/other/frontPageBannerEdited.png"
