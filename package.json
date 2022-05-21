@@ -13,7 +13,7 @@
     "prettier:write": "prettier --write './**/*.{ts,tsx,js,jsx,scss,css}'"
   },
   "dependencies": {
-    "contentful": "^9.1.28",
+    "contentful": "^9.1.29",
     "moment": "^2.29.2",
     "next": "12.1.5",
     "react": "17.0.2",
