@@ -27,7 +27,7 @@ const Text = ({ text, position }: TextProps): JSX.Element => {
     // Center
     return (
       <div className={styles.textContainerCenter}>
-        <h1 className={styles.titleText}>{text.toUpperCase()}</h1>
+        <h1 className={`${styles.titleText} ${styles.titlePadding}`}>{text.toUpperCase()}</h1>
       </div>
     );
   }

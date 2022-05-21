@@ -75,7 +75,11 @@
 }
 
 .titleText {
-  @apply text-off-white font-bold lg:text-8xl md:text-7xl sm:text-6xl text-4xl px-[5%];
+  @apply text-off-white font-bold lg:text-8xl md:text-7xl sm:text-6xl text-4xl;
+}
+
+.titlePadding {
+  @apply px-[5%];
 }
 
 .arrowDown {
