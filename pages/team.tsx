@@ -85,7 +85,7 @@ const Team: NextPage<TeamPageProps> = ({
       <MetaTags title="Team - MTRNSoc" description="Meet the MTRNSoc team" />
       <div>
         <Banner
-          imgURL="/images/other/frontPageBannerEdited.png"
+          imgURL="/images/other/teamBanner.png"
           text="Our Team"
           arrow={true}
           position="center"
