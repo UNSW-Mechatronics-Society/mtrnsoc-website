@@ -19,7 +19,7 @@ export const execData: ProfileData[] = [
     linkedIn: "https://www.linkedin.com/in/kyra-alday/",
   },
   {
-    src: "/images/profiles/tanvee.png",
+    src: "/images/profiles/tanvee.jpg",
     id: "Tanvee Islam",
     position: "Vice President",
     linkedIn: "https://www.linkedin.com/in/tanvee-mtrn/",
@@ -76,7 +76,7 @@ export const directorData: ProfileData[] = [
     linkedIn: "https://www.linkedin.com/in/jtannn/",
   },
   {
-    src: "/images/profiles/leonard.png",
+    src: "/images/profiles/leonard.jpg",
     id: "Leonard Chiang",
     position: "Projects Director",
     linkedIn: "https://www.linkedin.com/in/leonard-chiang/",
