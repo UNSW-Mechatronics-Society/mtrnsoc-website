@@ -18,7 +18,7 @@ const Sponsors: NextPage<SponsorsPageProps> = ({ affiliates, sponsors, emailData
     <div className="h-full">
       <MetaTags title="Sponsors - MTRNSoc" description="Society sponsors" />
       <Banner
-        imgURL="/images/other/frontPageBannerEdited.png"
+        imgURL="/images/other/sponsorBanner.png"
         text="Sponsors"
         arrow={true}
         position="center"
