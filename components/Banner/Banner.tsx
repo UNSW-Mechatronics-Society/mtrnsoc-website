@@ -9,7 +9,7 @@ type BannerProps = {
   scrollToID: string;
 };
 
-type PositionType = "center" | "bottom-left";
+export type PositionType = "center" | "bottom-left";
 
 type TextProps = {
   text: string;

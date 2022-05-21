@@ -3,7 +3,9 @@ import type { GetServerSideProps, NextPage } from "next";
 import Link from "next/link";
 import { getCurrentEvents } from "util/api";
 import { Event, EventDetail } from "util/eventsHelpers";
+import useWindowDimensions from "util/useWindowDimensions";
 import { Banner, ContentContainer, MetaTags, OurCurrentEvents } from "components";
+import { PositionType } from "components/Banner/Banner";
 import { spArcLink } from "data/socialsData";
 import sponsorsData, { SponsorData } from "data/sponsorsData";
 import { ProfileData, execData } from "data/teamData";
@@ -186,6 +188,9 @@ const Home: NextPage<HomePageProps> = ({
   featuredPersonData,
   spArcLink,
 }) => {
+  const { width } = useWindowDimensions();
+  const position: PositionType = width <= 639 ? "center" : "bottom-left";
+
   const currentEvents = currentEventsRaw.map((x) => Event.eventFromEventDetails(x));
   const scrollID = "homePageScrollDiv";
 
@@ -197,7 +202,7 @@ const Home: NextPage<HomePageProps> = ({
           imgURL="/images/other/frontPageBannerEdited.png"
           text="UNSW Mechatronics Society"
           arrow={true}
-          position="bottom-left"
+          position={position}
           scrollToID={scrollID}
         />
         <div id={scrollID}></div>
