@@ -1,0 +1,42 @@
+.mainContainer {
+  @apply flex
+  flex-row
+  w-[56.25rem]
+  rounded-2xl
+  h-full
+  max-eventCard:flex-col
+  max-eventCard:w-[100%]
+  min-eventCard:hover:scale-[1.01]
+  hover:shadow-xl
+  duration-100
+  max-eventCard:max-w-2xl
+  max-md:max-w-lg;
+}
+
+.image {
+  @apply w-[32rem] h-full rounded-l-2xl max-eventCard:rounded-l-none max-eventCard:w-full max-eventCard:rounded-t-2xl;
+}
+
+.rightInformationContainer {
+  @apply px-6 pt-8 w-full flex flex-col;
+}
+
+.rightInformationTextContainer {
+  @apply mt-5 w-full;
+}
+
+.buttonContainer {
+  @apply w-full h-full place-items-end grid mb-5;
+}
+
+.button {
+  @apply text-[#5FA8D3] border-[#5FA8D3] border-[1px] px-3 py-1 rounded-md hover:bg-[#61b4d5] hover:text-culturedWhite;
+}
+
+.backgroundBlue {
+  @apply bg-[#E8EFF5];
+}
+
+.backgroundGrey {
+  @apply bg-[#E5E7EB];
+}

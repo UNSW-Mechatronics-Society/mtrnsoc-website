@@ -1,0 +1,106 @@
+.mainContainer {
+  @apply flex flex-wrap justify-center max-w-4xl mx-auto;
+}
+
+.profileContainer {
+  @apply flex flex-col justify-between m-2 p-6 w-64 h-96;
+}
+
+.execBGColour {
+  @apply bg-[#E8EFF5];
+}
+
+.directorBGColour {
+  @apply bg-[#E9EBED];
+}
+
+.picture {
+  @apply flex content-start h-52 w-52 rounded-full object-cover;
+}
+
+.descriptionContainer {
+  @apply flex flex-col h-full;
+}
+
+.textContainer {
+  @apply pt-4 px-2;
+}
+
+.name {
+  @apply text-center text-xl font-semibold;
+}
+
+.position {
+  @apply text-center leading-normal text-gray-500 font-normal text-sm uppercase;
+}
+
+.links {
+  @apply flex flex-row justify-center pt-4;
+}
+
+.logo {
+  @apply h-6 px-1;
+}
+
+/*
+mx-48 px-28
+.mainContainer {
+  @apply grid place-items-center flex-wrap bg-[#E8EFF5]/[.35] m-2 p-6;
+}
+//flex justify-center items-center flex-row
+.profileContainer {
+  @apply w-72;
+}
+
+content-evenly 
+
+.mainContainer {
+  @apply flex flex-col w-full;
+}
+.links {
+  @apply flex flex-row justify-center pt-10;
+}
+
+.eventsContainer {
+  @apply flex flex-row w-full justify-around pb-10;
+}
+
+.button {
+  @apply bg-onyx text-off-white px-6 py-3 rounded-3xl font-normal text-lg hover:scale-[1.05] duration-100 hover:shadow;
+}
+
+.errorText {
+  @apply w-full grid place-items-center text-xl;
+}
+
+.navigationContainer {
+  @apply grid place-items-center h-full;
+}
+
+.navigationButtons {
+  @apply h-14 hover:cursor-pointer min-w-[1.5rem];
+}
+
+.imageSliderContainer {
+  @apply flex flex-row content-center justify-around w-full;
+}
+
+.eventsBannerImage {
+  @apply max-h-[35rem] rounded-3xl hover:scale-[1.01] duration-100 hover:shadow-xl border-onyx border-2;
+}
+
+.slide {
+  opacity: 0;
+  transition-duration: 1s ease;
+  max-height: 35rem;
+}
+
+.slideActive {
+  opacity: 1;
+  transition-duration: 1s;
+  transform: scale(1.03);
+  max-height: 35rem;
+}
+
+
+*/

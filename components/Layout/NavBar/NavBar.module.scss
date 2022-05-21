@@ -1,0 +1,65 @@
+@use "/styles/variables";
+
+/* .navbar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 100;
+  background-color: $navyBG;
+  height: $headerHeight;
+  position: relative;
+} */
+
+.mainContainer {
+  /* @apply w-full bg-yale-blue grid place-items-center h-[100%]; */
+
+  width: 100%;
+  background-color: variables.$yaleBlue;
+  display: grid;
+  place-items: center;
+  position: fixed;
+  z-index: 10;
+  height: variables.$headerHeight;
+}
+
+.DesktopNavBarContainer {
+  @apply h-full w-full flex justify-between content-center pt-[0.125rem] max-md:hidden;
+}
+
+.logo {
+  @apply h-14;
+}
+
+.navLinksContainer {
+  @apply flex flex-row content-center justify-between;
+}
+
+.buttonContainer {
+  @apply grid place-items-center;
+}
+
+.buttonText {
+  @apply py-2 px-3 text-base text-off-white uppercase;
+}
+
+.navigationBurger {
+  width: 3rem;
+  filter: invert(99%) sepia(7%) saturate(96%) hue-rotate(183deg) brightness(114%) contrast(92%);
+  &:hover {
+    /* Change svg to #F5F5F5 */
+  }
+}
+
+.mobileNavBarContainer {
+  width: 100%;
+  height: variables.$headerHeight;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* @apply w-full h-[60px] hidden; */
+}
+
+.mobileNavButton {
+  @apply text-2xl py-3 uppercase text-culturedWhite;
+}

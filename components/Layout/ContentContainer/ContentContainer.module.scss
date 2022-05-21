@@ -1,0 +1,11 @@
+.mainContainer {
+  @apply w-full grid place-items-center;
+}
+
+.limitingContainer {
+  @apply w-full max-w-screen-2xl;
+}
+
+.paddingContainer {
+  @apply px-6;
+}

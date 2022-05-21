@@ -1,0 +1,28 @@
+@use "styles/variables";
+
+.mainContent {
+  height: 100vh;
+  margin: 0 auto;
+  display: grid;
+  grid-template-areas:
+    "topbar"
+    "content"
+    "footer";
+  navBar {
+    grid-area: navBar;
+  }
+  main {
+    grid-area: content;
+  }
+  footer {
+    grid-area: footer;
+  }
+  grid-template-rows: variables.$headerHeight auto variables.$footerHeight;
+}
+
+.header {
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  z-index: 10;
+}

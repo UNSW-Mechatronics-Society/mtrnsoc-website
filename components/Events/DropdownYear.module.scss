@@ -1,0 +1,36 @@
+.containerSize {
+  @apply py-3 pl-4 pr-3 w-[9rem];
+}
+
+.mainContainer {
+  /* TODO bottom border only */
+  @apply flex flex-row border-[1.5px] border-onyx justify-between hover:cursor-pointer;
+}
+
+.customBackground {
+  background: #f5f5f5;
+}
+
+.arrow {
+  @apply w-[1.75rem] select-none duration-100;
+}
+
+.upsideDown {
+  @apply origin-center -rotate-180;
+}
+
+.paddingBottom {
+  padding-bottom: calc(0.75rem - 2px) !important;
+}
+
+.testStuff {
+  /* https://stackoverflow.com/questions/4131490/any-way-to-limit-border-length */
+  background-image: linear-gradient(gray, gray);
+  background-repeat: no-repeat;
+  background-size: 80% 1px;
+  background-position: center bottom;
+}
+
+.dropdownPopUp {
+  @apply z-50 right-[1.1rem] top-[2.5rem] relative;
+}

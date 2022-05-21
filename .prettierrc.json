@@ -11,5 +11,17 @@
   "proseWrap": "preserve",
   "quoteProps": "as-needed",
   "useTabs": false,
-  "htmlWhitespaceSensitivity": "css"
+  "htmlWhitespaceSensitivity": "css",
+  "importOrderSeparation": false,
+  "importOrderSortSpecifiers": true,
+  "importOrder": [
+    "styles/globals.scss",
+    "^react",
+    "^next(/)?(.*)$",
+    "<THIRD_PARTY_MODULES>",
+    "^components(/)?(.*)$",
+    "^data(/)?(.*)$",
+    "^styles(/)?(.*)$",
+    "^[./]"
+  ]
 }

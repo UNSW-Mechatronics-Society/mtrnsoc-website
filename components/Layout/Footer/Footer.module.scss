@@ -1,0 +1,8 @@
+.socialLogo {
+  @apply h-9 px-3;
+}
+
+.culturedWhiteColourLogo {
+  // https://codepen.io/sosuke/pen/Pjoqqp
+  filter: invert(99%) sepia(2%) saturate(2185%) hue-rotate(273deg) brightness(122%) contrast(92%);
+}
