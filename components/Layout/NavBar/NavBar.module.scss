@@ -45,9 +45,9 @@
 
 .navigationBurger {
   width: 3rem;
+  filter: invert(99%) sepia(7%) saturate(96%) hue-rotate(183deg) brightness(114%) contrast(92%);
   &:hover {
     /* Change svg to #F5F5F5 */
-    filter: invert(99%) sepia(7%) saturate(96%) hue-rotate(183deg) brightness(114%) contrast(92%);
   }
 }
 

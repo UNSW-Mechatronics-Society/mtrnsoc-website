@@ -104,7 +104,7 @@ export function ReactSlidingPane({
       style={{
         content: { width: width || "80%" },
       }}
-      closeTimeoutMS={CLOSE_TIMEOUT}
+      // closeTimeoutMS={CLOSE_TIMEOUT}
       isOpen={isOpen ?? false}
       shouldCloseOnEsc={shouldCloseOnEsc}
       onAfterOpen={handleAfterOpen}
