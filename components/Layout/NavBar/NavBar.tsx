@@ -95,6 +95,13 @@ const NavBar = (): JSX.Element => {
   const [isOpen, setIsOpen] = React.useState(false);
   const { width } = useWindowDimensions();
 
+  // if `mobileVersion` is true, display mobile version of the NavBar
+  const [mobileVersion, setMobileVersion] = React.useState(false);
+
+  React.useEffect(() => {
+    if (width !== null) setMobileVersion(width <= 766);
+  }, [width]);
+
   const router = useRouter();
   const { route } = router;
 
@@ -107,13 +114,15 @@ const NavBar = (): JSX.Element => {
   return (
     <div className={`${styles.mainContainer} ${isTop ? "" : "shadow-md"}`}>
       <ContentContainer>
-        {width > 766 ? (
+        {!mobileVersion ? (
+          // Desktop version
           <DesktopNavBar currentRoute={route} />
         ) : (
+          // Mobile version
           <MobileNavBar currentRoute={route} isOpen={isOpen} setIsOpen={setIsOpen} />
         )}
       </ContentContainer>
-      {width <= 766 && (
+      {mobileVersion && (
         <ReactSlidingPane
           isOpen={isOpen}
           from="left"

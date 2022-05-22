@@ -189,7 +189,12 @@ const Home: NextPage<HomePageProps> = ({
   spArcLink,
 }) => {
   const { width } = useWindowDimensions();
-  const position: PositionType = width <= 639 ? "center" : "bottom-left";
+  const [position, setPosition] = React.useState<PositionType>("bottom-left");
+
+  React.useEffect(() => {
+    // 639px is based on a set TailwindCSS breakpoint
+    if (width !== null) setPosition(width <= 639 ? "center" : "bottom-left");
+  }, [width]);
 
   const currentEvents = currentEventsRaw.map((x) => Event.eventFromEventDetails(x));
   const scrollID = "homePageScrollDiv";

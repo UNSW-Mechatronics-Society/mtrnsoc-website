@@ -13,11 +13,11 @@ const ProfileCards = ({ profileData, background, contactEmail }: ProfileCardsPro
   const backgroundClass = background === "director" ? styles.directorBGColour : styles.execBGColour;
   return (
     <div className={styles.mainContainer}>
-      {profileData.map((profile) => {
+      {profileData.map((profile, index) => {
         return (
           <div
             className={`${styles.profileContainer} ${backgroundClass}`}
-            key={`${profile.position} card`}
+            key={`${profile.position} card ${index}`}
           >
             <img src={profile.src} alt={profile.id} className={styles.picture} />
             <div className={styles.textContainer}>
