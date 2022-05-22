@@ -201,7 +201,10 @@ const Home: NextPage<HomePageProps> = ({
 
   return (
     <section className="h-full">
-      <MetaTags title="UNSW Mechatronics Society" description="UNSW Mechatronics Society" />
+      <MetaTags
+        title="UNSW Mechatronics Society"
+        description="UNSW Mechatronics Society (MTRNSoc) is a student-run engineering society that aims to provide Mechatronic Engineering opportunities and pathways between mechatronic students and the professional community."
+      />
       <div className={styles.mainContainer}>
         <Banner
           imgURL="/images/other/frontPageBannerEdited.png"
