@@ -20,7 +20,7 @@ const getWindowDimensions = () => {
 
 /**
  * NOTE: When SSR in NextJS, the window dimensions does not exist,
- * and hence wil be `null`. See `getWindowDimensions()` function
+ * and hence will be `null`. See `getWindowDimensions()` function
  */
 const useWindowDimensions = () => {
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
