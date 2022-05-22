@@ -16,7 +16,13 @@ const Sponsors: NextPage<SponsorsPageProps> = ({ affiliates, sponsors, emailData
 
   return (
     <div className="h-full">
-      <MetaTags title="Sponsors - MTRNSoc" description="Society sponsors" />
+      <MetaTags
+        title="Sponsors - MTRNSoc"
+        description="MTRNSoc is generously supported by our 
+      sponsors, which gives us an opportunity to run workshops and events and their contributions 
+      are integral to our operations. If you are interested in sponsoring our society, please contact 
+      us via our society email."
+      />
       <Banner
         imgURL="/images/other/sponsorBanner.png"
         text="Sponsors"

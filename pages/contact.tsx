@@ -14,7 +14,7 @@ const Contact: NextPage<ContactPageProps> = ({ socialsData }) => {
 
   return (
     <div className={styles.pageContainer}>
-      <MetaTags title="Contact - MTRNSoc" description="Contact society" />
+      <MetaTags title="Contact - MTRNSoc" description="Contact our society here." />
       <ContentContainer>
         <div className={styles.mainContainer}>
           <h1 className="text-3xl font-semibold mb-4">Wanna get in touch?</h1>
