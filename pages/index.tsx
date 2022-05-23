@@ -188,6 +188,7 @@ const Home: NextPage<HomePageProps> = ({
   featuredPersonData,
   spArcLink,
 }) => {
+  const BANNER_IMG_URL = "/images/other/frontPageBannerEdited.png";
   const { width } = useWindowDimensions();
   const [position, setPosition] = React.useState<PositionType>("bottom-left");
 
@@ -204,10 +205,11 @@ const Home: NextPage<HomePageProps> = ({
       <MetaTags
         title="UNSW Mechatronics Society"
         description="UNSW Mechatronics Society (MTRNSoc) is a student-run engineering society that aims to provide Mechatronic Engineering opportunities and pathways between mechatronic students and the professional community."
+        imgURL={BANNER_IMG_URL}
       />
       <div className={styles.mainContainer}>
         <Banner
-          imgURL="/images/other/frontPageBannerEdited.png"
+          imgURL={BANNER_IMG_URL}
           text="UNSW Mechatronics Society"
           arrow={true}
           position={position}

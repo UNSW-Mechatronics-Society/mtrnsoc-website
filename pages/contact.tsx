@@ -9,12 +9,19 @@ type ContactPageProps = {
 };
 
 const Contact: NextPage<ContactPageProps> = ({ socialsData }) => {
+  // NOTE: This page does not have a banner, but will use the home page banner as its og:image
+  const BANNER_IMG_URL = "/images/other/frontPageBannerEdited.png";
+
   const emailData = socialsData.find((x) => x.name === "Email");
   if (emailData === undefined) throw "Cannot find emailData from socialData.ts";
 
   return (
     <div className={styles.pageContainer}>
-      <MetaTags title="Contact - MTRNSoc" description="Contact our society here." />
+      <MetaTags
+        title="Contact - MTRNSoc"
+        description="Contact our society here."
+        imgURL={BANNER_IMG_URL}
+      />
       <ContentContainer>
         <div className={styles.mainContainer}>
           <h1 className="text-3xl font-semibold mb-4">Wanna get in touch?</h1>
