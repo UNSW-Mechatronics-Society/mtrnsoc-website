@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import useWindowDimensions from "util/useWindowDimensions";
-import type { NavLink } from "data/navLinksData";
+import type { PageInformation } from "data/navLinksData";
 import navLinks from "data/navLinksData";
 import ContentContainer from "../ContentContainer/ContentContainer";
 import styles from "./NavBar.module.scss";
@@ -23,16 +23,16 @@ const Logo = () => {
   );
 };
 
-type DesktopButtonProps = NavLinksSectionProps & NavLink;
+type DesktopButtonProps = NavLinksSectionProps & PageInformation;
 
-const DesktopButton = ({ name, route, currentRoute }: DesktopButtonProps): JSX.Element => {
+const DesktopButton = ({ navBarName, route, currentRoute }: DesktopButtonProps): JSX.Element => {
   const boldIfRouteIsCurrent = route === currentRoute ? "font-semibold" : "";
 
   return (
     <div className={styles.buttonContainer}>
       <Link href={route}>
         <a>
-          <div className={`${styles.buttonText} ${boldIfRouteIsCurrent}`}>{name}</div>
+          <div className={`${styles.buttonText} ${boldIfRouteIsCurrent}`}>{navBarName}</div>
         </a>
       </Link>
     </div>
@@ -47,7 +47,7 @@ const NavLinksSection = ({ currentRoute }: NavLinksSectionProps): JSX.Element =>
   return (
     <div className={styles.navLinksContainer}>
       {navLinks.map((item) => (
-        <DesktopButton key={item.name} {...item} currentRoute={currentRoute} />
+        <DesktopButton key={item.navBarName} {...item} currentRoute={currentRoute} />
       ))}
     </div>
   );
@@ -133,14 +133,14 @@ const NavBar = (): JSX.Element => {
             <ul>
               {navLinks.map((item) => (
                 <li
-                  key={item.name}
+                  key={item.navBarName}
                   className={`${styles.mobileNavButton} ${
                     item.route === route ? "font-semibold" : ""
                   }`}
                   onClick={() => setIsOpen(false)}
                 >
                   <Link href={item.route}>
-                    <a>{item.name}</a>
+                    <a>{item.navBarName}</a>
                   </Link>
                 </li>
               ))}
