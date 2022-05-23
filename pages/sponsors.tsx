@@ -1,6 +1,7 @@
 import type { GetStaticProps, NextPage } from "next";
 import Link from "next/link";
 import { Banner, ContentContainer, MetaTags } from "components";
+import { PageInformation, sponsorsPageData } from "data/navLinksData";
 import { SocialData, emailData } from "data/socialsData";
 import sponsorsData, { SponsorData } from "data/sponsorsData";
 import styles from "styles/sponsors.module.scss";
@@ -9,22 +10,22 @@ type SponsorsPageProps = {
   affiliates: SponsorData[];
   sponsors: SponsorData[];
   emailData: SocialData;
+  pageData: PageInformation;
 };
 
-const Sponsors: NextPage<SponsorsPageProps> = ({ affiliates, sponsors, emailData }) => {
-  const BANNER_IMG_URL = "/images/other/sponsorBanner.png";
+const Sponsors: NextPage<SponsorsPageProps> = ({ affiliates, sponsors, emailData, pageData }) => {
   const scrollID = "sponsorsPageScrollDiv";
 
   return (
     <div className="h-full">
       <MetaTags
-        title="Sponsors - MTRNSoc"
-        description="MTRNSoc is generously supported by our sponsors, which gives us an opportunity to run workshops and events and their contributions are integral to our operations. If you are interested in sponsoring our society, please contact us via our society email."
-        imgURL={BANNER_IMG_URL}
+        title={pageData.title}
+        description={pageData.description}
+        imgURL={pageData.bannerImageURL}
       />
       <Banner
-        imgURL={BANNER_IMG_URL}
-        text="Sponsors"
+        imgURL={pageData.bannerImageURL}
+        text={pageData.bannerText}
         arrow={true}
         position="center"
         scrollToID={scrollID}
@@ -79,6 +80,7 @@ export const getStaticProps: GetStaticProps<SponsorsPageProps> = async () => {
       affiliates: affiliates,
       sponsors: sponsors,
       emailData: emailData,
+      pageData: sponsorsPageData,
     },
   };
 };
