@@ -79,13 +79,19 @@ const Team: NextPage<TeamPageProps> = ({
   subcomProfileData,
   email,
 }) => {
+  const BANNER_IMG_URL = "/images/other/teamBanner.png";
   const scrollID = "teamPageScrollDiv";
+
   return (
     <div className="h-full">
-      <MetaTags title="Team - MTRNSoc" description="Meet the current team behind MTRNSoc" />
+      <MetaTags
+        title="Team - MTRNSoc"
+        description="Meet the current team behind MTRNSoc"
+        imgURL={BANNER_IMG_URL}
+      />
       <div>
         <Banner
-          imgURL="/images/other/teamBanner.png"
+          imgURL={BANNER_IMG_URL}
           text="Our Team"
           arrow={true}
           position="center"

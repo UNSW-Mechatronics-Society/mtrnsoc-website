@@ -12,19 +12,18 @@ type SponsorsPageProps = {
 };
 
 const Sponsors: NextPage<SponsorsPageProps> = ({ affiliates, sponsors, emailData }) => {
+  const BANNER_IMG_URL = "/images/other/sponsorBanner.png";
   const scrollID = "sponsorsPageScrollDiv";
 
   return (
     <div className="h-full">
       <MetaTags
         title="Sponsors - MTRNSoc"
-        description="MTRNSoc is generously supported by our 
-      sponsors, which gives us an opportunity to run workshops and events and their contributions 
-      are integral to our operations. If you are interested in sponsoring our society, please contact 
-      us via our society email."
+        description="MTRNSoc is generously supported by our sponsors, which gives us an opportunity to run workshops and events and their contributions are integral to our operations. If you are interested in sponsoring our society, please contact us via our society email."
+        imgURL={BANNER_IMG_URL}
       />
       <Banner
-        imgURL="/images/other/sponsorBanner.png"
+        imgURL={BANNER_IMG_URL}
         text="Sponsors"
         arrow={true}
         position="center"
