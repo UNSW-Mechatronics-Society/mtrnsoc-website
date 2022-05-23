@@ -94,6 +94,7 @@ const PastEventsSection = ({
 };
 
 const Home: NextPage<EventsPageProps> = ({ currentEventsRaw, eventsByYearByTermRaw, yearData }) => {
+  const BANNER_IMG_URL = "/images/other/eventsBanner.png";
   const scrollID = "eventsPageScrollDiv";
 
   const years = yearData.map((x) => x.year);
@@ -134,9 +135,10 @@ const Home: NextPage<EventsPageProps> = ({ currentEventsRaw, eventsByYearByTermR
       <MetaTags
         title="Events - MTRNSoc"
         description="The UNSW MTRNSoc team organises a variety of social events, industry nights, and workshops. Click here to see what events are on now!"
+        imgURL={BANNER_IMG_URL}
       />
       <Banner
-        imgURL="/images/other/eventsBanner.png"
+        imgURL={BANNER_IMG_URL}
         text="Events"
         arrow={true}
         position="center"
