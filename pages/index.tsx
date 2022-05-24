@@ -2,10 +2,11 @@ import React from "react";
 import type { GetServerSideProps, NextPage } from "next";
 import Link from "next/link";
 import { getCurrentEvents } from "util/api";
-import { Event, EventDetail } from "util/eventsHelpers";
+import { Event, EventDetail, getSortedEvents } from "util/eventsHelpers";
 import useWindowDimensions from "util/useWindowDimensions";
 import { Banner, ContentContainer, MetaTags, OurCurrentEvents } from "components";
 import { PositionType } from "components/Banner/Banner";
+import { PageInformation, homePageData } from "data/navLinksData";
 import { spArcLink } from "data/socialsData";
 import sponsorsData, { SponsorData } from "data/sponsorsData";
 import { ProfileData, execData } from "data/teamData";
@@ -180,6 +181,7 @@ type HomePageProps = {
   sponsors: SponsorData[];
   featuredPersonData: ProfileData;
   spArcLink: string;
+  pageData: PageInformation;
 };
 
 const Home: NextPage<HomePageProps> = ({
@@ -187,8 +189,8 @@ const Home: NextPage<HomePageProps> = ({
   sponsors,
   featuredPersonData,
   spArcLink,
+  pageData,
 }) => {
-  const BANNER_IMG_URL = "/images/other/frontPageBannerEdited.png";
   const { width } = useWindowDimensions();
   const [position, setPosition] = React.useState<PositionType>("bottom-left");
 
@@ -203,14 +205,14 @@ const Home: NextPage<HomePageProps> = ({
   return (
     <section className="h-full">
       <MetaTags
-        title="UNSW Mechatronics Society"
-        description="UNSW Mechatronics Society (MTRNSoc) is a student-run engineering society that aims to provide Mechatronic Engineering opportunities and pathways between mechatronic students and the professional community."
-        imgURL={BANNER_IMG_URL}
+        title={pageData.title}
+        description={pageData.description}
+        imgURL={pageData.bannerImageURL}
       />
       <div className={styles.mainContainer}>
         <Banner
-          imgURL={BANNER_IMG_URL}
-          text="UNSW Mechatronics Society"
+          imgURL={pageData.bannerImageURL}
+          text={pageData.bannerText}
           arrow={true}
           position={position}
           scrollToID={scrollID}
@@ -233,10 +235,7 @@ export const getServerSideProps: GetServerSideProps<HomePageProps> = async () =>
   if (err !== null || err === undefined) throw err;
   if (currentEvents === null) throw new Error("Uncaught error with currentEvents API call");
 
-  // Sort currentEvents by startDate increasing
-  const sortedCurrentEvents = currentEvents.sort((x, y) => {
-    return x.startDate - y.startDate;
-  });
+  const sortedCurrentEvents = getSortedEvents(currentEvents);
 
   const featuredPersonData = execData.find((x) => x.position === "President");
 
@@ -250,6 +249,7 @@ export const getServerSideProps: GetServerSideProps<HomePageProps> = async () =>
       sponsors: sponsorsData,
       featuredPersonData: featuredPersonData,
       spArcLink: spArcLink,
+      pageData: homePageData,
     },
   };
 };

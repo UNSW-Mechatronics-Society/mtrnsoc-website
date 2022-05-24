@@ -140,3 +140,12 @@ export class Event {
     )} - ${endMoment.format("D MMM")}, ${this.convertToTimeString(endMoment)}`;
   };
 }
+
+/**
+ * Sort events based on its oldest date. Events that finish first are first.
+ * @param currentEvents
+ * @returns
+ */
+export const getSortedEvents = (currentEvents: Event[]) => {
+  return currentEvents.sort((x, y) => x.getOldestDate() - y.getOldestDate());
+};

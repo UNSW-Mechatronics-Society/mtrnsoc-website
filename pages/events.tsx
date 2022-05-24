@@ -3,8 +3,9 @@ import type { GetServerSideProps, NextPage } from "next";
 import Link from "next/link";
 import moment from "moment";
 import { getCurrentEvents, getPastEvents } from "util/api";
-import { Event, EventDetail } from "util/eventsHelpers";
+import { Event, EventDetail, getSortedEvents } from "util/eventsHelpers";
 import { Banner, ContentContainer, DropdownYear, EventCardHorizontal, MetaTags } from "components";
+import { PageInformation, eventsPageData } from "data/navLinksData";
 import { YearDateInformation, yearDates } from "data/termDatesData";
 import styles from "styles/events.module.scss";
 
@@ -31,6 +32,7 @@ type EventsPageProps = {
   currentEventsRaw: EventDetail[];
   eventsByYearByTermRaw: YearlyEventsByTermRaw[];
   yearData: YearDateInformation[];
+  pageData: PageInformation;
 };
 
 type PastEventsSectionProps = {
@@ -93,8 +95,12 @@ const PastEventsSection = ({
   );
 };
 
-const Home: NextPage<EventsPageProps> = ({ currentEventsRaw, eventsByYearByTermRaw, yearData }) => {
-  const BANNER_IMG_URL = "/images/other/eventsBanner.png";
+const Home: NextPage<EventsPageProps> = ({
+  currentEventsRaw,
+  eventsByYearByTermRaw,
+  yearData,
+  pageData,
+}) => {
   const scrollID = "eventsPageScrollDiv";
 
   const years = yearData.map((x) => x.year);
@@ -133,13 +139,13 @@ const Home: NextPage<EventsPageProps> = ({ currentEventsRaw, eventsByYearByTermR
   return (
     <div className="h-full">
       <MetaTags
-        title="Events - MTRNSoc"
-        description="The UNSW MTRNSoc team organises a variety of social events, industry nights, and workshops. Click here to see what events are on now!"
-        imgURL={BANNER_IMG_URL}
+        title={pageData.title}
+        description={pageData.description}
+        imgURL={pageData.bannerImageURL}
       />
       <Banner
-        imgURL={BANNER_IMG_URL}
-        text="Events"
+        imgURL={pageData.bannerImageURL}
+        text={pageData.bannerText}
         arrow={true}
         position="center"
         scrollToID={scrollID}
@@ -179,10 +185,7 @@ export const getServerSideProps: GetServerSideProps<EventsPageProps> = async () 
   if (err1 !== null || err1 === undefined) throw err1;
   if (currentEvents === null) throw new Error("Uncaught error with currentEvents API call");
 
-  // Sort currentEvents by startDate increasing
-  const sortedCurrentEvents = currentEvents.sort(
-    (x, y) => x.getEarliestDate() - y.getEarliestDate(),
-  );
+  const sortedCurrentEvents = getSortedEvents(currentEvents);
 
   const [pastEvents, err2] = await getPastEvents();
 
@@ -266,6 +269,7 @@ export const getServerSideProps: GetServerSideProps<EventsPageProps> = async () 
       currentEventsRaw: sortedCurrentEvents.map((x) => x.toJSON()),
       eventsByYearByTermRaw: eventsByYearByTerm,
       yearData: yearDates,
+      pageData: eventsPageData,
     },
   };
 };
