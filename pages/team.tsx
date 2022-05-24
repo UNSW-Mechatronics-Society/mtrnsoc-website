@@ -3,6 +3,7 @@ import { ContentContainer, MetaTags } from "components";
 import { Banner } from "components";
 import ProfileCards from "components/Profile/ProfileCards";
 import SubcomProfileCards from "components/Profile/SubcomProfileCards";
+import { PageInformation, teamPageData } from "data/navLinksData";
 import { emailData } from "data/socialsData";
 import { ProfileData, SubcomProfileData, directorData, execData, subcomData } from "data/teamData";
 import styles from "styles/team.module.scss";
@@ -71,6 +72,7 @@ type TeamPageProps = {
   execProfileData: ProfileData[];
   subcomProfileData: SubcomProfileData[];
   email: string;
+  pageData: PageInformation;
 };
 
 const Team: NextPage<TeamPageProps> = ({
@@ -78,21 +80,21 @@ const Team: NextPage<TeamPageProps> = ({
   execProfileData,
   subcomProfileData,
   email,
+  pageData,
 }) => {
-  const BANNER_IMG_URL = "/images/other/teamBanner.png";
   const scrollID = "teamPageScrollDiv";
 
   return (
     <div className="h-full">
       <MetaTags
-        title="Team - MTRNSoc"
-        description="Meet the current team behind MTRNSoc"
-        imgURL={BANNER_IMG_URL}
+        title={pageData.title}
+        description={pageData.description}
+        imgURL={pageData.bannerImageURL}
       />
       <div>
         <Banner
-          imgURL={BANNER_IMG_URL}
-          text="Our Team"
+          imgURL={pageData.bannerImageURL}
+          text={pageData.bannerText}
           arrow={true}
           position="center"
           scrollToID={scrollID}
@@ -114,6 +116,7 @@ export const getStaticProps: GetStaticProps<TeamPageProps> = async () => {
       subcomProfileData: subcomData,
       // NOTE: Based on how children components were designed, 'mailto:' is added to email string
       email: emailData.display,
+      pageData: teamPageData,
     },
   };
 };

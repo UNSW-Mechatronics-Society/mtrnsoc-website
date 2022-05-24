@@ -1,16 +1,17 @@
 import type { GetStaticProps, NextPage } from "next";
 import Link from "next/link";
 import { ContentContainer, MetaTags } from "components";
+import { PageInformation, contactPageData } from "data/navLinksData";
 import defaultSocialsData, { SocialData } from "data/socialsData";
 import styles from "styles/contact.module.scss";
 
 type ContactPageProps = {
   socialsData: SocialData[];
+  pageData: PageInformation;
 };
 
-const Contact: NextPage<ContactPageProps> = ({ socialsData }) => {
+const Contact: NextPage<ContactPageProps> = ({ socialsData, pageData }) => {
   // NOTE: This page does not have a banner, but will use the home page banner as its og:image
-  const BANNER_IMG_URL = "/images/other/frontPageBannerEdited.png";
 
   const emailData = socialsData.find((x) => x.name === "Email");
   if (emailData === undefined) throw "Cannot find emailData from socialData.ts";
@@ -18,9 +19,9 @@ const Contact: NextPage<ContactPageProps> = ({ socialsData }) => {
   return (
     <div className={styles.pageContainer}>
       <MetaTags
-        title="Contact - MTRNSoc"
-        description="Contact our society here."
-        imgURL={BANNER_IMG_URL}
+        title={pageData.title}
+        description={pageData.description}
+        imgURL={pageData.bannerImageURL}
       />
       <ContentContainer>
         <div className={styles.mainContainer}>
@@ -56,6 +57,7 @@ export const getStaticProps: GetStaticProps<ContactPageProps> = async () => {
   return {
     props: {
       socialsData: defaultSocialsData,
+      pageData: contactPageData,
     },
   };
 };
