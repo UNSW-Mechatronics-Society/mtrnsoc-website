@@ -3,7 +3,7 @@ import type { GetServerSideProps, NextPage } from "next";
 import Link from "next/link";
 import moment from "moment";
 import { getCurrentEvents, getPastEvents } from "util/api";
-import { Event, EventDetail } from "util/eventsHelpers";
+import { Event, EventDetail, getSortedEvents } from "util/eventsHelpers";
 import { Banner, ContentContainer, DropdownYear, EventCardHorizontal, MetaTags } from "components";
 import { YearDateInformation, yearDates } from "data/termDatesData";
 import styles from "styles/events.module.scss";
@@ -179,8 +179,7 @@ export const getServerSideProps: GetServerSideProps<EventsPageProps> = async () 
   if (err1 !== null || err1 === undefined) throw err1;
   if (currentEvents === null) throw new Error("Uncaught error with currentEvents API call");
 
-  // Sort currentEvents by oldest date
-  const sortedCurrentEvents = currentEvents.sort((x, y) => x.getOldestDate() - y.getOldestDate());
+  const sortedCurrentEvents = getSortedEvents(currentEvents);
 
   const [pastEvents, err2] = await getPastEvents();
 
