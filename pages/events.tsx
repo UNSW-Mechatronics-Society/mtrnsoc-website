@@ -179,10 +179,8 @@ export const getServerSideProps: GetServerSideProps<EventsPageProps> = async () 
   if (err1 !== null || err1 === undefined) throw err1;
   if (currentEvents === null) throw new Error("Uncaught error with currentEvents API call");
 
-  // Sort currentEvents by startDate increasing
-  const sortedCurrentEvents = currentEvents.sort(
-    (x, y) => x.getEarliestDate() - y.getEarliestDate(),
-  );
+  // Sort currentEvents by oldest date
+  const sortedCurrentEvents = currentEvents.sort((x, y) => x.getOldestDate() - y.getOldestDate());
 
   const [pastEvents, err2] = await getPastEvents();
 

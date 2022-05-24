@@ -233,10 +233,8 @@ export const getServerSideProps: GetServerSideProps<HomePageProps> = async () =>
   if (err !== null || err === undefined) throw err;
   if (currentEvents === null) throw new Error("Uncaught error with currentEvents API call");
 
-  // Sort currentEvents by startDate increasing
-  const sortedCurrentEvents = currentEvents.sort((x, y) => {
-    return x.startDate - y.startDate;
-  });
+  // Sort currentEvents by oldest date
+  const sortedCurrentEvents = currentEvents.sort((x, y) => x.getOldestDate() - y.getOldestDate());
 
   const featuredPersonData = execData.find((x) => x.position === "President");
 
