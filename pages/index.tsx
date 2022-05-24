@@ -2,7 +2,7 @@ import React from "react";
 import type { GetServerSideProps, NextPage } from "next";
 import Link from "next/link";
 import { getCurrentEvents } from "util/api";
-import { Event, EventDetail } from "util/eventsHelpers";
+import { Event, EventDetail, getSortedEvents } from "util/eventsHelpers";
 import useWindowDimensions from "util/useWindowDimensions";
 import { Banner, ContentContainer, MetaTags, OurCurrentEvents } from "components";
 import { PositionType } from "components/Banner/Banner";
@@ -235,10 +235,7 @@ export const getServerSideProps: GetServerSideProps<HomePageProps> = async () =>
   if (err !== null || err === undefined) throw err;
   if (currentEvents === null) throw new Error("Uncaught error with currentEvents API call");
 
-  // Sort currentEvents by startDate increasing
-  const sortedCurrentEvents = currentEvents.sort((x, y) => {
-    return x.startDate - y.startDate;
-  });
+  const sortedCurrentEvents = getSortedEvents(currentEvents);
 
   const featuredPersonData = execData.find((x) => x.position === "President");
 
