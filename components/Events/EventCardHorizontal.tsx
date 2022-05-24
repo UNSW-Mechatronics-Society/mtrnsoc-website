@@ -39,9 +39,7 @@ export default function EventCardHorizontal({
           {eventData.location && (
             <div className="flex flex-row mt-3">
               <img className="mr-3" src="/misc/location.svg" alt="" draggable="false" />
-              <p className="text-lg grid place-items-center max-eventCard:text-left">
-                {eventData.location}
-              </p>
+              <p className="text-lg grid place-items-center text-left">{eventData.location}</p>
             </div>
           )}
         </div>
