@@ -108,6 +108,6 @@ export const subcomData: SubcomProfileData[] = [
   },
   {
     portfolioName: "Industry Team",
-    members: ["Dipro Roychowdhury", "Rohit Ghosh", "Sarvesh Sanjay Wanzare"],
+    members: ["Dipro Roychowdhury", "Sarvesh Sanjay Wanzare"],
   },
 ];
