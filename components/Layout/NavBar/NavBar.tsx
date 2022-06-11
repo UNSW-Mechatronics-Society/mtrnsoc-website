@@ -93,14 +93,6 @@ const MobileNavBar = ({ setIsOpen }: MobileNavBarProps): JSX.Element => {
 const NavBar = (): JSX.Element => {
   const [isTop, setIsTop] = React.useState(false);
   const [isOpen, setIsOpen] = React.useState(false);
-  const { width } = useWindowDimensions();
-
-  // if `mobileVersion` is true, display mobile version of the NavBar
-  const [mobileVersion, setMobileVersion] = React.useState(false);
-
-  React.useEffect(() => {
-    if (width !== null) setMobileVersion(width <= 766);
-  }, [width]);
 
   const router = useRouter();
   const { route } = router;
@@ -114,40 +106,37 @@ const NavBar = (): JSX.Element => {
   return (
     <div className={`${styles.mainContainer} ${isTop ? "" : "shadow-md"}`}>
       <ContentContainer>
-        {!mobileVersion ? (
-          // Desktop version
+        <div className="w-full max-md:hidden">
           <DesktopNavBar currentRoute={route} />
-        ) : (
-          // Mobile version
+        </div>
+        <div className="w-full hidden max-md:block">
           <MobileNavBar currentRoute={route} isOpen={isOpen} setIsOpen={setIsOpen} />
-        )}
+        </div>
       </ContentContainer>
-      {mobileVersion && (
-        <ReactSlidingPane
-          isOpen={isOpen}
-          from="left"
-          width="15rem"
-          onRequestClose={() => setIsOpen(false)}
-        >
-          <nav>
-            <ul>
-              {navLinks.map((item) => (
-                <li
-                  key={item.navBarName}
-                  className={`${styles.mobileNavButton} ${
-                    item.route === route ? "font-semibold" : ""
-                  }`}
-                  onClick={() => setIsOpen(false)}
-                >
-                  <Link href={item.route}>
-                    <a>{item.navBarName}</a>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </ReactSlidingPane>
-      )}
+      <ReactSlidingPane
+        isOpen={isOpen}
+        from="left"
+        width="15rem"
+        onRequestClose={() => setIsOpen(false)}
+      >
+        <nav>
+          <ul>
+            {navLinks.map((item) => (
+              <li
+                key={item.navBarName}
+                className={`${styles.mobileNavButton} ${
+                  item.route === route ? "font-semibold" : ""
+                }`}
+                onClick={() => setIsOpen(false)}
+              >
+                <Link href={item.route}>
+                  <a>{item.navBarName}</a>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </ReactSlidingPane>
     </div>
   );
 };
