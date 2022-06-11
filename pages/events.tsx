@@ -82,14 +82,14 @@ const PastEventsSection = ({
 
   return (
     <>
-      {selectedYearData.t1.length > 0 && (
-        <TermSection yearSelected={yearSelected} term="Term 1" termData={selectedYearData.t1} />
+      {selectedYearData.t3.length > 0 && (
+        <TermSection yearSelected={yearSelected} term="Term 3" termData={selectedYearData.t3} />
       )}
       {selectedYearData.t2.length > 0 && (
         <TermSection yearSelected={yearSelected} term="Term 2" termData={selectedYearData.t2} />
       )}
-      {selectedYearData.t3.length > 0 && (
-        <TermSection yearSelected={yearSelected} term="Term 3" termData={selectedYearData.t3} />
+      {selectedYearData.t1.length > 0 && (
+        <TermSection yearSelected={yearSelected} term="Term 1" termData={selectedYearData.t1} />
       )}
     </>
   );
