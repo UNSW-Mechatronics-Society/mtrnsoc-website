@@ -96,7 +96,7 @@ const NavBar = (): JSX.Element => {
   const { width } = useWindowDimensions();
 
   // if `mobileVersion` is true, display mobile version of the NavBar
-  const [mobileVersion, setMobileVersion] = React.useState(false);
+  const [mobileVersion, setMobileVersion] = React.useState(true);
 
   React.useEffect(() => {
     if (width !== null) setMobileVersion(width <= 766);
