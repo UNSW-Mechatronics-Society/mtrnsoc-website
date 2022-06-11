@@ -110,7 +110,7 @@ const TermSection = ({ yearSelected, term, termData, width }: TermSectionProps):
                   );
                 } else {
                   return (
-                    <div className="bg-orange-500 w-[18.75rem] h-[10.546875rem] rounded-lg mx-3 my-3"></div>
+                    <div className={styles.fakePastEventImage}></div>
                   );
                 }
               })}
