@@ -109,9 +109,7 @@ const TermSection = ({ yearSelected, term, termData, width }: TermSectionProps):
                     </Link>
                   );
                 } else {
-                  return (
-                    <div className={styles.fakePastEventImage}></div>
-                  );
+                  return <div className={styles.fakePastEventImage}></div>;
                 }
               })}
             </div>
