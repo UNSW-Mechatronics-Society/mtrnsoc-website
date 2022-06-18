@@ -4,6 +4,7 @@ import Link from "next/link";
 import moment from "moment";
 import { getCurrentEvents, getPastEvents } from "util/api";
 import { Event, EventDetail, getSortedEvents } from "util/eventsHelpers";
+import useWindowDimensions from "util/useWindowDimensions";
 import { Banner, ContentContainer, DropdownYear, EventCardHorizontal, MetaTags } from "components";
 import { PageInformation, eventsPageData } from "data/navLinksData";
 import { YearDateInformation, yearDates } from "data/termDatesData";
@@ -38,39 +39,110 @@ type EventsPageProps = {
 type PastEventsSectionProps = {
   eventsByYearByTerm: YearlyEventsByTerm[];
   yearSelected: number;
+  width: number | null;
 };
 
 type TermSectionProps = {
   yearSelected: number;
   term: string;
   termData: EventDetail[];
+  width: number | null;
 };
 
-const TermSection = ({ yearSelected, term, termData }: TermSectionProps): JSX.Element => {
-  // REVIEW Look at rewriting this
+const calculateRowNumItems = (width: number | null): number => {
+  // Uses custom breakpoints manually set based on the size of an event image
+  if (width === null) return 4; // as default
+  if (width > 1487) return 4;
+  if (1127 < width && width <= 1487) {
+    return 3;
+  } else if (767 < width && width <= 1127) {
+    return 2;
+  }
+  return 1;
+};
+
+const TermSection = ({ yearSelected, term, termData, width }: TermSectionProps): JSX.Element => {
+  // Based on the `width` of the page, it automatically splits all the termData into
+  // arrays of equal size, where each element in the 2D array is a row.
+  // `null` is padded to the end of arrays that do not have enough items to fill a row.
+  // `null` is represented as a blank or invisible image so that the events are displayed
+  // in consistent grid-like pattern
+  const perChunk = calculateRowNumItems(width);
+  const result = termData.reduce((resultArray, item, index) => {
+    const chunkIndex = Math.floor(index / perChunk);
+
+    if (!resultArray[chunkIndex]) {
+      resultArray[chunkIndex] = []; // start a new chunk
+    }
+
+    resultArray[chunkIndex].push(item);
+    return resultArray;
+  }, [] as Array<Array<EventDetail | null>>);
+
+  result.forEach((x) => {
+    while (x.length < perChunk) {
+      x.push(null);
+    }
+  });
+
   return (
     <div className={styles.pastEventsTermContainer}>
       <h2 className="uppercase mx-3 font-semibold text-xl max-pastEventsTitle:mx-0 max-pastEventsTitle:flex max-pastEventsTitle:justify-center">{`${yearSelected} ${term}`}</h2>
-      <div className="w-full flex flex-row flex-wrap justify-around">
-        {termData.map((event) => (
-          <Link key={event.title} href={event.facebookEventLink}>
-            <a target="_blank">
-              <img
-                src={event.imagePath}
-                className={styles.pastEventsImage}
-                alt={`${event.title} banner`}
-              />
-            </a>
-          </Link>
-        ))}
+      <div className="w-full flex flex-col">
+        {result.map((row, index) => {
+          return (
+            <div
+              key={`term-${term} row-${index}`}
+              className="flex flex-row flex-wrap justify-around"
+            >
+              {row.map((event) => {
+                if (event !== null) {
+                  return (
+                    <Link key={event.title} href={event.facebookEventLink}>
+                      <a target="_blank">
+                        <img
+                          src={event.imagePath}
+                          className={styles.pastEventsImage}
+                          alt={`${event.title} banner`}
+                        />
+                      </a>
+                    </Link>
+                  );
+                } else {
+                  return <div className={styles.fakePastEventImage}></div>;
+                }
+              })}
+            </div>
+          );
+        })}
       </div>
     </div>
   );
+
+  // return (
+  //   <div className={styles.pastEventsTermContainer}>
+  //     <h2 className="uppercase mx-3 font-semibold text-xl max-pastEventsTitle:mx-0 max-pastEventsTitle:flex max-pastEventsTitle:justify-center">{`${yearSelected} ${term}`}</h2>
+  //     <div className="w-full flex flex-row flex-wrap justify-around">
+  //       {termData.map((event) => (
+  //         <Link key={event.title} href={event.facebookEventLink}>
+  //           <a target="_blank">
+  //             <img
+  //               src={event.imagePath}
+  //               className={styles.pastEventsImage}
+  //               alt={`${event.title} banner`}
+  //             />
+  //           </a>
+  //         </Link>
+  //       ))}
+  //     </div>
+  //   </div>
+  // );
 };
 
 const PastEventsSection = ({
   eventsByYearByTerm,
   yearSelected,
+  width,
 }: PastEventsSectionProps): JSX.Element => {
   // REVIEW Look at rewriting this
   const selectedYearData = eventsByYearByTerm.find((x) => x.year === yearSelected);
@@ -83,13 +155,28 @@ const PastEventsSection = ({
   return (
     <>
       {selectedYearData.t3.length > 0 && (
-        <TermSection yearSelected={yearSelected} term="Term 3" termData={selectedYearData.t3} />
+        <TermSection
+          yearSelected={yearSelected}
+          term="Term 3"
+          termData={selectedYearData.t3}
+          width={width}
+        />
       )}
       {selectedYearData.t2.length > 0 && (
-        <TermSection yearSelected={yearSelected} term="Term 2" termData={selectedYearData.t2} />
+        <TermSection
+          yearSelected={yearSelected}
+          term="Term 2"
+          termData={selectedYearData.t2}
+          width={width}
+        />
       )}
       {selectedYearData.t1.length > 0 && (
-        <TermSection yearSelected={yearSelected} term="Term 1" termData={selectedYearData.t1} />
+        <TermSection
+          yearSelected={yearSelected}
+          term="Term 1"
+          termData={selectedYearData.t1}
+          width={width}
+        />
       )}
     </>
   );
@@ -102,6 +189,9 @@ const Home: NextPage<EventsPageProps> = ({
   pageData,
 }) => {
   const scrollID = "eventsPageScrollDiv";
+
+  const { width } = useWindowDimensions();
+  console.log(width);
 
   const years = yearData.map((x) => x.year);
   const [yearSelected, setYearSelected] = React.useState(years[0]);
@@ -171,6 +261,7 @@ const Home: NextPage<EventsPageProps> = ({
             <PastEventsSection
               eventsByYearByTerm={eventsByYearByTerm}
               yearSelected={yearSelected}
+              width={width}
             />
           </div>
         </div>
