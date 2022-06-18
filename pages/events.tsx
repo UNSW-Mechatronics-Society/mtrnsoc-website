@@ -95,7 +95,7 @@ const TermSection = ({ yearSelected, term, termData, width }: TermSectionProps):
               key={`term-${term} row-${index}`}
               className="flex flex-row flex-wrap justify-around"
             >
-              {row.map((event) => {
+              {row.map((event, index1) => {
                 if (event !== null) {
                   return (
                     <Link key={event.title} href={event.facebookEventLink}>
@@ -109,7 +109,12 @@ const TermSection = ({ yearSelected, term, termData, width }: TermSectionProps):
                     </Link>
                   );
                 } else {
-                  return <div className={styles.fakePastEventImage}></div>;
+                  return (
+                    <div
+                      key={`term-${term} row-${index} ${index1}`}
+                      className={styles.fakePastEventImage}
+                    ></div>
+                  );
                 }
               })}
             </div>
@@ -191,7 +196,6 @@ const Home: NextPage<EventsPageProps> = ({
   const scrollID = "eventsPageScrollDiv";
 
   const { width } = useWindowDimensions();
-  console.log(width);
 
   const years = yearData.map((x) => x.year);
   const [yearSelected, setYearSelected] = React.useState(years[0]);
