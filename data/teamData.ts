@@ -92,7 +92,7 @@ export const directorData: ProfileData[] = [
 export const subcomData: SubcomProfileData[] = [
   {
     portfolioName: "Marketing Team",
-    members: ["Aakash Kumar", "Angela Lei", "Carrie Wu", "Rayyan Hossain", "Sam Banerjee"],
+    members: ["Angela Lei", "Carrie Wu", "Rayyan Hossain", "Sam Banerjee"],
   },
   {
     portfolioName: "Socials Team",
