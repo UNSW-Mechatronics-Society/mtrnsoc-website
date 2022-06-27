@@ -96,7 +96,7 @@ export const subcomData: SubcomProfileData[] = [
   },
   {
     portfolioName: "Socials Team",
-    members: ["Byron Petselis", "Thomas Shalaby"],
+    members: ["Byron Petselis", "Thomas Shalaby", "Zac Saber"],
   },
   {
     portfolioName: "Workshops Team",
@@ -108,6 +108,6 @@ export const subcomData: SubcomProfileData[] = [
   },
   {
     portfolioName: "Industry Team",
-    members: ["Dipro Roychowdhury", "Sarvesh Sanjay Wanzare"],
+    members: ["Dipro Roychowdhury", "Hannabeth Marchant", "Sarvesh Sanjay Wanzare"],
   },
 ];
