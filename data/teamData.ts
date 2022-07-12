@@ -2,7 +2,7 @@ export type ProfileData = {
   src: string;
   id: string;
   position: string;
-  linkedIn: string;
+  linkedIn: string | null;
 };
 
 export type SubcomProfileData = {
@@ -52,6 +52,12 @@ export const directorData: ProfileData[] = [
     linkedIn: "https://www.linkedin.com/in/celinechooliling/",
   },
   {
+    src: "/images/profiles/LeahF.jpg",
+    id: "Leah Farquhar-Flett",
+    position: "Marketing Director",
+    linkedIn: null,
+  },
+  {
     src: "/images/profiles/IshitaK.jpg",
     id: "Ishita Katyal",
     position: "Socials Director",
@@ -92,7 +98,7 @@ export const directorData: ProfileData[] = [
 export const subcomData: SubcomProfileData[] = [
   {
     portfolioName: "Marketing Team",
-    members: ["Angela Lei", "Carrie Wu", "Rayyan Hossain", "Sam Banerjee"],
+    members: ["Angela Lei", "Carrie Wu", "Sam Banerjee"],
   },
   {
     portfolioName: "Socials Team",
