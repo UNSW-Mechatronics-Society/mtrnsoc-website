@@ -2,7 +2,7 @@ export type ProfileData = {
   src: string;
   id: string;
   position: string;
-  linkedIn: string;
+  linkedIn: string | null;
 };
 
 export type SubcomProfileData = {
@@ -48,8 +48,14 @@ export const directorData: ProfileData[] = [
   {
     src: "/images/profiles/CelineC.jpg",
     id: "Celine Choo",
-    position: "Marketing Co-Director",
+    position: "Marketing Director",
     linkedIn: "https://www.linkedin.com/in/celinechooliling/",
+  },
+  {
+    src: "/images/profiles/LeahF.jpg",
+    id: "Leah Farquhar-Flett",
+    position: "Marketing Director",
+    linkedIn: null,
   },
   {
     src: "/images/profiles/IshitaK.jpg",
