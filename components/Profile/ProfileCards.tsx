@@ -25,9 +25,11 @@ const ProfileCards = ({ profileData, background, contactEmail }: ProfileCardsPro
               <div className={styles.position}>{profile.position}</div>
             </div>
             <div className={styles.links}>
-              <a rel="noreferrer" target="_blank" href={profile.linkedIn}>
-                <img src="/logos/linkedinLogo.svg" alt="LinkedInLogo" className={styles.logo} />
-              </a>
+              {profile.linkedIn && (
+                <a rel="noreferrer" target="_blank" href={profile.linkedIn}>
+                  <img src="/logos/linkedinLogo.svg" alt="LinkedInLogo" className={styles.logo} />
+                </a>
+              )}
               <a href={`mailto:${contactEmail}`}>
                 <img src="/logos/emailLogo.svg" alt="LinkedInLogo" className={styles.logo} />
               </a>
