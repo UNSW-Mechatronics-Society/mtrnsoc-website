@@ -48,7 +48,7 @@ export const directorData: ProfileData[] = [
   {
     src: "/images/profiles/CelineC.jpg",
     id: "Celine Choo",
-    position: "Marketing Director",
+    position: "Marketing Co-Director",
     linkedIn: "https://www.linkedin.com/in/celinechooliling/",
   },
   {
@@ -92,7 +92,7 @@ export const directorData: ProfileData[] = [
 export const subcomData: SubcomProfileData[] = [
   {
     portfolioName: "Marketing Team",
-    members: ["Angela Lei", "Carrie Wu", "Rayyan Hossain", "Sam Banerjee"],
+    members: ["Angela Lei", "Carrie Wu", "Sam Banerjee"],
   },
   {
     portfolioName: "Socials Team",
