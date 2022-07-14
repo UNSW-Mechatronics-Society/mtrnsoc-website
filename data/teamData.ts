@@ -98,7 +98,7 @@ export const directorData: ProfileData[] = [
 export const subcomData: SubcomProfileData[] = [
   {
     portfolioName: "Marketing Team",
-    members: ["Angela Lei", "Carrie Wu", "Sam Banerjee"],
+    members: ["Angela Lei", "Carrie Wu", "Sam Banerjee", "Sunny Chen"],
   },
   {
     portfolioName: "Socials Team",
