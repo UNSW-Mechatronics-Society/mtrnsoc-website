@@ -40,3 +40,7 @@ yarn-error.log*
 .netlify
 
 *:Zone.Identifier
+
+**/.idea/workspace.xml
+
+**/.idea/tasks.xml
