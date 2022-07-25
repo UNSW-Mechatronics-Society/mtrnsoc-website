@@ -52,8 +52,8 @@ export const directorData: ProfileData[] = [
     linkedIn: "https://www.linkedin.com/in/celinechooliling/",
   },
   {
-    src: "/images/profiles/LeahF.jpg",
-    id: "Leah Farquhar-Flett",
+    src: "/images/profiles/DanaeM.jpg",
+    id: "Danae Matthews",
     position: "Marketing Director",
     linkedIn: null,
   },
