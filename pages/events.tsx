@@ -217,7 +217,7 @@ const Home: NextPage<EventsPageProps> = ({
         <>
           {currentEvents.map((e, index) => {
             return (
-              <div key={e.title} className="w-full grid place-items-center my-5">
+              <div key={e.title} className="w-full flex justify-center items-center my-5">
                 <EventCardHorizontal eventData={e} cardNumber={index} />
               </div>
             );
