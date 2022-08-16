@@ -41,6 +41,4 @@ yarn-error.log*
 
 *:Zone.Identifier
 
-**/.idea/workspace.xml
-
-**/.idea/tasks.xml
+.idea
