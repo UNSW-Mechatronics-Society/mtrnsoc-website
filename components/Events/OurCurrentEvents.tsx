@@ -47,7 +47,11 @@ export default function OurCurrentEvents({
   if (currentEvents.length === 0) {
     return (
       <div>
-        <img src="/zzz.svg" alt="MTRNSoc Robot Sleeping" className={styles.imageSleepContainer} />
+        <img
+          src="/logos/zzz.svg"
+          alt="MTRNSoc Robot Sleeping"
+          className={styles.imageSleepContainer}
+        />
         <Template buttonStyle={buttonStyle}>
           <p className={styles.errorText}>There are no events currently. Check back later!</p>
         </Template>
