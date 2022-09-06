@@ -72,7 +72,7 @@ const MobileNavBar = ({ setIsOpen }: MobileNavBarProps): JSX.Element => {
     <div className={styles.mobileNavBarContainer}>
       <button aria-label="menu">
         <img
-          src="/menu.svg"
+          src="/logos/menu.svg"
           alt="menu"
           className={styles.navigationBurger}
           onClick={() => setIsOpen(true)}
@@ -81,7 +81,7 @@ const MobileNavBar = ({ setIsOpen }: MobileNavBarProps): JSX.Element => {
       <Logo />
       {/* As a placeholder for flex */}
       <img
-        src="/menu.svg"
+        src="/logos/menu.svg"
         alt=""
         className={`${styles.navigationBurger} invisible`}
         onClick={() => setIsOpen(true)}

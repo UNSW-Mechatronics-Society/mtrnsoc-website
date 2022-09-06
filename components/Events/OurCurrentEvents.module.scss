@@ -41,3 +41,7 @@
   transition-duration: 1s;
   transform: scale(1.03);
 }
+
+.imageSleepContainer {
+  @apply flex flex-row content-center justify-center w-full pb-8 pl-14;
+}
