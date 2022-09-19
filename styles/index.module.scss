@@ -25,7 +25,7 @@
 }
 
 .featuredPersonCard {
-  @apply bg-[#E8EFF5] p-4 mr-4 max-md:flex max-md:flex-row max-md:justify-center max-md:mb-1;
+  @apply bg-[#E8EFF5] border border-yaleBlue p-4 mr-4 flex-col content-center max-md:flex max-md:flex-row max-md:justify-center max-md:mb-1;
 }
 
 .featuredPersonCardText {
