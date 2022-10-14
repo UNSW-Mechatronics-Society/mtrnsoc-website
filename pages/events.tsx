@@ -198,7 +198,6 @@ const Home: NextPage<EventsPageProps> = ({
   const { width } = useWindowDimensions();
 
   const years = yearData.map((x) => x.year);
-  const [yearSelected, setYearSelected] = React.useState(years[0]);
 
   const currentEvents = currentEventsRaw.map((x) => Event.eventFromEventDetails(x));
   const eventsByYearByTerm: YearlyEventsByTerm[] = eventsByYearByTermRaw.map((x) => {
@@ -209,6 +208,14 @@ const Home: NextPage<EventsPageProps> = ({
       t3: x.t3.map((y) => Event.eventFromEventDetails(y)),
     };
   });
+  const [yearSelected, setYearSelected] = React.useState(
+    years.filter((x) => {
+      // Pick the first one that has events
+      // This is kinda dodgy but it works
+      return eventsByYearByTerm.find((y) => y.year === x);
+    })[0],
+  );
+  console.log(eventsByYearByTerm);
 
   const CurrentEventsSection = () => {
     if (currentEvents.length >= 1) {
