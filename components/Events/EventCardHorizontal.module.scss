@@ -26,7 +26,7 @@
 }
 
 .buttonContainer {
-  @apply w-full h-full place-items-end grid mb-5;
+  @apply w-full h-full flex justify-end items-end mb-5;
 }
 
 .button {
