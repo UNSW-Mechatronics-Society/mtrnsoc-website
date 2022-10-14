@@ -56,7 +56,7 @@ export const execData2023: ProfileData[] = [
     src: "/images/profiles/AngusW.jpg",
     id: "Angus Wang",
     position: "Vice President",
-    linkedIn: null,
+    linkedIn: "https://www.linkedin.com/in/angus-wang-2a4905203/",
   },
   {
     src: "/images/profiles/NicoleL.jpg",
