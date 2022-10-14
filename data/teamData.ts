@@ -44,6 +44,46 @@ export const execData: ProfileData[] = [
   },
 ];
 
+// alt and name is id, email is mtrnsoc email, classnames are the same,
+export const execData2023: ProfileData[] = [
+  {
+    src: "/images/profiles/ShamikP.jpg",
+    id: "Shamik Patel",
+    position: "President",
+    linkedIn: "https://www.linkedin.com/in/shamik-patel/",
+  },
+  {
+    src: "/images/profiles/AngusW.jpg",
+    id: "Angus Wang",
+    position: "Vice President",
+    linkedIn: null,
+  },
+  {
+    src: "/images/profiles/NicoleL.jpg",
+    id: "Nicole Leow Ke Xin",
+    position: "Secretary",
+    linkedIn: "https://www.linkedin.com/in/nicole-leow-40b117214/",
+  },
+  {
+    src: "/images/profiles/JayC.jpg",
+    id: "Huan Jie (Jay) Choo",
+    position: "Treasurer",
+    linkedIn: "https://www.linkedin.com/in/jay-c-19921b251/",
+  },
+  {
+    src: "/images/profiles/EricD.jpg",
+    id: "Eric Do",
+    position: "Arc Delegate",
+    linkedIn: "https://www.linkedin.com/in/ericnd/",
+  },
+  {
+    src: "/images/profiles/JessL.jpg",
+    id: "Jess Luo",
+    position: "Grievance & EDI Officer",
+    linkedIn: "https://www.linkedin.com/in/jessica-luo-0a7282208/",
+  },
+];
+
 export const directorData: ProfileData[] = [
   {
     src: "/images/profiles/CelineC.jpg",
