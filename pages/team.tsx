@@ -5,7 +5,14 @@ import ProfileCards from "components/Profile/ProfileCards";
 import SubcomProfileCards from "components/Profile/SubcomProfileCards";
 import { PageInformation, teamPageData } from "data/navLinksData";
 import { emailData } from "data/socialsData";
-import { ProfileData, SubcomProfileData, directorData, execData, subcomData } from "data/teamData";
+import {
+  ProfileData,
+  SubcomProfileData,
+  directorData,
+  execData,
+  execData2023,
+  subcomData,
+} from "data/teamData";
 import styles from "styles/team.module.scss";
 
 type TitleHeaderProps = {
@@ -19,13 +26,18 @@ const TitleHeader = ({ text }: TitleHeaderProps): JSX.Element => {
 type SectionExecutivesProps = {
   execProfileData: ProfileData[];
   email: string;
+  text?: string;
 };
 
-const SectionExecutives = ({ execProfileData, email }: SectionExecutivesProps): JSX.Element => {
+const SectionExecutives = ({
+  execProfileData,
+  email,
+  text = "Executives",
+}: SectionExecutivesProps): JSX.Element => {
   return (
     <ContentContainer>
       <div className={styles.sectionContainer}>
-        <TitleHeader text="Executives" />
+        <TitleHeader text={text} />
         <ProfileCards profileData={execProfileData} background="executive" contactEmail={email} />
       </div>
     </ContentContainer>
@@ -73,6 +85,7 @@ type TeamPageProps = {
   subcomProfileData: SubcomProfileData[];
   email: string;
   pageData: PageInformation;
+  exec2023ProfileData: ProfileData[];
 };
 
 const Team: NextPage<TeamPageProps> = ({
@@ -81,6 +94,7 @@ const Team: NextPage<TeamPageProps> = ({
   subcomProfileData,
   email,
   pageData,
+  exec2023ProfileData,
 }) => {
   const scrollID = "teamPageScrollDiv";
 
@@ -100,6 +114,11 @@ const Team: NextPage<TeamPageProps> = ({
           scrollToID={scrollID}
         />
         <div id={scrollID}></div>
+        <SectionExecutives
+          execProfileData={exec2023ProfileData}
+          email={email}
+          text="2023 Executives"
+        />
         <SectionExecutives execProfileData={execProfileData} email={email} />
         <SectionDirectors directorProfileData={directorProfileData} email={email} />
         <SectionSubcommittee subcomProfileData={subcomProfileData} />
@@ -117,6 +136,7 @@ export const getStaticProps: GetStaticProps<TeamPageProps> = async () => {
       // NOTE: Based on how children components were designed, 'mailto:' is added to email string
       email: emailData.display,
       pageData: teamPageData,
+      exec2023ProfileData: execData2023,
     },
   };
 };
