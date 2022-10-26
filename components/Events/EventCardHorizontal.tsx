@@ -15,15 +15,18 @@ export default function EventCardHorizontal({
 
   return (
     <div className={`${styles.mainContainer} ${styles.backgroundBlue}`}>
-      <Link href={eventData.facebookEventLink}>
-        <a target="_blank" className="h-full w-full">
-          <img
-            className={styles.image}
-            src={eventData.imagePath}
-            alt={`${eventData.title} image banner`}
-          />
-        </a>
-      </Link>
+      <div className={styles.imageContainer}>
+        <Link href={eventData.facebookEventLink}>
+          <a target="_blank" className="h-full w-full">
+            <img
+              className={styles.image}
+              src={eventData.imagePath}
+              alt={`${eventData.title} image banner`}
+            />
+          </a>
+        </Link>
+      </div>
+
       <div className={styles.rightInformationContainer}>
         <h1 className="text-2xl font-semibold uppercase w-full text-left">{eventData.title}</h1>
         <div className={styles.rightInformationTextContainer}>
