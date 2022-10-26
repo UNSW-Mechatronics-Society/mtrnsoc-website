@@ -215,7 +215,7 @@ const Home: NextPage<EventsPageProps> = ({
       return eventsByYearByTerm.find((y) => y.year === x);
     })[0],
   );
-  console.log(eventsByYearByTerm);
+  // console.log(eventsByYearByTerm);
 
   const CurrentEventsSection = () => {
     if (currentEvents.length >= 1) {
