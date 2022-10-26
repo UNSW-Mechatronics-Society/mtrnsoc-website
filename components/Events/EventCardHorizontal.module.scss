@@ -14,11 +14,11 @@
 }
 
 .imageContainer {
-  @apply w-[60rem] rounded-l-2xl max-eventCard:rounded-l-none max-eventCard:w-full max-eventCard:rounded-t-2xl;
+  @apply w-[60rem] min-h-[16rem] rounded-l-2xl max-eventCard:rounded-l-none max-eventCard:w-full max-eventCard:rounded-t-2xl;
 }
 
 .image {
-  @apply h-full rounded-l-2xl max-eventCard:rounded-l-none max-eventCard:w-full max-eventCard:rounded-t-2xl;
+  @apply h-full w-full rounded-l-2xl max-eventCard:rounded-l-none max-eventCard:w-full max-eventCard:rounded-t-2xl;
 }
 
 .rightInformationContainer {
