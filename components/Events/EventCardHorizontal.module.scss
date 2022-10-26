@@ -14,7 +14,7 @@
 }
 
 .image {
-  @apply w-[32rem] h-full rounded-l-2xl max-eventCard:rounded-l-none max-eventCard:w-full max-eventCard:rounded-t-2xl;
+  @apply h-full rounded-l-2xl max-eventCard:rounded-l-none max-eventCard:w-full max-eventCard:rounded-t-2xl;
 }
 
 .rightInformationContainer {
