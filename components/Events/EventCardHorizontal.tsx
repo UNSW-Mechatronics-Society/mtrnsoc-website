@@ -15,7 +15,7 @@ export default function EventCardHorizontal({
 
   return (
     <div className={`${styles.mainContainer} ${styles.backgroundBlue}`}>
-      <div className="w-[60rem] rounded-l-2xl max-eventCard:rounded-l-none max-eventCard:w-full max-eventCard:rounded-t-2xl">
+      <div className={styles.imageContainer}>
         <Link href={eventData.facebookEventLink}>
           <a target="_blank" className="h-full w-full">
             <img

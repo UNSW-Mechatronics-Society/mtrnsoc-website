@@ -13,6 +13,10 @@
   max-md:max-w-lg;
 }
 
+.imageContainer {
+  @apply w-[60rem] rounded-l-2xl max-eventCard:rounded-l-none max-eventCard:w-full max-eventCard:rounded-t-2xl;
+}
+
 .image {
   @apply h-full rounded-l-2xl max-eventCard:rounded-l-none max-eventCard:w-full max-eventCard:rounded-t-2xl;
 }
