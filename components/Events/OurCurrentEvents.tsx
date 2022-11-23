@@ -14,7 +14,7 @@ const Template = ({ children, buttonStyle }: TemplateProps) => {
     <div className={styles.mainContainer}>
       <div className={styles.eventsContainer}>{children}</div>
       <div>
-        <Link href="/events">
+        <Link legacyBehavior href="/events">
           <a>
             <button className={buttonStyle}>View all our events</button>
           </a>
@@ -93,7 +93,7 @@ export default function OurCurrentEvents({
               >
                 <EventCardHorizontal eventData={event} cardNumber={1} />
               </div>
-              {/* <Link href={event.facebookEventLink}>
+              {/* <Link legacyBehavior href={event.facebookEventLink}>
                 <a target="_blank">
                   <img
                     src={event.imagePath}

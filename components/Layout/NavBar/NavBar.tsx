@@ -10,7 +10,7 @@ import ReactSlidingPane from "./SlidingPane";
 
 const Logo = () => {
   return (
-    <Link href="/">
+    <Link legacyBehavior href="/">
       <a>
         <img
           src="/logos/CulturedOnWhite.svg"
@@ -30,7 +30,7 @@ const DesktopButton = ({ navBarName, route, currentRoute }: DesktopButtonProps):
 
   return (
     <div className={styles.buttonContainer}>
-      <Link href={route}>
+      <Link legacyBehavior href={route}>
         <a>
           <div className={`${styles.buttonText} ${boldIfRouteIsCurrent}`}>{navBarName}</div>
         </a>
@@ -129,7 +129,7 @@ const NavBar = (): JSX.Element => {
                 }`}
                 onClick={() => setIsOpen(false)}
               >
-                <Link href={item.route}>
+                <Link legacyBehavior href={item.route}>
                   <a>{item.navBarName}</a>
                 </Link>
               </li>

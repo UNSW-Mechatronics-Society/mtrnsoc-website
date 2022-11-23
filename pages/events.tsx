@@ -98,7 +98,7 @@ const TermSection = ({ yearSelected, term, termData, width }: TermSectionProps):
               {row.map((event, index1) => {
                 if (event !== null) {
                   return (
-                    <Link key={event.title} href={event.facebookEventLink}>
+                    <Link legacyBehavior key={event.title} href={event.facebookEventLink}>
                       <a target="_blank">
                         <img
                           src={event.imagePath}
@@ -129,7 +129,7 @@ const TermSection = ({ yearSelected, term, termData, width }: TermSectionProps):
   //     <h2 className="uppercase mx-3 font-semibold text-xl max-pastEventsTitle:mx-0 max-pastEventsTitle:flex max-pastEventsTitle:justify-center">{`${yearSelected} ${term}`}</h2>
   //     <div className="w-full flex flex-row flex-wrap justify-around">
   //       {termData.map((event) => (
-  //         <Link key={event.title} href={event.facebookEventLink}>
+  //         <Link legacyBehavior key={event.title} href={event.facebookEventLink}>
   //           <a target="_blank">
   //             <img
   //               src={event.imagePath}
