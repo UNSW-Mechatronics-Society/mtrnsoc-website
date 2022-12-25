@@ -9,7 +9,7 @@
     "test:watch": "jest --watch",
     "lint": "eslint './**/*.{ts,tsx,js,jsx}'",
     "lint:fix": "eslint './**/*.{ts,tsx,js,jsx}' --fix",
-    "prettier:check": "prettier --check './**/*.{ts,tsx,js,jsx,scss,css}'",
+    "prettier": "prettier --check './**/*.{ts,tsx,js,jsx,scss,css}'",
     "prettier:write": "prettier --write './**/*.{ts,tsx,js,jsx,scss,css}'"
   },
   "dependencies": {
