@@ -15,7 +15,8 @@
       "jsx": true
     },
     "ecmaVersion": "latest",
-    "sourceType": "module"
+    "sourceType": "module",
+    "project": "./tsconfig.json"
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
@@ -25,6 +26,7 @@
     "semi": ["error", "always"],
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": ["off"],
-    "@next/next/no-img-element": ["off"]
+    "@next/next/no-img-element": ["off"],
+    "@typescript-eslint/strict-boolean-expressions": ["warn"]
   }
 }

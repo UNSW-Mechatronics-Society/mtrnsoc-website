@@ -7,7 +7,7 @@ const TopHalfLogos = () => {
   return (
     <div className="flex flex-row justify-center my-2">
       {defaultSocialsData.map((social) => (
-        <Link href={social.url} key={social.name}>
+        <Link legacyBehavior href={social.url} key={social.name}>
           <a target="_blank">
             <img
               src={social.logoUrl}

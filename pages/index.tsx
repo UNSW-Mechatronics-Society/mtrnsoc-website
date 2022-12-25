@@ -117,7 +117,7 @@ const SectionMeetTheTeam = ({ featuredPersonData }: SectionMeetTheTeamProps): JS
             </div>
           </div>
           <div className="pt-7">
-            <Link href="/team">
+            <Link legacyBehavior href="/team">
               <a>
                 <button className={styles.buttonStyle}>Meet Us</button>
               </a>
@@ -141,7 +141,7 @@ const SponsorSection = ({ sponsors }: SponsorsSectionProps): JSX.Element => {
         <div className={styles.sponsorsContainer}>
           {sponsors.map((sponsor) => {
             return (
-              <Link href={sponsor.link} key={sponsor.alt}>
+              <Link legacyBehavior href={sponsor.link} key={sponsor.alt}>
                 <a target="_blank">
                   <img src={sponsor.src} alt={sponsor.alt} className={styles.sponsorLogos} />
                 </a>
@@ -165,7 +165,7 @@ const JoinUsSection = ({ spArcLink }: JoinUsSectionPops): JSX.Element => {
         <TitleHeader text="Join The Society" />
         <div>
           <p className="pb-10">Want to be involved? Join Us!</p>
-          <Link href={spArcLink}>
+          <Link legacyBehavior href={spArcLink}>
             <a target="_blank">
               <button className={styles.buttonStyle}>Join us on SpArc</button>
             </a>

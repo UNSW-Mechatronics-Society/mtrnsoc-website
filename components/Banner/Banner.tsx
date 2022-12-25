@@ -44,7 +44,7 @@ export default function Banner({
     <div className={styles.container}>
       <img src={imgURL} alt="hero banner" className={styles.image} draggable="false" />
       {/* if text exists, create div */}
-      {text && <Text position={position} text={text} />}
+      {text !== undefined && <Text position={position} text={text} />}
       {arrow && (
         <div className={styles.arrowDown}>
           <ScrollLink

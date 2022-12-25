@@ -13,9 +13,7 @@ const ContentContainer = ({
   customBackgroundColour = undefined,
 }: ContentContainerProps): JSX.Element => {
   return (
-    <section
-      className={`${styles.mainContainer} ${customBackgroundColour ? customBackgroundColour : ""}`}
-    >
+    <section className={`${styles.mainContainer} ${customBackgroundColour ?? ""}`}>
       <div className={styles.limitingContainer}>
         <div className={styles.paddingContainer}>{children}</div>
       </div>

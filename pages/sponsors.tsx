@@ -37,7 +37,9 @@ const Sponsors: NextPage<SponsorsPageProps> = ({ affiliates, sponsors, emailData
             If you are interested in sponsoring our society, or would like to know more about our
             sponsor packages, please contact us at{" "}
             <span className="underline">
-              <Link href={emailData.url}>{emailData.display}</Link>
+              <Link legacyBehavior href={emailData.url}>
+                {emailData.display}
+              </Link>
             </span>
             , or go through our contact page!
           </p>
@@ -45,7 +47,7 @@ const Sponsors: NextPage<SponsorsPageProps> = ({ affiliates, sponsors, emailData
             <h1 className={styles.sectionTitle}>Proudly Supported By</h1>
             <div className={styles.sectionImagesContainer}>
               {sponsors.map((x) => (
-                <Link href={x.link} key={x.alt}>
+                <Link legacyBehavior href={x.link} key={x.alt}>
                   <a target="_blank">
                     <img key={x.alt} src={x.src} alt={x.alt} className={styles.sectionImage} />
                   </a>
@@ -57,7 +59,7 @@ const Sponsors: NextPage<SponsorsPageProps> = ({ affiliates, sponsors, emailData
             <h1 className={styles.sectionTitle}>Affiliations</h1>
             <div className={styles.sectionImagesContainer}>
               {affiliates.map((x) => (
-                <Link href={x.link} key={x.alt}>
+                <Link legacyBehavior href={x.link} key={x.alt}>
                   <a target="_blank">
                     <img src={x.src} alt={x.alt} className={styles.sectionImage} />
                   </a>
