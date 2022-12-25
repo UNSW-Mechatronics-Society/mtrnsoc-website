@@ -39,7 +39,7 @@ export default function EventCardHorizontal({
             </div>
           </div>
           {/* If location exists, display it */}
-          {eventData.location && (
+          {eventData.location !== null && (
             <div className="flex flex-row mt-3">
               <img className="mr-3" src="/misc/location.svg" alt="" draggable="false" />
               <p className="text-lg grid place-items-center text-left">{eventData.location}</p>

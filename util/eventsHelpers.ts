@@ -117,7 +117,7 @@ export class Event {
     // Convert start date
     const startMoment = moment.unix(this.startDate);
 
-    if (!this.endDate) {
+    if (this.endDate === null || this.endDate === undefined) {
       // Event with only a starting time
       return `${startMoment.format("D MMM")}, ${this.convertToTimeString(startMoment)}`;
     }

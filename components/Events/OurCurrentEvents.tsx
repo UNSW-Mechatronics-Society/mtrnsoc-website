@@ -35,7 +35,7 @@ export default function OurCurrentEvents({
 }: OurCurrentEventsProps): JSX.Element {
   const [currentPos, setCurrentPos] = React.useState(0); // position in array, indexed at 0
 
-  if (!currentEvents) {
+  if (currentEvents === null || currentEvents === undefined) {
     // Failed to get current events
     return (
       <Template buttonStyle={buttonStyle}>

@@ -71,7 +71,7 @@ const TermSection = ({ yearSelected, term, termData, width }: TermSectionProps):
   const result = termData.reduce((resultArray, item, index) => {
     const chunkIndex = Math.floor(index / perChunk);
 
-    if (!resultArray[chunkIndex]) {
+    if (resultArray[chunkIndex].length === 0) {
       resultArray[chunkIndex] = []; // start a new chunk
     }
 
