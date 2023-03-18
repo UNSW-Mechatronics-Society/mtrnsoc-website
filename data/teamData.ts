@@ -137,23 +137,27 @@ export const directorData: ProfileData[] = [
 
 export const subcomData: SubcomProfileData[] = [
   {
-    portfolioName: "Marketing Team",
-    members: ["Angela Lei", "Carrie Wu", "Sam Banerjee", "Sunny Chen"],
-  },
-  {
     portfolioName: "Socials Team",
-    members: ["Byron Petselis", "Thomas Shalaby", "Zac Saber"],
+    members: ["Daayan Naseem Kola", "Jasmine Zeng", "Rohini Manohar", "Aditya Jain", "Nahiyan Mahmud", "Jeslyn Yu"],
   },
   {
     portfolioName: "Workshops Team",
-    members: ["Angus Wang", "Kalindu Dahanayake"],
+    members: ["Phillip Law", "Jade Williams", "Jake Song", "Aditya Muthukattu"],
   },
   {
     portfolioName: "Projects Team",
-    members: ["Eric Do", "Jay Choo", "Nicole Leow"],
+    members: ["Xiuming Li", "Athanasios Boufeas", "Shiwani Balaji", "Anshul Trivedi"],
   },
   {
     portfolioName: "Industry Team",
-    members: ["Dipro Roychowdhury", "Hannabeth Marchant", "Sarvesh Sanjay Wanzare"],
+    members: ["Liam Burne-Johnston", "Khushi Gupta", "Kai Turner", "Sebastian Cezario"],
+  },
+  {
+    portfolioName: "Creatives Team",
+    members: ["Aryan Wadhawan", "Benny Cheng", "Nicholas Tong", "Anirudh Raju"],
+  },  
+  {
+    portfolioName: "Marketing Team",
+    members: ["Aarush Arora", "Eric Wu", "Aalam Virk"],
   },
 ];
