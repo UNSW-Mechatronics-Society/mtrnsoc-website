@@ -119,7 +119,7 @@ const Team: NextPage<TeamPageProps> = ({
           email={email}
           text="2023 Executives"
         />
-        <SectionExecutives execProfileData={execProfileData} email={email} />
+        {/* <SectionExecutives execProfileData={execProfileData} email={email} /> */}
         <SectionDirectors directorProfileData={directorProfileData} email={email} />
         <SectionSubcommittee subcomProfileData={subcomProfileData} />
       </div>
