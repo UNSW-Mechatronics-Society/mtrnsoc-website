@@ -138,7 +138,14 @@ export const directorData: ProfileData[] = [
 export const subcomData: SubcomProfileData[] = [
   {
     portfolioName: "Socials Team",
-    members: ["Daayan Naseem Kola", "Jasmine Zeng", "Rohini Manohar", "Aditya Jain", "Nahiyan Mahmud", "Jeslyn Yu"],
+    members: [
+      "Daayan Naseem Kola",
+      "Jasmine Zeng",
+      "Rohini Manohar",
+      "Aditya Jain",
+      "Nahiyan Mahmud",
+      "Jeslyn Yu",
+    ],
   },
   {
     portfolioName: "Workshops Team",
@@ -155,7 +162,7 @@ export const subcomData: SubcomProfileData[] = [
   {
     portfolioName: "Creatives Team",
     members: ["Aryan Wadhawan", "Benny Cheng", "Nicholas Tong", "Anirudh Raju"],
-  },  
+  },
   {
     portfolioName: "Marketing Team",
     members: ["Aarush Arora", "Eric Wu", "Aalam Virk"],
