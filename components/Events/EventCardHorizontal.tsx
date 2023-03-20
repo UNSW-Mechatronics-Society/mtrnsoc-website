@@ -16,7 +16,7 @@ export default function EventCardHorizontal({
   return (
     <div className={`${styles.mainContainer} ${styles.backgroundBlue}`}>
       <div className={styles.imageContainer}>
-        <Link href={eventData.facebookEventLink}>
+        <Link legacyBehavior href={eventData.facebookEventLink}>
           <a target="_blank" className="h-full w-full">
             <img
               className={styles.image}
@@ -39,7 +39,7 @@ export default function EventCardHorizontal({
             </div>
           </div>
           {/* If location exists, display it */}
-          {eventData.location && (
+          {eventData.location !== null && (
             <div className="flex flex-row mt-3">
               <img className="mr-3" src="/misc/location.svg" alt="" draggable="false" />
               <p className="text-lg grid place-items-center text-left">{eventData.location}</p>

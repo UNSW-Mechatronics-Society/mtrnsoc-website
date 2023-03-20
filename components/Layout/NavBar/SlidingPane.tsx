@@ -68,7 +68,7 @@ export function ReactSlidingPane({
 }: Props) {
   const directionClass = `slide-pane_from_${from}`;
 
-  // Not usign array destruction to reduce bundle size by not introducing polyfill
+  // Not using array destruction to reduce bundle size by not introducing polyfill
   const state = useUpdateStateIfMounted(false);
   const wasOpen = state[0];
   const setWasOpen = state[1];
@@ -92,17 +92,17 @@ export function ReactSlidingPane({
     <Modal
       ariaHideApp={false}
       overlayClassName={{
-        base: `${styles["slide-pane__overlay"]} ${overlayClassName || ""}`,
+        base: `${styles["slide-pane__overlay"]} ${overlayClassName ?? ""}`,
         afterOpen: wasOpen ? styles["overlay-after-open"] : "",
         beforeClose: styles["overlay-before-close"],
       }}
       className={{
-        base: `${styles["slide-pane"]} ${styles[directionClass]} ${className || ""}`,
+        base: `${styles["slide-pane"]} ${styles[directionClass]} ${className ?? ""}`,
         afterOpen: wasOpen ? styles["content-after-open"] : "",
         beforeClose: styles["content-before-close"],
       }}
       style={{
-        content: { width: width || "80%" },
+        content: { width: width ?? "80%" },
       }}
       // closeTimeoutMS={CLOSE_TIMEOUT}
       isOpen={isOpen ?? false}
@@ -110,7 +110,7 @@ export function ReactSlidingPane({
       onAfterOpen={handleAfterOpen}
       onAfterClose={handleAfterClose}
       onRequestClose={onRequestClose}
-      contentLabel={`Modal "${title || ""}"`}
+      contentLabel={`Modal "${title ?? ""}"`}
     >
       {!hideHeader && (
         <div className={styles["slide-pane__header"]}>
@@ -120,7 +120,7 @@ export function ReactSlidingPane({
             role="button"
             tabIndex={0}
           >
-            {closeIcon || <IconClose />}
+            {closeIcon ?? <IconClose />}
           </div>
           <div className={styles["slide-pane__title-wrapper"]}>
             <h2 className={styles["slide-pane__title"]}>{title}</h2>

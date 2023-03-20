@@ -28,14 +28,14 @@ const Contact: NextPage<ContactPageProps> = ({ socialsData, pageData }) => {
           <h1 className="text-3xl font-semibold mb-4">Wanna get in touch?</h1>
           <p className="text-2xl font-medium mb-1">General Contact</p>
           <p className="text-lg underline">
-            <Link href={emailData.url}>
+            <Link legacyBehavior href={emailData.url}>
               <a>{emailData.display}</a>
             </Link>
           </p>
           <h1 className="text-3xl font-semibold mt-6 mb-4">Stay Connected</h1>
           <div className={styles.socialIconContainer}>
             {socialsData.map((social) => (
-              <Link href={social.url} key={social.name}>
+              <Link legacyBehavior href={social.url} key={social.name}>
                 <a target="_blank">
                   <img
                     src={social.logoUrl}
