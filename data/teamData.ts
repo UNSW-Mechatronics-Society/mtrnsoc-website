@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 export type ProfileData = {
   src: string;
   id: string;
