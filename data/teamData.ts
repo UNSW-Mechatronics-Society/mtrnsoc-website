@@ -146,6 +146,12 @@ export const directorData: ProfileData[] = [
     position: "Workshops Director",
     linkedIn: "https://www.linkedin.com/in/shamik-patel/",
   },
+  {
+    src: "/images/profiles/Muhammad.jpg",
+    id: "Muhammad Haffejee",
+    position: "Workshops Director",
+    linkedIn: "https://www.linkedin.com/in/shamik-patel/",
+  },
 ];
 
 export const subcomData: SubcomProfileData[] = [
