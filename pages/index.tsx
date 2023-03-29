@@ -9,7 +9,7 @@ import { PositionType } from "components/Banner/Banner";
 import { PageInformation, homePageData } from "data/navLinksData";
 import { spArcLink } from "data/socialsData";
 import sponsorsData, { SponsorData } from "data/sponsorsData";
-import { ProfileData, execData } from "data/teamData";
+import { ProfileData, execData2023 } from "data/teamData";
 import styles from "styles/index.module.scss";
 
 type TitleHeaderProps = {
@@ -94,11 +94,12 @@ const SectionMeetTheTeam = ({ featuredPersonData }: SectionMeetTheTeamProps): JS
               <div className={styles.featuredTextBox}>
                 <p className="relative">
                   <span className="z-50">
-                    The mechatronics community is one truly driven by curiosity and passion. We
-                    strive to continuously create and improve with what we learn. Integrating skills
-                    and knowledge across many disciplines is our drive and exactly what we aspire to
-                    be our specialty. We all find our own ways to do this, but as we know, we are
-                    always better working together and would be honoured to work with you too.
+                    MTRNSoc aims to enrich the student experience while ensuring our members are job
+                    ready for the industry. Our focus on encouraging members to learn, develop soft
+                    skills and pursue their passions is an integral part of MTRNSoc. We endeavour to
+                    develop well-rounded Mechatronic engineers with practical training and
+                    knowledge, while enjoying the university experience. We hope you can be a part
+                    of this too!
                   </span>
                   <img
                     src="/misc/quotes.svg"
@@ -237,7 +238,7 @@ export const getServerSideProps: GetServerSideProps<HomePageProps> = async () =>
 
   const sortedCurrentEvents = getSortedEvents(currentEvents);
 
-  const featuredPersonData = execData.find((x) => x.position === "President");
+  const featuredPersonData = execData2023.find((x) => x.position === "President");
 
   if (featuredPersonData === undefined) {
     throw "Could not find person to feature from teamData.ts";
