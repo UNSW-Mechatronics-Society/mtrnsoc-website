@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 export type ProfileData = {
   src: string;
   id: string;
@@ -86,52 +87,82 @@ export const execData2023: ProfileData[] = [
 
 export const directorData: ProfileData[] = [
   {
-    src: "/images/profiles/CelineC.jpg",
-    id: "Celine Choo",
-    position: "Marketing Director",
-    linkedIn: "https://www.linkedin.com/in/celinechooliling/",
+    src: "/images/profiles/SaiP.jpeg",
+    id: "Sai Poreddy",
+    position: "Creatives Director",
+    linkedIn: "https://www.linkedin.com/in/sai-poreddy-74b08b16a/?originalSubdomain=au",
   },
   {
-    src: "/images/profiles/DanaeM.jpg",
-    id: "Danae Matthews",
-    position: "Marketing Director",
+    src: "/images/profiles/AngelineP.jpg",
+    id: "Angeline Parrella",
+    position: "Socials Director",
+    linkedIn: "https://www.linkedin.com/in/angeline-parrella-1a843215a/",
+  },
+  {
+    src: "/images/profiles/FatimaA.jpeg",
+    id: "Fatima Ahmed",
+    position: "Industry Director",
+    linkedIn: "https://www.linkedin.com/in/fatima-ahmed-26928020a/",
+  },
+  {
+    src: "/images/profiles/DanushG.jpg",
+    id: "Danush Gunaseelan",
+    position: "Industry Director",
+    linkedIn: "https://www.linkedin.com/in/thanushwur-gunaseelan-a93180148/?originalSubdomain=au",
+  },
+  {
+    src: "/images/profiles/CarmenZ.jpg",
+    id: "Carmen Zhang",
+    position: "Industry Director",
     linkedIn: null,
   },
   {
-    src: "/images/profiles/IshitaK.jpg",
-    id: "Ishita Katyal",
-    position: "Socials Director",
-    linkedIn: "www.linkedin.com/in/ishita-katyal-a75226154/",
-  },
-  {
-    src: "/images/profiles/JaniceN.jpg",
-    id: "Janice Nyoto",
-    position: "Workshops Director",
-    linkedIn: "https://www.linkedin.com/in/janice-nyoto/",
-  },
-  {
-    src: "/images/profiles/AlvinC.jpg",
-    id: "Alvin Cherk",
-    position: "IT Co-Director",
-    linkedIn: "https://www.linkedin.com/in/alvin-cherk-2363291b4/",
-  },
-  {
-    src: "/images/profiles/JulietT.jpg",
-    id: "Juliet Tan",
-    position: "IT Co-Director",
-    linkedIn: "https://www.linkedin.com/in/jtannn/",
-  },
-  {
-    src: "/images/profiles/LeonardC.jpg",
-    id: "Leonard Chiang",
-    position: "Projects Director",
-    linkedIn: "https://www.linkedin.com/in/leonard-chiang/",
-  },
-  {
-    src: "/images/profiles/ShamikP.jpg",
-    id: "Shamik Patel",
+    src: "/images/profiles/AishiJ.jpeg",
+    id: "Aishi Jain",
     position: "Industry Director",
-    linkedIn: "https://www.linkedin.com/in/shamik-patel/",
+    linkedIn: "https://www.linkedin.com/in/aishijain/",
+  },
+  {
+    src: "/images/profiles/JoshL.jpg",
+    id: "Josh Lim",
+    position: "Workshops Director",
+    linkedIn: "https://www.linkedin.com/in/joshclim/",
+  },
+  {
+    src: "/images/profiles/AdiyatR.jpg",
+    id: "Adiyat Rahman",
+    position: "Workshops Director",
+    linkedIn: "https://www.linkedin.com/in/adiyatrahman/",
+  },
+  {
+    src: "/images/profiles/Muhammad.jpg",
+    id: "Muhammad Haffejee",
+    position: "Workshops Director",
+    linkedIn: "https://www.linkedin.com/in/muhammad-haffejee/",
+  },
+  {
+    src: "/images/profiles/AkhilG.jpg",
+    id: "Akhil Govan",
+    position: "Projects Director",
+    linkedIn: null,
+  },
+  {
+    src: "/images/profiles/JosephineL.jpg",
+    id: "Josephine Lam",
+    position: "Marketing Director",
+    linkedIn: "https://www.linkedin.com/in/josephine-lam-808946172/",
+  },
+  {
+    src: "/images/profiles/WinnieZ.jpeg",
+    id: "Winnie Zhang",
+    position: "IT Director",
+    linkedIn: "https://www.linkedin.com/in/winnie-zhang-64392b223/",
+  },
+  {
+    src: "/images/profiles/NathanH.jpeg",
+    id: "Nathan Hu",
+    position: "IT Director",
+    linkedIn: "https://www.linkedin.com/in/nathan-hu-0284511b0/",
   },
 ];
 
