@@ -99,22 +99,22 @@ export const directorData: ProfileData[] = [
     linkedIn: "https://www.linkedin.com/in/angeline-parrella-1a843215a/",
   },
   {
-    src: "/images/profiles/AdiyatR.jpg",
-    id: "Adiyat Rahman",
-    position: "Socials Director",
-    linkedIn: "https://www.linkedin.com/in/adiyatrahman/",
-  },
-  {
     src: "/images/profiles/FatimaA.jpeg",
     id: "Fatima Ahmed",
-    position: "Industry & Sponsorships Director",
+    position: "Industry Director",
     linkedIn: "https://www.linkedin.com/in/fatima-ahmed-26928020a/",
   },
   {
     src: "/images/profiles/DanushG.jpg",
-    id: "Danush G.",
-    position: "Industry & Sponsorships Director",
+    id: "Danush Gunaseelan",
+    position: "Industry Director",
     linkedIn: "https://www.linkedin.com/in/thanushwur-gunaseelan-a93180148/?originalSubdomain=au",
+  },
+  {
+    src: "/images/profiles/CarmenZ.jpg",
+    id: "Carmen Zhang",
+    position: "Industry Director",
+    linkedIn: null,
   },
   {
     src: "/images/profiles/AishiJ.jpeg",
@@ -127,6 +127,12 @@ export const directorData: ProfileData[] = [
     id: "Josh Lim",
     position: "Workshops Director",
     linkedIn: "https://www.linkedin.com/in/joshclim/",
+  },
+  {
+    src: "/images/profiles/AdiyatR.jpg",
+    id: "Adiyat Rahman",
+    position: "Workshops Director",
+    linkedIn: "https://www.linkedin.com/in/adiyatrahman/",
   },
   {
     src: "/images/profiles/Muhammad.jpg",
@@ -145,12 +151,6 @@ export const directorData: ProfileData[] = [
     id: "Josephine Lam",
     position: "Marketing Director",
     linkedIn: "https://www.linkedin.com/in/josephine-lam-808946172/",
-  },
-  {
-    src: "/images/profiles/CarmenZ.jpg",
-    id: "Carmen Zhang",
-    position: "Marketing Director",
-    linkedIn: null,
   },
   {
     src: "/images/profiles/WinnieZ.jpeg",
