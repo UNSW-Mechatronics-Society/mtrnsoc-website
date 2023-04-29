@@ -61,19 +61,19 @@ export const directorData: ProfileData[] = [
   {
     src: "/images/profiles/AishiJ.jpeg",
     id: "Aishi Jain",
-    position: "Industry Director",
+    position: "Industry & Sponsorships Director",
     linkedIn: "https://www.linkedin.com/in/aishijain/",
   },
   {
     src: "/images/profiles/DanushG.jpg",
     id: "Danush G.",
-    position: "Industry Director",
+    position: "Industry & Sponsorships Director",
     linkedIn: "https://www.linkedin.com/in/thanushwur-gunaseelan-a93180148/?originalSubdomain=au",
   },
   {
     src: "/images/profiles/FatimaA.jpeg",
     id: "Fatima Ahmed",
-    position: "Industry Director",
+    position: "Industry & Sponsorships Director",
     linkedIn: "https://www.linkedin.com/in/fatima-ahmed-26928020a/",
   },
   {
