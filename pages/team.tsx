@@ -9,7 +9,6 @@ import {
   ProfileData,
   SubcomProfileData,
   directorData,
-  execData,
   execData2023,
   subcomData,
 } from "data/teamData";
@@ -81,7 +80,6 @@ const SectionSubcommittee = ({ subcomProfileData }: SectionSubcommitteeProps): J
 
 type TeamPageProps = {
   directorProfileData: ProfileData[];
-  execProfileData: ProfileData[];
   subcomProfileData: SubcomProfileData[];
   email: string;
   pageData: PageInformation;
@@ -90,7 +88,6 @@ type TeamPageProps = {
 
 const Team: NextPage<TeamPageProps> = ({
   directorProfileData,
-  execProfileData,
   subcomProfileData,
   email,
   pageData,
@@ -119,7 +116,6 @@ const Team: NextPage<TeamPageProps> = ({
           email={email}
           text="2023 Executives"
         />
-        {/* <SectionExecutives execProfileData={execProfileData} email={email} /> */}
         <SectionDirectors directorProfileData={directorProfileData} email={email} />
         <SectionSubcommittee subcomProfileData={subcomProfileData} />
       </div>
@@ -131,7 +127,6 @@ export const getStaticProps: GetStaticProps<TeamPageProps> = async () => {
   return {
     props: {
       directorProfileData: directorData,
-      execProfileData: execData,
       subcomProfileData: subcomData,
       // NOTE: Based on how children components were designed, 'mailto:' is added to email string
       email: emailData.display,
