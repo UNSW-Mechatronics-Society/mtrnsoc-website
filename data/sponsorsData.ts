@@ -25,9 +25,9 @@ const sponsorsData: SponsorData[] = [
     type: "affiliate",
   },
   {
-    src: "/logos/sponsors/knaLogo.png",
-    alt: "K & A Electronics logo",
-    link: "https://kandaelectronics.com.au/",
+    src: "/logos/sponsors/engineersAustraliaLogo.png",
+    alt: "Engineers Australia logo",
+    link: "https://www.engineersaustralia.org.au/",
     type: "sponsor",
   },
 ];
