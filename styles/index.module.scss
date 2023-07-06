@@ -5,7 +5,7 @@
 }
 
 .sectionContainer {
-  @apply grid place-items-center my-20 text-center text-xl;
+  @apply grid place-items-center my-10 text-center text-xl;
 }
 
 .title {
@@ -93,4 +93,8 @@
 
 .WhoWeAreTextContainer {
   @apply px-[7.5%];
+}
+
+.WhoWeAreButtonsContainer {
+  @apply flex flex-row justify-around w-full max-w-[55%] flex-wrap pt-9;
 }
