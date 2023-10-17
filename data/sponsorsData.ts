@@ -30,6 +30,12 @@ const sponsorsData: SponsorData[] = [
     link: "https://www.engineersaustralia.org.au/",
     type: "sponsor",
   },
+  {
+    src: "/logos/sponsors/btImaging.png",
+    alt: "bT imaging logo",
+    link: "https://www.btimaging.com/",
+    type: "sponsor",
+  },
 ];
 
 export default sponsorsData;
